@@ -12,17 +12,18 @@ class ProductManager {
         let id
 
         if (existingProduct) {
-            console.log(`El producto con el código ${code} ya existe`)
+            throw new Error(`El producto con el código ${code} ya existe`)
         }
 
-        this.products.length === 0 ? id = 1 : id = this.products[this.products-1]
+        this.products.length === 0 ? id = 1 : id = this.products[this.products-1].id + 1
         let product = { id, title, description, price, thumbnail, code, stock }
         this.products.push(product)
+        return this.products[this.products-1]
     }
 
     getProductById(id) {
         let product = this.products.find(product => product.id === id)
-        return product || 'No '
+        return product || null
     }
 }
 
@@ -30,4 +31,4 @@ let producto = new ProductManager()
 console.log(producto.getProducts())
 producto.addProducts({ title: 'producto prueba', description: 'Este es un producto prueba', price: 200, thumbnail: 'Sin imagen', code: 'abc123', stock: 25 })
 console.log(producto.getProducts())
-producto.addProducts({ title: 'producto prueba', description: 'Este es un producto prueba', price: 200, thumbnail: 'Sin imagen', code: 'abc123', stock: 25 })
+//producto.addProducts({ title: 'producto prueba', description: 'Este es un producto prueba', price: 200, thumbnail: 'Sin imagen', code: 'abc123', stock: 25 })
