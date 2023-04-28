@@ -65,7 +65,20 @@ class ProductManager {
     async updateProduct(id, data) {
         try {
             let product = this.getProductById(id)
+            //Verificacion de datos y errores
+            if(!product) {
+                return 'updateProduct: error user not found'
+            }
+
+            if(Object.keys(data).length === 0) {
+                return 'updateProduct: error insert some values'
+            }
+
             for (let prop in data) {
+                /*if(prop != 'title' || prop != 'description' || prop != 'price' || prop != 'thumbnail' || prop != 'code' || prop != 'stock') {
+                    console.log(`updateProduct: error ${prop} is not a property of product`)
+                }*/
+
                 product[prop] = data[prop]
             }
             let data_json = JSON.stringify(this.products, null, 2)
