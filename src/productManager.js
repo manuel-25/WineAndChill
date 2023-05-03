@@ -48,23 +48,37 @@ class ProductManager {
 
     async getProducts() {
         try {
-            //let products = JSON.parse(fs.readFileSync(this.path, 'UTF-8'))
+            const data = await fs.promises.readFile(this.path, 'utf-8')
+            this.products = JSON.parse(data)
             if (this.products.length === 0) {
-                return 'Not Found'
+                return {
+                    message: 'Products not found'
+                }
             }
             return this.products
-        } catch(err) {
-            return 'getProducts: error', err
+        } catch (error) {
+            console.error(`getProducts: error: ${error}`)
         }
-    }
+      }
 
-    getProductById(id) {
-        let product = this.products.find(product => product.id === id)
-        if(!product) {
-            return null
+
+      async getProductById(id) {
+        try {
+          const products = await this.getProducts()
+          const product = products.find(product => product.id == id) // con === no funciona 
+          if (!product) {
+            return {
+              message: 'Product not found'
+            }
+          }
+          return {
+            product
+          }
+        } catch (error) {
+          console.error(`getProductById: error: ${error}`)
         }
-        return product
-    }
+      }
+
 
     async updateProduct(id, data) {
         try {
@@ -110,4 +124,27 @@ class ProductManager {
     }
 }
 
-module.exports = ProductManager
+let producto = new ProductManager("./data/data.json")
+
+async function manager() {
+    await producto.add_Product({ title: 'producto 1', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc123'})
+    await producto.add_Product({ title: 'producto 2', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc124'})
+    await producto.add_Product({ title: 'producto 3', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc125'})
+    await producto.add_Product({ title: 'producto 4', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc126'})
+    await producto.add_Product({ title: 'producto 5', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc127'})
+    await producto.add_Product({ title: 'producto 6', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc128'})
+    await producto.add_Product({ title: 'producto 7', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc129'})
+    await producto.add_Product({ title: 'producto 8', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc130'})
+    await producto.add_Product({ title: 'producto 9', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc131'})
+    await producto.add_Product({ title: 'producto 10', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc132'})
+    
+    //await producto.getProductById(9)
+    //await producto.updateProduct(9, { title: 'producto 11', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc131'})
+    //await producto.deleteProduct(10)
+    
+    //console.log(await producto.getProducts())
+}
+
+//manager()
+
+export default producto

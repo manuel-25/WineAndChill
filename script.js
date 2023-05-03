@@ -1,4 +1,4 @@
-const ProductManager = require('./main.js')
+/*import ProductManager from './main.js'
 
 let producto = new ProductManager("./data/data.json")
 
@@ -16,9 +16,11 @@ async function manager() {
     
     //await producto.getProductById(9)
     //await producto.updateProduct(9, { title: 'producto 11', description: 'Este es un producto prueba', price: 100, thumbnail: 'Sin imagen', code: 'abc131'})
-    console.log(await producto.deleteProduct(10))
+    //await producto.deleteProduct(10)
     
     //console.log(await producto.getProducts())
 }
 
-manager()
+//manager()
+
+export default producto*/
