@@ -1,0 +1,21 @@
+{
+  "name": "sprint_01",
+  "version": "1.0.0",
+  "description": "Este es un proyecto que permite gestionar productos dentro de un array y guardarlos en un archivo `data.json`. Cada producto contiene los siguientes campos: `title`, `description`, `price`, `thumbnail`, `code` y `stock`.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuel-25/sprint-1.git"
+  },
+  "author": "Manuel-25",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
