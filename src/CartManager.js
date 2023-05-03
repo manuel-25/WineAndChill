@@ -30,17 +30,19 @@ class CartManager {
   
     async addCart(productId, quantity) {
       try {
-        const cartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1000
+        const cartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1
         let product = await producto.getProductById(productId)
         if(product.message) {
             return 'addCart: error: ' + product.message
         }
         const newCart = {
           id: cartId,
-          products: {
-            productId,
-            quantity
-          }
+          products: [
+            {
+              productId,
+              quantity
+            }
+          ]
         }
         this.carts.push(newCart)
         const data_json = JSON.stringify(this.carts, null, 2)
@@ -69,7 +71,7 @@ class CartManager {
     async getCartById(id) {
       try {
         const carts = await this.getCarts()
-        const cart = carts.find(cart => cart.id == id) //con === no funciona ?
+        const cart = carts.find(cart => cart.id == id) //con === no funciona
         if (!cart) {
           return {
             message: 'Product not found'

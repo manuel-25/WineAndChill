@@ -3,8 +3,8 @@ import producto from './productManager.js'
 import carrito from './CartManager.js'
 
 
-let server = express()
-let PORT = 8080
+const server = express()
+const PORT = 8080
 
 let ready = () => console.log('Server Ready on Port: ' + PORT)
 
@@ -18,6 +18,7 @@ let index_function = (req, res) => {
 }
 server.get(index_route, index_function)
 
+//Product Routes
 
 let products_route = '/api/products'
 let products_Function = async (req, res) => {
