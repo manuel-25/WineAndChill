@@ -10,6 +10,7 @@ let ready = () => console.log('Server Ready on Port: ' + PORT)
 
 server.listen(PORT, ready)
 server.use(express.urlencoded({extended:true}))
+server.use(express.json())
 
 
 let index_route = '/'
@@ -19,7 +20,6 @@ let index_function = (req, res) => {
 server.get(index_route, index_function)
 
 //Product Routes
-
 let products_route = '/api/products'
 let products_Function = async (req, res) => {
     const limit = req.query.limit
@@ -58,7 +58,6 @@ server.get(products_route, products_Function)
   server.get(products_route_pid, products_pid_Function)
 
   //Cart Routes
-
   let carts_route = '/api/carts'
   let carts_Function = async (req, res) => {
       let carts = await carrito.getCarts()
@@ -95,3 +94,58 @@ server.get(products_route, products_Function)
   
   server.get(carts_route_pid, carts_pid_Function)
 
+// Product Post
+server.post(
+  '/api/products',
+  async (req,res) => {
+    try {
+      let title = req.body.title ?? null
+      let description = req.body.description ?? null
+      let price = req.body.price ?? null
+      let thumbnail = req.body.thumbnail ?? null
+      let stock = req.body.stock ?? null 
+      let code = req.body.code ?? null
+      if (title&&description&&price&&thumbnail&&stock&&code) {
+        let Newproduct = await producto.add_Product({ title,description,price,thumbnail,code,stock })
+        console.log(Newproduct)
+        return res.status(201).json({
+          resolve: true,
+          message: `Product ${Newproduct.id} created!`
+        })
+      } else {
+        return res.status(400).json({
+          resolve: false,
+          message: 'Complete data!'
+        })
+      }
+    } catch(err) {
+      console.log(err)
+    }
+  }
+)
+
+// Product Put
+
+server.put(
+  '/api/products/:pid',
+  async (req,res) => {
+    try {
+      if(req.body&&req.params.pid){
+        let pid = Number(req.params.pid)
+        let data = req.body
+        await producto.updateProduct(pid, data)
+        return res.status(201).json({
+          resolve: true,
+          message: `Product ${pid} updated!`
+        })
+      } else {
+        return res.status(400).json({
+          resolve: false,
+          message: 'Error updating!'
+        })
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+)
