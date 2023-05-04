@@ -9,12 +9,12 @@
     "id": 1
   },
   {
-    "title": "producto 2",
-    "description": "Este es un producto prueba",
-    "price": 100,
+    "title": "Champagne",
+    "description": "Espumante de Mendoza",
+    "price": 4600,
     "thumbnail": "Sin imagen",
-    "code": "abc124",
-    "stock": 0,
+    "code": "abc134",
+    "stock": 2,
     "id": 2
   },
   {
@@ -72,12 +72,30 @@
     "id": 8
   },
   {
-    "title": "producto 9",
-    "description": "Este es un producto prueba",
+    "title": "producto 11",
+    "description": "Este es un producto actualizado",
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc131",
     "stock": 0,
     "id": 9
+  },
+  {
+    "title": "Vino tinto",
+    "description": "Vino tinto de Mendoza",
+    "price": 2100,
+    "thumbnail": "Sin imagen",
+    "code": "abc132",
+    "stock": 12,
+    "id": 10
+  },
+  {
+    "title": "Vino blanco",
+    "description": "Vino blanco de Mendoza",
+    "price": 2100,
+    "thumbnail": "Sin imagen",
+    "code": "abc133",
+    "stock": 9,
+    "id": 11
   }
 ]
