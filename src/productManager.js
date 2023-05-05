@@ -100,21 +100,31 @@ class ProductManager {
             this.writeFile(data_json)
             return product
         } catch(err) {
-            return 'updateProduct: error', err
+            return {
+                message: 'updateProduct: error',
+                error
+            }
         }
     }
 
     async deleteProduct(id) {
         try {
-            if(await !this.getProductById(id)) {
-                return 'deleteProduct error: product not found'
+            const result = await this.getProductById(id)
+            if (!result.product) {
+                return {
+                    message: 'Product not found'
+                }
             }
             this.products = this.products.filter(each => each.id !== id)
             let data_json = JSON.stringify(this.products, null, 2)
             this.writeFile(data_json)
-            return 'deleteProduct: ' + id + ' done'
-        } catch(err) {
-            return 'deleteProduct: error', err
+            return result.product
+        } catch(error) {
+            console.log('deleteProduct: error', err)
+            return {
+                message: 'deleteProduct: error',
+                error
+            }
         }
     }
 }

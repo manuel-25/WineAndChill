@@ -1,6 +1,7 @@
 import express from 'express'
 import producto from './productManager.js'
 import carrito from './CartManager.js'
+import { productRoutes } from './routes/productRoutes.js'
 
 
 const server = express()
@@ -9,8 +10,13 @@ const PORT = 8080
 let ready = () => console.log('Server Ready on Port: ' + PORT)
 
 server.listen(PORT, ready)
+
 server.use(express.urlencoded({extended:true}))
 server.use(express.json())
+server.use('/static', express.static('public'))
+
+
+server.use('/api/products', productRoutes)
 
 
 let index_route = '/'
@@ -20,7 +26,7 @@ let index_function = (req, res) => {
 server.get(index_route, index_function)
 
 //Product Routes
-let products_route = '/api/products'
+/*let products_route = '/api/products'
 let products_Function = async (req, res) => {
     const limit = req.query.limit
     let products = await producto.getProducts()
@@ -37,7 +43,7 @@ let products_Function = async (req, res) => {
       })
     }
   }
-server.get(products_route, products_Function)
+server.get(products_route, products_Function)*/
 
   let products_route_pid = '/api/products/:pid'
   let products_pid_Function = async (req, res) => {
@@ -128,12 +134,12 @@ server.post(
 
 server.put(
   '/api/products/:pid',
-  async (req,res) => {
+  (req,res) => {
     try {
       if(req.body&&req.params.pid){
         let pid = Number(req.params.pid)
         let data = req.body
-        await producto.updateProduct(pid, data)
+        producto.updateProduct(pid, data)
         return res.status(201).json({
           resolve: true,
           message: `Product ${pid} updated!`
@@ -142,6 +148,29 @@ server.put(
         return res.status(400).json({
           resolve: false,
           message: 'Error updating!'
+        })
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+)
+
+server.delete(
+  '/api/products/:pid',
+  async (req,res) => {
+    try {
+      let pid = Number(req.params.pid)
+      let result = await producto.deleteProduct(pid)
+      if(pid&&!result.message){
+        return res.status(201).json({
+          resolve: 'success',
+          message: `Product ${pid} deleted!`
+        })
+      } else {
+        return res.status(400).json({
+          resolve: false,
+          message: result.message
         })
       }
     } catch (err) {
