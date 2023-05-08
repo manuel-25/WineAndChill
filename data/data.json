@@ -97,5 +97,14 @@
     "code": "abc133",
     "stock": 9,
     "id": 11
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "thumbnail": "Sin imagen",
+    "code": "abd123",
+    "stock": 912,
+    "id": 12
   }
 ]

@@ -33,15 +33,18 @@ class ProductManager {
             stock = stock ?? 0
             let data = { title, description, price, thumbnail, code, stock }
             if (existingProduct) {
-                throw new Error(`El producto con el código ${code} ya existe`)
+                return {
+                    error: `El producto con el código ${code} ya existe`
+                }
             }
-
+    
             this.products.length === 0 ? data.id = 1 : data.id = this.products[this.products.length-1].id + 1
             this.products.push(data)
             let data_json = JSON.stringify(this.products, null, 2)
             this.writeFile(data_json)
             return data
         } catch(err) {
+            console.log(err)
             return 'addProduct: error', err
         }
     }
@@ -85,11 +88,15 @@ class ProductManager {
             //Verificacion de datos y errores
             let productIndex = this.products.findIndex(p => p.id === id);
             if (productIndex === -1) {
-                return 'updateProduct error: product not found';
+                return {
+                    message: 'updateProduct error: product not found'
+                }
             }
 
             if(Object.keys(data).length === 0) {
-                return 'updateProduct error: insert some values'
+                return {
+                    message: 'updateProduct error: insert some values'
+                }
             }
 
             let product = this.products[productIndex];
@@ -100,33 +107,29 @@ class ProductManager {
             this.writeFile(data_json)
             return product
         } catch(err) {
-            return {
-                message: 'updateProduct: error',
-                error
-            }
+            console.log('updateProduct: '+err)
         }
     }
 
     async deleteProduct(id) {
         try {
-            const result = await this.getProductById(id)
-            if (!result.product) {
-                return {
-                    message: 'Product not found'
-                }
-            }
-            this.products = this.products.filter(each => each.id !== id)
-            let data_json = JSON.stringify(this.products, null, 2)
-            this.writeFile(data_json)
-            return result.product
-        } catch(error) {
-            console.log('deleteProduct: error', err)
+          const result = await this.getProductById(id)
+          if (!result.product) {
             return {
-                message: 'deleteProduct: error',
-                error
+              message: 'Product not found'
             }
+          }
+          this.products = this.products.filter(each => each.id !== id)
+          let data_json = JSON.stringify(this.products, null, 2)
+          this.writeFile(data_json)
+          return result.product
+        } catch(error) {
+          console.log('deleteProduct: error', err)
+          return {
+            message: 'deleteProduct: error', error
+          }
         }
-    }
+      }
 }
 
 let producto = new ProductManager("./data/data.json") //corriendo con node .\productManager.js se necesita la ruta  "../data/data.json"
