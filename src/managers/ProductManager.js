@@ -74,9 +74,7 @@ class ProductManager {
               error: 'Product not found'
             }
           }
-          return {
-            product
-          }
+          return product
         } catch (error) {
           console.error(`getProductById: error: ${error}`)
         }
@@ -93,6 +91,7 @@ class ProductManager {
                 }
             }
 
+            console.log(data)
             if(Object.keys(data).length === 0) {
                 return {
                     error: 'updateProduct error: insert some values'

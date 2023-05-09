@@ -5,7 +5,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc123",
-    "stock": 0,
+    "stock": 9,
     "id": 1
   },
   {
@@ -23,7 +23,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc125",
-    "stock": 0,
+    "stock": 10,
     "id": 3
   },
   {
@@ -32,7 +32,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc126",
-    "stock": 0,
+    "stock": 10,
     "id": 4
   },
   {
@@ -41,7 +41,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc127",
-    "stock": 0,
+    "stock": 10,
     "id": 5
   },
   {
@@ -50,7 +50,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc128",
-    "stock": 0,
+    "stock": 10,
     "id": 6
   },
   {
@@ -59,7 +59,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc129",
-    "stock": 0,
+    "stock": 10,
     "id": 7
   },
   {
@@ -68,7 +68,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc130",
-    "stock": 0,
+    "stock": 10,
     "id": 8
   },
   {
@@ -77,7 +77,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc131",
-    "stock": 0,
+    "stock": 10,
     "id": 9
   },
   {
@@ -86,7 +86,7 @@
     "price": 2100,
     "thumbnail": "Sin imagen",
     "code": "abc132",
-    "stock": 12,
+    "stock": 8,
     "id": 10
   },
   {
