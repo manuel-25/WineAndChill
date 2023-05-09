@@ -1,5 +1,6 @@
 import { Router } from "express"
 import cart from '../../managers/CartManager.js'
+import producto from "../../managers/productManager.js"
 
 const router = Router()
 
@@ -52,16 +53,9 @@ router.get('/:cartId', async (req, res) => {
     }
 })
 
+//si creo un carrito con quantity 0 me crea un {} y se rompen los id
 router.post('/', async (req, res) => {
     const { productId, quantity } = req.body
-
-    // Validamos si productId y quantity estan definidos y son numeros
-    if (!productId || !quantity || isNaN(productId) || isNaN(quantity)) {
-        return res.status(500).json({
-            status: 500,
-            response: 'Invalid product or quantity.'
-        })
-    }
     try {
         const newCart = await cart.addCart(productId, quantity)
         if (newCart && newCart.error) {
@@ -83,18 +77,18 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.put('/:cartId', async (req, res) => {
-    try {
-        const cartId = req.params.cartId
-        const productId = req.body.productId
-        const quantity = req.body.quantity
+router.put('/:cartId/product/:pid/:units', async (req, res) => {
+    const cartId = req.params.cartId
+    const productId = Number(req.params.pid)
+    const quantity = Number(req.params.units)
 
-        if (!cartId || !productId || !quantity) {
-            return res.status(500).json({
-                status: 500,
-                response: 'Missing required data'
-            })
-        }
+    if (!cartId || !productId || !quantity) {
+        return res.status(500).json({
+            status: 500,
+            response: 'Missing required data'
+        })
+    }
+    try {
         let cartToUpdate = await cart.getCartById(cartId)
         if (cartToUpdate.error) {
             return res.status(404).json({
@@ -102,11 +96,31 @@ router.put('/:cartId', async (req, res) => {
                 response: cartToUpdate.error
             })
         }
-        
+
+        //actualizamos producto dentro de un for y ajustamos stock
         let updatedCart = null
         for (let i = 0; i < cartToUpdate.products.length; i++) {
-            console.log(`Product ${i}: ${JSON.stringify(cartToUpdate.products[i])}`)
-            if (cartToUpdate.products[i].productId == productId) {
+            if (cartToUpdate.products[i].productId === productId) {
+                let productFromCart = await producto.getProductById(cartToUpdate.products[i].productId)
+                if(quantity > productFromCart.stock) {
+                    return res.status(500).json({
+                        status: 500,
+                        response: 'The quantity you want to add exceeds the available stock.'
+                    })
+                }
+                let updateData = {}
+                if (cartToUpdate.products[i].quantity > quantity) {
+                    updateData.stock = productFromCart.stock + (cartToUpdate.products[i].quantity - quantity)
+                } else {
+                    updateData.stock = productFromCart.stock - (quantity - cartToUpdate.products[i].quantity)
+                }
+                let updatedStock = await producto.updateProduct(productFromCart.id, updateData)
+                if (updatedStock.error) {
+                    return res.status(500).json({
+                        status: 500,
+                        error: updatedStock.error
+                    })
+                }
                 cartToUpdate.products[i].quantity = quantity
                 updatedCart = cartToUpdate
                 break
@@ -118,8 +132,7 @@ router.put('/:cartId', async (req, res) => {
                 response: 'Product not found in cart'
             })
         }
-        let updated = await cart.updateCart(cartId, updatedCart)
-        console.log(updated)
+        let updated = await cart.updateCart(cartId, updatedCart.products)
         return res.status(201).json({
             status: 201,
             response: updatedCart

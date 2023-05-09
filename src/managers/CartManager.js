@@ -30,21 +30,32 @@ class CartManager {
   
     async addCart(productId, quantity) {
       try {
-        const product = await producto.getProductById(productId)
-        if (product.error) {
-          return {
-            error: product.error
+        let newCart = {}
+        const cartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1000
+        //Si los parametros vienen vacios creo un carrito vacio
+        if(!productId && !quantity) {
+          newCart = {
+            id: cartId,
+            products: []
           }
         }
-        const cartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1000
-        const newCart = {
-          id: cartId,
-          products: [
-            {
-              productId,
-              quantity
+        //Si tengo productId y Quantity agrego el producto al carrito
+        if(productId && quantity) {
+          const product = await producto.getProductById(productId)
+          if (product.error) {
+            return {
+              error: product.error
             }
-          ]
+          }
+          newCart = {
+            id: cartId,
+            products: [
+              {
+                productId,
+                quantity
+              }
+            ]
+          }
         }
         this.carts.push(newCart)
         const data_json = JSON.stringify(this.carts, null, 2)
@@ -53,7 +64,9 @@ class CartManager {
         return newCart
       } catch (error) {
         console.error(`addCart: error: ${error}`)
-        throw new Error('Error creating cart')
+        return {
+          error: 'Error creating cart', error
+        }
       }
     }
   
@@ -88,18 +101,29 @@ class CartManager {
         return 'getCartById: error'
       }
     }
+
+    async updateCart(cartId, newProducts) {
+      try {
+        const cartIndex = this.carts.findIndex(cart => cart.id == cartId)
+        if (cartIndex === -1) {
+          return {
+            error: 'Cart not found'
+          }
+        }
+        this.carts[cartIndex].products.splice(0, this.carts[cartIndex].products.length, ...newProducts)
+        const data_json = JSON.stringify(this.carts, null, 2)
+        await this.writeFile(data_json)
+        return this.carts[cartIndex]
+      } catch (error) {
+        console.error(`updateCart: error: ${error}`)
+        return {
+          error: 'Error updating cart', error
+        }
+      }
+    }
+
   }
 
   let carrito = new CartManager("./data/cart.json")
-
-  /*async function manager() {
-    await carrito.addCart(2, 2)
-    await carrito.addCart(1, 5)
-    await carrito.addCart(18, 2)
-    await carrito.addCart(5, 10)
-    console.log(await carrito.getCarts())
-  }*/
-
-  //manager()
 
   export default carrito
