@@ -1,8 +1,9 @@
 import express from 'express'
-import producto from './productManager.js'
-import carrito from './CartManager.js'
-import productRoutes from './routes/productRoutes.js'
-
+import carrito from './managers/CartManager.js'
+import productRoutes from './routes/api/productRoutes.js'
+import cartRoutes from './routes/api/cartRoutes.js'
+import indexRouter from './routes/index.js'
+import indexApi from './routes/api/index.js'
 
 const server = express()
 const PORT = 8080
@@ -16,15 +17,10 @@ server.use(express.json())
 server.use('/static', express.static('public'))
 
 
-server.use('/api/products', productRoutes)
-
-
-let index_route = '/'
-let index_function = (req, res) => {
-    return res.send('Index')
-}
-server.get(index_route, index_function)
-
+server.use('/', indexRouter)
+server.use('/', indexApi)
+server.use('/', productRoutes)
+server.use('api/carts', cartRoutes)
 
 
   //Cart Routes
@@ -43,6 +39,7 @@ server.get(index_route, index_function)
         })
       }
     }
+
   server.get(carts_route, carts_Function)
 
   let carts_route_pid = '/api/carts/:pid'

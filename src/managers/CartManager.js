@@ -30,11 +30,13 @@ class CartManager {
   
     async addCart(productId, quantity) {
       try {
-        const cartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1
-        let product = await producto.getProductById(productId)
-        if(product.message) {
-            return 'addCart: error: ' + product.message
+        const product = await producto.getProductById(productId)
+        if (product.error) {
+          return {
+            error: product.error
+          }
         }
+        const cartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1000
         const newCart = {
           id: cartId,
           products: [
@@ -47,10 +49,11 @@ class CartManager {
         this.carts.push(newCart)
         const data_json = JSON.stringify(this.carts, null, 2)
         await this.writeFile(data_json)
-        return cartId
+    
+        return newCart
       } catch (error) {
         console.error(`addCart: error: ${error}`)
-        return 'addCart: error'
+        throw new Error('Error creating cart')
       }
     }
   
@@ -59,7 +62,9 @@ class CartManager {
         const data = await fs.promises.readFile(this.path, 'utf-8')
         this.carts = JSON.parse(data)
         if (this.carts.length === 0) {
-          return 'Not found'
+          return {
+            error: 'Carts not found'
+          }
         }
         return this.carts
       } catch (error) {
@@ -74,7 +79,7 @@ class CartManager {
         const cart = carts.find(cart => cart.id == id) //con === no funciona
         if (!cart) {
           return {
-            message: 'Product not found'
+            error: 'Product not found'
           }
         }
         return cart
@@ -87,13 +92,13 @@ class CartManager {
 
   let carrito = new CartManager("./data/cart.json")
 
-  async function manager() {
+  /*async function manager() {
     await carrito.addCart(2, 2)
     await carrito.addCart(1, 5)
     await carrito.addCart(18, 2)
     await carrito.addCart(5, 10)
     console.log(await carrito.getCarts())
-  }
+  }*/
 
   //manager()
 
