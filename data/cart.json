@@ -103,6 +103,10 @@
       {
         "productId": 10,
         "quantity": 1
+      },
+      {
+        "productId": 10,
+        "quantity": 1
       }
     ]
   },
@@ -203,6 +207,27 @@
   {
     "id": 1010,
     "products": [
+      {
+        "productId": 10,
+        "quantity": 1
+      },
+      {
+        "productId": 10,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": 1011,
+    "products": []
+  },
+  {
+    "id": 1010,
+    "products": [
+      {
+        "productId": 10,
+        "quantity": 1
+      },
       {
         "productId": 10,
         "quantity": 1

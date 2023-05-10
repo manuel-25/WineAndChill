@@ -25,7 +25,7 @@ router.get('/', async (req, res, next) => {
         }
     })
 
-    router.get('/:pid', async (req, res) => {
+    router.get('/:pid', async (req, res, next) => {
         try{
             let pid = req.params.pid
             let result = await producto.getProductById(pid)
@@ -37,14 +37,10 @@ router.get('/', async (req, res, next) => {
             }
             return res.status(200).send({
               status: 200,
-              response: result.product
+              response: result
             })
-        } catch (err) {
-            console.log(err)
-            return res.status(500).json({
-                status: 500,
-                response: 'Error finding product.', err
-              })
+        } catch (error) {
+          next(error)
         }
     })
 

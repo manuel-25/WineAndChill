@@ -121,7 +121,8 @@ class ProductManager {
     async deleteProduct(id) {
         try {
           const result = await this.getProductById(id)
-          if (!result.product) {
+          console.log(result)
+          if (!result) {
             return {
               error: 'Product not found'
             }
@@ -129,9 +130,8 @@ class ProductManager {
           this.products = this.products.filter(each => each.id !== id)
           let data_json = JSON.stringify(this.products, null, 2)
           this.writeFile(data_json)
-          return result.product
+          return result
         } catch(error) {
-          console.log('deleteProduct: error', err)
           return {
             error: 'deleteProduct: error', error
           }
