@@ -106,5 +106,25 @@
     "code": "abd124",
     "stock": 912,
     "id": 13
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd125",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
+    "id": 14
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd126",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
+    "id": 15
   }
 ]

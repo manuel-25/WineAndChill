@@ -28,35 +28,58 @@ class CartManager {
       await fs.promises.writeFile(this.path, data_json)
     }
   
-    async addCart(productId, quantity) {
+    async addCart(cartId, pid) {
       try {
         let newCart = {}
-        const cartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1000
-        //Si los parametros vienen vacios creo un carrito vacio
-        if(!productId && !quantity) {
+    
+        if (!cartId && !pid) {
+          // Si no se reciben cartId y pid, se crea un nuevo carrito vacío con un nuevo id.
+          const newCartId = this.carts.length > 0 ? this.carts[this.carts.length - 1].id + 1 : 1000
           newCart = {
-            id: cartId,
+            id: newCartId,
             products: []
           }
-        }
-        //Si tengo productId y Quantity agrego el producto al carrito
-        if(productId && quantity) {
-          const product = await producto.getProductById(productId)
-          if (product.error) {
+        } else {
+          // Si se reciben cartId y pid, se busca el carrito correspondiente y se agrega el producto.
+          const cartToAdd = await this.getCartById(cartId)
+          if (cartToAdd.error) {
             return {
-              error: product.error
+              error: cartToAdd.error
             }
           }
-          newCart = {
-            id: cartId,
-            products: [
-              {
-                productId,
-                quantity
-              }
-            ]
+          if (!cartToAdd) {
+            return {
+              error: 'Cart does not exist'
+            }
           }
+    
+          const productToAdd = await producto.getProductById(pid)
+          if (productToAdd.error) {
+            return {
+              error: productToAdd.error
+            }
+          }
+          if (!productToAdd) {
+            return {
+              error: 'Product does not exist'
+            }
+          }
+    
+          const existingProduct = cartToAdd.products.find(p => p.pid === pid)
+          console.log('existing product:',existingProduct)
+          if (existingProduct) {
+            existingProduct.quantity++
+          } else {
+            cartToAdd.products.push({
+              productId: pid,
+              quantity: 1
+            })
+          }
+    
+          newCart = cartToAdd
+          console.log('new cart:',newCart)
         }
+    
         this.carts.push(newCart)
         const data_json = JSON.stringify(this.carts, null, 2)
         await this.writeFile(data_json)
@@ -92,7 +115,7 @@ class CartManager {
         const cart = carts.find(cart => cart.id == id) //con === no funciona
         if (!cart) {
           return {
-            error: 'Product not found'
+            error: 'Cart not found'
           }
         }
         return cart
@@ -122,7 +145,44 @@ class CartManager {
       }
     }
 
+    async delete(cartId, pid, units) {
+      try {
+        const cart = await this.getCartById(cartId)
+        if (!cart) {
+          return {
+            error: "Cart not found",
+          }
+        }
+        const productIndex = cart.products.findIndex((p) => p.id === pid)
+        if (productIndex === -1) {
+          return {
+            error: "Product not found in cart",
+          }
+        }
+        const product = cart.products[productIndex]
+        if (units > product.quantity) {
+          return {
+            error: "Units to remove exceed the quantityin the cart",
+          }
+        }
+        product.quantity -= units
+        if (product.quantitys === 0) {
+          cart.products.splice(productIndex, 1)
+        }
+        await this.updateCart(cartId, cart)
+        return product
+      } catch (error) {
+        console.log("deleteFromCart: error", error)
+        return {
+          error: "deleteFromCart: error",
+          error,
+        }
+      }
+    }
+
   }
+
+  
 
   let carrito = new CartManager("./data/cart.json")
 

@@ -49,30 +49,31 @@ router.get('/', async (req, res) => {
     })
 
     //error al crear producto con el body vacio lo crea igual
-    router.post('/', async (req, res) => {
-        try {
-            const Newproduct = await producto.add_Product(req.body)
-    
-            // Verificamos si el objeto Newproduct tiene la propiedad error
-            if (Newproduct && Newproduct.error) {
-                return res.status(404).json({
-                    status: 404,
-                    response: Newproduct.error
-                })
-            }
-    
-            return res.status(201).json({
-                status: 201,
-                response: `Product ${Newproduct.id} created!`
-            })
-        } catch (err) {
-            console.log(err)
-            return res.status(500).json({
-                status: 500,
-                response: 'Error creating product.', err
-            })
-        }
-    })
+  router.post('/', async (req, res) => {
+    try {
+      const { title, description, price, code, stock, status, category } = req.body
+      const Newproduct = await producto.add_Product({ title, description, price, code, stock, status, category, thumbnail: '' })
+
+      if (Newproduct.error) {
+        return res.status(404).json({
+          status: 404,
+          response: Newproduct.error
+        })
+      }
+
+      return res.status(201).json({
+        status: 201,
+        response: `Product ${Newproduct.id} created!`
+      })
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({
+        status: 500,
+        response: 'Error creating product.',
+        err
+      })
+    }
+  })
 
     router.put('/:pid', async (req, res) => {
         try {
@@ -88,7 +89,7 @@ router.get('/', async (req, res) => {
       
           const result = await producto.updateProduct(Number(pid), data)
       
-          if (result && result.error) {
+          if (result.error) {
             return res.status(404).json({
               status: 404,
               response: result.error

@@ -1,6 +1,7 @@
 import { Router } from "express"
 import cart from '../../managers/CartManager.js'
 import producto from "../../managers/productManager.js"
+import carrito from "../../managers/CartManager.js"
 
 const router = Router()
 
@@ -31,21 +32,21 @@ router.get('/', async (req, res) => {
 
 router.get('/:cartId', async (req, res) => {
     try {
-        let cartId = req.params.cartId;
+        let cartId = req.params.cartId
         let result = await cart.getCartById(cartId)
         console.log(result)
         if (!result) {
             return res.status(404).send({
                 status: 404,
                 response: result.error || 'unexpected error'
-            });
+            })
         }
         return res.status(200).send({
             status: 200,
             response: result
         })
     } catch (error) {
-        console.log(error);
+        console.log(error)
         return res.status(500).json({
             status: 500,
             response: error
@@ -53,11 +54,9 @@ router.get('/:cartId', async (req, res) => {
     }
 })
 
-//si creo un carrito con quantity 0 me crea un {} y se rompen los id
 router.post('/', async (req, res) => {
-    const { productId, quantity } = req.body
     try {
-        const newCart = await cart.addCart(productId, quantity)
+        const newCart = await cart.addCart()
         if (newCart && newCart.error) {
             return res.status(404).json({
                 status: 404,
@@ -66,7 +65,32 @@ router.post('/', async (req, res) => {
         }
         return res.status(201).json({
             status: 201,
-            response: `Cart ${newCart.id} created!`
+            response: `Empty cart ${newCart.id} created!`
+        })
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json({
+            status: 500,
+            response: 'Error creating cart.', err
+        })
+    }
+})
+
+router.post('/:cartId/product/:pid', async (req, res) => {
+    let { cartId, pid } = req.params
+    cartId = Number(cartId)
+    pid = Number(pid)
+    try {
+        const newCart = await cart.addCart(cartId, pid)
+        if (newCart.error) {
+            return res.status(404).json({
+                status: 404,
+                response: newCart.error
+            })
+        }
+        return res.status(201).json({
+            status: 201,
+            response: `Product ${pid} created in cart ${newCart.id}!`
         })
     } catch (err) {
         console.log(err)
@@ -97,7 +121,10 @@ router.put('/:cartId/product/:pid/:units', async (req, res) => {
             })
         }
 
-        //actualizamos producto dentro de un for y ajustamos stock
+        //busco dentro de un for el producto dentro del array de productos.
+        //traigo el producto del carrito y comparo las quantitys. 
+        //Actualizo al producto y carrito la quantity.
+        //corto el loop.
         let updatedCart = null
         for (let i = 0; i < cartToUpdate.products.length; i++) {
             if (cartToUpdate.products[i].productId === productId) {
@@ -133,8 +160,15 @@ router.put('/:cartId/product/:pid/:units', async (req, res) => {
             })
         }
         let updated = await cart.updateCart(cartId, updatedCart.products)
-        return res.status(201).json({
-            status: 201,
+        if (updated.error) {
+            return res.status(500).json({
+                status: 500,
+                error: updated.error
+            })
+        }
+        //Si no hay errores se corre el status 200
+        return res.status(200).json({
+            status: 200,
             response: updatedCart
         })
     } catch (error) {
@@ -146,4 +180,63 @@ router.put('/:cartId/product/:pid/:units', async (req, res) => {
     }
 })
 
+router.delete('/:cartId/product/:pid/:units', async (req, res) => {
+    const cartId = req.params.cartId
+    const productId = Number(req.params.pid)
+    const unitsToRemove = Number(req.params.units)
+
+    try {
+        const cartToDelete = await carrito.getCartById(cartId)
+        if (!cart) {
+          return res.status(404).json({
+                status: 404,
+                response: 'Cart not found'
+            })
+        }
+
+        const productIndex = cartToDelete.products.findIndex((p) => p.productId === productId)
+        if (productIndex === -1) {
+            return res.status(404).json({
+                status: 404,
+                response: 'Product not found in cart'
+            })
+        }
+
+        const product = cartToDelete.products[productIndex]
+        if (unitsToRemove > product.quantity) {
+            return res.status(400).json({
+                status: 400,
+                response: 'Units to remove exceed the quantity in the cart'
+            })
+        }
+
+        product.quantity -= unitsToRemove
+
+        if (product.quantity === 0) {
+            cartToDelete.products.splice(productIndex, 1)
+        }
+
+        const updatedCart = await carrito.updateCart(cartId, cartToDelete.products)
+
+        if (updatedCart.error) {
+            return res.status(500).json({
+                status: 500,
+                response: 'Error updating cart.'
+            })
+        }
+
+        return res.status(200).json({
+            status: 200,
+            response: product
+        })
+
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            status: 500,
+            response: 'Error deleting from cart'
+        })
+    }
+})
+  
 export default router

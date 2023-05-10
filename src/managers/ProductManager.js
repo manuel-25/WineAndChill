@@ -27,27 +27,35 @@ class ProductManager {
         await fs.promises.writeFile(this.path, data_json)
     }
 
-    async add_Product({ title, description, price, thumbnail, code, stock }) {
+    async add_Product({ title, description, price, code, stock, status, category }) {
         try {
-            const existingProduct = this.products.find(product => product.code === code)
             stock = stock ?? 0
-            let data = { title, description, price, thumbnail, code, stock }
-            if (existingProduct) {
-                return {
-                    error: `El producto con el código ${code} ya existe`
-                }
+            status = status ?? true
+          if (!title || !description || !price || !code || !category) {
+            return {
+              error: "Missing required parameters"
             }
-    
-            this.products.length === 0 ? data.id = 1 : data.id = this.products[this.products.length-1].id + 1
-            this.products.push(data)
-            let data_json = JSON.stringify(this.products, null, 2)
-            this.writeFile(data_json)
-            return data
+          }
+          const existingProduct = this.products.find(product => product.code === code)
+          if (existingProduct) {
+            return {
+              error: `El producto con el código ${code} ya existe`
+            }
+          }
+          let data = { title, description, price, code, stock, status, category }
+          this.products.length === 0 ? data.id = 1 : data.id = this.products[this.products.length-1].id + 1
+          this.products.push(data)
+          let data_json = JSON.stringify(this.products, null, 2)
+          this.writeFile(data_json)
+          return data
         } catch(err) {
-            console.log(err)
-            return 'addProduct: error', err
+          console.log(err)
+          return {
+            error: 'addProduct: error',
+            err
+          }
         }
-    }
+      }
 
     async getProducts() {
         try {
@@ -84,7 +92,7 @@ class ProductManager {
     async updateProduct(id, data) {
         try {
             //Verificacion de datos y errores
-            let productIndex = this.products.findIndex(p => p.id === id);
+            let productIndex = this.products.findIndex(p => p.id === id)
             if (productIndex === -1) {
                 return {
                     error: 'updateProduct error: product not found'
@@ -98,9 +106,9 @@ class ProductManager {
                 }
             }
 
-            let product = this.products[productIndex];
+            let product = this.products[productIndex]
             for (let prop in data) {
-                product[prop] = data[prop];
+                product[prop] = data[prop]
             }
             let data_json = JSON.stringify(this.products, null, 2)
             this.writeFile(data_json)
