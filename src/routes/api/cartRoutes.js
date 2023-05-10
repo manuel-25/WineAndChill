@@ -5,7 +5,7 @@ import carrito from "../../managers/CartManager.js"
 
 const router = Router()
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     try {
         const limit = req.query.limit
         let carts = await cart.getCarts()
@@ -22,11 +22,7 @@ router.get('/', async (req, res) => {
             })
         }
     } catch (error) {
-        console.log(error)
-        return res.status(500).send({
-            status: 500,
-            response: 'Error retrieving carts.'
-        })
+        next(error)
     }
 })
 
@@ -46,11 +42,7 @@ router.get('/:cartId', async (req, res) => {
             response: result
         })
     } catch (error) {
-        console.log(error)
-        return res.status(500).json({
-            status: 500,
-            response: error
-        })
+        next(error)
     }
 })
 
@@ -67,12 +59,8 @@ router.post('/', async (req, res) => {
             status: 201,
             response: `Empty cart ${newCart.id} created!`
         })
-    } catch (err) {
-        console.log(err)
-        return res.status(500).json({
-            status: 500,
-            response: 'Error creating cart.', err
-        })
+    } catch (error) {
+        next(error)
     }
 })
 
@@ -92,12 +80,8 @@ router.post('/:cartId/product/:pid', async (req, res) => {
             status: 201,
             response: `Product ${pid} created in cart ${newCart.id}!`
         })
-    } catch (err) {
-        console.log(err)
-        return res.status(500).json({
-            status: 500,
-            response: 'Error creating cart.', err
-        })
+    } catch (error) {
+        next(error)
     }
 })
 
@@ -172,11 +156,7 @@ router.put('/:cartId/product/:pid/:units', async (req, res) => {
             response: updatedCart
         })
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            status: 500,
-            response: 'Error updating cart'
-        })
+        next(error)
     }
 })
 
@@ -231,11 +211,7 @@ router.delete('/:cartId/product/:pid/:units', async (req, res) => {
         })
 
     } catch (error) {
-        console.log(error)
-        return res.status(500).json({
-            status: 500,
-            response: 'Error deleting from cart'
-        })
+        next(error)
     }
 })
   

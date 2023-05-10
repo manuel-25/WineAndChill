@@ -3,7 +3,7 @@ import producto from '../../managers/productManager.js'
 
 const router = Router()
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
         try {
           //error al mandar status 200 con data.json vacio
             const limit = req.query.limit
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
             })
             }
         } catch (error) {
-            console.log(error)
+            next(error)
         }
     })
 
@@ -49,7 +49,7 @@ router.get('/', async (req, res) => {
     })
 
     //error al crear producto con el body vacio lo crea igual
-  router.post('/', async (req, res) => {
+  router.post('/', async (req, res, next) => {
     try {
       const { title, description, price, code, stock, status, category } = req.body
       const Newproduct = await producto.add_Product({ title, description, price, code, stock, status, category, thumbnail: '' })
@@ -65,17 +65,12 @@ router.get('/', async (req, res) => {
         status: 201,
         response: `Product ${Newproduct.id} created!`
       })
-    } catch (err) {
-      console.log(err)
-      return res.status(500).json({
-        status: 500,
-        response: 'Error creating product.',
-        err
-      })
+    } catch (error) {
+      next(error)
     }
   })
 
-    router.put('/:pid', async (req, res) => {
+    router.put('/:pid', async (req, res, next) => {
         try {
           const { pid } = req.params
           const data = req.body
@@ -100,16 +95,12 @@ router.get('/', async (req, res) => {
             status: 201,
             response: `Product ${pid} updated!`
           })
-        } catch (err) {
-          console.log(err)
-          return res.status(500).json({
-            status: 500,
-            response: 'Error updating product.', err
-          })
+        } catch (error) {
+          next(error)
         }
       })
 
-      router.delete('/:pid', async (req, res) => {
+      router.delete('/:pid', async (req, res, next) => {
         try {
           let pid = Number(req.params.pid)
           let result = await producto.deleteProduct(pid)
@@ -124,12 +115,8 @@ router.get('/', async (req, res) => {
               response: result.error
             })
           }
-        } catch (err) {
-          console.log(err)
-          return res.status(500).json({
-            status: 500,
-            response: 'Error deleting product.', err
-          })
+        } catch (error) {
+          next(error)
         }
       })
       
