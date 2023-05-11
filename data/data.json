@@ -5,7 +5,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc123",
-    "stock": 0,
+    "stock": 9,
     "id": 1
   },
   {
@@ -23,7 +23,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc125",
-    "stock": 0,
+    "stock": 10,
     "id": 3
   },
   {
@@ -32,7 +32,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc126",
-    "stock": 0,
+    "stock": 10,
     "id": 4
   },
   {
@@ -41,7 +41,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc127",
-    "stock": 0,
+    "stock": 10,
     "id": 5
   },
   {
@@ -50,7 +50,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc128",
-    "stock": 0,
+    "stock": 10,
     "id": 6
   },
   {
@@ -59,7 +59,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc129",
-    "stock": 0,
+    "stock": 10,
     "id": 7
   },
   {
@@ -68,7 +68,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc130",
-    "stock": 0,
+    "stock": 10,
     "id": 8
   },
   {
@@ -77,7 +77,7 @@
     "price": 100,
     "thumbnail": "Sin imagen",
     "code": "abc131",
-    "stock": 0,
+    "stock": 10,
     "id": 9
   },
   {
@@ -86,16 +86,67 @@
     "price": 2100,
     "thumbnail": "Sin imagen",
     "code": "abc132",
-    "stock": 12,
+    "stock": 7,
     "id": 10
   },
   {
-    "title": "Vino blanco",
-    "description": "Vino blanco de Mendoza",
-    "price": 2100,
-    "thumbnail": "Sin imagen",
-    "code": "abc133",
-    "stock": 9,
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd126",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
     "id": 11
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd125",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
+    "id": 12
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd124",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
+    "id": 13
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd123",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
+    "id": 14
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd122",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
+    "id": 15
+  },
+  {
+    "title": "Prueba Post",
+    "description": "a ver si funciona",
+    "price": 999,
+    "code": "abd120",
+    "stock": 0,
+    "status": true,
+    "category": "Vinos",
+    "id": 16
   }
 ]
