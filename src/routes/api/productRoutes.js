@@ -100,7 +100,7 @@ router.get('/', async (req, res, next) => {
         try {
           let pid = Number(req.params.pid)
           let result = await producto.deleteProduct(pid)
-          if(pid && !result.error) {
+          if (pid && !result.error) {
             return res.status(200).json({
               status: 200,
               response: `Product ${pid} deleted!`

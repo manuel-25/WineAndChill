@@ -184,6 +184,6 @@ class CartManager {
 
   
 
-  let carrito = new CartManager("./data/cart.json")
+  let carrito = new CartManager('./src/data/cart.json')
 
   export default carrito

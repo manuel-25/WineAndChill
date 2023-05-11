@@ -138,15 +138,5 @@
     "status": true,
     "category": "Vinos",
     "id": 15
-  },
-  {
-    "title": "Prueba Post",
-    "description": "a ver si funciona",
-    "price": 999,
-    "code": "abd120",
-    "stock": 0,
-    "status": true,
-    "category": "Vinos",
-    "id": 16
   }
 ]
