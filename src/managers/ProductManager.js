@@ -122,7 +122,7 @@ class ProductManager {
         try {
           const result = await this.getProductById(id)
           console.log(result)
-          if (!result) {
+          if (result.error) {
             return {
               error: 'Product not found'
             }
@@ -139,6 +139,6 @@ class ProductManager {
       }
 }
 
-let producto = new ProductManager("./data/data.json") //corriendo con node .\productManager.js se necesita la ruta  "../data/data.json"
+let producto = new ProductManager('./src/data/data.json') //corriendo con node .\productManager.js se necesita la ruta  "../data/data.json"
 
 export default producto
