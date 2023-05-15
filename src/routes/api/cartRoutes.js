@@ -30,7 +30,6 @@ router.get('/:cartId', async (req, res) => {
     try {
         let cartId = req.params.cartId
         let result = await cart.getCartById(cartId)
-        console.log(result)
         if (!result) {
             return res.status(404).send({
                 status: 404,

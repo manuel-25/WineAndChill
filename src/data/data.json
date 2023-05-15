@@ -7,7 +7,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 1
   },
   {
@@ -18,7 +18,7 @@
     "stock": 10,
     "status": true,
     "category": "Blanco",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 2
   },
   {
@@ -29,7 +29,7 @@
     "stock": 10,
     "status": true,
     "category": "Blanco",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 3
   },
   {
@@ -40,7 +40,7 @@
     "stock": 10,
     "status": true,
     "category": "Espumante",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 4
   },
   {
@@ -51,7 +51,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 5
   },
   {
@@ -62,7 +62,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 6
   },
   {
@@ -73,7 +73,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto Blend",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 7
   },
   {
@@ -84,7 +84,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto Blend",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 8
   },
   {
@@ -95,7 +95,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 9
   },
   {
@@ -106,7 +106,7 @@
     "stock": 10,
     "status": true,
     "category": "Blanco",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 10
   },
   {
@@ -117,7 +117,7 @@
     "stock": 10,
     "status": true,
     "category": "Blanco",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 11
   },
   {
@@ -128,7 +128,7 @@
     "stock": 12,
     "status": true,
     "category": "Espumante",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 12
   },
   {
@@ -139,7 +139,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 13
   },
   {
@@ -150,7 +150,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 14
   },
   {
@@ -161,7 +161,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto Blend",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 15
   },
   {
@@ -172,7 +172,7 @@
     "stock": 10,
     "status": true,
     "category": "Tinto Blend",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 16
   }
 ]
