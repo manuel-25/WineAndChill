@@ -27,10 +27,11 @@ class ProductManager {
         await fs.promises.writeFile(this.path, data_json)
     }
 
-    async add_Product({ title, description, price, code, stock, status, category }) {
+    async add_Product({ title, description, price, code, stock, status, category, thumbnail }) {
         try {
             stock = stock ?? 0
             status = status ?? true
+            thumbnail = thumbnail ?? 'public/img/botella_vino.webp'
           if (!title || !description || !price || !code || !category) {
             return {
               error: "Missing required parameters"
@@ -42,7 +43,7 @@ class ProductManager {
               error: `El producto con el código ${code} ya existe`
             }
           }
-          let data = { title, description, price, code, stock, status, category }
+          let data = { title, description, price, code, stock, status, category, thumbnail }
           this.products.length === 0 ? data.id = 1 : data.id = this.products[this.products.length-1].id + 1
           this.products.push(data)
           let data_json = JSON.stringify(this.products, null, 2)

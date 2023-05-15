@@ -5,14 +5,22 @@
     {{#each products}}
     <div class="col-md-6 col-lg-3 mb-4">
       <div class="card">
-        <img src="{{thumbnail}}" class="card-img-top product-image" alt="Imagen del Producto">
-        <div class="card-body">
-          <h5 class="card-title">{{title}}</h5>
-          <p class="card-text">{{description}}</p>
-          <p class="card-text card-price">{{price}}</p>
-        </div>
+        <a href="{{link}}">
+          <img src="{{thumbnail}}" class="card-img-top product-image" alt="Imagen del Producto">
+          <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text card-price">${{price}}</p>
+          </div>
+        </a>
       </div>
     </div>
     {{/each}}
   </div>
+  <div class="pagination">
+      {{#if totalPages}}
+        {{#each pageNumbers}}
+          <a href="/?page={{this.pageNumber}}" class="{{#if this.active}}active{{/if}}">{{this.pageNumber}}</a>
+        {{/each}}
+      {{/if}}
+    </div>
 </div>

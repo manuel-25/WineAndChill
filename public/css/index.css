@@ -1,4 +1,11 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Establece el alto mínimo del cuerpo para ocupar toda la pantalla */
+}
+
 .container {
+  flex: 1; /* Hace que el contenedor ocupe todo el espacio disponible */
   text-align: center;
   margin-top: 50px;
 }
@@ -20,12 +27,18 @@ h1 {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .product-image {
   object-fit: contain;
-  height: 200px; /* Ajusta la altura según tus necesidades */
-  width: 100%; /* Ajusta el ancho según tus necesidades */
+  height: 200px;
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
 }
@@ -44,5 +57,32 @@ h1 {
 .card-price {
   font-size: 16px;
   font-weight: bold;
-  color: #ff6600;
+  color: #00aa00;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination a {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #ebebeb;
+  text-decoration: none;
+  color: #333;
+}
+
+.pagination a.active {
+  background-color: #8a56ac;
+  color: #fff;
 }
