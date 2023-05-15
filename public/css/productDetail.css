@@ -29,7 +29,7 @@ body {
   
   .product-image {
     width: 100%;
-    max-width: 400px; /* Ajusta el valor del ancho máximo según tus preferencias */
+    max-width: 400px;
     height: auto;
     margin-bottom: 20px;
   }

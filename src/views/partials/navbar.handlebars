@@ -46,7 +46,7 @@
 
   .cart-badge:hover {
     background-color: #fbb6e3;
-    color: #8a56ac;
+    color: #fff;
   }
 </style>
 
@@ -72,10 +72,11 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/cart">
             <i class="fas fa-shopping-cart"></i>
-            <span class="cart-badge">5</span>
+            <span class="cart-badge" id="cartBadge"></span>
           </a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<script type="module" src="/public/scripts/cartCounter.js" defer></script>

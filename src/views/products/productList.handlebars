@@ -5,7 +5,7 @@
     {{#each products}}
     <div class="col-md-6 col-lg-3 mb-4">
       <div class="card">
-        <a href="{{link}}">
+        <a href="/products/{{id}}">
           <img src="{{thumbnail}}" class="card-img-top product-image" alt="{{title}}">
           <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
@@ -17,10 +17,10 @@
     {{/each}}
   </div>
   <div class="pagination">
-      {{#if totalPages}}
-        {{#each pageNumbers}}
-          <a href="/products/?page={{this.pageNumber}}" class="{{#if this.active}}active{{/if}}">{{this.pageNumber}}</a>
-        {{/each}}
-      {{/if}}
-    </div>
+    {{#if totalPages}}
+      {{#each pageNumbers}}
+        <a href="/products/?page={{this.pageNumber}}" class="{{#if this.active}}active{{/if}}">{{this.pageNumber}}</a>
+      {{/each}}
+    {{/if}}
+  </div>
 </div>

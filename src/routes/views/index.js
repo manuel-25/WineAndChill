@@ -8,7 +8,6 @@ router.get('/', async (req, res, next) => {
         return res.render('index', {
             title: 'Home',
             style: 'index.css',
-            script: '/public/conection.js'
         })
     } catch (error) {
       next(error)
@@ -73,7 +72,6 @@ router.get('/products/:pid', async (req, res, next) => {
       const response = await axios.get(`http://localhost:8080/api/products/${productId}`)
       if (response.status === 200) {
         const product = response.data.response
-        console.log(product)
         
         return res.render('products/productDetail', {
           title: 'Product Detail',

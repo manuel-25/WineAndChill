@@ -1,27 +1,19 @@
 import server from './app.js'
 import { Server } from 'socket.io'
+import carrito from './managers/CartManager.js'
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080 
 const ready = () => console.log('Server Ready on Port: ' + PORT)
 
 let http_server = server.listen(PORT, ready)
 let socket_server = new Server(http_server)
 
-let contador = 0
+let cartCounter = carrito.carts[0].products
+const totalQuantity = cartCounter.reduce((total, product) => total + product.quantity, 0)
+console.log(totalQuantity)
 
-socket_server.on(
-    'connection',     //identificador del mensaje
-    socket => {
-        console.log('Client Connected: ' + socket.id)    
-        socket.on(
-            'primera conexion',
-            data => {
-                contador++
-                socket.emit(
-                    'contador',
-                    { contador }
-                )
-            }
-        )
-    }
-)
+socket_server.on('connection', socket => {
+    console.log('Client Connected: ' + socket.id)
+
+    socket.emit('cartCounter', totalQuantity)
+})
