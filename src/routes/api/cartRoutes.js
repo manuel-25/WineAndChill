@@ -160,59 +160,28 @@ router.put('/:cartId/product/:pid/:units', async (req, res) => {
     }
 })
 
-router.delete('/:cartId/product/:pid/:units', async (req, res) => {
-    const cartId = req.params.cartId
+router.delete('/:cartId/product/:pid/:units', async (req, res, next) => {
+    const cartId = Number(req.params.cartId)
     const productId = Number(req.params.pid)
     const unitsToRemove = Number(req.params.units)
-
+  
     try {
-        const cartToDelete = await carrito.getCartById(cartId)
-        if (!cart) {
-          return res.status(404).json({
-                status: 404,
-                response: 'Cart not found'
-            })
-        }
-
-        const productIndex = cartToDelete.products.findIndex((p) => p.productId === productId)
-        if (productIndex === -1) {
-            return res.status(404).json({
-                status: 404,
-                response: 'Product not found in cart'
-            })
-        }
-
-        const product = cartToDelete.products[productIndex]
-        if (unitsToRemove > product.quantity) {
-            return res.status(400).json({
-                status: 400,
-                response: 'Units to remove exceed the quantity in the cart'
-            })
-        }
-
-        product.quantity -= unitsToRemove
-
-        if (product.quantity === 0) {
-            cartToDelete.products.splice(productIndex, 1)
-        }
-
-        const updatedCart = await carrito.updateCart(cartId, cartToDelete.products)
-
-        if (updatedCart.error) {
-            return res.status(500).json({
-                status: 500,
-                response: 'Error updating cart.'
-            })
-        }
-
-        return res.status(200).json({
-            status: 200,
-            response: product
+      const deletedCart = await carrito.delete(cartId, productId, unitsToRemove)
+  
+      if (deletedCart.error) {
+        return res.status(500).json({
+          status: 500,
+          response: deletedCart.error,
         })
-
+      }
+  
+      return res.status(200).json({
+        status: 200,
+        response: deletedCart,
+      });
     } catch (error) {
-        next(error)
+      next(error)
     }
-})
+  })
   
 export default router
