@@ -1,6 +1,7 @@
 import { Router } from "express"
 import productList from './products/productList.js'
 import productDetail from './products/productDetail.js'
+import chatRouter from './chatRouter.js'
 
 const router = Router()
 
@@ -19,6 +20,7 @@ router.get('/', async (req, res, next) => {
 
 router.use('/products', productList)
 router.use('/products', productDetail)
+router.use('/chat', chatRouter)
 
 
 export default router

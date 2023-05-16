@@ -8,9 +8,11 @@
       <p class="product-price">${{product.price}}</p>
       <p class="product-description">{{product.description}}</p>
       <div class="product-actions">
-        <input type="number">
-        <p class="product-stock">Stock disponible: {{product.stock}}</p>
-        <input type="button" value="Comprar">
+        <form action="/api/carts/1000/product/{{product.id}}/" method="POST">
+            <input type="number" name="quantity">
+            <p class="product-stock">Stock disponible: {{product.stock}}</p>
+            <input type="submit" value="Agregar al Carrito">
+        </form>
       </div>
     </div>
   </div>

@@ -63,6 +63,7 @@ router.post('/', async (req, res) => {
     }
 })
 
+//No admite quantity todavia
 router.post('/:cartId/product/:pid', async (req, res) => {
     let { cartId, pid } = req.params
     cartId = Number(cartId)

@@ -72,6 +72,7 @@ class CartManager {
             }
           }
 
+          //Agregar reducir el stock cuando agrego un producto
           const existingProduct = cartToAdd.products.find(p => p.productId === pid)
           if (existingProduct) {
             existingProduct.quantity++
