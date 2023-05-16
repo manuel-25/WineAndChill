@@ -55,7 +55,6 @@ router.get('/:pid', async (req, res, next) => {
   }
 })
 
-    //error al crear producto con el body vacio lo crea igual
 router.post('/', async (req, res, next) => {
   try {
     const { title, description, price, code, stock, status, category, thumbnail } = req.body
@@ -76,6 +75,7 @@ router.post('/', async (req, res, next) => {
     next(error)
   }
 })
+
 
 router.put('/:pid', async (req, res, next) => {
   try {
