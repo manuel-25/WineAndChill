@@ -14,6 +14,7 @@ Swal.fire({
     socket.emit('chat_Auth', { userName })
 })
 
+//Mando el server los mensajes
 chatInput.addEventListener('keydown', (event) => {
     if(event.key === 'Enter') {
         event.preventDefault()
@@ -36,7 +37,7 @@ socket.on('allMessages', (data) => {
       const usernameElement = document.createElement('span')
       usernameElement.id = 'userNameTag'
       usernameElement.textContent = `${chat.userName}:`
-      let userColor = data.usersLog.find(user => user.id === chat.id).color
+      let userColor = chat.id ? data.usersLog.find(user => user.id === chat.id)?.color : null
       usernameElement.style.color = userColor
   
       const messageText = document.createTextNode(` ${chat.message}`)
