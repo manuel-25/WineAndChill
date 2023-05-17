@@ -1,4 +1,4 @@
-# Sprint-4 Primer pre-entrega Router y multer
+# Sprint-5 Web Sockets
 
 ## Funcionalidades Product Manager
 
@@ -14,8 +14,7 @@
 - `getCartById(id)`: Devuelve el carrito con el id especificado.
 - `updateCart(cartId, newProducts)`: Actualiza los productos en el carrito especificado.
 - `delete(cartId, productId, units)`: Elimina un producto del carrito especificado.
-- `writeFile(data_json)`: Guarda los cambios en el archivo cart.json.
-
+- 
 ## Rutas de Postman para productos
 
 - **GET todos los productos:** `http://localhost:8080/api/products`
@@ -32,6 +31,15 @@
 - **PUT actualizar unidades de un producto en un carrito:** `http://localhost:8080/api/carts/:cartId/product/:pid/:units`
 - **POST agregar un nuevo producto a un carrito:** `http://localhost:8080/api/carts/:cartId/product/:pid`
 - **DELETE eliminar un producto de un carrito:** `http://localhost:8080/api/carts/:cartId/product/:pid/:units`
+
+## Rutas de las vistas
+
+- **Index/Home:** `/`
+- **Todos los productos:** `/products`
+- **Detalle de un producto:** `/products/:pid`
+- **Crear producto:** `/new_product`
+- **Carrito:** `/cart`
+- **Chat:** `/chat`
 
 ## Cómo levantar el servidor
 
