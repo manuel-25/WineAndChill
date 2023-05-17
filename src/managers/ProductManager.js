@@ -31,7 +31,7 @@ class ProductManager {
         try {
             stock = stock ?? 0
             status = status ?? true
-            thumbnail = thumbnail ?? 'public/img/botella_vino.webp'
+            thumbnail = thumbnail ?? '/public/img/botella_vino.webp'
           if (!title || !description || !price || !code || !category) {
             return {
               error: "Missing required parameters"

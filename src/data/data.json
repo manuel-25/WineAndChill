@@ -183,7 +183,7 @@
     "stock": "20",
     "status": true,
     "category": "vino",
-    "thumbnail": "public/img/botella_vino.webp",
+    "thumbnail": "/public/img/botella_vino.webp",
     "id": 17
   }
 ]
