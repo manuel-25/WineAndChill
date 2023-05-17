@@ -160,13 +160,12 @@ router.put('/:cartId/product/:pid/:units', async (req, res) => {
     }
 })
 
-router.delete('/:cartId/product/:pid/:units', async (req, res, next) => {
+router.delete('/:cartId/product/:pid/', async (req, res, next) => {
     const cartId = Number(req.params.cartId)
     const productId = Number(req.params.pid)
-    const unitsToRemove = Number(req.params.units)
   
     try {
-      const deletedCart = await carrito.delete(cartId, productId, unitsToRemove)
+      const deletedCart = await carrito.delete(cartId, productId)
   
       if (deletedCart.error) {
         return res.status(500).json({

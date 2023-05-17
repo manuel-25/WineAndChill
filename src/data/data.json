@@ -4,7 +4,7 @@
     "description": "Vino tinto de Mendoza",
     "price": 1299,
     "code": "aaa100",
-    "stock": 10,
+    "stock": 15,
     "status": true,
     "category": "Tinto",
     "thumbnail": "/public/img/botella_vino.webp",
@@ -125,7 +125,7 @@
     "description": "Chardonnay",
     "price": 1099,
     "code": "aaa111",
-    "stock": 12,
+    "stock": 15,
     "status": true,
     "category": "Espumante",
     "thumbnail": "/public/img/botella_vino.webp",
@@ -174,5 +174,16 @@
     "category": "Tinto Blend",
     "thumbnail": "/public/img/botella_vino.webp",
     "id": 16
+  },
+  {
+    "title": "Malbec",
+    "description": "otro vino mas",
+    "price": "890",
+    "code": "abc167",
+    "stock": "20",
+    "status": true,
+    "category": "vino",
+    "thumbnail": "public/img/botella_vino.webp",
+    "id": 17
   }
 ]

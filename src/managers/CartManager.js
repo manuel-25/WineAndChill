@@ -153,9 +153,9 @@ class CartManager {
       }
     }
 
-    async delete(cartId, productId, units) {
+    async delete(cartId, productId) {
       try {
-        let cart = await this.getCartById(cartId)
+        let cart = await this.getCartById(cartId);
         if (!cart) {
           return {
             error: 'Cart not found',
@@ -169,45 +169,38 @@ class CartManager {
           }
         }
     
-        const productFromCart = cart.products[productIndex]
-        if (units > productFromCart.quantity) {
-          return {
-            error: 'Units to remove exceed the quantity in the cart',
-          }
-        }
-    
         // Actualizo el stock del carrito y producto
+        let productFromCart = cart.products[productIndex]
         let productFromDB = await producto.getProductById(productFromCart.productId)
         if (productFromDB.error) {
           return {
-            error: 'Product not found in database: ' + productFromDB.error
+            error: 'Product not found in database: ' + productFromDB.error,
           }
         }
     
-        const newStock = productFromDB.stock + units
+        const newStock = productFromDB.stock + productFromCart.quantity
         let productToUpdate = await producto.updateProduct(productFromCart.productId, { stock: newStock })
         if (productToUpdate.error) {
           return {
-            error: 'Failed to update stock: ' + productToUpdate.error
+            error: 'Failed to update stock: ' + productToUpdate.error,
           }
         }
-
-        productFromCart.quantity -= units
-        if (productFromCart.quantity === 0) {
-          cart.products.splice(productIndex, 1)
-        }
+    
+        cart.products.splice(productIndex, 1)
+    
         // Crear un array de productos para pasar a updateCart
         const newCartProducts = cart.products.map((product) => ({ ...product }))
         let updatedCart = await this.updateCart(cartId, newCartProducts)
     
-        return updatedCart
+        return updatedCart;
       } catch (error) {
-        console.log('deleteFromCart: error', error)
+        console.log('deleteFromCart: ', error)
         return {
-          error: 'deleteFromCart: error', error,
+          error: 'deleteFromCart: ',error,
         }
       }
     }
+    
 
   }
 

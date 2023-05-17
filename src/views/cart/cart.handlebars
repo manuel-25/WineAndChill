@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Cart</h1>
+
+  {{#if products.length}}
+    <div class="cart-list">
+      {{#each products}}
+        <div class="product-card">
+          <img class="product-image" src="{{thumbnail}}" alt="{{title}}">
+          <div class="product-details">
+            <h2 class="product-title">{{title}}</h2>
+            <p class="product-description">{{description}}</p>
+            <p class="product-price">${{price}}</p>
+          </div>
+          <div class="product-actions">
+            <div class="quantity-input">
+              <input type="number" value="{{quantity}}" min="1" step="1" data-product-id="{{id}}">
+            </div>
+            <button class="updateBtn" data-product-id="{{id}}" onclick="updateQuantity({{id}})">Update</button>
+            <button class="deleteBtn" data-product-id="{{id}}" onclick="deleteProduct({{id}})"><span>X</span></button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p>No products in the cart.</p>
+  {{/if}}
+</div>
