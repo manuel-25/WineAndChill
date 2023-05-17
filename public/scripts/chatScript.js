@@ -20,7 +20,8 @@ chatInput.addEventListener('keydown', (event) => {
         event.preventDefault()
         let message = chatInput.value.trim()
         if(message){
-            socket.emit('new_message', { userName, message })
+            const currentTime = getCurrentTime()
+            socket.emit('new_message', { userName, message, currentTime })
             chatInput.value = ''
         }
     }
@@ -28,11 +29,22 @@ chatInput.addEventListener('keydown', (event) => {
 
 //Renderizo los mensajes 
 socket.on('allMessages', (data) => {
+    renderMessages(data)
+})
+
+//Renderizo al cargar la pagina
+window.addEventListener('load', () => {
+    socket.emit('load_messages', 'hola')
+    socket.on('allMessages', (data) => {
+        renderMessages(data)
+    })
+})
+
+function renderMessages(data) {
     chatBox.innerHTML = ''
-  
     data.chatLog.forEach((chat) => {
       const messageElement = document.createElement('p')
-      messageElement.style.marginBottom = '2px'
+      messageElement.classList.add('chatLine')
   
       const usernameElement = document.createElement('span')
       usernameElement.id = 'userNameTag'
@@ -40,13 +52,26 @@ socket.on('allMessages', (data) => {
       let userColor = chat.id ? data.usersLog.find(user => user.id === chat.id)?.color : null
       usernameElement.style.color = userColor
   
+      const timeElement = document.createElement('span')
+      timeElement.className = 'messageTime'
+      timeElement.textContent = chat.currentTime
+  
       const messageText = document.createTextNode(` ${chat.message}`)
   
       messageElement.appendChild(usernameElement)
+      messageElement.appendChild(timeElement)
       messageElement.appendChild(messageText)
+  
       chatBox.appendChild(messageElement)
     })
+    chatBox.scrollTop = chatBox.scrollHeight //no funciona ??
+}
   
-    chatBox.scrollTop = chatBox.scrollHeight
-  })
-  
+function getCurrentTime() {
+    const date = new Date()
+    const currentHour = String(date.getHours()).padStart(2, '0')
+    const currentMinute = String(date.getMinutes()).padStart(2, '0')
+    const currentSecond = String(date.getSeconds()).padStart(2, '0')
+    const currentTime = currentHour + ':' + currentMinute + ':' + currentSecond
+    return currentTime
+}

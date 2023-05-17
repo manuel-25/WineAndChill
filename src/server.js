@@ -15,10 +15,10 @@ let chatLog = []
 let usersLog = []
 
 socket_server.on('connection', socket => {
-    console.log('Client Connected: ' + socket.id)
-
+    //console.log('Client Connected: ' + socket.id)
     socket.emit('cartCounter', totalQuantity)
 
+    //Chat seccion
     socket.on('chat_Auth', (data) => {
         let userName = data.userName
         let userIsRegistered = usersLog.some(user => user.id == socket.id)
@@ -31,6 +31,10 @@ socket_server.on('connection', socket => {
     socket.on('new_message', (data) => {
         chatLog.push({...data, id: socket.id})
         socket_server.emit('allMessages', { chatLog, usersLog })
+    })
+
+    socket.on('load_messages', (data) => {
+        socket.emit('allMessages', { chatLog, usersLog })
     })
 
 })
