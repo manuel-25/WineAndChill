@@ -5,6 +5,7 @@ const router = Router()
 
 router.get('/', async (req, res, next) => {
     try {
+        const appUrl = `${req.protocol}://${req.headers.host}`
         const limit = 4
         let page = parseInt(req.query.page)
         let products
@@ -12,7 +13,7 @@ router.get('/', async (req, res, next) => {
         let totalProducts
         let pageNumbers = []
 
-        const response = await axios.get('http://localhost:8080/api/products', {
+        const response = await axios.get(`${appUrl}/api/products`, {
             params: {
             limit,
             page
