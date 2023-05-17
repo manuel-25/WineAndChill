@@ -1,0 +1,102 @@
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  color: #8a56ac;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.row {
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  object-fit: contain;
+  height: 200px;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #00aa00;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pagination a {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #ebebeb;
+  text-decoration: none;
+  color: #333;
+}
+
+.pagination a.active {
+  background-color: #8a56ac;
+  color: #fff;
+}
+
+/* Responsividad */
+
+@media (max-width: 765px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .card {
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+  

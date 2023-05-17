@@ -1,28 +1,30 @@
 import { Router } from "express"
-import producto from "../../managers/ProductManager.js"
+import productList from './products/productList.js'
+import productDetail from './products/productDetail.js'
+import chatRouter from './chatRouter.js'
+import newProduct from './products/newProduct.js'
+import cart from './cartRouter.js'
 
 const router = Router()
 
-router.get(
-    '/', async (req, res) => {
-        try{
-            let products = await producto.getProducts()
-            if(!products) {
-                return res.status(404).json({
-                    message: "No hay productos registrados"
-                })
-            }
-            console.log(products)
-            return res.render('index', {
-                title: 'Home',
-                products,
-                style: 'index.css',
-                script: '/public/conection.js'
-            })
-        } catch (error) {
-            next(error)
-        }
+
+//home mover a su archivo propio
+router.get('/', async (req, res, next) => {
+    try {
+        return res.render('index', {
+            title: 'Home',
+            style: 'index.css',
+        })
+    } catch (error) {
+      next(error)
     }
-)
+})
+
+router.use('/products', productList)
+router.use('/products', productDetail)
+router.use('/chat', chatRouter)
+router.use('/new_product', newProduct)
+router.use('/cart', cart)
+
 
 export default router

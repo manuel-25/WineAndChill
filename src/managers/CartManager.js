@@ -1,5 +1,5 @@
 import fs from 'fs'
-import producto from './productManager.js'
+import producto from './ProductManager.js'
 
 class CartManager {
     constructor(path) {
@@ -53,7 +53,9 @@ class CartManager {
             }
           }
     
+          //Busco el producto y devuelvo en caso de error
           const productToAdd = await producto.getProductById(pid)
+          console.log(productToAdd)
           if (productToAdd.error) {
             return {
               error: productToAdd.error
@@ -64,9 +66,14 @@ class CartManager {
               error: 'Product does not exist'
             }
           }
-    
-          const existingProduct = cartToAdd.products.find(p => p.pid === pid)
-          console.log('existing product:',existingProduct)
+          if (productToAdd.stock === 0) {
+            return {
+              error: 'No stock available'
+            }
+          }
+
+          //Agregar reducir el stock cuando agrego un producto
+          const existingProduct = cartToAdd.products.find(p => p.productId === pid)
           if (existingProduct) {
             existingProduct.quantity++
           } else {
@@ -77,7 +84,6 @@ class CartManager {
           }
     
           newCart = cartToAdd
-          console.log('new cart:',newCart)
         }
     
         this.carts.push(newCart)
@@ -125,6 +131,7 @@ class CartManager {
       }
     }
 
+    //Recibe un Id y un array de productos
     async updateCart(cartId, newProducts) {
       try {
         const cartIndex = this.carts.findIndex(cart => cart.id == cartId)
@@ -133,52 +140,67 @@ class CartManager {
             error: 'Cart not found'
           }
         }
+
         this.carts[cartIndex].products.splice(0, this.carts[cartIndex].products.length, ...newProducts)
         const data_json = JSON.stringify(this.carts, null, 2)
         await this.writeFile(data_json)
         return this.carts[cartIndex]
       } catch (error) {
-        console.error(`updateCart: error: ${error}`)
+        console.error(`updateCart error: ${error}`)
         return {
           error: 'Error updating cart', error
         }
       }
     }
 
-    async delete(cartId, pid, units) {
+    async delete(cartId, productId) {
       try {
-        const cart = await this.getCartById(cartId)
+        let cart = await this.getCartById(cartId);
         if (!cart) {
           return {
-            error: "Cart not found",
+            error: 'Cart not found',
           }
         }
-        const productIndex = cart.products.findIndex((p) => p.id === pid)
+    
+        const productIndex = cart.products.findIndex((p) => p.productId == productId)
         if (productIndex === -1) {
           return {
-            error: "Product not found in cart",
+            error: 'Product not found in cart',
           }
         }
-        const product = cart.products[productIndex]
-        if (units > product.quantity) {
+    
+        // Actualizo el stock del carrito y producto
+        let productFromCart = cart.products[productIndex]
+        let productFromDB = await producto.getProductById(productFromCart.productId)
+        if (productFromDB.error) {
           return {
-            error: "Units to remove exceed the quantityin the cart",
+            error: 'Product not found in database: ' + productFromDB.error,
           }
         }
-        product.quantity -= units
-        if (product.quantitys === 0) {
-          cart.products.splice(productIndex, 1)
+    
+        const newStock = productFromDB.stock + productFromCart.quantity
+        let productToUpdate = await producto.updateProduct(productFromCart.productId, { stock: newStock })
+        if (productToUpdate.error) {
+          return {
+            error: 'Failed to update stock: ' + productToUpdate.error,
+          }
         }
-        await this.updateCart(cartId, cart)
-        return product
+    
+        cart.products.splice(productIndex, 1)
+    
+        // Crear un array de productos para pasar a updateCart
+        const newCartProducts = cart.products.map((product) => ({ ...product }))
+        let updatedCart = await this.updateCart(cartId, newCartProducts)
+    
+        return updatedCart;
       } catch (error) {
-        console.log("deleteFromCart: error", error)
+        console.log('deleteFromCart: ', error)
         return {
-          error: "deleteFromCart: error",
-          error,
+          error: 'deleteFromCart: ',error,
         }
       }
     }
+    
 
   }
 

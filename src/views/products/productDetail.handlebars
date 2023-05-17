@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{{product.thumbnail}}" class="product-image" alt="{{product.title}}">
+    </div>
+    <div class="col-md-6">
+      <h2>{{product.title}}</h2>
+      <p class="product-price">${{product.price}}</p>
+      <p class="product-description">{{product.description}}</p>
+      <div class="product-actions">
+        <form action="/api/carts/1000/product/{{product.id}}/" method="POST">
+            <input type="number" name="quantity">
+            <p class="product-stock">Stock disponible: {{product.stock}}</p>
+            <input type="submit" value="Agregar al Carrito">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
