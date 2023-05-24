@@ -41,8 +41,8 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:pid', async (req, res, next) => {
   try{
-    let pid = req.params.pid
-    let result = await producto.getProductById(pid)
+    const pid = req.params.pid
+    const response = await Product.FindById(pid)
     if (result.error) {
       return res.status(404).send({
           status: 404,
@@ -61,8 +61,6 @@ router.get('/:pid', async (req, res, next) => {
 router.post('/', productValidator, async (req, res, next) => {
   try {
     const response = await Product.create(req.body)
-    //console.log(response)
-
     if (response) {
       return res.status(201).json({
         status: 201,
