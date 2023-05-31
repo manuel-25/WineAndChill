@@ -15,7 +15,7 @@
     "description": "Vino blanco de Mendoza",
     "price": 1099,
     "code": "aaa101",
-    "stock": 10,
+    "stock": 9,
     "status": true,
     "category": "Blanco",
     "thumbnail": "/public/img/botella_vino.webp",
