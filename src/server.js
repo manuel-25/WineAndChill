@@ -1,6 +1,7 @@
 import server from './app.js'
 import { Server } from 'socket.io'
 import carrito from './managers/CartManager.js'
+import ChatModel from './models/chats.model.js'
 
 const PORT = process.env.PORT || 8080 
 const ready = () => console.log('Server Ready on Port: ' + PORT)
@@ -20,21 +21,34 @@ socket_server.on('connection', socket => {
 
     //Chat seccion
     socket.on('chat_Auth', (data) => {
-        let userName = data.userName
-        let userIsRegistered = usersLog.some(user => user.id == socket.id)
+        const username = data.username
+        const userIsRegistered = usersLog.some(user => user.id == socket.id)
         if(!userIsRegistered) {
-            let color = colors[Math.floor(Math.random() * colors.length)]
-            usersLog.push({ id: socket.id, userName: userName, color })
+            const color = colors[Math.floor(Math.random() * colors.length)]
+            usersLog.push({ id: socket.id, username , color })
         }
     })
 
-    socket.on('new_message', (data) => {
-        chatLog.push({...data, id: socket.id})
-        socket_server.emit('allMessages', { chatLog, usersLog })
+    socket.on('new_message', async (data) => {
+        try {
+            const dataToSend = {...data, socketId: socket.id}
+            await ChatModel.create(dataToSend)
+            chatLog.push(dataToSend)
+            //console.log('chat log: ',chatLog)
+            socket_server.emit('allMessages', { chatLog, usersLog })
+        } catch(error) {
+            console.log('Socket Error: ', error)
+        }
     })
 
-    socket.on('load_messages', (data) => {
-        socket.emit('allMessages', { chatLog, usersLog })
+    socket.on('load_messages', async () => {
+        try {
+            const chatFromDB = await ChatModel.find()
+            chatLog = chatFromDB
+            socket.emit('allMessages', { chatLog, usersLog })
+        } catch(error) {
+            console.log('Socket Error: ', error)
+        }
     })
 
 })
