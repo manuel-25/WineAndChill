@@ -1,4 +1,4 @@
-# Sprint-5 Web Sockets
+# Sprint-6 Mongoose
 
 ## Funcionalidades Product Manager
 
