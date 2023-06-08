@@ -5,7 +5,7 @@ import ChatModel from './models/chats.model.js'
 
 const PORT = process.env.PORT || 8080 
 const ready = () => console.log('Server Ready on Port: ' + PORT)
-let http_server = server.listen(PORT, ready)
+const http_server = server.listen(PORT, ready)
 let socket_server = new Server(http_server)
 
 let cartCounter = carrito.carts[0].products

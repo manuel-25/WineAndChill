@@ -27,7 +27,7 @@ server.use(notFoundHandler)
 server.use(logger('dev'))
 server.use(methodOverride('_method'))
 
-mongoose.connect('mongodb+srv://manu:onita0102@cluster0.fgglgec.mongodb.net/WineAndChill')
+mongoose.connect(process.env.LINK_MONGO)
 .then(() => console.log('database connected'))
 .catch((err) => console.log(err))
 
