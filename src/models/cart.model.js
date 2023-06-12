@@ -1,14 +1,22 @@
 import { model, Schema, Types } from 'mongoose'
+import Product from './product.model.js'
 
-const cartSchema = new Schema({
-  products: [
-    {
-      productId: { type: Types.ObjectId, ref: 'Product', required: true, },
-      quantity: { type: Number, required: true }
-    }
-  ]
+const collection = 'carts'
+const schema = new Schema({
+  products: [{
+    productId: { type: Types.ObjectId, ref: 'Product', required: true, index: true },
+    quantity: { type: Number, required: true }
+  }]
 })
 
-const Cart = model('Cart', cartSchema)
+schema.pre('find', function() {
+  this.populate({
+    path: 'products.productId',
+    model: 'products',
+    select: 'title'
+  })
+})
+
+const Cart = model(collection, schema)
 
 export default Cart

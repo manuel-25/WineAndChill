@@ -1,5 +1,7 @@
 import { Router } from "express"
-import producto from '../../managers/ProductManager.js'
+import Product from '../../models/product.model.js'
+import productValidator from '../../middlewares/productValidator.js'
+
 
 const router = Router()
 
@@ -9,28 +11,28 @@ router.get('/', async (req, res, next) => {
     const limit = parseInt(req.query.limit) || 10
     const page = parseInt(req.query.page) || 1
 
-    let products = await producto.getProducts()
-    if (products) {
+    let productDB = await Product.find()
+    console.log('productos', productDB)
+    if (productDB) {
       const startIndex = (page - 1) * limit // Calculo el indice de inicio
       const endIndex = startIndex + limit // Calculo el indice de fin
 
-      let productsToSend = products.slice(startIndex, endIndex)
+      let productsToSend = productDB.slice(startIndex, endIndex)
 
       return res.send({
         status: 200,
         response: {
           products: productsToSend,
-          totalProducts: products.length,
-          totalPages: Math.ceil(products.length / limit),
+          totalProducts: productDB.length,
+          totalPages: Math.ceil(productDB.length / limit),
           currentPage: page
         }
       })
-    } else {
-      return res.status(404).send({
-        status: 404,
-        response: products.error || 'unexpected error'
-      });
     }
+    return res.status(404).send({
+      status: 404,
+      response: productDB.error || 'unexpected error'
+    })
   } catch (error) {
     next(error)
   }
@@ -38,39 +40,39 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:pid', async (req, res, next) => {
   try{
-    let pid = req.params.pid
-    let result = await producto.getProductById(pid)
-    if (result.error) {
+    const pid = req.params.pid
+    const product = await Product.findById(pid)
+
+    console.log(product)
+    if (!product) {
       return res.status(404).send({
-          status: 404,
-          response: result.error || 'unexpected error'
-        })
+        status: 404,
+        response: 'Failed to get product id: ', pid
+      })
     }
     return res.status(200).send({
       status: 200,
-      response: result
+      response: product
     })
   } catch (error) {
     next(error)
   }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', productValidator, async (req, res, next) => {
   try {
-    const { title, description, price, code, stock, status, category, thumbnail } = req.body
-    const Newproduct = await producto.add_Product({ title, description, price, code, stock, status, category, thumbnail})
-
-    if (Newproduct.error) {
+    const response = await Product.create(req.body)
+    if (response) {
+      return res.status(201).json({
+        status: 201,
+        response: `Product ${response._id} created!`
+      })
+    } else {
       return res.status(404).json({
         status: 404,
-        response: Newproduct.error
+        response: 'Failed to create product!'
       })
     }
-
-    return res.status(201).json({
-      status: 201,
-      response: `Product ${Newproduct.id} created!`
-    })
   } catch (error) {
     next(error)
   }
@@ -89,19 +91,18 @@ router.put('/:pid', async (req, res, next) => {
       })
     }
 
-    const result = await producto.updateProduct(Number(pid), data)
-
-    if (result.error) {
+    const product = await Product.findByIdAndUpdate(pid, data, {new: true})
+    if (!product) {
       return res.status(404).json({
         status: 404,
-        response: result.error
+        response: 'Error: Product not updated!'
       })
     }
-
     return res.status(201).json({
       status: 201,
       response: `Product ${pid} updated!`
     })
+
   } catch (error) {
     next(error)
   }
@@ -109,19 +110,19 @@ router.put('/:pid', async (req, res, next) => {
 
 router.delete('/:pid', async (req, res, next) => {
   try {
-    let pid = Number(req.params.pid)
-    let result = await producto.deleteProduct(pid)
-    if (pid && !result.error) {
-      return res.status(200).json({
-        status: 200,
-        response: `Product ${pid} deleted!`
-      })
-    } else {
+    const pid = req.params.pid
+    console.log(pid)
+    const product = await Product.findByIdAndDelete(pid)
+    if (!product) {
       return res.status(404).json({
         status: 404,
-        response: result.error
+        response: 'Error: Product not deleted!'
       })
     }
+    return res.status(200).json({
+      status: 200,
+      response: `Product ${pid} deleted!`
+    })
   } catch (error) {
     next(error)
   }

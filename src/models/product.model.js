@@ -1,15 +1,16 @@
 import { model,Schema } from 'mongoose'
 
 const collection = 'products'
-const schema = new Schema({
+const productSchema = new Schema({
     title: { type:String, required:true },
-    description: { type:String, required: true },
+    description: { type:String },
     stock: { type:Number, required:true },
     thumbnail: { type:String, required: false },
     price: { type:Number, required: true },
-    category: {type:String, required: true},
-    status: {type: Boolean, required: false}
+    cellar: {type:String, required: true},
+    type: {type:String, enum: ['Tinto', 'Blanco', 'Rosa', 'Espumante'], default: 'Tinto'},
+    status: {type: Boolean, default: true}
 })
 
-let Product = model(collection,schema)
+const Product = model(collection,productSchema)
 export default Product
