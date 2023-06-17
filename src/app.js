@@ -27,7 +27,7 @@ server.use(notFoundHandler)
 server.use(logger('dev'))
 server.use(methodOverride('_method'))
 
-mongoose.connect(process.env.LINK_MONGO)
+mongoose.connect(process.env.LINK_MONGO2)
 .then(() => console.log('database connected'))
 .catch((err) => console.log(err))
 

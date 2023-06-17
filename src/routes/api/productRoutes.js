@@ -8,30 +8,23 @@ const router = Router()
 //error al mandar status 200 con data.json vacio
 router.get('/', async (req, res, next) => {
   try {
-    const limit = parseInt(req.query.limit) || 10
-    const page = parseInt(req.query.page) || 1
+    const limit = parseInt(req.query.limit) ?? 2
+    const page = parseInt(req.query.page) ?? 1
+    const title = req.query.title ? new RegExp(req.query.title, 'i') : ''
+    console.log('title:',title)
 
-    let productDB = await Product.find()
-    console.log('productos', productDB)
-    if (productDB) {
-      const startIndex = (page - 1) * limit // Calculo el indice de inicio
-      const endIndex = startIndex + limit // Calculo el indice de fin
-
-      let productsToSend = productDB.slice(startIndex, endIndex)
-
-      return res.send({
+    let all = await Product.paginate(
+      {title}, {limit, page}
+    )
+    if (all) {
+      return res.status(200).send({
         status: 200,
-        response: {
-          products: productsToSend,
-          totalProducts: productDB.length,
-          totalPages: Math.ceil(productDB.length / limit),
-          currentPage: page
-        }
+        response: all
       })
     }
     return res.status(404).send({
       status: 404,
-      response: productDB.error || 'unexpected error'
+      response: all.error || 'Products paginate error!'
     })
   } catch (error) {
     next(error)

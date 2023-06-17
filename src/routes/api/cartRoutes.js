@@ -1,16 +1,15 @@
 import { Router } from "express"
 import Product from '../../models/product.model.js'
 import Cart from "../../models/cart.model.js"
+import { Types } from "mongoose"
 
 const router = Router()
 
+//Falta ordenar por title
 router.get('/', async (req, res, next) => {
     try {
         const limit = req.query.limit
-        const carts = await Cart.find()/*.populate({
-            path: 'productId',
-            model: 'products'
-       })*/
+        const carts = await Cart.find()
        
         if (carts) {
             let cartsToSend = limit ? carts.slice(0, limit) : carts
@@ -46,6 +45,35 @@ router.get('/:cartId', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+})
+
+router.get('/bills/:cartId', async (req, res, next) => {
+  try {
+    const result = await Cart.findOne({ _id: req.params.cartId })
+    .populate({
+      path: 'products.productId',
+      model: 'products',
+      select: '-__v'
+    })
+    .sort({ "products.productId.title": -1 })
+      /*const result = await Cart.aggregate([
+        { $match: { _id: new Types.ObjectId(req.params.cartId) } },
+        { $lookup: {from: 'products', localField: 'products.productId', foreignField: '_id', as: 'products.productId'}}
+      ])*/
+      console.log(result)
+      if (!result) {
+          return res.status(404).send({
+              status: 404,
+              response: 'Failed to get Cart Id: ', cartId
+          })
+      }
+      return res.status(200).send({
+          status: 200,
+          response: result
+      })
+  } catch (error) {
+      next(error)
+  }
 })
 
 router.post('/', async (req, res, next) => {

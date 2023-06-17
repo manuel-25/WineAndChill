@@ -17,10 +17,14 @@
     {{/each}}
   </div>
   <div class="pagination">
-    {{#if totalPages}}
-      {{#each pageNumbers}}
-        <a href="/products/?page={{this.pageNumber}}" class="{{#if this.active}}active{{/if}}">{{this.pageNumber}}</a>
-      {{/each}}
+    {{#if pag}}
+      {{#if pag.hasPrevPage}}
+          <a href="/products/?page={{pag.prevPage}}" class="active">Anterior</a>
+      {{/if}}
+      <a href="/products/?page={{pag.page}}" class="active">{{pag.page}}</a>
+      {{#if pag.hasNextPage}}
+        <a href="/products/?page={{pag.nextPage}}" class="active">Siguiente</a>
+      {{/if}}
     {{/if}}
   </div>
 </div>

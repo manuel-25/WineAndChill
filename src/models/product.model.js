@@ -1,4 +1,5 @@
 import { model,Schema } from 'mongoose'
+import mongoosePaginate from 'mongoose-paginate-v2'
 
 const collection = 'products'
 const productSchema = new Schema({
@@ -11,6 +12,8 @@ const productSchema = new Schema({
     type: {type:String, enum: ['Tinto', 'Blanco', 'Rosa', 'Espumante'], default: 'Tinto'},
     status: {type: Boolean, default: true}
 })
+
+productSchema.plugin(mongoosePaginate)
 
 const Product = model(collection,productSchema)
 export default Product
