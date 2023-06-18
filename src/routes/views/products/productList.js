@@ -6,20 +6,15 @@ const router = Router()
 router.get('/', async (req, res, next) => {
     try {
         const appUrl = `${req.protocol}://${req.headers.host}`
-        const limit = req.query.limit ?? 2
-        const page = req.query.page ?? 1
-        const title = req.query.title ?? ''
+        const limit = parseInt(req.query.limit) ?? 5
+        const page = parseInt(req.query.page) ?? 1
+        const title = req.query.title
 
         const response = await axios.get(`${appUrl}/api/products`, {
-            params: {
-            limit,
-            page,
-            title
-            }
+            params: { limit, page, title }
         })
         const products = response.data.response.docs
         const pagination = response.data.response
-        //console.log('esta response:', pagination)
   
         if (response.status === 200) {
             return res.render('products/productList', {

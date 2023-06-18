@@ -8,14 +8,20 @@ const router = Router()
 //error al mandar status 200 con data.json vacio
 router.get('/', async (req, res, next) => {
   try {
-    const limit = parseInt(req.query.limit) ?? 2
-    const page = parseInt(req.query.page) ?? 1
-    const title = req.query.title ? new RegExp(req.query.title, 'i') : ''
+    const limit = !isNaN(parseInt(req.query.limit)) ? parseInt(req.query.limit) : 6
+    const page = !isNaN(parseInt(req.query.page)) ? parseInt(req.query.page) : 1
+    const title = req.query.title ? new RegExp(req.query.title, 'i') : null
     console.log('title:',title)
+    console.log('limit:',limit)
 
-    let all = await Product.paginate(
-      {title}, {limit, page}
-    )
+    let query = {}
+    if (title) {
+      query.title = title
+    }
+
+    let all = await Product.paginate(query, { limit, page })
+
+    console.log('all:',all)
     if (all) {
       return res.status(200).send({
         status: 200,
