@@ -1,26 +1,27 @@
 <div class="container">
   <h1>Cart</h1>
 
-  {{#if products.length}}
+  {{#if products.response.products.length}}
     <div class="cart-list">
-      {{#each products}}
+      {{#each products.response.products}}
         <div class="product-card">
-          <img class="product-image" src="{{thumbnail}}" alt="{{title}}">
+          <img class="product-image" src="{{this.productId.thumbnail}}" alt="{{this.productId.title}}">
           <div class="product-details">
-            <h2 class="product-title">{{title}}</h2>
-            <p class="product-description">{{description}}</p>
-            <p class="product-price">${{price}}</p>
+            <h2 class="product-title">{{this.productId.title}}</h2>
+            <p class="product-description">{{this.productId.description}}</p>
+            <p class="product-price">${{this.productId.price}}</p>
           </div>
           <div class="product-actions">
             <div class="quantity-input">
-              <input type="number" value="{{quantity}}" min="1" step="1" data-product-id="{{id}}">
+              <input type="number" value="{{this.quantity}}" min="1" step="1" data-product-id="{{this._id}}">
             </div>
-            <button class="updateBtn" data-product-id="{{id}}" onclick="updateQuantity({{id}})">Update</button>
-            <button class="deleteBtn" data-product-id="{{id}}" onclick="deleteProduct({{id}})"><span>X</span></button>
+            <button class="updateBtn" data-product-id="{{this._id}}" onclick="updateQuantity({{this._id}})">Update</button>
+            <button class="deleteBtn" data-product-id="{{this._id}}" onclick="deleteProduct({{this._id}})"><span>X</span></button>
           </div>
         </div>
       {{/each}}
     </div>
+    <p class="total">Total: ${{products.response.total}}</p>
   {{else}}
     <p>No products in the cart.</p>
   {{/if}}

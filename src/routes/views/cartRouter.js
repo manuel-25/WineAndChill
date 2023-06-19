@@ -1,45 +1,26 @@
 import { Router } from "express"
-import cart from '../../managers/CartManager.js'
-import producto from "../../managers/ProductManager.js"
+import fetch from "node-fetch"
 
 const router = Router()
 
 router.get("/", async (req, res) => {
   try {
-    const cartId = 1000
-    const cartData = await cart.getCartById(cartId)
-    if (!cartData || cartData.error) {
-      return res.status(404).json({
-        status: 404,
-        response: cartData.error || "Unexpected error"
+    const cartId = '649069e6a4baa6b6d58c6546'
+    const response = await fetch(`http://localhost:8080/api/carts/bills/${cartId}`)
+    const data = await response.json()
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        status: response.status,
+        response: data.message || "Error fetching cart"
       })
     }
-
-    let productsFromCart = await producto.getProducts()
-    if (!productsFromCart || productsFromCart.error) {
-        return res.status(404).json({
-          status: 404,
-          response: cartData.error || "Unexpected error"
-        })
-      }
-
-    const productsWithQuantity = cartData.products.map((productInCart) => {
-      const product = productsFromCart.find((p) => p.id === productInCart.productId)
-      if (product) {
-        return {
-          ...product,
-          quantity: productInCart.quantity
-        }
-      }
-      return null
-    })
-    const validProducts = productsWithQuantity.filter((p) => p !== null)
 
     return res.render("cart/cart", {
       title: "Cart",
       style: "cart.css",
       script: "cartScript.js",
-      products: validProducts
+      products: data
     })
   } catch (error) {
     console.log(error)
