@@ -7,6 +7,7 @@ import { engine } from 'express-handlebars'
 import { __dirname } from './utils.js'
 import logger from 'morgan'
 import methodOverride from 'method-override'
+import mongoose from 'mongoose'
 
 const server = express()
 
@@ -25,5 +26,9 @@ server.use(errorHandler)
 server.use(notFoundHandler)
 server.use(logger('dev'))
 server.use(methodOverride('_method'))
+
+mongoose.connect(process.env.LINK_MONGO)
+.then(() => console.log('database connected'))
+.catch((err) => console.log(err))
 
 export default server

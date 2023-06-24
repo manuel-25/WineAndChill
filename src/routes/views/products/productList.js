@@ -38,6 +38,7 @@ router.get('/', async (req, res, next) => {
             console.error('Error al obtener los productos:', response.data)
         }
   
+        console.log(products)
         return res.render('products/productList', {
             title: 'Products',
             products,

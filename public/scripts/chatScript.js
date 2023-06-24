@@ -1,7 +1,7 @@
 let socket = io()
 let chatInput = document.getElementById('chatInput')
 let chatBox = document.getElementById('messages')
-let userName
+let username
 
 Swal.fire({
     title: 'Username',
@@ -10,8 +10,8 @@ Swal.fire({
     allowOutsideClick: false,
     allowEscapeKey: false,
 }).then((res) => {
-    userName = res.value
-    socket.emit('chat_Auth', { userName })
+    username = res.value
+    socket.emit('chat_Auth', { username })
 })
 
 //Mando el server los mensajes
@@ -21,7 +21,7 @@ chatInput.addEventListener('keydown', (event) => {
         let message = chatInput.value.trim()
         if(message){
             const currentTime = getCurrentTime()
-            socket.emit('new_message', { userName, message, currentTime })
+            socket.emit('new_message', { username, message, currentTime })
             chatInput.value = ''
         }
     }
@@ -40,16 +40,17 @@ window.addEventListener('load', () => {
     })
 })
 
-function renderMessages(data) {
+async function renderMessages(data) {
+    //console.log('data: ', data.chatLog)
     chatBox.innerHTML = ''
     data.chatLog.forEach((chat) => {
       const messageElement = document.createElement('p')
       messageElement.classList.add('chatLine')
   
       const usernameElement = document.createElement('span')
-      usernameElement.id = 'userNameTag'
-      usernameElement.textContent = `${chat.userName}:`
-      let userColor = chat.id ? data.usersLog.find(user => user.id === chat.id)?.color : null
+      usernameElement.socketId = 'userNameTag'
+      usernameElement.textContent = `${chat.username}:`
+      const userColor = chat.socketId ? data.usersLog.find(user => user.id === chat.socketId)?.color : null
       usernameElement.style.color = userColor
   
       const timeElement = document.createElement('span')
