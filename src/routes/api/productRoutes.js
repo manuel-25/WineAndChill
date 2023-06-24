@@ -11,8 +11,6 @@ router.get('/', async (req, res, next) => {
     const limit = !isNaN(parseInt(req.query.limit)) ? parseInt(req.query.limit) : 6
     const page = !isNaN(parseInt(req.query.page)) ? parseInt(req.query.page) : 1
     const title = req.query.title ? new RegExp(req.query.title, 'i') : null
-    console.log('title:',title)
-    console.log('limit:',limit)
 
     let query = {}
     if (title) {
@@ -21,7 +19,6 @@ router.get('/', async (req, res, next) => {
 
     let all = await Product.paginate(query, { limit, page })
 
-    console.log('all:',all)
     if (all) {
       return res.status(200).send({
         status: 200,
@@ -42,7 +39,6 @@ router.get('/:pid', async (req, res, next) => {
     const pid = req.params.pid
     const product = await Product.findById(pid)
 
-    console.log(product)
     if (!product) {
       return res.status(404).send({
         status: 404,
