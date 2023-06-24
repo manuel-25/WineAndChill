@@ -1,6 +1,6 @@
 import { Router } from "express"
-import products_router from './products.mongoose.js'
-import cart_router from './carts.mongoose.js'
+import products_router from './productRoutes.js'
+import cart_router from './cartRoutes.js'
 
 const router = Router()
 

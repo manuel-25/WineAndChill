@@ -6,48 +6,28 @@ const router = Router()
 router.get('/', async (req, res, next) => {
     try {
         const appUrl = `${req.protocol}://${req.headers.host}`
-        const limit = 4
-        let page = parseInt(req.query.page)
-        let products
-        let totalPages
-        let totalProducts
-        let pageNumbers = []
+        const limit = parseInt(req.query.limit) ?? 5
+        const page = parseInt(req.query.page) ?? 1
+        const title = req.query.title
 
         const response = await axios.get(`${appUrl}/api/products`, {
-            params: {
-            limit,
-            page
-            }
+            params: { limit, page, title }
         })
+        const products = response.data.response.docs
+        const pagination = response.data.response
   
         if (response.status === 200) {
-            let responseClean = response.data.response;
-            products = responseClean.products;
-            totalPages = responseClean.totalPages;
-            totalProducts = responseClean.totalProducts;
-    
-            // Calcula los números de página
-            for (let i = 1; i <= totalPages; i++) {
-                pageNumbers.push({
-                    pageNumber: i,
-                    active: i === page // Marca la página actual como activa (REVISAR)
-                })
-            }
+            return res.render('products/productList', {
+                title: 'Products',
+                products,
+                pag: pagination,
+                style: 'productList.css',
+                script: 'productList.js'
+            })
         } else {
             // Renderizar /products sin productos
             console.error('Error al obtener los productos:', response.data)
         }
-  
-        console.log(products)
-        return res.render('products/productList', {
-            title: 'Products',
-            products,
-            totalPages,
-            totalProducts,
-            pageNumbers,
-            style: 'productList.css',
-            script: ''
-        })
     } catch (error) {
       next(error)
     }   

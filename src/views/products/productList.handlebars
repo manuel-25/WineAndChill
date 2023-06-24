@@ -1,6 +1,14 @@
 <div class="container">
   <h1>Productos Destacados</h1>
 
+  <!-- Agregar el input de búsqueda -->
+  <div class="search-container">
+    <form action="/products" method="GET">
+      <input type="text" name="title" id="search-input" placeholder="Buscar por título">
+      <button type="submit" id="search-button">Buscar</button>
+    </form>
+  </div>
+
   <div class="row justify-content-center">
     {{#each products}}
     <div class="col-md-6 col-lg-3 mb-4">
@@ -17,10 +25,14 @@
     {{/each}}
   </div>
   <div class="pagination">
-    {{#if totalPages}}
-      {{#each pageNumbers}}
-        <a href="/products/?page={{this.pageNumber}}" class="{{#if this.active}}active{{/if}}">{{this.pageNumber}}</a>
-      {{/each}}
+    {{#if pag}}
+      {{#if pag.hasPrevPage}}
+          <a href="/products/?page={{pag.prevPage}}" class="active">Anterior</a>
+      {{/if}}
+      <a href="/products/?page={{pag.page}}" class="active">{{pag.page}}</a>
+      {{#if pag.hasNextPage}}
+        <a href="/products/?page={{pag.nextPage}}" class="active">Siguiente</a>
+      {{/if}}
     {{/if}}
   </div>
 </div>
