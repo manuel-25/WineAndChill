@@ -8,6 +8,7 @@ import { __dirname } from './utils.js'
 import logger from 'morgan'
 import methodOverride from 'method-override'
 import mongoose from 'mongoose'
+import cookieParser from "cookie-parser"
 
 const server = express()
 
@@ -18,6 +19,7 @@ server.set('views', __dirname + '/views')
 
 
 //Middlewares
+server.use(cookieParser(process.env.SECRET_COOKIE))
 server.use('/public', express.static('public'))
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
