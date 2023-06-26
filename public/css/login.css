@@ -95,7 +95,7 @@
     }
   }
   
-  .accept-cookies-container {
+  .accept-session-container {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -103,14 +103,18 @@
     width: 100%;
   }
   
-  .accept-cookies-container label {
+  .accept-session-container label {
     margin-right: 8px;
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 12px;
     width: 50%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   
+  .forgot-password a {
+    color: blue;
+    font-size: 12px;
+  }

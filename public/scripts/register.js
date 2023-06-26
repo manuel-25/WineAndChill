@@ -1,8 +1,6 @@
 const register = document.getElementById('register')
 const acceptCookies = document.getElementById('acceptCookies')
 
-
-
 register.addEventListener('click', (event) => {
     event.preventDefault();
     const email = document.getElementById('email').value;

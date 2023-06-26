@@ -5,6 +5,7 @@ import chatRouter from './chatRouter.js'
 import newProduct from './products/newProduct.js'
 import cart from './cartRouter.js'
 import register from './user/register.js'
+import login from './user/login.js'
 
 const router = Router()
 
@@ -27,6 +28,7 @@ router.use('/chat', chatRouter)
 router.use('/new_product', newProduct)
 router.use('/cart', cart)
 router.use('/auth/register', register)
+router.use('/auth/login', login)
 
 
 export default router
