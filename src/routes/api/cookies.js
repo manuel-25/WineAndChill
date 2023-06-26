@@ -2,11 +2,12 @@ import { Router } from 'express'
 
 const router = Router()
 
-router.get('/set', (req, res) => {
+router.get('/set/:email', (req, res) => {
+    const { email } = req.params
     return res.status(200).cookie(
-        'nombre_clave',
-        'valor: 1',
-        { maxAge: 500000, signed: true}
+        'user',
+        email,
+        { maxAge: 500000*999, signed: true}
     ).json({
         success: true,
         message: 'cookie seteada'

@@ -9,6 +9,7 @@ import logger from 'morgan'
 import methodOverride from 'method-override'
 import mongoose from 'mongoose'
 import cookieParser from "cookie-parser"
+import expressSession from 'express-session'
 
 const server = express()
 
@@ -20,6 +21,11 @@ server.set('views', __dirname + '/views')
 
 //Middlewares
 server.use(cookieParser(process.env.SECRET_COOKIE))
+server.use(expressSession({
+    secret: process.env.SECRET_SESSION,
+    resave: true,
+    saveUninitialized: true
+}))
 server.use('/public', express.static('public'))
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
