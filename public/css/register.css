@@ -1,116 +1,108 @@
 .container {
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555555;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  background-color: #f9f9f9;
+  color: #555555;
+  font-size: 14px;
+}
+
+.form-group input[type="file"] {
+  padding: 8px;
+}
+
+.form-group.checkbox-group {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.form-group.checkbox-group label {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.form-group.checkbox-group input[type="checkbox"] {
+  margin: 0;
+  margin-right: 6px;
+  width: auto;
+}
+
+.form-group.checkbox-group input[type="checkbox"] + label {
+  flex: 1;
+}
+
+.form-group .form-button {
+  background-color: #42b983;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.form-group .form-button.register:hover {
+  background-color: #389e74;
+}
+
+.form-group .form-button.login {
+  background-color: #007bff;
+}
+
+.form-group .form-button.login:hover {
+  background-color: #0056b3;
+}
+
+.success-message {
+  color: #7cb342;
+}
+
+.error-message {
+  color: #ffdc00;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    max-width: 90%;
   }
-  
-  .container h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333333;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555555;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #cccccc;
-    background-color: #f9f9f9;
-    color: #555555;
-    font-size: 14px;
-  }
-  
-  .form-group input[type="file"] {
-    padding: 8px;
-  }
-  
-  .form-group.checkbox-group {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  .form-group.checkbox-group label {
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-  }
-  
-  .form-group.checkbox-group input[type="checkbox"] {
-    margin: 0;
-    margin-right: 6px;
-    width: auto;
-  }
-  
-  .form-group.checkbox-group input[type="checkbox"] + label {
-    flex: 1;
-  }
-  
-  .form-group input[type="submit"] {
-    background-color: #8a56ac;
-    color: #ffffff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .form-group input[type="submit"]:hover {
-    background-color: #7d4e9f;
-  }
-  
-  .success-message {
-    color: #7cb342;
-  }
-  
-  .error-message {
-    color: #ffdc00;
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .container {
-      max-width: 90%;
-    }
-  }
-  
-  .accept-cookies-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-  
-  .accept-cookies-container label {
-    margin-right: 8px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    width: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
+}
