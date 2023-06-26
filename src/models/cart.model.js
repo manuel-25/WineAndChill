@@ -17,6 +17,6 @@ schema.pre('find', function() {
   })
 })
 
-const Cart = model(collection, schema)
+const CartModel = model(collection, schema)
 
-export default Cart
+export default CartModel
