@@ -1,6 +1,7 @@
 import { Router } from "express"
 import Product from '../../models/product.model.js'
 import productValidator from '../../middlewares/productValidator.js'
+import auth from '../../middlewares/auth.js'
 
 
 const router = Router()
@@ -54,7 +55,7 @@ router.get('/:pid', async (req, res, next) => {
   }
 })
 
-router.post('/', productValidator, async (req, res, next) => {
+router.post('/', auth, productValidator, async (req, res, next) => {
   try {
     const response = await Product.create(req.body)
     if (response) {

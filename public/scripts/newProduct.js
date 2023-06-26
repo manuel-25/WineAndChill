@@ -8,7 +8,7 @@ productForm.addEventListener('submit', (event) => {
     const price = document.getElementById('price').value
     const code = document.getElementById('code').value
     const stock = document.getElementById('stock').value
-    const category = document.getElementById('category').value
+    const type = document.getElementById('type').value
 
     const formData = {
         title: title,
@@ -16,7 +16,7 @@ productForm.addEventListener('submit', (event) => {
         price: price,
         code: code,
         stock: stock,
-        category: category
+        type: type
     }
 
     fetch('/api/products', {
@@ -25,34 +25,33 @@ productForm.addEventListener('submit', (event) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
-      })
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 201) {
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 201) {
             Swal.fire({
-              icon: 'success',
-              title: 'Success',
-              text: `Product ${data.response.id} created!`,
-              confirmButtonText: 'OK',
-              timer: 5000,
-              timerProgressBar: true,
-              onClose: () => {
-                console.log('Alerta cerrada')
-              }
+                icon: 'success',
+                title: 'Success',
+                text: `Product ${data.response.id} created!`,
+                confirmButtonText: 'OK',
+                timer: 5000,
+                timerProgressBar: true,
+                onClose: () => {
+                    console.log('Alerta cerrada')
+                }
             }).then(() => {
-              window.location.href = '/new_product'
+                window.location.href = '/new_product'
             })
-          } else {
+        } else {
             Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: data.response,
-              confirmButtonText: 'OK'
+                icon: 'error',
+                title: 'Error',
+                text: data.response,
+                confirmButtonText: 'OK'
             })
-          }
-        })
-        .catch(error => {
-          console.error(error)
-        })
-      
+        }
+    })
+    .catch(error => {
+        console.error(error)
+    })
 })
