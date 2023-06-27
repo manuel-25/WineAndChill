@@ -18,10 +18,3 @@ registerButton.addEventListener('click', (event) => {
         console.log('response: ',data)
     })
 })
-
- /*fetch(`/api/cookies/set/${email}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data.message)
-            })
-            .catch(error => console.log(error))*/

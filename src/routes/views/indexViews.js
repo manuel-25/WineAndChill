@@ -6,6 +6,8 @@ import newProduct from './products/newProduct.js'
 import cart from './cartRouter.js'
 import register from './user/register.js'
 import login from './user/login.js'
+import isLogged from '../../middlewares/isLogged.js'
+import isAdmin from '../../middlewares/isAdmin.js'
 
 const router = Router()
 
@@ -24,9 +26,9 @@ router.get('/', async (req, res, next) => {
 
 router.use('/products', productList)
 router.use('/products', productDetail)
-router.use('/chat', chatRouter)
-router.use('/new_product', newProduct)
-router.use('/cart', cart)
+router.use('/chat', isLogged, chatRouter)
+router.use('/new_product', isAdmin, newProduct)
+router.use('/cart', isLogged,cart)
 router.use('/auth/register', register)
 router.use('/auth/login', login)
 

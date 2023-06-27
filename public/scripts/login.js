@@ -15,3 +15,10 @@ loginButton.addEventListener('click', (event) => {
     .then(res => res.json())
     .then(res => console.log(res.message))
 })
+
+ /*fetch(`/api/cookies/set/${email}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.message)
+            })
+            .catch(error => console.log(error))*/
