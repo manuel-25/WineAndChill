@@ -1,5 +1,6 @@
 function auth(req, res, next) {
-  if (req.session?.role) {
+  console.log(req.session?.role)
+  if (req.session?.role === 0 || req.session?.role === 1) {
     return next()
   } else {
     return res.status(401).json({
