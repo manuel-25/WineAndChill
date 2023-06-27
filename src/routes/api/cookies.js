@@ -10,7 +10,7 @@ router.get('/set/:email', (req, res) => {
         { maxAge: 500000*999, signed: true}
     ).json({
         success: true,
-        message: 'cookie seteada'
+        message: 'cookie set'
     })
 })
 

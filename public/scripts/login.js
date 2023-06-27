@@ -5,9 +5,9 @@ loginButton.addEventListener('click', (event) => {
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
     const cookies = document.getElementById('keepSession').checked
-    console.log(cookies)
+    //console.log(cookies)
     console.log({email, password})
-    fetch('/api/session/login',{
+    fetch('/api/auth/signin',{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, password})
