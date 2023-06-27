@@ -45,6 +45,8 @@ router.post('/signin', pass_is_8, async(req, res, next) => {
                 message: 'Invalid credentials'
             })
         }
+        req.session.email = email,
+        req.session.role = one.role
         return res.status(200).json({
             success: true,
             message: 'User signed in'

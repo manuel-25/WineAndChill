@@ -39,7 +39,7 @@
   font-size: 14px;
 }
 
-.form-button {
+#login {
   display: block;
   width: 100%;
   background-color: #007bff;
@@ -53,12 +53,23 @@
   text-align: center;
 }
 
-.form-button:hover {
+#login:hover {
   background-color: #0056b3;
 }
 
 .register {
+  display: block;
   background-color: #42b983;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
 }
 
 .register:hover {

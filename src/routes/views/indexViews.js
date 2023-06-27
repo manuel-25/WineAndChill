@@ -17,7 +17,7 @@ router.get('/', async (req, res, next) => {
     try {
         return res.render('index', {
             title: 'Home',
-            style: 'index.css',
+            style: 'index.css'
         })
     } catch (error) {
       next(error)

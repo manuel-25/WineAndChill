@@ -1,3 +1,4 @@
+/* Estilos para el formulario de registro */
 .container {
   max-width: 500px;
   width: 100%;
@@ -29,7 +30,8 @@
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
   padding: 12px;
   border-radius: 5px;
@@ -37,6 +39,7 @@
   background-color: #f9f9f9;
   color: #555555;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
 .form-group input[type="file"] {
@@ -79,6 +82,7 @@
   display: inline-block;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .form-group .form-button.register:hover {
@@ -105,4 +109,10 @@
   .container {
     max-width: 90%;
   }
+
+  .form-group .form-button {
+    width: auto;
+  }
 }
+
+
