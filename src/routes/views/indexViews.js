@@ -30,7 +30,7 @@ router.use('/chat', isLogged, chatRouter)
 router.use('/new_product', isAdmin, newProduct)
 router.use('/cart', isLogged,cart)
 router.use('/auth/register', register)
-router.use('/auth/login', login)
+router.use('/login', login)
 
 
 export default router
