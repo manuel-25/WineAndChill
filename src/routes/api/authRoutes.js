@@ -1,13 +1,16 @@
 import { Router } from 'express'
 import User from '../../models/user.model.js'
-import userValidator from '../../middlewares/userValidator.js'
+import register_validator from '../../middlewares/register_validator.js'
+import signinValidator from '../../middlewares/signin_validator.js'
 import pass_is_8 from '../../middlewares/pass_is_8.js'
 import is_same_pass from '../../middlewares/is_same_pass.js'
+import create_hash from '../../middlewares/create_hash.js'
+import is_valid_password from '../../middlewares/is_valid_password.js'
 
 const router = Router()
 
 router.post('/register',
-    userValidator, pass_is_8, is_same_pass,
+    register_validator, pass_is_8, is_same_pass, create_hash,
     async(req,res,next) => {
     try {
         const { email } = req.body
@@ -29,20 +32,15 @@ router.post('/register',
     }
 })
 
-router.post('/signin', pass_is_8, async(req, res, next) => {
+router.post('/signin', signinValidator, pass_is_8, is_valid_password,
+    async(req, res, next) => {
     try {
-        const { email, password } = req.body
+        const { email } = req.body
         const one = await User.findOne({ email })
         if (!one) {
             return res.status(400).json({
                 success: false,
                 message: 'User not found'
-            })
-        }
-        if (one.password !== password) {
-            return res.status(400).json({
-                success: false,
-                message: 'Invalid credentials'
             })
         }
         req.session.email = email,

@@ -1,4 +1,4 @@
-function auth(req, res, next) {
+function isAdmin(req, res, next) {
     if (req.session?.email === 'admin@admin.com') {
         return next()
     } else {
@@ -9,4 +9,4 @@ function auth(req, res, next) {
     }
 }
 
-export default auth
+export default isAdmin

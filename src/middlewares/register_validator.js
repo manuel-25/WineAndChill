@@ -1,4 +1,4 @@
-function userValidator(req, res, next) {
+function registerValidator(req, res, next) {
     const requiredFields = ['name', 'email', 'password']
     const data = req.body
     
@@ -13,6 +13,6 @@ function userValidator(req, res, next) {
     next()
   }
   
-  export default userValidator
+  export default registerValidator
 
 
