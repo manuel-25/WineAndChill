@@ -16,7 +16,6 @@ let chatLog = []
 let usersLog = []
 
 socket_server.on('connection', socket => {
-    //console.log('Client Connected: ' + socket.id)
     socket.emit('cartCounter', totalQuantity)
 
     //Chat seccion
