@@ -11,7 +11,8 @@ import mongoose from 'mongoose'
 import cookieParser from "cookie-parser"
 import expressSession from 'express-session'
 import mongoStore from "connect-mongo"
-
+import passport from "passport"
+import initializePassport from './config/passport_local.js'
 
 const server = express()
 
@@ -43,6 +44,9 @@ server.use(errorHandler)
 server.use(notFoundHandler)
 server.use(logger('dev'))
 server.use(methodOverride('_method'))
+initializePassport()
+server.use(passport.initialize())
+server.use(passport.session())
 
 mongoose.connect(process.env.LINK_MONGO)
 .then(() => console.log('database connected'))
