@@ -1,7 +1,6 @@
 <div class="container">
   <h1>Productos Destacados</h1>
 
-  <!-- Agregar el input de búsqueda -->
   <div class="search-container">
     <form action="/products" method="GET">
       <input type="text" name="title" id="search-input" placeholder="Buscar por título">
@@ -9,7 +8,7 @@
     </form>
   </div>
 
-  <div class="row justify-content-center">
+  <div class="row card-row">
     {{#each products}}
     <div class="col-md-6 col-lg-3 mb-4">
       <div class="card">
@@ -24,6 +23,7 @@
     </div>
     {{/each}}
   </div>
+  
   <div class="pagination">
     {{#if pag}}
       {{#if pag.hasPrevPage}}

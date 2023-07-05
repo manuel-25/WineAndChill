@@ -1,0 +1,36 @@
+<div class="container">
+  <h3>Iniciar Sesión</h3>
+  <form id="loginForm" action="/api/login" method="POST" class="user-form">
+    <div class="form-group">
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password" placeholder="Contraseña" required>
+    </div>
+    <div class="form-group">
+      <input class="form-button login" id="login" type="submit" value="Iniciar Sesión">
+    </div>
+    <div class="form-group">
+      <a class="form-button register" href="/register" id="register">Crear Usuario</a>
+    </div>
+    <div class="separator">
+      <span class="separator-text">o</span>
+    </div>
+    <div class="form-group">
+      <a href="/api/auth/github/callback" class="form-button github">
+        <i class="fab fa-github"></i> Iniciar sesión con GitHub
+      </a>
+    </div>
+    <div class="form-group">
+      <div class="accept-session-container">
+        <label for="keepSession">Mantener sesión iniciada</label>
+        <input type="checkbox" id="keepSession" name="keepSession">
+      </div>
+      <div class="forgot-password">
+        <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+      </div>
+    </div>
+  </form>
+</div>

@@ -87,7 +87,6 @@ router.get('/bills/:cartId', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const newCart = await Cart.create({})
-        console.log(newCart)
         if (!newCart) {
             return res.status(404).json({
                 status: 404,

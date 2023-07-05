@@ -1,0 +1,130 @@
+.container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555555;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  background-color: #f9f9f9;
+  color: #555555;
+  font-size: 14px;
+}
+
+#login {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+}
+
+#login:hover {
+  background-color: #0056b3;
+}
+
+.register {
+  display: block;
+  background-color: #42b983;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.register:hover {
+  background-color: #389e74;
+}
+
+.forgot-password a {
+  color: #0056b3;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.accept-session-container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.accept-session-container label {
+  margin-right: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.separator {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.separator-text {
+  background-color: #ffffff;
+  padding: 0 10px;
+  color: #555555;
+  font-size: 16px;
+}
+
+.github {
+  display: block;
+  background-color: #24292e;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.github:hover {
+  background-color: #1c2025;
+}

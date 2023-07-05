@@ -2,7 +2,6 @@ const updateQuantity = async (productId) => {
     const cartId = '1000'
     const input = document.querySelector(`input[data-product-id="${productId}"]`);
     const quantity = Number(input.value);
-    console.log(quantity)
 
     try {
       const response = await fetch(`/api/carts/${cartId}/product/${productId}/${quantity}`, {
@@ -11,8 +10,6 @@ const updateQuantity = async (productId) => {
           'Content-Type': 'application/json'
         },
       })
-
-      console.log(response)
   
       //arreglar response.ok no siempre esta bien y actualiza mal
       if (response.ok) {
@@ -42,7 +39,6 @@ const updateQuantity = async (productId) => {
 
 // Función para eliminar un producto del carrito
 async function deleteProduct(productId) {
-    console.log('product id: ', productId)
     try {
       const response = await fetch(`/api/carts/1000/product/${productId}`, {
         method: 'DELETE',
