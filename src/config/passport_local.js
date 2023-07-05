@@ -2,6 +2,8 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 import UserModel from '../models/user.model.js'
 import GHStrategy from 'passport-github2'
+import jwt from 'passport-jwt'
+
 const { GH_CLIENT_ID, GH_CLIENT_SECRET } = process.env
 const callbackURL = 'http://localhost:8080/api/auth/github/callback'
 
@@ -24,6 +26,7 @@ export default function() {
                     const one = await UserModel.findOne({ email: username }) // o req.body.email
                     if (!one) {
                         const user = await UserModel.create(req.body)
+                        delete one.password
                         return done(null,user)                              // se completa la deserializacion 
                     }
                     return done(null, false)
@@ -57,7 +60,7 @@ export default function() {
             { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL }, //objeto de configuracion
             async (accessToken,refreshToken,profile,done) => {
                 try {
-                    console.log(profile)
+                    //console.log(profile)
                     const one = await UserModel.findOne({ email:profile._json.login })
                     if (!one) {
                         const user = await UserModel.create({
@@ -75,7 +78,29 @@ export default function() {
                 }
             }
         )
+    ),
+    passport.use(       //SOLO PARA AUTENTICAR USUARIOS
+        'jwt',
+        new jwt.Strategy({
+            jwtFromRequest: jwt.ExtractJwt.fromExtractors([(req)=>req?.cookies['token']]),  //extraer la cookie para leerla
+            secretOrKey: process.env.SECRET_JWT
+        },
+        async (jwt_payload,done) => {
+            try {              
+                const user = await UserModel.findOne({ email:jwt_payload.email })
+                console.log('useR:',user)
+                delete user.password
+                if (user) {    
+                    return done(null, user)
+                } else {
+                    return done(null, false, { message: 'not auth'})
+                }
+            } catch (error) {
+                return done(error,false)
+            }
+        })
     )
+
 
     
 }

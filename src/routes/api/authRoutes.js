@@ -7,6 +7,7 @@ import is_same_pass from '../../middlewares/is_same_pass.js'
 import create_hash from '../../middlewares/create_hash.js'
 import is_valid_password from '../../middlewares/is_valid_password.js'
 import passport from 'passport'
+import createToken from '../../middlewares/createToken.js'
 
 const router = Router()
 
@@ -22,7 +23,6 @@ router.post('/register',
             message: 'User created!'
         })
 })
-
 router.get('/fail-register', (req,res) => res.status(400).json({
     success: false,
     message: 'Registration failed.'
@@ -33,12 +33,14 @@ router.post('/signin',
     pass_is_8,
     passport.authenticate('signin', {failureRedirect:'/api/auth/fail-signin'}),
     is_valid_password,
+    createToken,
     async(req, res, next) => {
     try {
+        console.log('token:'+req.token)
         const { email } = req.body
         req.session.email = email,
         req.session.role = req.user.role
-        return res.status(200).json({
+        return res.status(200).cookie('token', req.token, {maxAge: 1000*60*60*24*7}).json({
             success: true,
             message: 'User signed in'
         })
