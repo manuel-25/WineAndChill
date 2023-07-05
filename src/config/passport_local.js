@@ -1,6 +1,9 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
 import UserModel from '../models/user.model.js'
+import GHStrategy from 'passport-github2'
+const { GH_CLIENT_ID, GH_CLIENT_SECRET } = process.env
+const callbackURL = 'http://localhost:8080/api/auth/github/callback'
 
 export default function() {
     passport.serializeUser(
@@ -47,6 +50,32 @@ export default function() {
                 }
             }
         )
+    ),
+    passport.use(
+        'github',
+        new GHStrategy(
+            { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL }, //objeto de configuracion
+            async (accessToken,refreshToken,profile,done) => {
+                try {
+                    console.log(profile)
+                    const one = await UserModel.findOne({ email:profile._json.login })
+                    if (!one) {
+                        const user = await UserModel.create({
+                            name:profile._json.name,
+                            email:profile._json.login,
+                            age: 0,
+                            photo:profile._json.avatar_url,
+                            password:profile._json.id
+                        })
+                        return done(null,user)	//si no lo encuentra lo crea y envía
+                    }
+                    return done(null,one)		//si encuentra el usuario lo envía
+                } catch (error) {
+                    return done(error)
+                }
+            }
+        )
     )
+
     
 }

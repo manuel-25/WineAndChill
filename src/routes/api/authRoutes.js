@@ -70,4 +70,17 @@ router.post('/signout', async(req, res, next) => {
     }
 })
 
+router.get('/github', passport.authenticate('github', { scope: ['user: email'] }), (req, res) => {})
+
+router.get(
+    '/github/callback', 
+    passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
+    (req, res) => res.status(200).redirect('/')
+)
+
+router.get('fail-register-github', (req, res) => res.status(403).json({
+    success: false,
+    message: 'Bad Authentication'
+}))
+
 export default router
