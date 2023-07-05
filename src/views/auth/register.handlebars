@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
       <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" placeholder="Contraseña"required>
+      <input type="password" id="password" name="password" placeholder="Contraseña" required>
     </div>
     <div class="form-group">
       <label for="confirmPassword">Confirmar Contraseña:</label>
@@ -29,7 +29,15 @@
       <input class="form-button register" id="register" type="submit" value="Crear Usuario">
     </div>
     <div class="form-group">
-      <a class="form-button login" href="/login" id="login" class="submit-button">Iniciar Sesión</a>
+      <a href="/login" class="form-button login">Iniciar Sesión</a>
+    </div>
+    <div class="separator">
+      <span class="separator-text">o</span>
+    </div>
+    <div class="form-group">
+      <a href="/api/auth/github/callback" class="form-button github">
+        <i class="fab fa-github"></i> Registrarse con GitHub
+      </a>
     </div>
   </form>
 </div>

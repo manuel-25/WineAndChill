@@ -77,24 +77,54 @@
 }
 
 .forgot-password a {
-  color: blue;
+  color: #0056b3;
   font-size: 12px;
+  text-decoration: none;
 }
 
 .accept-session-container {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .accept-session-container label {
   margin-right: 8px;
-  display: flex;
-  align-items: center;
   font-size: 12px;
+  font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.separator {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.separator-text {
+  background-color: #ffffff;
+  padding: 0 10px;
+  color: #555555;
+  font-size: 16px;
+}
+
+.github {
+  display: block;
+  background-color: #24292e;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.github:hover {
+  background-color: #1c2025;
 }
