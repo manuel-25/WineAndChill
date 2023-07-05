@@ -1,20 +1,5 @@
-# Sprint-6 Mongoose
+# Sprint-8 
 
-## Funcionalidades Product Manager
-
-- `addProduct(data)`: Agrega un producto al array y lo guarda dentro de `data.json`.
-- `getProducts()`: Muestra los productos.
-- `getProductById(id)`: Devuelve el producto con el id que se ingresa.
-- `updateProduct(id, data)`: Actualiza la información del producto con el id que se ingresa y lo guarda en `data.json`.
-- `deleteProduct(id)`: Elimina el producto del archivo `data.json`.
-
-## Funcionalidades Cart Manager
-- `addCart(cartId, productId)`: Agrega un producto al carrito correspondiente. Si no se especifica un carrito, se crea uno nuevo vacío.
-- `getCarts()`: Devuelve todos los carritos guardados.
-- `getCartById(id)`: Devuelve el carrito con el id especificado.
-- `updateCart(cartId, newProducts)`: Actualiza los productos en el carrito especificado.
-- `delete(cartId, productId, units)`: Elimina un producto del carrito especificado.
-- 
 ## Rutas de Postman para productos
 
 - **GET todos los productos:** `http://localhost:8080/api/products`
