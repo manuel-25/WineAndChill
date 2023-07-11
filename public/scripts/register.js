@@ -10,28 +10,27 @@ registerButton.addEventListener('click', (event) => {
     const confirmPassword = document.getElementById('confirmPassword').value
     const age = document.getElementById('age').value
 
-    fetch('/api/auth/register',{
+    fetch('/api/auth/register', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name, email, age, password, confirmPassword})
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('response: ',data)
-        if (data.success) {
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, age, password, confirmPassword })
+      })
+        .then(response => {
+          if (response.ok) {
+            // Redirigir a la página de login
+            console.log(response)
+            window.location.href = '/login'
+          } else {
+            return response.json()
+          }
+        })
+        .then(data => {
+          if (data) {
             Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Login successful!',
-            }).then((res)=>{
-                window.location.href = URL_LOGIN
+              icon: 'error',
+              title: 'Error',
+              text: data.message
             })
-        } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: data.message,
-            })
-        }
-    })
+          }
+        })
 })

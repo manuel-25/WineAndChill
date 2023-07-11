@@ -26,7 +26,8 @@ export default function() {
                     const one = await UserModel.findOne({ email: username }) // o req.body.email
                     if (!one) {
                         const user = await UserModel.create(req.body)
-                        delete one.password
+                        delete req.body.password                            //elimino contraseñas despues de crear el user
+                        user.password = null
                         return done(null,user)                              // se completa la deserializacion 
                     }
                     return done(null, false)
@@ -88,7 +89,7 @@ export default function() {
         async (jwt_payload,done) => {
             try {              
                 const user = await UserModel.findOne({ email:jwt_payload.email })
-                console.log('useR:',user)
+                //console.log('useR:',user)
                 delete user.password
                 if (user) {    
                     return done(null, user)

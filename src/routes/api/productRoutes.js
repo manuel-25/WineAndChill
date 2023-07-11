@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
       query.title = title
     }
 
-    let all = await Product.paginate(query, { limit, page })
+    let all = await Product.paginate(query, { limit, page, lean: true })
 
     if (all) {
       return res.status(200).send({

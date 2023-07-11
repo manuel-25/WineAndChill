@@ -48,6 +48,7 @@ initializePassport()
 server.use(passport.initialize())
 server.use(passport.session())
 
+
 mongoose.connect(process.env.LINK_MONGO)
 .then(() => console.log('database connected'))
 .catch((err) => console.log(err))

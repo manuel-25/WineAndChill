@@ -8,6 +8,7 @@ import create_hash from '../../middlewares/create_hash.js'
 import is_valid_password from '../../middlewares/is_valid_password.js'
 import passport from 'passport'
 import createToken from '../../middlewares/createToken.js'
+import passport_call from '../../middlewares/passport_call.js'
 
 const router = Router()
 
@@ -23,7 +24,7 @@ router.post('/register',
             message: 'User created!'
         })
 })
-router.get('/fail-register', (req,res) => res.status(400).json({
+router.post('/fail-register', (req,res) => res.status(400).json({
     success: false,
     message: 'Registration failed.'
 }))
@@ -36,11 +37,10 @@ router.post('/signin',
     createToken,
     async(req, res, next) => {
     try {
-        console.log('token:'+req.token)
         const { email } = req.body
         req.session.email = email,
         req.session.role = req.user.role
-        return res.status(200).cookie('token', req.token, {maxAge: 1000*60*60*24*7}).json({
+        return res.status(200).cookie('token', req.token, {maxAge: 1000*60*60*24*7, httpOnly: true}, ).json({
             success: true,
             message: 'User signed in'
         })
@@ -54,22 +54,8 @@ router.get('/fail-signin', (req,res) => res.status(400).json({
     message: 'Signin failed'
 }))
 
-router.post('/signout', async(req, res, next) => {
-    try{
-        if (req.session.email) {
-            req.session.destroy()
-            return res.status(200).json({
-                success: true,
-                message: 'Signed out'
-            })
-        }
-        return res.status(200).json({
-            success: false,
-            message: 'Not signed in'
-        })
-    } catch(error) {
-        next(error)
-    }
+router.post('/signout', passport_call('jwt'),(req, res) => {
+    res.status(200).clearCookie('token').redirect('/login')
 })
 
 router.get('/github', passport.authenticate('github', { scope: ['user: email'] }), (req, res) => {})
