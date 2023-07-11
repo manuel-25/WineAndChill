@@ -1,0 +1,33 @@
+<%- include("../partials/head") %>
+<body>
+  <%- include("../partials/navbar") %>
+  <div class="container">
+    <h1>Cart</h1>
+    <% if (products.response.products.length > 0) { %>
+      <div class="cart-list">
+        <% products.response.products.forEach((product) => { %>
+          <div class="product-card">
+            <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+            <div class="product-details">
+              <h2 class="product-title"><%= product.productId.title %></h2>
+              <p class="product-description"><%= product.productId.description %></p>
+              <p class="product-price">$<%= product.productId.price %></p>
+            </div>
+            <div class="product-actions">
+              <div class="quantity-input">
+                <input type="number" value="<%= product.quantity %>" min="1" step="1" data-product-id="<%= product._id %>">
+              </div>
+              <button class="updateBtn" data-product-id="<%= product._id %>" onclick="updateQuantity('<%= product._id %>')">Update</button>
+              <button class="deleteBtn" data-product-id="<%= product._id %>" onclick="deleteProduct('<%= product._id %>')"><span>X</span></button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+      <p class="total">Total: $<%= products.response.total %></p>
+    <% } else { %>
+      <p>No products in the cart.</p>
+    <% } %>
+  </div>
+  <%- include("../partials/footer") %>
+</body>
+</html>

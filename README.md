@@ -1,4 +1,4 @@
-# Sprint-8 
+# Sprint-9 Estrategia de autenticación por terceros + JWT
 
 ## Rutas de Postman para productos
 

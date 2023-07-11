@@ -1,0 +1,49 @@
+<%- include("../partials/head") %>
+<body>
+  <%- include("../partials/navbar") %>
+  <div class="container">
+    <h3>Crear Usuario</h3>
+    <form id="userForm" action="/api/auth/register" method="POST" class="user-form">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" placeholder="Nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="photo">Foto:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+      </div>
+      <div class="form-group">
+        <label for="name">Edad:</label>
+        <input type="text" id="age" name="age" placeholder="Edad" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar Contraseña:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar Contraseña" required>
+      </div>
+      <div class="form-group">
+        <input class="form-button register" id="register" type="submit" value="Crear Usuario">
+      </div>
+      <div class="form-group">
+        <a href="/login" class="form-button login">Iniciar Sesión</a>
+      </div>
+      <div class="separator">
+        <span class="separator-text">o</span>
+      </div>
+      <div class="form-group">
+        <a href="/api/auth/github/callback" class="form-button github">
+          <i class="fab fa-github"></i> Registrarse con GitHub
+        </a>
+      </div>
+    </form>
+  </div>  
+  <%- include("../partials/footer") %>
+</body>
+</html>

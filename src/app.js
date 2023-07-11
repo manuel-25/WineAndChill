@@ -17,8 +17,7 @@ import initializePassport from './config/passport_local.js'
 const server = express()
 
 //Template engine
-server.engine('handlebars', engine())
-server.set('view engine', 'handlebars')
+server.set('view engine', 'ejs')
 server.set('views', __dirname + '/views')
 
 
@@ -47,6 +46,7 @@ server.use(methodOverride('_method'))
 initializePassport()
 server.use(passport.initialize())
 server.use(passport.session())
+
 
 mongoose.connect(process.env.LINK_MONGO)
 .then(() => console.log('database connected'))

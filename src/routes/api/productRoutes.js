@@ -2,6 +2,7 @@ import { Router } from "express"
 import Product from '../../models/product.model.js'
 import productValidator from '../../middlewares/productValidator.js'
 import isAdmin from '../../middlewares/isAdmin.js'
+import passport_call from "../../middlewares/passport_call.js"
 
 
 const router = Router()
@@ -18,7 +19,7 @@ router.get('/', async (req, res, next) => {
       query.title = title
     }
 
-    let all = await Product.paginate(query, { limit, page })
+    let all = await Product.paginate(query, { limit, page, lean: true })
 
     if (all) {
       return res.status(200).send({
