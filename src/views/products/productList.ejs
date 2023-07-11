@@ -1,0 +1,44 @@
+  <%- include("../partials/head") %>
+  <body>
+    <%- include("../partials/navbar") %>
+    <div class="container">
+      <h1>Productos Destacados</h1>
+
+      <div class="search-container">
+        <form action="/products" method="GET">
+          <input type="text" name="title" id="search-input" placeholder="Buscar por título">
+          <button type="submit" id="search-button">Buscar</button>
+        </form>
+      </div>
+
+      <div class="row card-row">
+        <% products.forEach((product) => { %>
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card">
+              <a href="/products/<%= product._id %>">
+                <img src="<%= product.thumbnail %>" class="card-img-top product-image" alt="<%= product.title %>">
+                <div class="card-body">
+                  <h5 class="card-title"><%= product.title %></h5>
+                  <p class="card-text card-price">$<%= product.price %></p>
+                </div>
+              </a>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <div class="pagination">
+        <% if (pag) { %>
+          <% if (pag.hasPrevPage) { %>
+            <a href="/products/?page=<%= pag.prevPage %>" class="active">Anterior</a>
+          <% } %>
+          <a href="/products/?page=<%= pag.page %>" class="active"><%= pag.page %></a>
+          <% if (pag.hasNextPage) { %>
+            <a href="/products/?page=<%= pag.nextPage %>" class="active">Siguiente</a>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+    <%- include("../partials/footer") %>
+  </body>
+</html>

@@ -40,7 +40,7 @@ router.post('/signin',
         const { email } = req.body
         req.session.email = email,
         req.session.role = req.user.role
-        return res.status(200).cookie('token', req.token, {maxAge: 1000*60*60*24*7, httpOnly: true}, ).json({
+        return res.status(200).cookie('token', req.token, {maxAge: 1000*60*60*24*7}, ).json({
             success: true,
             message: 'User signed in'
         })

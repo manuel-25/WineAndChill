@@ -29,7 +29,7 @@ router.get('/', passport_call('jwt'), async (req, res, next) => {
 router.use('/products', productList)
 router.use('/products', productDetail)
 router.use('/chat', isAuthenticated, chatRouter)
-router.use('/new_product', isAdmin, newProduct)
+router.use('/new_product', isAuthenticated, isAdmin, newProduct)
 router.use('/cart', isAuthenticated,cart)
 router.use('/register', register)
 router.use('/login', login)
