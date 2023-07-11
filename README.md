@@ -1,5 +1,13 @@
 # Sprint-9 Estrategia de autenticación por terceros + JWT
 
+## Rutas de Postman para productos
+
+- **GET todos los productos:** `http://localhost:8080/api/products`
+- **GET un producto específico:** `http://localhost:8080/api/products/:pid`
+- **POST agregar un nuevo producto:** `http://localhost:8080/api/products`
+- **PUT actualizar un producto específico:** `http://localhost:8080/api/products/:pid`
+- **DELETE un producto específico:** `http://localhost:8080/api/products/:pid`
+
 ## Rutas de Postman para carritos
 
 - **GET todos los carritos:** `http://localhost:8080/api/carts`
