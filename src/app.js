@@ -13,6 +13,7 @@ import expressSession from 'express-session'
 import mongoStore from "connect-mongo"
 import passport from "passport"
 import initializePassport from './config/passport_local.js'
+import session_data from "./middlewares/session_data.js"
 
 const server = express()
 
@@ -46,6 +47,7 @@ server.use(methodOverride('_method'))
 initializePassport()
 server.use(passport.initialize())
 server.use(passport.session())
+server.use(session_data)
 
 
 mongoose.connect(process.env.LINK_MONGO)
@@ -53,3 +55,5 @@ mongoose.connect(process.env.LINK_MONGO)
 .catch((err) => console.log(err))
 
 export default server
+
+
