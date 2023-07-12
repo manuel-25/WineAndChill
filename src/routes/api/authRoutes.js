@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import User from '../../models/user.model.js'
 import register_validator from '../../middlewares/register_validator.js'
 import signinValidator from '../../middlewares/signin_validator.js'
 import pass_is_8 from '../../middlewares/pass_is_8.js'
@@ -54,8 +53,10 @@ router.get('/fail-signin', (req,res) => res.status(400).json({
     message: 'Signin failed'
 }))
 
-router.post('/signout', passport_call('jwt'),(req, res) => {
-    res.status(200).clearCookie('token').redirect('/login')
+router.get('/signout', passport_call('jwt'),(req, res) => {
+    req.session.destroy(),
+    res.clearCookie('token')
+    res.redirect('/login')
 })
 
 router.get('/github', passport.authenticate('github', { scope: ['user: email'] }), (req, res) => {})
@@ -63,6 +64,7 @@ router.get('/github', passport.authenticate('github', { scope: ['user: email'] }
 router.get(
     '/github/callback', 
     passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
+    createToken,        //no funciona ???
     (req, res) => res.status(200).redirect('/')
 )
 

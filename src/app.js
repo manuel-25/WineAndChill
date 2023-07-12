@@ -36,10 +36,14 @@ server.use(expressSession({
         maxAge: 7 * 24 * 60 * 60 * 1000, //7 días
     }
 }))
+
 server.use('/public', express.static('public'))
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
+
+server.use(session_data)
 server.use('/', router)
+
 server.use(errorHandler)
 server.use(notFoundHandler)
 server.use(logger('dev'))
@@ -47,7 +51,6 @@ server.use(methodOverride('_method'))
 initializePassport()
 server.use(passport.initialize())
 server.use(passport.session())
-server.use(session_data)
 
 
 mongoose.connect(process.env.LINK_MONGO)
