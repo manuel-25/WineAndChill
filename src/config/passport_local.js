@@ -89,7 +89,6 @@ export default function() {
         async (jwt_payload,done) => {
             try {              
                 const user = await UserModel.findOne({ email:jwt_payload.email })
-                //console.log('useR:',user)
                 delete user.password
                 if (user) {    
                     return done(null, user)

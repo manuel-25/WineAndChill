@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const productDetailViewController = async(req, res, next) => {
     try {
         const appUrl = `${req.protocol}://${req.headers.host}`
