@@ -13,6 +13,7 @@ import expressSession from 'express-session'
 import mongoStore from "connect-mongo"
 import passport from "passport"
 import initializePassport from './config/passport_local.js'
+import session_data from "./middlewares/session_data.js"
 
 const server = express()
 
@@ -35,10 +36,14 @@ server.use(expressSession({
         maxAge: 7 * 24 * 60 * 60 * 1000, //7 días
     }
 }))
+
 server.use('/public', express.static('public'))
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
+
+server.use(session_data)
 server.use('/', router)
+
 server.use(errorHandler)
 server.use(notFoundHandler)
 server.use(logger('dev'))
@@ -53,3 +58,5 @@ mongoose.connect(process.env.LINK_MONGO)
 .catch((err) => console.log(err))
 
 export default server
+
+
