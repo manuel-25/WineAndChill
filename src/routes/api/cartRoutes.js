@@ -1,7 +1,6 @@
 import { Router } from "express"
 import Product from '../../models/product.model.js'
 import Cart from "../../models/cart.model.js"
-import { Types } from "mongoose"
 
 const router = Router()
 
@@ -29,7 +28,7 @@ router.get('/', async (req, res, next) => {
 })
 
 
-router.get('/:cartId', async (req, res, next) => {
+router.get('/:cartId([a-z0-9]+)', async (req, res, next) => {
     try {
         const cartId = req.params.cartId
         const result = await Cart.findById(cartId)
@@ -48,7 +47,7 @@ router.get('/:cartId', async (req, res, next) => {
     }
 })
 
-router.get('/bills/:cartId', async (req, res, next) => {
+router.get('/bills/:cartId([a-z0-9]+)', async (req, res, next) => {
   try {
     const cartId = req.params.cartId
 
@@ -102,7 +101,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.post('/:cartId/product/:pid', async (req, res, next) => {
+router.post('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)', async (req, res, next) => {
   const cartId = req.params.cartId
   const pid = req.params.pid
   
@@ -137,7 +136,7 @@ router.post('/:cartId/product/:pid', async (req, res, next) => {
   }
 })
 
-router.put('/:cartId/product/:pid/:units', async (req, res, next) => {
+router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res, next) => {
     const cartId = req.params.cartId
     const productId = req.params.pid
     const quantity = req.params.units
@@ -216,7 +215,7 @@ router.put('/:cartId/product/:pid/:units', async (req, res, next) => {
     }
   })
 
-  router.delete('/:cartId/product/:pid/', async (req, res, next) => {
+  router.delete('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/', async (req, res, next) => {
     const cartId = req.params.cartId
     const productId = req.params.pid
   

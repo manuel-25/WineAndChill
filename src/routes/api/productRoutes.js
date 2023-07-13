@@ -2,7 +2,6 @@ import { Router } from "express"
 import Product from '../../models/product.model.js'
 import productValidator from '../../middlewares/productValidator.js'
 import isAdmin from '../../middlewares/isAdmin.js'
-import passport_call from "../../middlewares/passport_call.js"
 
 
 const router = Router()
@@ -36,7 +35,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:pid', async (req, res, next) => {
+router.get('/:pid([a-z0-9]+)', async (req, res, next) => {
   try{
     const pid = req.params.pid
     const product = await Product.findById(pid)
@@ -76,7 +75,7 @@ router.post('/', isAdmin, productValidator, async (req, res, next) => {
 })
 
 
-router.put('/:pid', async (req, res, next) => {
+router.put('/:pid([a-z0-9]+)', async (req, res, next) => {
   try {
     const { pid } = req.params
     const data = req.body
@@ -105,7 +104,7 @@ router.put('/:pid', async (req, res, next) => {
   }
 })
 
-router.delete('/:pid', async (req, res, next) => {
+router.delete('/:pid([a-z0-9]+)', async (req, res, next) => {
   try {
     const pid = req.params.pid
     console.log(pid)
