@@ -1,8 +1,4 @@
-import { Router } from "express";
-
-const router = Router()
-
-router.get("/", (req, res) => {
+const createProductViewController = (req, res, next) => {
     try {
         return res.render('products/newProduct', {
             title: 'Create new product',
@@ -10,8 +6,8 @@ router.get("/", (req, res) => {
             script: 'newProduct.js'
         })
     } catch(error) {
-        console.log(error)
+        next(error)
     }
-})
+}
 
-export default router
+export default createProductViewController

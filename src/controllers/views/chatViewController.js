@@ -1,8 +1,4 @@
-import { Router } from "express";
-
-const router = Router()
-
-router.get('/', async (req, res, next) => {
+const chatViewController = (req, res, next) => {
     try {
         res.render('chat/chat', {
             title: 'Chat',
@@ -12,6 +8,6 @@ router.get('/', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-})
+}
 
-export default router
+export default chatViewController

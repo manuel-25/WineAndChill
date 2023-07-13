@@ -1,8 +1,4 @@
-import { Router } from "express"
-
-const router = Router()
-
-router.get("/", (req, res) => {
+const registerViewController = (req, res, next) => {
     try {
         return res.render('auth/register', {
             title: 'Register',
@@ -10,8 +6,8 @@ router.get("/", (req, res) => {
             script: 'register.js'
         })
     } catch(error) {
-        console.log(error)
+        next(error)
     }
-})
+}
 
-export default router
+export default registerViewController

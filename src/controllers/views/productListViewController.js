@@ -1,9 +1,6 @@
-import { Router } from "express"
 import axios from "axios"
 
-const router = Router()
-
-router.get('/', async (req, res, next) => {
+const productListViewController = async(req, res ,next) => {
     try {
         const appUrl = `${req.protocol}://${req.headers.host}`
         const limit = parseInt(req.query.limit) ?? 5
@@ -30,7 +27,7 @@ router.get('/', async (req, res, next) => {
         }
     } catch (error) {
       next(error)
-    }   
-})
+    }
+}
 
-export default router
+export default productListViewController
