@@ -6,6 +6,7 @@ import newProduct from './products/newProduct.js'
 import cart from './cartRouter.js'
 import register from './user/register.js'
 import login from './user/login.js'
+import loginViewController from "../../controllers/loginViewController.js"
 import isAuthenticated from '../../middlewares/isAuthenticated.js'
 import isAdmin from '../../middlewares/isAdmin.js'
 import passport_call from "../../middlewares/passport_call.js"
@@ -32,7 +33,7 @@ router.use('/chat', isAuthenticated, chatRouter)
 router.use('/new_product', isAuthenticated, isAdmin, newProduct)
 router.use('/cart', isAuthenticated,cart)
 router.use('/register', register)
-router.use('/login', login)
+router.use('/login', loginViewController)
 
 
 export default router
