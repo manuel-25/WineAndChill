@@ -7,16 +7,12 @@ import create_hash from '../../middlewares/create_hash.js'
 import is_valid_password from '../../middlewares/is_valid_password.js'
 import passport from 'passport'
 import createToken from '../../middlewares/createToken.js'
-import passport_call from '../../middlewares/passport_call.js'
 
 const router = Router()
 
 router.post('/register',
     register_validator, pass_is_8, is_same_pass, create_hash,
-    passport.authenticate(
-        'register',
-        { failureRedirect: '/api/auth/fail-register' }
-    ),
+    passport.authenticate('register', { failureRedirect: '/api/auth/fail-register' }),
     (req,res) => {
         return res.status(200).json({
             success: true,
@@ -39,7 +35,7 @@ router.post('/signin',
         const { email } = req.body
         req.session.email = email,
         req.session.role = req.user.role
-        return res.status(200).cookie('token', req.token, {maxAge: 1000*60*60*24*7}, ).json({
+        return res.status(200).send({
             success: true,
             message: 'User signed in'
         })
@@ -53,7 +49,7 @@ router.get('/fail-signin', (req,res) => res.status(400).json({
     message: 'Signin failed'
 }))
 
-router.get('/signout', passport_call('jwt'),(req, res) => {
+router.get('/signout',(req, res) => {
     req.session.destroy(),
     res.clearCookie('token')
     res.redirect('/login')
@@ -64,7 +60,7 @@ router.get('/github', passport.authenticate('github', { scope: ['user: email'] }
 router.get(
     '/github/callback', 
     passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
-    createToken,        //no funciona ???
+    createToken,
     (req, res) => res.status(200).redirect('/')
 )
 

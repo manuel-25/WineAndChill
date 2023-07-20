@@ -61,7 +61,6 @@ export default function() {
             { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL }, //objeto de configuracion
             async (accessToken,refreshToken,profile,done) => {
                 try {
-                    //console.log(profile)
                     const one = await UserModel.findOne({ email:profile._json.login })
                     if (!one) {
                         const user = await UserModel.create({
