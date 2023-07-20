@@ -23,6 +23,18 @@ server.set('views', __dirname + '/views')
 
 //Middlewares
 server.use(cookieParser(process.env.SECRET_COOKIE))
+server.use(expressSession({
+    secret: process.env.SECRET_SESSION,
+    resave: true,
+    saveUninitialized: true,
+    store: mongoStore.create({
+        mongoUrl: process.env.LINK_MONGO,
+        ttl: 10000
+    }),
+    cookie: {
+        maxAge: 7 * 24 * 60 * 60 * 1000, //7 días
+    }
+}))
 
 server.use('/public', express.static('public'))
 server.use(express.json())

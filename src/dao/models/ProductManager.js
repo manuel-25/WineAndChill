@@ -1,6 +1,6 @@
 import productModel from '../../models/product.model.js'
 
-class ProductManager {
+class ProductManagerDao {
     async getProducts() {
         try {
             return await productModel.find({})
@@ -9,18 +9,38 @@ class ProductManager {
         }
     }
 
-    async getProductById(pid) {
+    async paginate(query, config) {
         try {
-            return await productModel.findOne({_id: pid})
+            return await productModel.paginate(query, config)
         } catch(error) {
             return new Error(error)
         }
     }
-    async addProduct(newProduct) {
+
+    async findById(pid) {
+        try {
+            return await productModel.findById(pid)
+        } catch(error) {
+            return new Error(error)
+        }
+    }
+    async create(newProduct) {
         try {
             return await productModel.create(newProduct)
         } catch(error) {
             return new Error(error)
         }
     }
+
+    async findByIdAndDelete(pid) {
+        try {
+            return await productModel.findByIdAndDelete(pid)
+        } catch (error) {
+            return new Error(error)
+        }
+    }
 }
+
+const ProductManager = new ProductManagerDao()
+
+export default ProductManager

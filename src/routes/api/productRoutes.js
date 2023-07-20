@@ -1,5 +1,6 @@
 import { Router } from "express"
 import Product from '../../models/product.model.js'
+import ProductManager from "../../dao/models/ProductManager.js"
 import productValidator from '../../middlewares/productValidator.js'
 import isAdmin from '../../middlewares/isAdmin.js'
 
@@ -12,14 +13,10 @@ router.get('/', async (req, res, next) => {
     const limit = !isNaN(parseInt(req.query.limit)) ? parseInt(req.query.limit) : 6
     const page = !isNaN(parseInt(req.query.page)) ? parseInt(req.query.page) : 1
     const title = req.query.title ? new RegExp(req.query.title, 'i') : null
-
     let query = {}
-    if (title) {
-      query.title = title
-    }
 
-    let all = await Product.paginate(query, { limit, page, lean: true })
-
+    if (title) query.title = title
+    const all = await ProductManager.paginate(query, { limit, page, lean: true })
     if (all) {
       return res.status(200).send({
         status: 200,
@@ -38,7 +35,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:pid([a-z0-9]+)', async (req, res, next) => {
   try{
     const pid = req.params.pid
-    const product = await Product.findById(pid)
+    const product = await ProductManager.findById(pid)
 
     if (!product) {
       return res.status(404).send({
@@ -57,7 +54,7 @@ router.get('/:pid([a-z0-9]+)', async (req, res, next) => {
 
 router.post('/', isAdmin, productValidator, async (req, res, next) => {
   try {
-    const response = await Product.create(req.body)
+    const response = await ProductManager.create(req.body)
     if (response) {
       return res.status(201).json({
         status: 201,
@@ -107,8 +104,7 @@ router.put('/:pid([a-z0-9]+)', async (req, res, next) => {
 router.delete('/:pid([a-z0-9]+)', async (req, res, next) => {
   try {
     const pid = req.params.pid
-    console.log(pid)
-    const product = await Product.findByIdAndDelete(pid)
+    const product = await ProductManager.findByIdAndDelete(pid)
     if (!product) {
       return res.status(404).json({
         status: 404,
