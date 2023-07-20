@@ -1,6 +1,6 @@
 import server from './app.js'
 import { Server } from 'socket.io'
-import carrito from './managers/CartManager.js'
+import carrito from './dao/models/CartManager.js'
 import ChatModel from './models/chats.model.js'
 
 const PORT = process.env.PORT || 8080 
