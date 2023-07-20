@@ -50,7 +50,7 @@ router.get('/fail-signin', (req,res) => res.status(400).json({
 }))
 
 router.get('/signout',(req, res) => {
-    req.session.destroy(),
+    delete req.user
     res.clearCookie('token')
     res.redirect('/login')
 })

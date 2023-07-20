@@ -10,10 +10,11 @@ import isAuthenticated from '../../middlewares/isAuthenticated.js'
 import isAdmin from '../../middlewares/isAdmin.js'
 import passport_call from "../../middlewares/passport_call.js"
 import indexViewController from "../../controllers/views/indexViewController.js"
+import authorization from "../../middlewares/authorization.js"
 
 const router = Router()
 
-router.get('/', passport_call('jwt'), indexViewController)
+router.get('/', passport_call('jwt'), authorization(1) ,indexViewController)
 
 router.get('/products', productListViewController)
 router.get('/products/:pid', productDetailViewController)
