@@ -2,8 +2,9 @@ import server from './app.js'
 import { Server } from 'socket.io'
 import carrito from './dao/models/CartManager.js'
 import ChatModel from './models/chats.model.js'
+import config from './config/config.js'
 
-const PORT = process.env.PORT || 8080 
+const PORT = config.PORT
 const ready = () => console.log('Server Ready on Port: ' + PORT)
 const http_server = server.listen(PORT, ready)
 let socket_server = new Server(http_server)
