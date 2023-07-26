@@ -7,19 +7,18 @@ import cartViewController from "../../controllers/views/cartViewController.js"
 import registerViewController from "../../controllers/views/registerViewController.js"
 import loginViewController from "../../controllers/views/loginViewController.js"
 import isAuthenticated from '../../middlewares/isAuthenticated.js'
-import isAdmin from '../../middlewares/isAdmin.js'
 import passport_call from "../../middlewares/passport_call.js"
 import indexViewController from "../../controllers/views/indexViewController.js"
 import authorization from "../../middlewares/authorization.js"
 
 const router = Router()
 
-router.get('/', passport_call('jwt'), authorization(1) ,indexViewController)
+router.get('/', indexViewController)
 
 router.get('/products', productListViewController)
 router.get('/products/:pid', productDetailViewController)
 router.get('/chat', isAuthenticated, chatViewController)
-router.get('/new_product', isAuthenticated, isAdmin, createProductViewController)
+router.get('/new_product', isAuthenticated, authorization(1), createProductViewController)
 router.get('/cart', isAuthenticated, cartViewController)
 router.get('/register', registerViewController)
 router.get('/login', loginViewController)
