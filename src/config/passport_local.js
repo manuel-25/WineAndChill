@@ -62,6 +62,7 @@ export default function() {
             async (accessToken,refreshToken,profile,done) => {
                 try {
                     const one = await UserModel.findOne({ email:profile._json.login })
+                    //console.log(profile)
                     if (!one) {
                         const user = await UserModel.create({
                             name:profile._json.name,
