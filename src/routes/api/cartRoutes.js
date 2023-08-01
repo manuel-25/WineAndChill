@@ -53,9 +53,7 @@ router.get('/:cartId([a-z0-9]+)', async (req, res, next) => {
 router.get('/bills/:cartId([a-z0-9]+)', readToken, async (req, res, next) => {
   try {
     const cartId = req.params.cartId
-    console.log('req.token',req.token)
-
-    const cart = await CartManager.findOne(req.token.cartId)
+    const cart = await CartManager.findOne(req.params.cartId)
 
     if (!cart) {
       return res.status(404).send({

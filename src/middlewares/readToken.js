@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken'
+import config from '../config/config.js'
 
 export default function(req, res, next) {
     console.log('req.cookies.token',req.cookies.token)
     if(req.cookies.token) {
         try {
-            const decodedToken = jwt.verify(req.cookies.token, process.env.SECRET_JWT)
+            const decodedToken = jwt.verify(req.cookies.token, config.SECRET_JWT)
             const user = {
                 name: decodedToken.name,
                 photo: decodedToken.photo,

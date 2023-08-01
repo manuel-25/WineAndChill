@@ -2,7 +2,7 @@ import { Router } from "express"
 import Product from '../../models/product.model.js'
 import ProductManager from "../../dao/models/ProductManager.js"
 import productValidator from '../../middlewares/productValidator.js'
-import isAdmin from '../../middlewares/isAdmin.js'
+import authorization from "../../middlewares/authorization.js"
 
 
 const router = Router()
@@ -52,7 +52,7 @@ router.get('/:pid([a-z0-9]+)', async (req, res, next) => {
   }
 })
 
-router.post('/', isAdmin, productValidator, async (req, res, next) => {
+router.post('/', authorization('premium'), productValidator, async (req, res, next) => {
   try {
     const response = await ProductManager.create(req.body)
     if (response) {
