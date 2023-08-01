@@ -12,9 +12,9 @@ router.get('/', viewController.index)
 router.get('/products', viewController.productList)
 router.get('/products/:pid', viewController.productDetail)
 router.get('/chat', passport_call('jwt'), viewController.chat)
-router.get('/new_product', passport_call('jwt'), authorization('PREMIUM'), viewController.createProduct)
+router.get('/new_product', passport_call('jwt'), viewController.createProduct)
 router.get('/cart', passport_call('jwt'), readToken,viewController.cart)
-router.get('/register', viewController.register)
+router.get('/register', is_not_Logged, viewController.register)
 router.get('/login', is_not_Logged, viewController.login)
 
 

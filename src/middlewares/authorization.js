@@ -7,3 +7,5 @@ function authorization (role) {
 }
 
 export default authorization
+
+//hay que refactorizar el req.user no anda
