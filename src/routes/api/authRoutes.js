@@ -32,9 +32,11 @@ router.post('/signin',
     createToken,
     async(req, res, next) => {
     try {
-        const { email } = req.body
-        req.session.email = email,
-        req.session.role = req.user.role
+        /*console.log('req.body:',req.body)
+        console.log('req.user:',req.user)
+        delete req.user.password
+        req.session.user = req.user
+        console.log('req.session:', req.session)*/
         return res.status(200).send({
             success: true,
             message: 'User signed in'
@@ -61,7 +63,10 @@ router.get(
     '/github/callback', 
     passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
     createToken,
-    (req, res) => res.status(200).redirect('/')
+    (req, res) => {
+        console.log('github login: ', req.user)
+        res.status(200).redirect('/')
+    }
 )
 
 router.get('fail-register-github', (req, res) => res.status(403).json({

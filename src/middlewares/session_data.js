@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-export  default function(req, res, next) {
+export default function(req, res, next) {
     let user
     if(req.cookies.token) {
         try {

@@ -1,4 +1,5 @@
 function isAuthenticated(req, res, next) {
+  console.log(req.user)
   if (req.user.email) {
     return next()
   } else {

@@ -1,6 +1,8 @@
 import { Router } from "express"
 import Product from '../../models/product.model.js'
 import Cart from "../../models/cart.model.js"
+import CartManager from '../../dao/models/CartManager-copy.js'
+import readToken from "../../middlewares/readToken.js"
 
 const router = Router()
 
@@ -8,8 +10,9 @@ const router = Router()
 router.get('/', async (req, res, next) => {
   try {
     const limit = parseInt(req.query.limit) ?? 6
-    const carts = await Cart.find().populate('products').sort({ 'products.title': 1 })
+    const carts = await CartManager.getCarts()
 
+    //agregar paginate
     if (carts) {
       let cartsToSend = limit ? carts.slice(0, limit) : carts
       return res.status(200).send({
@@ -31,7 +34,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:cartId([a-z0-9]+)', async (req, res, next) => {
     try {
         const cartId = req.params.cartId
-        const result = await Cart.findById(cartId)
+        const result = await CartManager.findById(cartId)
         if (!result) {
             return res.status(404).send({
                 status: 404,
@@ -47,16 +50,12 @@ router.get('/:cartId([a-z0-9]+)', async (req, res, next) => {
     }
 })
 
-router.get('/bills/:cartId([a-z0-9]+)', async (req, res, next) => {
+router.get('/bills/:cartId([a-z0-9]+)', readToken, async (req, res, next) => {
   try {
     const cartId = req.params.cartId
+    console.log('req.token',req.token)
 
-    const cart = await Cart.findOne({ _id: cartId })
-      .populate({
-        path: 'products.productId',
-        model: 'products',
-        select: '-__v'
-      })
+    const cart = await CartManager.findOne(req.token.cartId)
 
     if (!cart) {
       return res.status(404).send({
@@ -85,7 +84,7 @@ router.get('/bills/:cartId([a-z0-9]+)', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        const newCart = await Cart.create({})
+        const newCart = await CartManager.create()
         if (!newCart) {
             return res.status(404).json({
                 status: 404,
@@ -106,7 +105,7 @@ router.post('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)', async (req, res, next
   const pid = req.params.pid
   
   try {
-    const cart = await Cart.findById(cartId)
+    const cart = await CartManager.findById(cartId)
 
     if (!cart) {
       return res.status(404).json({
