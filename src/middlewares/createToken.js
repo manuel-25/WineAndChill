@@ -1,6 +1,9 @@
 import jwt from "jsonwebtoken"
 
 export default (req, res, next) => {
+    const rembemberMe = req.body.rememberMe === true
+    const expiresIn = rembemberMe ? 1000*60*60*24*7 : 1000*60*60*24
+
     const token = jwt.sign({
         name: req.user.name,
         photo: req.user.photo,
@@ -10,8 +13,12 @@ export default (req, res, next) => {
         cartId: req.user.cartId
         },
         process.env.SECRET_JWT,
-        { expiresIn: 1000*60*60*24*7}
+        { expiresIn }
     )
-    res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true })
+    res.cookie('token', token, { maxAge: expiresIn, httpOnly: true })
+
+    if(rembemberMe) {
+        res.cookie('rememberMe', token, { maxAge: expiresIn, httpOnly: true })
+    }
     next()
 }

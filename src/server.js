@@ -1,6 +1,6 @@
 import server from './app.js'
 import { Server } from 'socket.io'
-import carrito from './dao/models/CartManager.js'
+import CartManager from './dao/models/CartManager.js'
 import ChatModel from './models/chats.model.js'
 import config from './config/config.js'
 
@@ -9,15 +9,15 @@ const ready = () => console.log('Server Ready on Port: ' + PORT)
 const http_server = server.listen(PORT, ready)
 let socket_server = new Server(http_server)
 
-let cartCounter = carrito.carts[0].products
-const totalQuantity = cartCounter.reduce((total, product) => total + product.quantity, 0)
+//let cartCounter = CartManager
+//const totalQuantity = cartCounter.reduce((total, product) => total + product.quantity, 0)
 
 const colors = ['#E6B0AA', '#D7BDE2', '#85C1E9', '#73C6B6', '#FAD7A0', '#F5CBA7', '#AED6F1', '#A9DFBF', '#F9E79F', '#F8C471']
 let chatLog = []
 let usersLog = []
 
 socket_server.on('connection', socket => {
-    socket.emit('cartCounter', totalQuantity)
+    //socket.emit('cartCounter', totalQuantity)
 
     //Chat seccion
     socket.on('chat_Auth', (data) => {

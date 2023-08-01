@@ -13,6 +13,7 @@ import passport from "passport"
 import initializePassport from './config/passport_local.js'
 import session_data from "./middlewares/session_data.js"
 import config from "./config/config.js"
+import remember_me from "./middlewares/remember_me.js"
 
 const server = express()
 
@@ -39,6 +40,7 @@ server.use('/public', express.static('public'))
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))
 
+server.use(remember_me)
 server.use(session_data)
 server.use('/', router)
 

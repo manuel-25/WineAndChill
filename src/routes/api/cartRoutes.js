@@ -1,7 +1,7 @@
 import { Router } from "express"
 import Product from '../../models/product.model.js'
 import Cart from "../../models/cart.model.js"
-import CartManager from '../../dao/models/CartManager-copy.js'
+import CartManager from '../../dao/models/CartManager.js'
 import readToken from "../../middlewares/readToken.js"
 
 const router = Router()

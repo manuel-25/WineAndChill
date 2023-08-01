@@ -93,7 +93,7 @@ export default function() {
                 if (user) {    
                     return done(null, user)
                 } else {
-                    return done(null, false, { message: 'not auth'})
+                    return done(null, false, { message: 'no jwt auth'})
                 }
             } catch (error) {
                 return done(error,false)

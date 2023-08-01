@@ -37,10 +37,7 @@ router.post('/signin',
         delete req.user.password
         req.session.user = req.user
         console.log('req.session:', req.session)*/
-        return res.status(200).send({
-            success: true,
-            message: 'User signed in'
-        })
+        return res.status(200).send({ success: true })
     } catch(error) {
         next(error)
     }
@@ -54,6 +51,7 @@ router.get('/fail-signin', (req,res) => res.status(400).json({
 router.get('/signout',(req, res) => {
     delete req.user
     res.clearCookie('token')
+    res.clearCookie('rememberMe')
     res.redirect('/login')
 })
 
