@@ -83,7 +83,7 @@ export default function() {
     passport.use(       //SOLO PARA AUTENTICAR USUARIOS
         'jwt',
         new jwt.Strategy({
-            jwtFromRequest: jwt.ExtractJwt.fromExtractors([(req)=>req?.cookies['token']]),  //extraer la cookie para leerla
+            jwtFromRequest: jwt.ExtractJwt.fromExtractors([(req)=>req?.cookies['token'] || jwt.ExtractJwt.fromAuthHeaderAsBearerToken()]),  //extraer la cookie para leerla, si no existe extraer el token del header
             secretOrKey: process.env.SECRET_JWT
         },
         async (jwt_payload,done) => {
@@ -93,14 +93,11 @@ export default function() {
                 if (user) {    
                     return done(null, user)
                 } else {
-                    return done(null, false, { message: 'no jwt auth'})
+                    return done(null, false, { message: 'No JWT Auth'})
                 }
             } catch (error) {
                 return done(error,false)
             }
         })
     )
-
-
-    
 }

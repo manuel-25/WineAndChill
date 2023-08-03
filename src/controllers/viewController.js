@@ -3,8 +3,16 @@ import axios from "axios"
 
 const cart = async(req, res, next) => {
     try {
-        const cartId = '649069e6a4baa6b6d58c6546'
-        const response = await fetch(`http://localhost:8080/api/carts/bills/${cartId}`)
+        //return res.send('funcionaaaa')
+        //const cartId = '649069e6a4baa6b6d58c6546'
+        const token = req.cookies.token
+        console.log('view token', token)
+        const response = await fetch(`http://localhost:8080/api/carts/bills`, {
+            headers: {
+                'authorization': `Bearer ${token}`,
+            },
+        })
+        //console.log('data:', response)
         const data = await response.json()
     
         if (!response.ok) {
@@ -14,12 +22,13 @@ const cart = async(req, res, next) => {
           })
         }
     
-        return res.render("cart/cart", {
+        return res.send(data)
+        /*return res.render("cart/cart", {
           title: "Cart",
           style: "cart.css",
           script: "cartScript.js",
           products: data
-        })
+        })*/
     } catch (error) {
         next(error)
     }

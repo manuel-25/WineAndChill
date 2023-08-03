@@ -3,6 +3,7 @@
   <%- include("../partials/navbar") %>
   <div class="container">
     <h1>Cart</h1>
+    <%= console.log(products) %>
     <% if (products.response.products.length > 0) { %>
       <div class="cart-list">
         <% products.response.products.forEach((product) => { %>

@@ -50,12 +50,14 @@ router.get('/:cartId([a-z0-9]+)', async (req, res, next) => {
     }
 })
 
-router.get('/bills/:cartId([a-z0-9]+)', readToken, async (req, res, next) => {
+router.get('/bills', readToken, async (req, res, next) => {
   try {
-    const cartId = req.params.cartId
-    const cart = await CartManager.findOne(req.params.cartId)
+    const cartId = req.token.cartId
+    console.log('cartId:',cartId)
+    const cart = await CartManager.findOne(cartId)
 
-    if (!cart) {
+    console.error('cart:', cart)
+    if (cart) {
       return res.status(404).send({
         status: 404,
         response: 'Failed to get Cart with Id: ' + cartId
