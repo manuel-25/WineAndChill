@@ -11,4 +11,4 @@ commander
 
 export default commander
 
-//console.log(commander.opts())
+console.log(commander.opts())
