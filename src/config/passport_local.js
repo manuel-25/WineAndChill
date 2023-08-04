@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
-import UserModel from '../models/user.model.js'
+import UserManager from "../dao/models/UserManager.js";
 import GHStrategy from 'passport-github2'
 import jwt from 'passport-jwt'
 
@@ -13,19 +13,19 @@ export default function() {
     )
     passport.deserializeUser(
         async(id,done) => {
-            const user = await UserModel.findById(id)
+            const user = await UserManager.findById(id)
             return done(null, user)
         }
     )
     passport.use(
-        'register',                                                         //Nombre de la estrategia
+        'register',
         new Strategy(
             { passReqToCallback: true, usernameField: 'email'}, //objeto de requerimientos
             async (req, username, password, done) => {
                 try {
-                    const one = await UserModel.findOne({ email: username }) // o req.body.email
+                    const one = await UserManager.findByEmail(username) // o req.body.email
                     if (!one) {
-                        const user = await UserModel.create(req.body)
+                        const user = await UserManager.create(req.body)
                         delete req.body.password                            //elimino contraseñas despues de crear el user
                         user.password = null
                         return done(null,user)                              // se completa la deserializacion 
@@ -44,7 +44,7 @@ export default function() {
             { usernameField:'email' },
             async (username,password,done) => {
                 try {
-                    const one = await UserModel.findOne({ email:username })
+                    const one = await UserManager.findByEmail(username)
                     if (!one) {
                         return done(null,false)
                     }
@@ -61,10 +61,10 @@ export default function() {
             { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL }, //objeto de configuracion
             async (accessToken,refreshToken,profile,done) => {
                 try {
-                    const one = await UserModel.findOne({ email:profile._json.login })
+                    const one = await UserManager.findByEmail(profile._json.login)
                     //console.log(profile)
                     if (!one) {
-                        const user = await UserModel.create({
+                        const user = await UserManager.createData({
                             name:profile._json.name,
                             email:profile._json.login,
                             age: 0,
@@ -88,7 +88,7 @@ export default function() {
         },
         async (jwt_payload,done) => {
             try {              
-                const user = await UserModel.findOne({ email:jwt_payload.email })
+                const user = await UserManager.findByEmail(jwt_payload.email)
                 delete user.password
                 if (user) {    
                     return done(null, user)

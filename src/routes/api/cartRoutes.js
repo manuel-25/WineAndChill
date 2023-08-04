@@ -1,6 +1,8 @@
 import { Router } from "express"
 import CartManager from '../../dao/models/CartManager.js'
 import readToken from "../../middlewares/readToken.js"
+import ProductManager from "../../dao/models/ProductManager.js"
+import UserManager from "../../dao/models/UserManager.js"
 
 const router = Router()
 
@@ -20,7 +22,7 @@ router.get('/', async (req, res, next) => {
     } else {
       return res.status(404).send({
         status: 404,
-        response: 'Failed to get cart list'
+        response: 'Get Error: Failed to get cart list'
       })
     }
   } catch (error) {
@@ -36,7 +38,7 @@ router.get('/cartId/:cartId([a-z0-9]+)', async (req, res, next) => {
         if (!result) {
             return res.status(404).send({
                 status: 404,
-                response: 'Failed to get Cart Id: ', cartId
+                response: 'Get Error: Failed to get Cart Id: ', cartId
             })
         }
         return res.status(200).send({
@@ -56,7 +58,7 @@ router.get('/bills', readToken, async (req, res, next) => {
     if (!cartId || !cart) {
       return res.status(404).send({
         status: 404,
-        response: 'Failed to get Cart: ' + cartId
+        response: 'Get Error: Failed to get Cart: ' + cartId
       })
     }
 
@@ -84,12 +86,13 @@ router.post('/:cartId?/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)', read
   try {
     let emptyCart
     let result
-    let cartId = req.params.cartId ?? null
-    console.log(req.params.cartId)
+    let cartId = req.params.cartId
     if(cartId === ':cartId') { cartId = null }
     const productId = req.params.productId
     const quantity = req.params.quantity ?? 0
-    //const userEmail = req.token.email
+    const userEmail = req.token.email
+    console.log('token', req.token)
+    
 
     if (cartId === null) {
       emptyCart = await CartManager.create()
@@ -100,7 +103,7 @@ router.post('/:cartId?/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)', read
     if (!cart) {
       return res.status(404).send({
         status: 404,
-        response: `Cart ${cartId} not found`
+        response: `Post Error: Cart ${cartId} not found`
       })
     }
 
@@ -122,84 +125,59 @@ router.post('/:cartId?/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)', read
   }
 })
 
-/*router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res, next) => {
-    const cartId = req.params.cartId
-    const productId = req.params.pid
-    const quantity = req.params.units
-  
-    if (!cartId || !productId || !quantity) {
-      return res.status(500).send({
-        status: 500,
-        response: 'Missing required data'
-      })
-    }
-  
+router.put('/:cartId([a-z0-9]+)/product/:productId([a-z0-9]+)/:units([0-9]+)', async (req, res, next) => {
     try {
-      let cartToUpdate = await Cart.findById(cartId)
-  
+      const cartId = req.params.cartId ?? null
+      const productId = req.params.productId ?? null
+      const quantity = req.params.units ?? null
+    
+      if (!cartId || !productId || !quantity) {
+        return res.status(500).send({
+          status: 500,
+          response: 'Update Error: Missing required data'
+        })
+      }
+
+      const cartToUpdate = await CartManager.findById(cartId)
       if (!cartToUpdate) {
         return res.status(404).send({
           status: 404,
-          response: 'Cart not found'
+          response: `Update Error: Cart ${cartId} not found`
         })
       }
-  
-      let productToUpdate = cartToUpdate.products.find(product => product.productId.toString() === productId.toString())
-  
+
+      const productToUpdate = await ProductManager.findById(productId)
       if (!productToUpdate) {
         return res.status(404).send({
           status: 404,
-          response: 'Product not found in cart'
+          response: `Update Error: Product ${productId} not found`
         })
       }
-  
-      let productFromCart = await Product.findById(productId)
-  
-      if (!productFromCart) {
+
+      if(quantity > productToUpdate.stock) {
         return res.status(404).send({
           status: 404,
-          response: 'Product not found'
+          response: `Update Error: Quantity(${quantity}) exceeds stock(${productToUpdate.stock})`
         })
       }
-  
-      if (quantity > productFromCart.stock) {
-        return res.status(500).send({
-          status: 500,
-          response: 'The quantity you want to add exceeds the available stock.'
+    
+      const updatedProduct = await CartManager.updateProduct(cartId, productId, quantity)
+
+      if(!updatedProduct) {
+        return res.status(404).send({
+          status: 404,
+          response: updatedProduct
         })
-      }
-  
-      const previousQuantity = productToUpdate.quantity
-      const quantityDiff = quantity - previousQuantity
-  
-      productToUpdate.quantity = quantity
-      cartToUpdate.products.set(cartToUpdate.products.findIndex(product => product.productId.toString() === productId.toString()), productToUpdate)
-  
-      const updatedCart = await cartToUpdate.save()
-  
-      if (quantityDiff !== 0) {
-        const updateData = {
-          stock: productFromCart.stock - quantityDiff
-        }
-  
-        const updatedStock = await Product.findByIdAndUpdate(productId, updateData, { new: true })
-  
-        if (!updatedStock) {
-          return res.status(500).send({
-            status: 500,
-            response: 'Failed to update product stock'
-          })
-        }
       }
   
       return res.status(200).send({
         status: 200,
-        response: updatedCart
+        response: updatedProduct
       })
     } catch (error) {
       next(error)
     }
-  })*/
+  })
 
   router.delete('/:cartId([a-z0-9]+)/product/:productId([a-z0-9]+)/', async (req, res, next) => {
     try {

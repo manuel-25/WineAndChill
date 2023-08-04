@@ -1,6 +1,6 @@
 import CartModel from '../../models/cart.model.js'
 
-class CartManager {
+class CartManagerDao {
   async getCarts() {
     try{
       return await CartModel.find({}).populate('products').sort({ 'products.title': 1 })
@@ -40,12 +40,11 @@ class CartManager {
 
   async addToEmptyCart(cartId, productId, quantity) {
     try {
-      const updatedCart = await CartModel.findByIdAndUpdate(
+      return await CartModel.findByIdAndUpdate(
         cartId,
         { $push: { products: { productId, quantity } } },
         { new: true }
       )
-      return updatedCart
     } catch (err) {
       throw new Error(err);
     }
@@ -53,7 +52,7 @@ class CartManager {
   
   async addToCart(cartId, productId, quantity) {
     try {
-      const updatedCart = await CartModel.findOneAndUpdate(
+      return await CartModel.findOneAndUpdate(
         {
           _id: cartId,
           'products.productId': productId,
@@ -63,9 +62,20 @@ class CartManager {
         },
         { new: true }
       )
-      return updatedCart
     } catch (err) {
       throw new Error(err)
+    }
+  }
+
+  async updateProduct(cartId, productId, quantity) {
+    try{
+      return await CartModel.findOneAndUpdate(
+        {_id: cartId, 'products.productId': productId},
+        { $set: { 'products.$.quantity': quantity } },
+        { new: true }
+      )
+    } catch(err) {
+        return new Error(err)
     }
   }
   
@@ -91,6 +101,6 @@ class CartManager {
   }
 }
 
-const cartManagerInstance = new CartManager()
+const CartManager = new CartManagerDao()
 
-export default cartManagerInstance
+export default CartManager
