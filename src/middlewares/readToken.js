@@ -4,7 +4,6 @@ import config from '../config/config.js'
 export default function(req, res, next) {
     let token = null
     const authHeader = req.headers.authorization
-    console.log('authHeader:',authHeader)
 
     if(authHeader && authHeader.startsWith('Bearer')) token = authHeader.slice(7)
     if(!token) token = req.cookies.token
@@ -21,7 +20,6 @@ export default function(req, res, next) {
                 cartId: decodedToken.cartId
             }
             req.token = user
-            console.log('req.token',req.token.cartId)
         } catch (error) {
             return next(error)
         }

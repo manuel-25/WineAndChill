@@ -3,32 +3,20 @@ import axios from "axios"
 
 const cart = async(req, res, next) => {
     try {
-        //return res.send('funcionaaaa')
-        //const cartId = '649069e6a4baa6b6d58c6546'
         const token = req.cookies.token
-        console.log('view token', token)
         const response = await fetch(`http://localhost:8080/api/carts/bills`, {
             headers: {
                 'authorization': `Bearer ${token}`,
             },
         })
-        //console.log('data:', response)
         const data = await response.json()
     
-        if (!response.ok) {
-          return res.status(response.status).json({
-            status: response.status,
-            response: data.message || "Error fetching cart"
-          })
-        }
-    
-        return res.send(data)
-        /*return res.render("cart/cart", {
+        return res.render("cart/cart", {
           title: "Cart",
           style: "cart.css",
           script: "cartScript.js",
-          products: data
-        })*/
+          response: data
+        })
     } catch (error) {
         next(error)
     }

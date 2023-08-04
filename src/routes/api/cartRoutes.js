@@ -31,7 +31,7 @@ router.get('/', async (req, res, next) => {
 })
 
 
-router.get('/:cartId([a-z0-9]+)', async (req, res, next) => {
+router.get('/cartId/:cartId([a-z0-9]+)', async (req, res, next) => {
     try {
         const cartId = req.params.cartId
         const result = await CartManager.findById(cartId)
@@ -52,15 +52,13 @@ router.get('/:cartId([a-z0-9]+)', async (req, res, next) => {
 
 router.get('/bills', readToken, async (req, res, next) => {
   try {
-    const cartId = req.token.cartId
-    console.log('cartId:',cartId)
+    const cartId = req.token?.cartId ?? null
     const cart = await CartManager.findOne(cartId)
 
-    console.error('cart:', cart)
-    if (cart) {
+    if (!cartId || !cart) {
       return res.status(404).send({
         status: 404,
-        response: 'Failed to get Cart with Id: ' + cartId
+        response: 'Failed to get Cart: ' + cartId
       })
     }
 
@@ -69,13 +67,14 @@ router.get('/bills', readToken, async (req, res, next) => {
       totalPrice += product.productId.price * product.quantity
     })
 
+    const data = {
+      cartId: cart._id,
+      total: totalPrice,
+      products: cart.products
+    }
     return res.status(200).send({
       status: 200,
-      response: {
-        cartId: cart._id,
-        total: totalPrice,
-        products: cart.products
-      }
+      data
     })
   } catch (error) {
     next(error)
