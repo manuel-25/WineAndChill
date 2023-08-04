@@ -1,6 +1,4 @@
 import { Router } from "express"
-import Product from '../../models/product.model.js'
-import Cart from "../../models/cart.model.js"
 import CartManager from '../../dao/models/CartManager.js'
 import readToken from "../../middlewares/readToken.js"
 
@@ -81,66 +79,56 @@ router.get('/bills', readToken, async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
-    try {
-        const newCart = await CartManager.create()
-        if (!newCart) {
-            return res.status(404).json({
-                status: 404,
-                response: 'Failed to create empty cart'
-            })
-        }
-        return res.status(201).json({
-            status: 201,
-            response: `Empty cart ${newCart.id} created!`
-        })
-    } catch (error) {
-        next(error)
-    }
-})
-
-router.post('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)', async (req, res, next) => {
-  const cartId = req.params.cartId
-  const pid = req.params.pid
-  
+//falta asociar el carrito creado al usuario usando token
+router.post('/:cartId?/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)', readToken, async (req, res, next) => {
   try {
-    const cart = await CartManager.findById(cartId)
+    let emptyCart
+    let result
+    let cartId = req.params.cartId ?? null
+    console.log(req.params.cartId)
+    if(cartId === ':cartId') { cartId = null }
+    const productId = req.params.productId
+    const quantity = req.params.quantity ?? 0
+    //const userEmail = req.token.email
 
+    if (cartId === null) {
+      emptyCart = await CartManager.create()
+      cartId = emptyCart._id
+    }
+
+    const cart = await CartManager.findById(cartId)
     if (!cart) {
-      return res.status(404).json({
+      return res.status(404).send({
         status: 404,
-        response: 'Cart not found'
+        response: `Cart ${cartId} not found`
       })
     }
-    
-    const existingProduct = cart.products.find(product => product.productId.toString() === pid)
 
-    if (existingProduct) {
-      // El producto ya existe en el carrito, incrementa la cantidad
-      existingProduct.quantity += 1
-    } else {
-      // El producto no existe en el carrito, agrégalo como un nuevo objeto
-      cart.products.push({ productId: pid, quantity: 1 })
+    //Si el producto no existe en el cart lo creamos sino se modifica quantity
+    const productExists = cart.products.some(product => product.productId == productId)
+    if(!productExists) {
+      result = await CartManager.addToEmptyCart(cartId,productId,quantity)
+    }
+    if(productExists) {
+      result = await CartManager.addToCart(cartId,productId,quantity)
     }
 
-    const updatedCart = await cart.save()
-
-    return res.status(200).json({
+    return res.status(200).send({
       status: 200,
-      response: `Product ${pid} added to cart ${updatedCart._id}!`
+      response: `Product ${productId} added to cart ${result?._id}!`
     })
   } catch (error) {
     next(error)
   }
 })
 
-router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res, next) => {
+/*router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res, next) => {
     const cartId = req.params.cartId
     const productId = req.params.pid
     const quantity = req.params.units
   
     if (!cartId || !productId || !quantity) {
-      return res.status(500).json({
+      return res.status(500).send({
         status: 500,
         response: 'Missing required data'
       })
@@ -150,7 +138,7 @@ router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res
       let cartToUpdate = await Cart.findById(cartId)
   
       if (!cartToUpdate) {
-        return res.status(404).json({
+        return res.status(404).send({
           status: 404,
           response: 'Cart not found'
         })
@@ -159,7 +147,7 @@ router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res
       let productToUpdate = cartToUpdate.products.find(product => product.productId.toString() === productId.toString())
   
       if (!productToUpdate) {
-        return res.status(404).json({
+        return res.status(404).send({
           status: 404,
           response: 'Product not found in cart'
         })
@@ -168,14 +156,14 @@ router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res
       let productFromCart = await Product.findById(productId)
   
       if (!productFromCart) {
-        return res.status(404).json({
+        return res.status(404).send({
           status: 404,
           response: 'Product not found'
         })
       }
   
       if (quantity > productFromCart.stock) {
-        return res.status(500).json({
+        return res.status(500).send({
           status: 500,
           response: 'The quantity you want to add exceeds the available stock.'
         })
@@ -197,52 +185,68 @@ router.put('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/:units', async (req, res
         const updatedStock = await Product.findByIdAndUpdate(productId, updateData, { new: true })
   
         if (!updatedStock) {
-          return res.status(500).json({
+          return res.status(500).send({
             status: 500,
             response: 'Failed to update product stock'
           })
         }
       }
   
-      return res.status(200).json({
+      return res.status(200).send({
         status: 200,
         response: updatedCart
       })
     } catch (error) {
       next(error)
     }
+  })*/
+
+  router.delete('/:cartId([a-z0-9]+)/product/:productId([a-z0-9]+)/', async (req, res, next) => {
+    try {
+      const cartId = req.params.cartId
+      const productId = req.params.productId
+
+      const cart = await CartManager.findById(cartId)
+  
+      if (!cart) {
+        return res.status(404).send({
+          status: 404,
+          response: `Cart ${cartId} not found`
+        })
+      }
+
+      const deletedProduct = await CartManager.deleteProduct(cartId,productId)
+  
+      if(deletedProduct.modifiedCount === 0) {
+        return res.status(404).send({
+          status: 404,
+          response: `Product ${productId} not found in cart ${cartId}`
+        })
+      }
+      return res.status(200).send({
+        status: 200,
+        response: `Product: ${productId} deleted from cart ${cartId}`
+      })
+    } catch (error) {
+      next(error)
+    }
   })
 
-  router.delete('/:cartId([a-z0-9]+)/product/:pid([a-z0-9]+)/', async (req, res, next) => {
-    const cartId = req.params.cartId
-    const productId = req.params.pid
-  
+  router.delete('/:cartId([a-z0-9]+)', async (req, res, next) => {
     try {
-      const cartToUpdate = await Cart.findById(cartId)
-  
-      if (!cartToUpdate) {
+      const cartId = req.params.cartId
+      const deletedCart = await CartManager.deleteCart(cartId)
+
+      if (deletedCart.deletedCount === 0) {
         return res.status(404).json({
-          status: 404,
-          response: 'Cart not found'
+          status: 200,
+          response: `Cart ${cartId} not found`
         })
       }
-  
-      const productIndex = cartToUpdate.products.findIndex(product => product.productId.toString() === productId.toString())
-  
-      if (productIndex === -1) {
-        return res.status(404).json({
-          status: 404,
-          response: 'Product not found in cart'
-        })
-      }
-  
-      cartToUpdate.products.splice(productIndex, 1)
-  
-      const updatedCart = await cartToUpdate.save()
-  
+
       return res.status(200).json({
         status: 200,
-        response: updatedCart
+        response: `Cart with ID ${cartId} deleted successfully.`
       })
     } catch (error) {
       next(error)
