@@ -1,4 +1,4 @@
-import UserModel from '../../models/user.model.js'
+import UserModel from '../Mongo/models/user.model.js'
 
 class UserManagerDao {
     async getUsers() {

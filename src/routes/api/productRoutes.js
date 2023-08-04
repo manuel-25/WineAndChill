@@ -1,10 +1,9 @@
 import { Router } from "express"
-import Product from '../../models/product.model.js'
-import ProductManager from "../../dao/models/ProductManager.js"
+import ProductManager from "../../dao/Mongo/ProductManager.js"
 import productValidator from '../../middlewares/productValidator.js'
 import authorization from "../../middlewares/authorization.js"
 
-
+//revisar rutas
 const router = Router()
 
 //error al mandar status 200 con data.json vacio
@@ -84,7 +83,7 @@ router.put('/:pid([a-z0-9]+)', async (req, res, next) => {
       })
     }
 
-    const product = await Product.findByIdAndUpdate(pid, data, {new: true})
+    const product = await ProductManager.findByIdAndUpdate(pid, data, {new: true})
     if (!product) {
       return res.status(404).json({
         status: 404,

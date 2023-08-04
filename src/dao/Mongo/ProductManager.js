@@ -1,4 +1,4 @@
-import productModel from '../../models/product.model.js'
+import productModel from '../Mongo/models/product.model.js'
 
 class ProductManagerDao {
     async getProducts() {
@@ -17,9 +17,9 @@ class ProductManagerDao {
         }
     }
 
-    async findById(pid) {
+    async findById(productId) {
         try {
-            return await productModel.findById(pid)
+            return await productModel.findById(productId)
         } catch(error) {
             return new Error(error)
         }
@@ -32,9 +32,17 @@ class ProductManagerDao {
         }
     }
 
-    async findByIdAndDelete(pid) {
+    async findByIdAndUpdate(productId, data, config) {
         try {
-            return await productModel.findByIdAndDelete(pid)
+            return await productModel.findByIdAndUpdate(productId, data, config)
+        } catch (error) {
+            return new Error(error)
+        }
+    }
+
+    async findByIdAndDelete(productId) {
+        try {
+            return await productModel.findByIdAndDelete(productId)
         } catch (error) {
             return new Error(error)
         }

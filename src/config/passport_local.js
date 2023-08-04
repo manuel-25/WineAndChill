@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
-import UserManager from "../dao/models/UserManager.js";
+import UserManager from '../dao/Mongo/UserManager.js'
 import GHStrategy from 'passport-github2'
 import jwt from 'passport-jwt'
 

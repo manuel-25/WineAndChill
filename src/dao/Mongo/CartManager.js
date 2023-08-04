@@ -1,6 +1,10 @@
-import CartModel from '../../models/cart.model.js'
+import CartModel from './models/cart.model.js'
 
 class CartManagerDao {
+  constructor() {
+    this.CartModel = CartModel
+  }
+
   async getCarts() {
     try{
       return await CartModel.find({}).populate('products').sort({ 'products.title': 1 })

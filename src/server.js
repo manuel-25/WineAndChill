@@ -1,7 +1,7 @@
 import server from './app.js'
 import { Server } from 'socket.io'
-import CartManager from './dao/models/CartManager.js'
-import ChatModel from './models/chats.model.js'
+import CartManager from './dao/Mongo/CartManager.js'
+import ChatModel from './dao/Mongo/models/chats.model.js'
 import config from './config/config.js'
 
 const PORT = config.PORT
