@@ -1,12 +1,13 @@
-import CartManager from "../dao/Mongo/CartManager.js"
-import ProductManager from "../dao/Mongo/ProductManager.js"
-import UserManager from "../dao/Mongo/UserManager.js"
+import { cartService } from "../dao/Service/index.js"
+import { productService } from "../dao/Service/index.js"
+import { userService } from "../dao/Service/index.js"
+
 
 class CartController {
   async getCarts(req, res, next) {
     try {
       const limit = parseInt(req.query.limit) ?? 6
-      const carts = await CartManager.getCarts()
+      const carts = await cartService.getCarts()
   
       //agregar paginate
       if (carts) {
@@ -29,7 +30,7 @@ class CartController {
   async getCartById(req, res, next) {
     try {
       const cartId = req.params.cartId
-      const result = await CartManager.findById(cartId)
+      const result = await cartService.findById(cartId)
       if (!result) {
         return res.status(404).send({
           status: 404,
@@ -48,7 +49,7 @@ class CartController {
   async getCartBills(req, res, next) {
     try {
       const cartId = req.token?.cartId ?? null
-      const cart = await CartManager.findOne(cartId)
+      const cart = await cartService.findOne(cartId)
   
       if (!cartId || !cart) {
         return res.status(404).send({
@@ -89,11 +90,11 @@ class CartController {
       
   
       if (cartId === null) {
-        emptyCart = await CartManager.create()
+        emptyCart = await cartService.create()
         cartId = emptyCart._id
       }
   
-      const cart = await CartManager.findById(cartId)
+      const cart = await cartService.findById(cartId)
       if (!cart) {
         return res.status(404).send({
           status: 404,
@@ -104,10 +105,10 @@ class CartController {
       //Si el producto no existe en el cart lo creamos sino se modifica quantity
       const productExists = cart.products.some(product => product.productId == productId)
       if(!productExists) {
-        result = await CartManager.addToEmptyCart(cartId,productId,quantity)
+        result = await cartService.addToEmptyCart(cartId,productId,quantity)
       }
       if(productExists) {
-        result = await CartManager.addToCart(cartId,productId,quantity)
+        result = await cartService.addToCart(cartId,productId,quantity)
       }
   
       return res.status(200).send({
@@ -132,7 +133,7 @@ class CartController {
         })
       }
 
-      const cartToUpdate = await CartManager.findById(cartId)
+      const cartToUpdate = await cartService.findById(cartId)
       if (!cartToUpdate) {
         return res.status(404).send({
           status: 404,
@@ -140,7 +141,7 @@ class CartController {
         })
       }
 
-      const productToUpdate = await ProductManager.findById(productId)
+      const productToUpdate = await productService.findById(productId)
       if (!productToUpdate) {
         return res.status(404).send({
           status: 404,
@@ -155,7 +156,7 @@ class CartController {
         })
       }
     
-      const updatedProduct = await CartManager.updateProduct(cartId, productId, quantity)
+      const updatedProduct = await cartService.updateProduct(cartId, productId, quantity)
 
       if(!updatedProduct) {
         return res.status(404).send({
@@ -178,7 +179,7 @@ class CartController {
       const cartId = req.params.cartId
       const productId = req.params.productId
 
-      const cart = await CartManager.findById(cartId)
+      const cart = await cartService.findById(cartId)
   
       if (!cart) {
         return res.status(404).send({
@@ -187,7 +188,7 @@ class CartController {
         })
       }
 
-      const deletedProduct = await CartManager.deleteProduct(cartId,productId)
+      const deletedProduct = await cartService.deleteProduct(cartId,productId)
   
       if(deletedProduct.modifiedCount === 0) {
         return res.status(404).send({
@@ -207,7 +208,7 @@ class CartController {
   async deleteCart(req, res, next) {
     try {
       const cartId = req.params.cartId
-      const deletedCart = await CartManager.deleteCart(cartId)
+      const deletedCart = await cartService.deleteCart(cartId)
 
       if (deletedCart.deletedCount === 0) {
         return res.status(404).json({

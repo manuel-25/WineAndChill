@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
-import UserManager from '../dao/Mongo/UserManager.js'
+import { userService } from "../dao/Service/index.js";
 import GHStrategy from 'passport-github2'
 import jwt from 'passport-jwt'
 
@@ -13,7 +13,7 @@ export default function() {
     )
     passport.deserializeUser(
         async(id,done) => {
-            const user = await UserManager.findById(id)
+            const user = await userService.findById(id)
             return done(null, user)
         }
     )
@@ -23,9 +23,9 @@ export default function() {
             { passReqToCallback: true, usernameField: 'email'}, //objeto de requerimientos
             async (req, username, password, done) => {
                 try {
-                    const one = await UserManager.findByEmail(username) // o req.body.email
+                    const one = await userService.findByEmail(username) // o req.body.email
                     if (!one) {
-                        const user = await UserManager.create(req.body)
+                        const user = await userService.create(req.body)
                         delete req.body.password                            //elimino contraseñas despues de crear el user
                         user.password = null
                         return done(null,user)                              // se completa la deserializacion 
@@ -44,7 +44,7 @@ export default function() {
             { usernameField:'email' },
             async (username,password,done) => {
                 try {
-                    const one = await UserManager.findByEmail(username)
+                    const one = await userService.findByEmail(username)
                     if (!one) {
                         return done(null,false)
                     }
@@ -61,10 +61,10 @@ export default function() {
             { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL }, //objeto de configuracion
             async (accessToken,refreshToken,profile,done) => {
                 try {
-                    const one = await UserManager.findByEmail(profile._json.login)
+                    const one = await userService.findByEmail(profile._json.login)
                     //console.log(profile)
                     if (!one) {
-                        const user = await UserManager.createData({
+                        const user = await userService.createData({
                             name:profile._json.name,
                             email:profile._json.login,
                             age: 0,
@@ -88,7 +88,7 @@ export default function() {
         },
         async (jwt_payload,done) => {
             try {              
-                const user = await UserManager.findByEmail(jwt_payload.email)
+                const user = await userService.findByEmail(jwt_payload.email)
                 delete user.password
                 if (user) {    
                     return done(null, user)

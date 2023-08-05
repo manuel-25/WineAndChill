@@ -26,6 +26,4 @@ class UserManagerDao {
     }
 }
 
-const UserManager = new UserManagerDao()
-
-export default UserManager
+export default UserManagerDao

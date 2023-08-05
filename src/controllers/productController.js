@@ -1,3 +1,5 @@
+import { productService } from "../dao/Service/index.js"
+
 class ProductController {
     async getProducts(req, res, next) {
       try {
@@ -8,7 +10,7 @@ class ProductController {
   
         if (title) query.title = title
 
-        const all = await ProductManager.paginate(query, { limit, page, lean: true })
+        const all = await productService.paginate(query, { limit, page, lean: true })
 
         if (!all || all.error) {
             return res.status(404).send({
@@ -28,7 +30,7 @@ class ProductController {
     async getProductById(req, res, next) {
       try {
         const productId = req.params.pid
-        const product = await ProductManager.findById(productId)
+        const product = await productService.findById(productId)
   
         if (!product) {
           return res.status(404).send({
@@ -47,7 +49,7 @@ class ProductController {
   
     async createProduct(req, res, next) {
       try {
-        const response = await ProductManager.create(req.body)
+        const response = await productService.create(req.body)
         if (!response) {
             return res.status(404).json({
                 status: 404,
@@ -75,7 +77,7 @@ class ProductController {
           })
         }
   
-        const product = await ProductManager.findByIdAndUpdate(pid, data, { new: true })
+        const product = await productService.findByIdAndUpdate(pid, data, { new: true })
         if (!product) {
           return res.status(404).json({
             status: 404,
@@ -95,7 +97,7 @@ class ProductController {
     async deleteProduct(req, res, next) {
       try {
         const pid = req.params.pid
-        const product = await ProductManager.findByIdAndDelete(pid)
+        const product = await productService.findByIdAndDelete(pid)
         if (!product) {
           return res.status(404).json({
             status: 404,

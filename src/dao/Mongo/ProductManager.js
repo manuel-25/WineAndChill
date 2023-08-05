@@ -25,6 +25,4 @@ class ProductManagerDao {
     }
 }
 
-const ProductManager = new ProductManagerDao()
-
-export default ProductManager
+export default ProductManagerDao

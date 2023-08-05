@@ -67,6 +67,4 @@ class CartManagerDao {
   }
 }
 
-const CartManager = new CartManagerDao()
-
-export default CartManager
+export default CartManagerDao
