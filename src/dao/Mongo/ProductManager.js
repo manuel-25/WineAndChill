@@ -2,50 +2,26 @@ import productModel from '../Mongo/models/product.model.js'
 
 class ProductManagerDao {
     async getProducts() {
-        try {
-            return await productModel.find({})
-        } catch(error) {
-            return new Error(error)
-        }
+        return await productModel.find({})
     }
 
     async paginate(query, config) {
-        try {
-            return await productModel.paginate(query, config)
-        } catch(error) {
-            return new Error(error)
-        }
+        return await productModel.paginate(query, config)
     }
 
     async findById(productId) {
-        try {
-            return await productModel.findById(productId)
-        } catch(error) {
-            return new Error(error)
-        }
+        return await productModel.findById(productId)
     }
     async create(newProduct) {
-        try {
-            return await productModel.create(newProduct)
-        } catch(error) {
-            return new Error(error)
-        }
+        return await productModel.create(newProduct)
     }
 
     async findByIdAndUpdate(productId, data, config) {
-        try {
-            return await productModel.findByIdAndUpdate(productId, data, config)
-        } catch (error) {
-            return new Error(error)
-        }
+        return await productModel.findByIdAndUpdate(productId, data, config)
     }
 
     async findByIdAndDelete(productId) {
-        try {
-            return await productModel.findByIdAndDelete(productId)
-        } catch (error) {
-            return new Error(error)
-        }
+        return await productModel.findByIdAndDelete(productId)
     }
 }
 

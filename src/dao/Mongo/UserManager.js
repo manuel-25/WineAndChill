@@ -2,51 +2,27 @@ import UserModel from '../Mongo/models/user.model.js'
 
 class UserManagerDao {
     async getUsers() {
-        try{
-            return await UserModel.find({})
-          } catch(err) {
-            return new Error(err)
-          }
+      return await UserModel.find({})
     }
 
     async findById(userId) {
-        try {
-          return await UserModel.findById(userId)
-        } catch(err) {
-          return new Error(err)
-        }
+      return await UserModel.findById(userId)
     }
 
     async findByEmail(email) {
-        try {
-          return await UserModel.findOne({ email: email })
-        } catch(err) {
-          return new Error(err)
-        }
+      return await UserModel.findOne({ email: email })
     }
 
     async create(data) {
-        try{
-            return await UserModel.create(data)
-          } catch(err) {
-            return new Error(err)
-        }
+      return await UserModel.create(data)
     }
 
     async createData(name, email, age, photo, password) {
-        try{
-            return await UserModel.create({name, email, age, photo, password})
-          } catch(err) {
-            return new Error(err)
-        }
+      return await UserModel.create({name, email, age, photo, password})
     }
 
     async deleteUser(email) {
-        try{
-            return await UserModel.deleteOne({email: email})
-          } catch(err) {
-            return new Error(err)
-        }
+      return await UserModel.deleteOne({email: email})
     }
 }
 
