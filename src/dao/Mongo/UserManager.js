@@ -1,6 +1,10 @@
 import UserModel from '../Mongo/models/user.model.js'
 
 class UserManagerDao {
+    constructor() {
+      this.UserModel = UserModel
+    }
+
     async getUsers() {
       return await UserModel.find({})
     }

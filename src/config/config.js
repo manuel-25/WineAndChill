@@ -17,14 +17,6 @@ const config = {
     SECRET_COOKIE: process.env.SECRET_COOKIE    || '',
     PORT: process.env.PORT                      || 8080,
     connectDB: async () => MongoSingleton.getInstance()
-    /*connectDB: async () => {
-        try{
-            await mongoose.connect(process.env.LINK_MONGO)
-            console.info('Database connected')
-        } catch(err) {
-            console.error('Conection error',err)
-        }
-    }*/
 }
 
 export default config
