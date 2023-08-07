@@ -3,7 +3,7 @@ import config from '../config/config.js'
 
 //Creates jwt sign 'token' if rememberMe cookie exists
 export default function(req, res, next) {
-    if(req.cookies.rememberMe) {
+    if(req.cookies?.rememberMe) {
         try {
             const decodedToken = jwt.verify(req.cookies.rememberMe, config.SECRET_JWT)
             const expiresIn = 1000 * 60 * 60 * 24 * 7

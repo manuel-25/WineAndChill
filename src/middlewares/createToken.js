@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken"
 
 export default (req, res, next) => {
-    const rembemberMe = req.body.rememberMe === true
-    const expiresIn = rembemberMe ? 1000*60*60*24*7 : 1000*60*60*24
+    let rembemberMe = req.body.rememberMe === true
+    console.log('req.query:', req.query.rememberMe)
+    const expiresIn = rembemberMe ? 1000*60*60*24 : 1000*60*60
 
     const token = jwt.sign({
         name: req.user.name,

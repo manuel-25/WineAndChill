@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy } from "passport-local";
-import { userService } from "../dao/Service/index.js";
+import { userService } from "../Service/index.js";
 import GHStrategy from 'passport-github2'
 import jwt from 'passport-jwt'
 

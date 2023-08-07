@@ -1,4 +1,4 @@
-import { productService } from "../dao/Service/index.js"
+import { productService } from "../Service/index.js"
 
 class ProductController {
     async getProducts(req, res, next) {

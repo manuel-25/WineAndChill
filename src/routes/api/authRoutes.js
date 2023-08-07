@@ -36,7 +36,7 @@ router.get('/signout', signOut)
 
 router.get('/github', passport.authenticate('github', { scope: ['user: email'] }), (req, res) => {})
 router.get(
-    '/github/callback', 
+    '/github/callback',
     passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
     createToken,
     githubCallback

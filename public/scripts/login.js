@@ -1,5 +1,8 @@
 const loginButton = document.getElementById('login')
+const githubButton = document.querySelector('.form-button.github')
+console.log(githubButton)
 const URL_PRODUCTS = '/products'
+const URL_GITHUB = '/api/auth/github/callback'
 
 loginButton.addEventListener('click', (event) => {
     event.preventDefault()
@@ -24,4 +27,9 @@ loginButton.addEventListener('click', (event) => {
         }
         window.location.href = URL_PRODUCTS
     })
+})
+
+githubButton.addEventListener('click', (event) => {
+    event.preventDefault()
+    window.location.href = URL_GITHUB
 })

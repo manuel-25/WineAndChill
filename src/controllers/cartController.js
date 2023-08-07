@@ -1,6 +1,4 @@
-import { cartService } from "../dao/Service/index.js"
-import { productService } from "../dao/Service/index.js"
-import { userService } from "../dao/Service/index.js"
+import { userService, productService, cartService } from "../Service/index.js"
 
 
 class CartController {
