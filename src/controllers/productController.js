@@ -27,10 +27,10 @@ class ProductController {
       }
     }
   
-    async getProductById(req, res, next) {
+    async getProduct(req, res, next) {
       try {
         const productId = req.params.pid
-        const product = await productService.findById(productId)
+        const product = await productService.getById(productId)
   
         if (!product) {
           return res.status(404).send({
@@ -77,7 +77,7 @@ class ProductController {
           })
         }
   
-        const product = await productService.findByIdAndUpdate(pid, data, { new: true })
+        const product = await productService.update(pid, data, { new: true })
         if (!product) {
           return res.status(404).json({
             status: 404,
@@ -97,7 +97,7 @@ class ProductController {
     async deleteProduct(req, res, next) {
       try {
         const pid = req.params.pid
-        const product = await productService.findByIdAndDelete(pid)
+        const product = await productService.delete(pid)
         if (!product) {
           return res.status(404).json({
             status: 404,

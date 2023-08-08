@@ -15,6 +15,7 @@ const config = {
     SECRET_JWT: process.env.SECRET_JWT          || '',
     SECRET_SESSION: process.env.SECRET_SESSION  || '',
     SECRET_COOKIE: process.env.SECRET_COOKIE    || '',
+    PERSISTENCE: process.env.PERSISTENCE             ,
     PORT: process.env.PORT                      || 8080,
     connectDB: async () => MongoSingleton.getInstance()
 }

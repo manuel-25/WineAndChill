@@ -5,7 +5,7 @@ class ProductManagerDao {
         this.ProductModel = ProductModel
       }
 
-    async getProducts() {
+    async getAll() {
         return await ProductModel.find({})
     }
 
@@ -13,18 +13,18 @@ class ProductManagerDao {
         return await ProductModel.paginate(query, config)
     }
 
-    async findById(productId) {
+    async getById(productId) {
         return await ProductModel.findById(productId)
     }
     async create(newProduct) {
         return await ProductModel.create(newProduct)
     }
 
-    async findByIdAndUpdate(productId, data, config) {
+    async update(productId, data, config) {
         return await ProductModel.findByIdAndUpdate(productId, data, config)
     }
 
-    async findByIdAndDelete(productId) {
+    async delete(productId) {
         return await ProductModel.findByIdAndDelete(productId)
     }
 }
