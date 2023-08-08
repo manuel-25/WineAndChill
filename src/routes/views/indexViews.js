@@ -18,7 +18,7 @@ router.get('/', renderIndex)
 
 router.get('/products', renderProductList)
 router.get('/products/:pid', renderProductDetail)
-router.get('/chat', passport_call('jwt'), renderChat)
+router.get('/chat', passport_call('jwt'), readToken, renderChat)
 router.get('/new_product', passport_call('jwt'), renderCreateProduct)
 router.get('/cart', passport_call('jwt'), readToken, renderCart)
 router.get('/register', is_not_Logged, renderRegister)

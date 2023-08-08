@@ -16,8 +16,8 @@ class ProductManagerDao {
     async getById(productId) {
         return await ProductModel.findById(productId)
     }
-    async create(newProduct) {
-        return await ProductModel.create(newProduct)
+    async create(data) {
+        return await ProductModel.create(data)
     }
 
     async update(productId, data, config) {

@@ -5,7 +5,7 @@ class CartController {
   async getCarts(req, res, next) {
     try {
       const limit = parseInt(req.query.limit) ?? 6
-      const carts = await cartService.getCarts()
+      const carts = await cartService.getAll()
   
       //agregar paginate
       if (carts) {
@@ -28,7 +28,7 @@ class CartController {
   async getCartById(req, res, next) {
     try {
       const cartId = req.params.cartId
-      const result = await cartService.findById(cartId)
+      const result = await cartService.getById(cartId)
       if (!result) {
         return res.status(404).send({
           status: 404,
@@ -47,7 +47,7 @@ class CartController {
   async getCartBills(req, res, next) {
     try {
       const cartId = req.token?.cartId ?? null
-      const cart = await cartService.findOne(cartId)
+      const cart = await cartService.getOne(cartId)
   
       if (!cartId || !cart) {
         return res.status(404).send({
@@ -88,11 +88,11 @@ class CartController {
       
   
       if (cartId === null) {
-        emptyCart = await cartService.create()
+        emptyCart = await cartService.createEmpty()
         cartId = emptyCart._id
       }
   
-      const cart = await cartService.findById(cartId)
+      const cart = await cartService.getById(cartId)
       if (!cart) {
         return res.status(404).send({
           status: 404,
@@ -103,10 +103,10 @@ class CartController {
       //Si el producto no existe en el cart lo creamos sino se modifica quantity
       const productExists = cart.products.some(product => product.productId == productId)
       if(!productExists) {
-        result = await cartService.addToEmptyCart(cartId,productId,quantity)
+        result = await cartService.create(cartId,productId,quantity)
       }
       if(productExists) {
-        result = await cartService.addToCart(cartId,productId,quantity)
+        result = await cartService.add(cartId,productId,quantity)
       }
   
       return res.status(200).send({
@@ -131,7 +131,7 @@ class CartController {
         })
       }
 
-      const cartToUpdate = await cartService.findById(cartId)
+      const cartToUpdate = await cartService.getId(cartId)
       if (!cartToUpdate) {
         return res.status(404).send({
           status: 404,
@@ -139,7 +139,7 @@ class CartController {
         })
       }
 
-      const productToUpdate = await productService.findById(productId)
+      const productToUpdate = await productService.getById(productId)
       if (!productToUpdate) {
         return res.status(404).send({
           status: 404,
@@ -154,7 +154,7 @@ class CartController {
         })
       }
     
-      const updatedProduct = await cartService.updateProduct(cartId, productId, quantity)
+      const updatedProduct = await cartService.update(cartId, productId, quantity)
 
       if(!updatedProduct) {
         return res.status(404).send({
@@ -177,7 +177,7 @@ class CartController {
       const cartId = req.params.cartId
       const productId = req.params.productId
 
-      const cart = await cartService.findById(cartId)
+      const cart = await cartService.getById(cartId)
   
       if (!cart) {
         return res.status(404).send({

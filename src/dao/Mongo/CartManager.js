@@ -5,15 +5,15 @@ class CartManagerDao {
     this.CartModel = CartModel
   }
 
-  async getCarts() {
+  async getAll() {
     return await CartModel.find({}).populate('products').sort({ 'products.title': 1 })
   }
 
-  async findById(cartId) {
+  async getById(cartId) {
     return await CartModel.findById(cartId)
   }
 
-  async findOne(cartId) {
+  async getOne(cartId) {
     return await CartModel.findOne({ _id: cartId })
       .populate({
         path: 'products.productId',
@@ -22,11 +22,11 @@ class CartManagerDao {
       })
   }
 
-  async create() {
+  async createEmpty() {
     return await CartModel.create({})
   }
 
-  async addToEmptyCart(cartId, productId, quantity) {
+  async create(cartId, productId, quantity) {
     return await CartModel.findByIdAndUpdate(
       cartId,
       { $push: { products: { productId, quantity } } },
@@ -34,7 +34,7 @@ class CartManagerDao {
     )
   }
   
-  async addToCart(cartId, productId, quantity) {
+  async add(cartId, productId, quantity) {
     return await CartModel.findOneAndUpdate(
       {
         _id: cartId,
@@ -47,7 +47,7 @@ class CartManagerDao {
     )
   }
 
-  async updateProduct(cartId, productId, quantity) {
+  async update(cartId, productId, quantity) {
     return await CartModel.findOneAndUpdate(
       {_id: cartId, 'products.productId': productId},
       { $set: { 'products.$.quantity': quantity } },
