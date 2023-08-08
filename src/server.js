@@ -5,7 +5,7 @@ import ChatModel from './dao/Mongo/models/chats.model.js'
 import config from './config/config.js'
 
 const PORT = config.PORT
-const ready = () => console.log('Server Ready on Port: ' + PORT)
+const ready = () => console.log('Server running on Port: ' + PORT)
 const http_server = server.listen(PORT, ready)
 let socket_server = new Server(http_server)
 
