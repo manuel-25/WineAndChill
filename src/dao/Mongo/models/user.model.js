@@ -9,7 +9,8 @@ const userSchema = new Schema({
   age: { type: Number },
   role: { type: String, default: 'PUBLIC' },
   password: { type: String, required: true },
-  cartId: { type: Types.ObjectId, ref: 'carts', default: null }
+  cartId: { type: Types.ObjectId, ref: 'carts', default: null },
+  chatColor: { type: String, default: null }
 })
 
 const UserModel = model(collection, userSchema)

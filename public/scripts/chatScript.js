@@ -3,18 +3,14 @@ let chatInput = document.getElementById('chatInput')
 let chatBox = document.getElementById('messages')
 let username
 
-Swal.fire({
-    title: 'Username',
-    input: 'text',
-    inputValidator: (value) => !value && 'Please write your name',
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-}).then((res) => {
-    username = res.value
-    socket.emit('chat_Auth', { username })
+//Primera conexion con socket recibo la data
+socket.emit('chatAuth', {})
+socket.on('chatAuth', (data) => {
+    console.log('data',data)
+    username = data.username
 })
 
-//Mando el server los mensajes
+//Mando al server los mensajes
 chatInput.addEventListener('keydown', (event) => {
     if(event.key === 'Enter') {
         event.preventDefault()
@@ -27,12 +23,12 @@ chatInput.addEventListener('keydown', (event) => {
     }
 })
 
-//Renderizo los mensajes 
+//Renderizo
 socket.on('allMessages', (data) => {
     renderMessages(data)
 })
 
-//Renderizo al cargar la pagina
+//Renderizo onload
 window.addEventListener('load', () => {
     socket.emit('load_messages', 'hola')
     socket.on('allMessages', (data) => {
@@ -41,17 +37,17 @@ window.addEventListener('load', () => {
 })
 
 async function renderMessages(data) {
-    //console.log('data: ', data.chatLog)
+    console.log('data recieved: ', data)
+    const chatArray = data.chatFromDB
     chatBox.innerHTML = ''
-    data.chatLog.forEach((chat) => {
+    chatArray.forEach((chat) => {
       const messageElement = document.createElement('p')
       messageElement.classList.add('chatLine')
   
       const usernameElement = document.createElement('span')
       usernameElement.socketId = 'userNameTag'
       usernameElement.textContent = `${chat.username}:`
-      const userColor = chat.socketId ? data.usersLog.find(user => user.id === chat.socketId)?.color : null
-      usernameElement.style.color = userColor
+      usernameElement.style.color = chat.color ? chat.color : '#000'
   
       const timeElement = document.createElement('span')
       timeElement.className = 'messageTime'

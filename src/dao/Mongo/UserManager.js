@@ -28,6 +28,18 @@ class UserManagerDao {
     async deleteUser(email) {
       return await UserModel.deleteOne({email: email})
     }
+
+    async setColor(id, color) {
+      return await UserModel.findByIdAndUpdate(
+        id,
+        { $set: { chatColor: color } },
+        { new: true }
+      )
+    }
+
+    async getColorById(id) {
+      return UserModel.findById(id).then(user => user?.chatColor)
+    }
 }
 
 export default UserManagerDao
