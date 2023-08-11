@@ -41,6 +41,10 @@
     "socket.io": "^4.6.1",
     "socket.io-cookie-parser": "^1.0.0",
     "sweetalert2": "^11.7.5",
-    "twilio": "^4.14.1"
+    "twilio": "^4.14.1",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2"
   }
 }

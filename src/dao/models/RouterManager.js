@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { Jwt } from 'jsonwebtoken'
+import config from '../../config/config'
 
 class Router{
     constructor() {
@@ -37,7 +37,7 @@ class Router{
         const authHeader = req.headers.authorization
         if(!authHeader) return res.status(401).send({status:'error', message: 'Unauthorized'})
         const token = authHeader.split(' ')[1]
-        const user = Jwt.verify(token, 'CLAVE')
+        const user = Jwt.verify(token, config.SECRET_JWT)
         if(!policies.includes(user.role.toUpperCase())) {
             return res.status(403).send({status: 'error', message: 'Not authorized!'})
         }
