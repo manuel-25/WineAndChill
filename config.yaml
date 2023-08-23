@@ -22,3 +22,6 @@ scenarios:
             as: password
           - json: '$.age'
             as: age
+      - log: 'User registered'
+      - post: 
+        url: 
