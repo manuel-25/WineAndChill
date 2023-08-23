@@ -14,12 +14,15 @@ import initializePassport from './config/passport_local.js'
 import session_data from "./middlewares/session_data.js"
 import config from "./config/config.js"
 import remember_me from "./middlewares/remember_me.js"
+import { addLogger } from "./config/logger.js"
 
 const server = express()
 
 //Template engine
 server.set('view engine', 'ejs')
 server.set('views', __dirname + '/views')
+
+server.use(addLogger)
 
 //Middlewares
 server.use(cookieParser(config.SECRET_COOKIE))

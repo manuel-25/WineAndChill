@@ -9,7 +9,7 @@ import passport from 'passport'
 import createToken from '../../middlewares/createToken.js'
 import authController from '../../controllers/authController.js'
 import { sendEmail } from '../../utils/sendEmail.js'
-import { sendSms, sendWhatsapp } from '../../utils/sendSms.js'
+//import { sendSms, sendWhatsapp } from '../../utils/sendSms.js'
 
 const {
     register, failRegister,
@@ -45,7 +45,7 @@ router.get(
 )
 router.get('fail-register-github', failGithub)
 
-router.get('/confirm/email', async (req, res) => {
+/*router.get('/confirm/email', async (req, res) => {
     await sendEmail()
     res.send('email enviado')
 })
@@ -54,5 +54,6 @@ router.get('/confirm/sms', async (req, res) => {
     await sendWhatsapp()
     res.send('email enviado')
 })
+*/
 
 export default router
