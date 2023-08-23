@@ -15,6 +15,7 @@
   "author": "Manuel-25",
   "license": "ISC",
   "dependencies": {
+    "artillery-plugin-metrics-by-endpoint": "^1.2.0",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",
     "commander": "^11.0.0",
