@@ -1,11 +1,24 @@
-function authorization (role) {
-    return async (req, res, next) => {
-        if(!req.user) return res.status(401).send({status: 'error', message: 'User not logged in' })
-        if(req.user.role !== role) return res.status(403).send({status: 'error', message: 'Permission denied'})
-        next()
+import jwt from 'jsonwebtoken'
+
+function authorization(role) {
+  return async (req, res, next) => {
+    try {
+      if (req.cookies.token) {
+        const decodedToken = jwt.verify(req.cookies.token, process.env.SECRET_JWT)
+        const jwtRole = decodedToken.role;
+
+        const rolesHierarchy = ['PUBLIC', 'PREMIUM', 'OWNER'];
+        if (rolesHierarchy.indexOf(jwtRole) >= rolesHierarchy.indexOf(role)) {
+          return next()
+        } else {
+          return res.status(403).json({ status: 'error', message: 'Permission denied' })
+        }
+      }
+      return res.redirect('/login')
+    } catch (err) {
+      next(err);
     }
+  };
 }
 
 export default authorization
-
-//hay que refactorizar el req.user no anda
