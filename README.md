@@ -1,4 +1,4 @@
-# Sprint-9 Estrategia de autenticación por terceros + JWT
+WINE AND CHILL ECOMMERCE 
 
 ## Rutas de Postman para productos
 
