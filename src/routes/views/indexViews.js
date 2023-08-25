@@ -1,38 +1,28 @@
 import { Router } from "express"
-import productList from './products/productList.js'
-import productDetail from './products/productDetail.js'
-import chatRouter from './chatRouter.js'
-import newProduct from './products/newProduct.js'
-import cart from './cartRouter.js'
-import register from './user/register.js'
-import login from './user/login.js'
-import isAuthenticated from '../../middlewares/isAuthenticated.js'
-import isAdmin from '../../middlewares/isAdmin.js'
 import passport_call from "../../middlewares/passport_call.js"
+import authorization from "../../middlewares/authorization.js"
+import readToken from "../../middlewares/readToken.js"
+import is_not_Logged from "../../middlewares/is_not_Logged.js"
+import viewController from '../../controllers/viewController.js'
 
+const {
+    renderIndex, renderProductList,
+    renderProductDetail, renderChat,
+    renderCreateProduct, renderCart,
+    renderRegister, renderLogin
+} = viewController
 
 const router = Router()
 
+router.get('/', renderIndex)
 
-//home mover a su archivo propio
-router.get('/', passport_call('jwt'), async (req, res, next) => {
-    try {
-        return res.render('index', {
-            title: 'Home',
-            style: 'index.css'
-        })
-    } catch (error) {
-      next(error)
-    }
-})
-
-router.use('/products', productList)
-router.use('/products', productDetail)
-router.use('/chat', isAuthenticated, chatRouter)
-router.use('/new_product', isAuthenticated, isAdmin, newProduct)
-router.use('/cart', isAuthenticated,cart)
-router.use('/register', register)
-router.use('/login', login)
+router.get('/products', renderProductList)
+router.get('/products/:pid', renderProductDetail)
+router.get('/chat', authorization('PUBLIC'), readToken, renderChat)
+router.get('/new_product', authorization('PREMIUM'), renderCreateProduct)
+router.get('/cart', authorization('PUBLIC'), readToken, renderCart)
+router.get('/register', is_not_Logged, renderRegister)
+router.get('/login', is_not_Logged, renderLogin)
 
 
 export default router

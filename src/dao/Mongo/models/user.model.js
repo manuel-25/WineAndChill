@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose'
+import { model, Schema, Types } from 'mongoose'
 
 const collection = 'users'
 
@@ -7,8 +7,10 @@ const userSchema = new Schema({
   photo: { type: String, default: 'default.jpg' },
   email: { type: String, unique: true, index: true },
   age: { type: Number },
-  role: { type: Number, enum: [0, 1], default: 0 },
-  password: { type: String, required: true }
+  role: { type: String, default: 'PUBLIC' },
+  password: { type: String, required: true },
+  cartId: { type: Types.ObjectId, ref: 'carts', default: null },
+  chatColor: { type: String, default: null }
 })
 
 const UserModel = model(collection, userSchema)

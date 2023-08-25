@@ -7,7 +7,7 @@ export default async function(req, res, next) {
         req.user.password
     )
     if (verified) {
-        //delete req.body.password
+        delete req.body.password
         return next()
     }
     return res.status(401).json({

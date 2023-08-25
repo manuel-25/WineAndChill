@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import User from '../../models/user.model.js'
 import register_validator from '../../middlewares/register_validator.js'
 import signinValidator from '../../middlewares/signin_validator.js'
 import pass_is_8 from '../../middlewares/pass_is_8.js'
@@ -8,67 +7,42 @@ import create_hash from '../../middlewares/create_hash.js'
 import is_valid_password from '../../middlewares/is_valid_password.js'
 import passport from 'passport'
 import createToken from '../../middlewares/createToken.js'
-import passport_call from '../../middlewares/passport_call.js'
+import authController from '../../controllers/authController.js'
+//import { sendEmail } from '../../utils/sendEmail.js'
+//import { sendSms, sendWhatsapp } from '../../utils/sendSms.js'
+
+const {
+    register, failRegister,
+    signIn, failSignIn,
+    githubCallback, failGithub,
+    signOut
+} = authController
 
 const router = Router()
 
 router.post('/register',
     register_validator, pass_is_8, is_same_pass, create_hash,
-    passport.authenticate(
-        'register',
-        { failureRedirect: '/api/auth/fail-register' }
-    ),
-    (req,res) => {
-        return res.status(200).json({
-            success: true,
-            message: 'User created!'
-        })
-})
-router.post('/fail-register', (req,res) => res.status(400).json({
-    success: false,
-    message: 'Registration failed.'
-}))
+    passport.authenticate('register', { failureRedirect: '/api/auth/fail-register' }), register
+)
+router.post('/fail-register', failRegister)
 
 router.post('/signin',
     signinValidator, 
     pass_is_8,
     passport.authenticate('signin', {failureRedirect:'/api/auth/fail-signin'}),
-    is_valid_password,
-    createToken,
-    async(req, res, next) => {
-    try {
-        const { email } = req.body
-        req.session.email = email,
-        req.session.role = req.user.role
-        return res.status(200).cookie('token', req.token, {maxAge: 1000*60*60*24*7}, ).json({
-            success: true,
-            message: 'User signed in'
-        })
-    } catch(error) {
-        next(error)
-    }
-})
+    is_valid_password, createToken, signIn
+)
+router.get('/fail-signin', failSignIn)
 
-router.get('/fail-signin', (req,res) => res.status(400).json({
-    success:false,
-    message: 'Signin failed'
-}))
-
-router.post('/signout', passport_call('jwt'),(req, res) => {
-    res.status(200).clearCookie('token').redirect('/login')
-})
+router.get('/signout', signOut)
 
 router.get('/github', passport.authenticate('github', { scope: ['user: email'] }), (req, res) => {})
-
 router.get(
-    '/github/callback', 
+    '/github/callback',
     passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
-    (req, res) => res.status(200).redirect('/')
+    createToken,
+    githubCallback
 )
-
-router.get('fail-register-github', (req, res) => res.status(403).json({
-    success: false,
-    message: 'Bad Authentication'
-}))
+router.get('fail-register-github', failGithub)
 
 export default router
