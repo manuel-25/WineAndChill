@@ -20,9 +20,13 @@ router.get('/logger', (req, res) => {
 //creates fake user and stores in mongo
 router.get('/testuser', (req, res) => {
     let persona = generateUsers()
-    persona.password = hashSync(persona.password, genSaltSync(10)) 
-    userService.create(persona)
-    res.send(persona)
+    persona.confirmPassowrd = persona.password
+    //persona.password = hashSync(persona.password, genSaltSync(10)) 
+    //userService.create(persona)
+    res.send({
+        status: 'success',
+        payload: persona
+    })
 })
 
 router.get('/simpleCounter', (req, res) => {
@@ -42,6 +46,9 @@ router.get('/complexCounter', (req, res) => {
     res.send('Operacion compleja: ' + suma)
 })
 //artillery quick --count 40 --num 50 'http://localhost:8080/api/test/complexCounter' -o complex.json
+
+//artillery run config.yaml --output testPerformance.json
+//artillery report testPerformance.json -o testResults.html
 
 
 //SMS and Mailing

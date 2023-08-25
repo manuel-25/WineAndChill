@@ -8,7 +8,7 @@ import is_valid_password from '../../middlewares/is_valid_password.js'
 import passport from 'passport'
 import createToken from '../../middlewares/createToken.js'
 import authController from '../../controllers/authController.js'
-import { sendEmail } from '../../utils/sendEmail.js'
+//import { sendEmail } from '../../utils/sendEmail.js'
 //import { sendSms, sendWhatsapp } from '../../utils/sendSms.js'
 
 const {

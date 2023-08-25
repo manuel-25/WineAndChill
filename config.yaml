@@ -8,20 +8,33 @@ config:
 scenarios:
   - name: 'Sessions Flow (Register + login)'
     flow: 
-      - log: 'Creating testing users'
+      - log: 'Creating mock users'
       - get:
-        url: /api/test/testuser
-        capture:
-          - json: '$.name'
-            as: name
-          - json: '$.photo'
-            as: photo
-          - json: '$.email'
-            as: email
-          - json: '$.password'
-            as: password
-          - json: '$.age'
-            as: age
-      - log: 'User registered'
+          url: /api/test/testuser
+          capture:
+            - json: '$.name'
+              as: name
+            - json: '$.photo'
+              as: photo
+            - json: '$.email'
+              as: email
+            - json: '$.password'
+              as: password
+            - json: '$.age'
+              as: age
+      - log: 'Registering user'
       - post: 
-        url: 
+          url: /ai/auth/register
+          json:
+            name: "{{name}}"
+            photo: "{{photo}}"
+            email: "{{email}}"
+            password: "{{password}}"
+            age: "{{age}}"
+      - think: 2
+      - log: 'Logging user'
+      - post: 
+          url: /api/auth/login
+          json: 
+            email: "{{email}}"
+            password: "{{password}}"
