@@ -38,7 +38,15 @@ class UserManagerDao {
     }
 
     async getColorById(id) {
-      return UserModel.findById(id).then(user => user?.chatColor)
+      return await UserModel.findById(id).then(user => user?.chatColor)
+    }
+
+    async setCartId(email, cartId) {
+      return await UserModel.findOneAndUpdate(
+        { email: email },
+        { cartId: cartId },
+        { new: true }
+      )
     }
 }
 

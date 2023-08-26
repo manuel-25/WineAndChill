@@ -7,7 +7,10 @@ export default (strategy)=> {
             strategy,
             (err,user,info)=> {
                 if(err) return next(err)
-                if(!user) return res.redirect('/login')
+                if(!user) return res.status(401).send({
+                    "status": 401,
+                    "message": "Unauthorized",
+                })
                 req.user = user
                 delete req.user.password
                 return next()

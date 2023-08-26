@@ -1,6 +1,5 @@
 const loginButton = document.getElementById('login')
 const githubButton = document.querySelector('.form-button.github')
-console.log(githubButton)
 const URL_PRODUCTS = '/products'
 const URL_GITHUB = '/api/auth/github/callback'
 
@@ -17,7 +16,6 @@ loginButton.addEventListener('click', (event) => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         if (!data.success) {
             Swal.fire({
                 icon: 'error',

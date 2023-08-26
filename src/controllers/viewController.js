@@ -4,7 +4,8 @@ import axios from "axios"
 class ViewController {
   async renderCart(req, res, next) {
     try {
-      const token = req.cookies.token
+      const token = req.token
+      console.log('token',token)
       const response = await fetch(`http://localhost:8080/api/carts/bills`, {
         headers: {
           'authorization': `Bearer ${token}`
@@ -77,7 +78,7 @@ class ViewController {
           title: 'Product Detail',
           product,
           style: 'productDetail.css',
-          script: ''
+          script: 'productDetail.js'
         })
       } else {
         console.error('Error al obtener los detalles del producto:', response.data)

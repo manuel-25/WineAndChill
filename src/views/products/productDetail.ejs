@@ -11,11 +11,12 @@
         <p class="product-price">$<%= product.price %></p>
         <p class="product-description"><%= product.description %></p>
         <div class="product-actions">
-          <form action="/api/carts/1000/product/<%= product.id %>/" method="POST">
-              <input type="number" name="quantity">
+          <form action="/" method="POST" id="addToCartForm">
+              <input type="number" name="quantity" id="quantityInput" value="1">
               <p class="product-stock">Stock disponible: <%= product.stock %></p>
-              <input type="submit" value="Agregar al Carrito">
+              <input type="submit" value="Agregar al Carrito" id="submitButton">
           </form>
+          <span id="productId" style="display: none;"><%= product._id %></span>
         </div>
       </div>
     </div>

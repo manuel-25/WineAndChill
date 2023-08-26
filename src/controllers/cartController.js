@@ -46,7 +46,9 @@ class CartController {
 
   async getCartBills(req, res, next) {
     try {
+      console.log('cart bills')
       const cartId = req.token?.cartId ?? null
+      console.log('cartController cartId:', cartId)
       const cart = await cartService.getOne(cartId)
   
       if (!cartId || !cart) {
@@ -79,17 +81,16 @@ class CartController {
     try {
       let emptyCart
       let result
-      let cartId = req.params.cartId
-      if(cartId === ':cartId') { cartId = null }
       const productId = req.params.productId
       const quantity = req.params.quantity ?? 0
+      let cartId = req.token.cartId ?? null
       const userEmail = req.token.email
-      console.log('token', req.token)
       
   
       if (cartId === null) {
         emptyCart = await cartService.createEmpty()
         cartId = emptyCart._id
+        const updatedCart = await userService.setCartId(userEmail, cartId)
       }
   
       const cart = await cartService.getById(cartId)
