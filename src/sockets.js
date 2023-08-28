@@ -1,7 +1,7 @@
 import { Server } from 'socket.io'
 import jwt, { verify } from 'jsonwebtoken'
 import config from './config/config.js'
-import { chatService, userService } from './Service/index.js'
+import { chatService, userService, cartService } from './Service/index.js'
 
 const colors = ['#E6B0AA', '#D7BDE2', '#85C1E9', '#73C6B6', '#FAD7A0', '#F5CBA7', '#AED6F1', '#A9DFBF', '#F9E79F', '#F8C471']
 
@@ -10,12 +10,20 @@ export function initializeSockets(http_server) {
     let socket_server = new Server(http_server)
 
     socket_server.on('connection', async socket => {
-        //socket.emit('cartCounter', totalQuantity)
+
+        //Cart counter
+        const token = verifyToken(socket)
+        if (token) {
+            const userCart = await cartService.getById(token.cartId)
+            const totalQuantity = userCart.products.reduce((total, product) => total + product.quantity, 0)
+            socket.emit('cartCounter', totalQuantity)
+        } else {
+            socket.emit('cartCounter', 0)
+        }
     
+        //Chat seccion
         let color
         let userData
-
-        //Chat seccion
         socket.on('chatAuth', async () => {
             userData = verifyToken(socket)
             const username = userData.name

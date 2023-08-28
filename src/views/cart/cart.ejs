@@ -3,7 +3,6 @@
   <%- include("../partials/navbar") %>
   <div class="container">
     <h1 class="page-title">Carrito de Compras</h1>
-    <%= console.log('data', response) %>
     <% if (response.status === 200) { %>
       <div class="cart-list">
         <% response.payload.products.forEach((product) => { %>

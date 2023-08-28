@@ -1,5 +1,6 @@
 import { userService, productService, cartService, ticketService } from "../Service/index.js"
 import { generateAlphanumericCode } from "../utils.js"
+import mongoose from "mongoose"
 
 class CartController {
   async getCarts(req, res, next) {
@@ -232,56 +233,78 @@ class CartController {
   async purchase(req, res, next) {
     try {
       const cartId = req.token.cartId ?? null
-      if(!cartId) {
-        return res.status(404).send({
+      if (!cartId) {
+        return res.status(404).json({
           status: 404,
-          response: `Cart ${cartId} not found`
+          response: `Cart ${cartId} not found`,
         })
       }
       const cart = await cartService.getById(cartId)
-
-      let indexWithStock = []
-      let indexWithoutStock = []
-      let amount = 0
-      for(let i=0; i<cart.products.length; i++) {
-        let product = await productService.getById(cart.products[i].productId)
-        if (cart.products[i].quantity <= product.stock) {
-          indexWithStock.push(cart.products[i].productId)
-          amount += product.price * cart.products[i].quantity
-          //update product stock
-          let productId = cart.products[i].productId
-          let updatedData = {
-            $inc: { stock: - cart.products[i].quantity}
+  
+      const session = await mongoose.startSession()
+      session.startTransaction()
+  
+      try {
+        let indexWithStock = []
+        let indexWithoutStock = []
+        let amount = 0;
+  
+        for (let i = 0; i < cart.products.length; i++) {
+          let product = await productService.getById(cart.products[i].productId)
+          if (cart.products[i].quantity <= product.stock) {
+            indexWithStock.push(cart.products[i].productId)
+            amount += product.price * cart.products[i].quantity
+  
+            // Actualiza el stock del producto
+            let productId = cart.products[i].productId
+            let updatedData = {
+              $inc: { stock: -cart.products[i].quantity },
+            };
+            await productService.updateProduct(
+              productId,
+              updatedData,
+              { new: true }
+            )
+          } else {
+            indexWithoutStock.push(cart.products[i].productId)
           }
-          let updateStock = await productService.updateProduct(productId, updatedData, { new: true })
-        } else {
-          indexWithoutStock.push(cart.products[i].productId)
         }
+  
+        // Genera el ticket
+        let ticket = {
+          code: generateAlphanumericCode(8),
+          purchase_datetime: new Date().toLocaleString(),
+          amount: amount,
+          purchaser: req.token.email,
+        }
+  
+        const purchaseOrder = await ticketService.create(ticket);
+  
+        // Actualiza el carrito
+        let deletedproducts
+        for (let i = 0; i < indexWithStock.length; i++) {
+          deletedproducts = await cartService.deleteProduct(
+            cartId,
+            indexWithStock[i]
+          )
+        }
+  
+        // Commit de la transacción y finaliza la sesión
+        await session.commitTransaction();
+        session.endSession();
+  
+        return res.status(200).json({
+          success: true,
+          purchaseOrderId: purchaseOrder._id,
+        })
+      } catch (error) {
+        // En caso de error, realiza un rollback de la transacción
+        await session.abortTransaction()
+        session.endSession()
+        throw error
       }
-
-      //generate ticket
-      let ticket = {
-        code: generateAlphanumericCode(8),
-        purchase_datetime: new Date().toLocaleString(),
-        amount: amount,
-        purchaser: req.token.email
-      }
-      const purchaseOrder = await ticketService.create(ticket)
-
-      //update cart
-      let deletedproducts
-      for(let i=0; i<indexWithStock.length; i++) {
-        deletedproducts = await cartService.deleteProduct(cartId, indexWithStock[i])
-      }
-      return res.status(200).send({
-        success: true,
-        purchaseOrderId : purchaseOrder._id ,
-      })
-    } catch(error) {
-      return res.status(500).send({
-        success: false,
-        message: error,
-      })
+    } catch (error) {
+      next(error)
     }
   }
 }
