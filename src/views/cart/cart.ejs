@@ -2,11 +2,11 @@
 <body>
   <%- include("../partials/navbar") %>
   <div class="container">
-    <h1>Cart</h1>
-    <%= console.log('data',response) %>
+    <h1 class="page-title">Carrito de Compras</h1>
+    <%= console.log('data', response) %>
     <% if (response.status === 200) { %>
       <div class="cart-list">
-        <% response.data.products.forEach((product) => { %>
+        <% response.payload.products.forEach((product) => { %>
           <div class="product-card">
             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
             <div class="product-details">
@@ -24,7 +24,13 @@
           </div>
         <% }); %>
       </div>
-      <p class="total">Total: $<%= response.data.total %></p>
+      <div class="total-container">
+        <p class="subtotal">Subtotal: $<%= response.payload.total %></p>
+        <p class="total">Total: $<%= response.payload.total %></p>
+      </div>
+      <div class="checkout-button-container">
+        <button class="checkout-button" onclick="checkout()">Finalizar Compra</button>
+      </div>
     <% } else { %>
       <p>No products in the cart.</p>
     <% } %>

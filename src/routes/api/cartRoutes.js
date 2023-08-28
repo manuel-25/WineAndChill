@@ -6,22 +6,19 @@ import authorization from "../../middlewares/authorization.js"
 
 const router = Router()
 const {
-  getCarts,
-  getCartById,
-  getCartBills,
-  addToCart,
-  updateCartProduct,
-  deleteCartProduct,
-  deleteCart
+  getCarts, getCartById,
+  getCartBills, addToCart,
+  updateCartProduct, deleteCartProduct,
+  deleteCart, purchase
 } = cartController
 
-//Falta ordenar por title
 router.get('/', getCarts)
 router.get('/cartId/:cartId([a-z0-9]+)', getCartById)
 router.get('/bills', readToken, getCartBills)
 
-//falta asociar el carrito creado al usuario usando token
 router.post('/cart/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)',passport_call('jwt') , readToken, addToCart)
+router.post('/purchase', readToken, purchase)
+
 router.put('/:cartId([a-z0-9]+)/product/:productId([a-z0-9]+)/:units([0-9]+)',passport_call('jwt'), updateCartProduct)
 router.delete('/:cartId([a-z0-9]+)/product/:productId([a-z0-9]+)/',passport_call('jwt'), deleteCartProduct)
 router.delete('/:cartId([a-z0-9]+)',passport_call('jwt'), deleteCart)

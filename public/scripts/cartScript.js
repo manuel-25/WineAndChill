@@ -71,5 +71,29 @@ async function deleteProduct(productId) {
         text: 'An error occurred while deleting the product from the cart.',
       })
     }
-  }
+}
   
+async function checkout() {
+  const response = await fetch('/api/carts/purchase', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'}
+  })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Compra exitosa!',
+          text: `Ticket id: ${data.purchaseOrderId}`,
+        }).then(() => {
+          window.location.reload()
+        })
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al realizar la compra',
+          text: `${data.purchaseOrderId}`,
+        })
+      }
+    })
+}

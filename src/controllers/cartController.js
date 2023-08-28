@@ -1,5 +1,5 @@
-import { userService, productService, cartService } from "../Service/index.js"
-
+import { userService, productService, cartService, ticketService } from "../Service/index.js"
+import { generateAlphanumericCode } from "../utils.js"
 
 class CartController {
   async getCarts(req, res, next) {
@@ -46,9 +46,7 @@ class CartController {
 
   async getCartBills(req, res, next) {
     try {
-      console.log('cart bills')
       const cartId = req.token?.cartId ?? null
-      console.log('cartController cartId:', cartId)
       const cart = await cartService.getOne(cartId)
   
       if (!cartId || !cart) {
@@ -70,7 +68,7 @@ class CartController {
       }
       return res.status(200).send({
         status: 200,
-        data
+        payload: data
       })
     } catch (error) {
       next(error)
@@ -228,6 +226,62 @@ class CartController {
       })
     } catch (error) {
       next(error);
+    }
+  }
+
+  async purchase(req, res, next) {
+    try {
+      const cartId = req.token.cartId ?? null
+      if(!cartId) {
+        return res.status(404).send({
+          status: 404,
+          response: `Cart ${cartId} not found`
+        })
+      }
+      const cart = await cartService.getById(cartId)
+
+      let indexWithStock = []
+      let indexWithoutStock = []
+      let amount = 0
+      for(let i=0; i<cart.products.length; i++) {
+        let product = await productService.getById(cart.products[i].productId)
+        if (cart.products[i].quantity <= product.stock) {
+          indexWithStock.push(cart.products[i].productId)
+          amount += product.price * cart.products[i].quantity
+          //update product stock
+          let productId = cart.products[i].productId
+          let updatedData = {
+            $inc: { stock: - cart.products[i].quantity}
+          }
+          let updateStock = await productService.updateProduct(productId, updatedData, { new: true })
+        } else {
+          indexWithoutStock.push(cart.products[i].productId)
+        }
+      }
+
+      //generate ticket
+      let ticket = {
+        code: generateAlphanumericCode(8),
+        purchase_datetime: new Date().toLocaleString(),
+        amount: amount,
+        purchaser: req.token.email
+      }
+      const purchaseOrder = await ticketService.create(ticket)
+
+      //update cart
+      let deletedproducts
+      for(let i=0; i<indexWithStock.length; i++) {
+        deletedproducts = await cartService.deleteProduct(cartId, indexWithStock[i])
+      }
+      return res.status(200).send({
+        success: true,
+        purchaseOrderId : purchaseOrder._id ,
+      })
+    } catch(error) {
+      return res.status(500).send({
+        success: false,
+        message: error,
+      })
     }
   }
 }

@@ -1,6 +1,5 @@
 const submitButton = document.getElementById('submitButton')
 
-
 submitButton.addEventListener('click', (event) => {
     event.preventDefault()
     let quantityInput = document.getElementById('quantityInput'); 
@@ -12,7 +11,6 @@ submitButton.addEventListener('click', (event) => {
     })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if(data.status === 200) {
                 Swal.fire({
                     icon: 'success',

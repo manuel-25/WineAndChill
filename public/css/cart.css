@@ -1,3 +1,10 @@
+.page-title {
+  text-align: center;
+  color: #555;
+  margin: 30px 0;
+  font-size: 28px;
+}
+
 .product-list {
   margin-bottom: 20px;
 }
@@ -7,16 +14,11 @@
   align-items: center;
   margin-bottom: 20px;
   position: relative;
-}
-
-.product-card::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #eee;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .product-image {
@@ -58,26 +60,25 @@
   margin-right: 10px;
 }
 
-.product-actions button.updateBtn {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #ffc107;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
+.product-actions button.updateBtn,
 .product-actions button.deleteBtn {
   margin-top: 10px;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #dc3545;
-  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.product-actions button.updateBtn {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.product-actions button.deleteBtn {
+  background-color: #dc3545;
+  color: #fff;
 }
 
 .product-actions button.deleteBtn span {
@@ -92,37 +93,45 @@
   border-radius: 5px;
 }
 
+.total-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.subtotal {
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 5px;
+}
+
 .total {
-  margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
-  text-align: right;
-  color: #333;
+  color: #555;
 }
 
-@media only screen and (max-width: 767px) {
-  .product-card {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .product-image {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .product-details {
-    margin-bottom: 10px;
-  }
-
-  .product-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-actions button {
-    width: 100%;
-    margin-top: 10px;
-  }
+.checkout-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
+
+.checkout-button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.checkout-button:hover {
+  background-color: #45a049;
+}
+
+/* ... (código CSS para diseño responsive, si lo deseas) */

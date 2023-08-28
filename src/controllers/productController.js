@@ -77,7 +77,7 @@ class ProductController {
           })
         }
   
-        const product = await productService.update(pid, data, { new: true })
+        const product = await productService.updateProduct(pid, data, { new: true })
         if (!product) {
           return res.status(404).json({
             status: 404,
