@@ -22,9 +22,9 @@
 }
 
 .product-image {
-  width: 150px;
+  width: 150px; /* Establece el ancho igual a la altura */
   height: 150px;
-  object-fit: cover;
+  object-fit: contain; /* Muestra la imagen completa sin zoom */
   border-radius: 10px;
   margin-right: 20px;
 }
@@ -38,11 +38,6 @@
   font-size: 20px;
   font-weight: bold;
   color: #333;
-}
-
-.product-description {
-  margin: 5px 0;
-  color: #555;
 }
 
 .product-price {
@@ -61,7 +56,8 @@
 }
 
 .product-actions button.updateBtn,
-.product-actions button.deleteBtn {
+.product-actions button.deleteBtn,
+.checkout-button {
   margin-top: 10px;
   padding: 10px 20px;
   font-size: 16px;
@@ -69,6 +65,16 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  max-width: 100%; /* Añade un ancho máximo */
+}
+
+@media (max-width: 768px) {
+  .product-actions button.updateBtn,
+  .product-actions button.deleteBtn,
+  .checkout-button {
+    padding: 8px 15px; /* Ajusta el padding para botones en pantallas pequeñas */
+    font-size: 14px; /* Ajusta el tamaño de fuente para botones en pantallas pequeñas */
+  }
 }
 
 .product-actions button.updateBtn {
