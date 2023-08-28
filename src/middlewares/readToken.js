@@ -7,7 +7,6 @@ export default function(req, res, next) {
 
     if(authHeader && authHeader.startsWith('Bearer')) token = authHeader.slice(7)
     if(!token) token = req.cookies.token
-
     if(token) {
         try {
             const decodedToken = jwt.verify(token, config.SECRET_JWT)

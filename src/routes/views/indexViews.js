@@ -20,7 +20,7 @@ router.get('/products', renderProductList)
 router.get('/products/:pid', renderProductDetail)
 router.get('/chat', authorization('PUBLIC'), readToken, renderChat)
 router.get('/new_product', authorization('PREMIUM'), renderCreateProduct)
-router.get('/cart', readToken, renderCart)
+router.get('/cart', readToken ,renderCart)
 router.get('/register', is_not_Logged, renderRegister)
 router.get('/login', is_not_Logged, renderLogin)
 
