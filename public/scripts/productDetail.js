@@ -13,20 +13,26 @@ submitButton.addEventListener('click', (event) => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            if (data.status !== 200) {
+            if(data.status === 200) {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Failed to add the product to the cart. Please try again.',
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Product added to your cart!',
+                    timer: 1500,
                 })
+            } else {
+                if(data.status === 401) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'You must login first.',
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Failed to add the product to the cart. Please try again.',
+                    })
+                }
             }
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Product added to your cart!',
-                timer: 1500,
-            })
         })
-
-    
 })

@@ -86,6 +86,12 @@ class CartController {
       let cartId = req.token.cartId ?? null
       const userEmail = req.token.email
       
+      if(!userEmail) {
+        return res.status(404).send({
+          status: 404,
+          response: `Post Error: User not found`
+        })
+      }
   
       if (cartId === null) {
         emptyCart = await cartService.createEmpty()
