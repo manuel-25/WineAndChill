@@ -41,6 +41,10 @@ class authController {
         res.clearCookie('rememberMe')
         res.redirect('/login')
     }
+
+    forgotPassword(req, res) {
+        
+    }
 }
 
 export default new authController()

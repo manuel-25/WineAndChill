@@ -22,34 +22,36 @@ export function initializeSockets(http_server) {
         }
     
         //Chat seccion
-        let color
-        let userData
+        let color;
+        let userData;
         socket.on('chatAuth', async () => {
-            userData = verifyToken(socket)
-            const username = userData.name
-            socket.emit('chatAuth', { username })
+            userData = verifyToken(socket);
+            console.log(userData);
 
-            console.log(userData.chatColor === '')
-            try {
-                if (userData && userData.chatColor === '') {
-                    //console.log('userDatA:',userData)
-                    color = colors[Math.floor(Math.random() * colors.length)]
-                    await userService.setColor(userData.id, color)
-                } else {
-                    color = await userService.getColorById(userData.id)
-                    //console.log(color)
+            if (userData) {
+                const username = userData.name;
+                socket.emit('chatAuth', { username }); // Emitir el nombre de usuario
+
+                try {
+                    if (userData.chatColor === '') {
+                        color = colors[Math.floor(Math.random() * colors.length)];
+                        await userService.setColor(userData.id, color);
+                    } else {
+                        color = await userService.getColorById(userData.id);
+                    }
+                } catch (err) {
+                    console.error(err);
                 }
-            } catch(err) {
-                console.error(err)
+
+                socket.emit('chatAuth', { username, color }); // Emitir el nombre de usuario y el color
             }
-        })
+        });
 
     
         socket.on('new_message', async (data) => {
             try {
                 const dataToSend = {...data, socketId: socket.id, color}
                 await chatService.create(dataToSend)
-                console.log('dataTosend: ',dataToSend)
                 const chatFromDB = await chatService.getAll()
                 socket_server.emit('allMessages', { chatFromDB })
             } catch(error) {

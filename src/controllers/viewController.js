@@ -131,6 +131,18 @@ class ViewController {
       next(error)
     }
   }
+
+  renderForgotPassword(req, res, next) {
+    try {
+      res.render('auth/forgotPassword', {
+        title: 'Forgot Password',
+        style: 'forgotPassword.css',
+        script: ''
+      })
+    } catch (err) {
+      next (err)
+    }
+  }
 }
 
 export default new ViewController()

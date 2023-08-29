@@ -9,7 +9,8 @@ const {
     renderIndex, renderProductList,
     renderProductDetail, renderChat,
     renderCreateProduct, renderCart,
-    renderRegister, renderLogin
+    renderRegister, renderLogin,
+    renderForgotPassword
 } = viewController
 
 const router = Router()
@@ -23,6 +24,7 @@ router.get('/new_product', authorization('PREMIUM'), renderCreateProduct)
 router.get('/cart', readToken ,renderCart)
 router.get('/register', is_not_Logged, renderRegister)
 router.get('/login', is_not_Logged, renderLogin)
+router.get('/forgot-password', renderForgotPassword)
 
 
 export default router
