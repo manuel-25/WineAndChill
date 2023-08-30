@@ -10,24 +10,18 @@ export default async function(req, res, next) {
         next()
     } catch (error) {
         if (error instanceof jwt.TokenExpiredError) {
-            return res.render('error', {
-                title: 'Error',
-                style: 'error.css',
-                script: '',
-                error: {
-                    status: 410,
-                    message: 'The password reset link has expired. Request a new link.'
-                }
+            res.render('auth/forgotPassword', {
+                title: 'Forgot Password',
+                style: 'forgotPassword.css',
+                script: 'forgotPassword.js',
+                message: 'The password reset link has expired. Request a new link.'
             })
         }
-        return res.render('error', {
-            title: 'Error',
-            style: 'error.css',
-            script: '',
-            error: {
-                status: 410,
-                message: 'Invalid token'
-            }
+        res.render('auth/forgotPassword', {
+            title: 'Forgot Password',
+            style: 'forgotPassword.css',
+            script: 'forgotPassword.js',
+            message: 'Invalid token'
         })
     }
 }
