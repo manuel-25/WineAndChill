@@ -149,7 +149,8 @@ class ViewController {
       res.render('auth/resetPassword', {
         title: 'Reset Password',
         style: 'resetPassword.css',
-        script: 'resetPassword.js'
+        script: 'resetPassword.js',
+        email: req.resetToken
       })
     } catch (err) {
       next (err)

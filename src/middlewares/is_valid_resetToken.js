@@ -6,7 +6,7 @@ export default async function(req, res, next) {
 
     try {
         const decodedToken = jwt.verify(token, config.SECRET_JWT)
-        req.resetToken = decodedToken
+        req.resetToken = decodedToken.email
         next()
     } catch (error) {
         if (error instanceof jwt.TokenExpiredError) {

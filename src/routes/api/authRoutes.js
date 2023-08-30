@@ -9,8 +9,7 @@ import passport from 'passport'
 import createToken from '../../middlewares/createToken.js'
 import authController from '../../controllers/authController.js'
 import is_valid_email from '../../middlewares/is_valid_email.js'
-//import { sendEmail } from '../../utils/sendEmail.js'
-//import { sendSms, sendWhatsapp } from '../../utils/sendSms.js'
+import is_valid_resetToken from '../../middlewares/is_valid_resetToken.js'
 
 const {
     register, failRegister,
@@ -48,7 +47,7 @@ router.get(
 router.get('fail-register-github', failGithub)
 
 router.post('/forgot-password', is_valid_email, forgotPassword)
-router.post('/reset-password', is_same_pass, resetPassword)
+router.post('/reset-password', is_same_pass, pass_is_8, resetPassword)
 
 
 export default router

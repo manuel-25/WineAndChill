@@ -1,10 +1,16 @@
-const errorHandler = (error, req, res, next) => {
-    console.error(error.stack)
-    return res.status(500).json({
-        status: 500,
-        method: req.method,
-        path: req.url,
-        response: error.message
+import { logger } from "../config/logger.js"
+
+const errorHandler = (err, req, res, next) => {
+    console.error(err.stack)
+    logger.error(`status: ${err.status || 500} method: ${req.method} path: ${req.url} message: ${err.message}`)
+    return res.render('error', {
+        title: 'Error',
+        style: 'error.css',
+        script: '',
+        error: {
+            status: err.status || 500,
+            message: err.message
+        }
     })
 }
 

@@ -48,6 +48,14 @@ class UserManagerDao {
         { new: true }
       )
     }
+
+    async setPassword(email, password) {
+      return await UserModel.findOneAndUpdate(
+        { email: email },
+        { password: password },
+        { new: true }
+      )
+    }
 }
 
 export default UserManagerDao

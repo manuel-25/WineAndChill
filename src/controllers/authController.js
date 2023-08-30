@@ -1,8 +1,8 @@
 import { userService } from "../Service/index.js"
 import { resetPassword } from "../utils/sendEmail.js"
-import { v4 as uuidv4 } from 'uuid'
 import jwt from 'jsonwebtoken'
 import config from '../config/config.js'
+import { hashSync, genSaltSync, compareSync } from "bcrypt"
 
 class authController {
     register(req, res) {
@@ -46,7 +46,6 @@ class authController {
         try {
             const email = req.body.email
             const emailExists = await userService.findByEmail(email)
-            console.log('email exists: ', emailExists)
             if(!emailExists) {
                 return res.status(400).send({
                     success: false,
@@ -56,7 +55,6 @@ class authController {
             const resetToken = jwt.sign({email: email}, config.SECRET_JWT, { expiresIn: '1h' })
             const resetLink = `${req.protocol}://${req.get('host')}/reset-password/${resetToken}`
 
-            console.log(resetLink)
             await resetPassword(email, resetLink)
             return res.status(200).send({
                 success: true,
@@ -68,7 +66,35 @@ class authController {
     }
 
     async resetPassword(req, res, next) {
-        
+        const { userEmail } = req.body
+        const newPassword = req.body.password
+        try {
+            const user = await userService.findByEmail(userEmail)
+            const originalHashPassword = user.password
+            const newHashPassword = hashSync(newPassword, genSaltSync(10))
+            if (compareSync(newPassword, originalHashPassword)) {
+                return res.status(400).send({
+                    success: false,
+                    message: 'Passwords must be different!'
+                })
+            }
+            const updatedUser = await userService.setPassword(userEmail, newHashPassword)
+            if(updatedUser) { 
+                return res.status(200).send({
+                    success: true,
+                    message: 'Password changed!'
+                }) 
+            } else {
+                return res.status(500).send({
+                    success: false,
+                    message: 'Unexpected error: Please try again.'
+                }) 
+            }
+
+        } catch (err) {
+            next(err)
+        }
+
     }
 }
 
