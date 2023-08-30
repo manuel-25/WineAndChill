@@ -31,7 +31,9 @@ submitButton.addEventListener('click', (event) => {
                 icon: 'success',
                 title: 'Success',
                 text: data.message,
-                timer: 1500,
+                willClose: () => {
+                    window.location.href = '/login';
+                }
             })
         }
     })
