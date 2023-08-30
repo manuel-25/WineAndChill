@@ -8,6 +8,7 @@ import is_valid_password from '../../middlewares/is_valid_password.js'
 import passport from 'passport'
 import createToken from '../../middlewares/createToken.js'
 import authController from '../../controllers/authController.js'
+import is_valid_email from '../../middlewares/is_valid_email.js'
 //import { sendEmail } from '../../utils/sendEmail.js'
 //import { sendSms, sendWhatsapp } from '../../utils/sendSms.js'
 
@@ -15,7 +16,8 @@ const {
     register, failRegister,
     signIn, failSignIn,
     githubCallback, failGithub,
-    signOut, forgotPassword
+    signOut, forgotPassword,
+    resetPassword
 } = authController
 
 const router = Router()
@@ -45,6 +47,8 @@ router.get(
 )
 router.get('fail-register-github', failGithub)
 
-router.get('/forgot-password', forgotPassword)
+router.post('/forgot-password', is_valid_email, forgotPassword)
+router.post('/reset-password', is_same_pass, resetPassword)
+
 
 export default router

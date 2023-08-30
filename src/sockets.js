@@ -2,6 +2,7 @@ import { Server } from 'socket.io'
 import jwt, { verify } from 'jsonwebtoken'
 import config from './config/config.js'
 import { chatService, userService, cartService } from './Service/index.js'
+import { logger } from './config/logger.js'
 
 const colors = ['#E6B0AA', '#D7BDE2', '#85C1E9', '#73C6B6', '#FAD7A0', '#F5CBA7', '#AED6F1', '#A9DFBF', '#F9E79F', '#F8C471']
 
@@ -12,38 +13,43 @@ export function initializeSockets(http_server) {
     socket_server.on('connection', async socket => {
 
         //Cart counter
-        const token = verifyToken(socket)
-        if (token) {
-            const userCart = await cartService.getById(token.cartId)
-            const totalQuantity = userCart.products.reduce((total, product) => total + product.quantity, 0)
-            socket.emit('cartCounter', totalQuantity)
-        } else {
-            socket.emit('cartCounter', 0)
+        try {
+            const token = verifyToken(socket)
+            if(!token) {
+                socket.emit('cartCounter', 0)
+            }
+            if(token) {
+                const userCart = await cartService.getById(token.cartId)
+                const totalQuantity = userCart.products.reduce((total, product) => total + product.quantity, 0)
+                socket.emit('cartCounter', totalQuantity)
+            }
+        } catch (err) {
+            logger.error('Socket error: ', err)
         }
     
         //Chat seccion
         let color;
         let userData;
         socket.on('chatAuth', async () => {
-            userData = verifyToken(socket);
-            console.log(userData);
+            userData = verifyToken(socket)
+            console.log(userData)
 
             if (userData) {
                 const username = userData.name;
-                socket.emit('chatAuth', { username }); // Emitir el nombre de usuario
+                socket.emit('chatAuth', { username })
 
                 try {
                     if (userData.chatColor === '') {
-                        color = colors[Math.floor(Math.random() * colors.length)];
-                        await userService.setColor(userData.id, color);
+                        color = colors[Math.floor(Math.random() * colors.length)]
+                        await userService.setColor(userData.id, color)
                     } else {
-                        color = await userService.getColorById(userData.id);
+                        color = await userService.getColorById(userData.id)
                     }
                 } catch (err) {
-                    console.error(err);
+                    console.error(err)
                 }
 
-                socket.emit('chatAuth', { username, color }); // Emitir el nombre de usuario y el color
+                socket.emit('chatAuth', { username, color })
             }
         });
 

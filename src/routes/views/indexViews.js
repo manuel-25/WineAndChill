@@ -4,13 +4,15 @@ import authorization from "../../middlewares/authorization.js"
 import readToken from "../../middlewares/readToken.js"
 import is_not_Logged from "../../middlewares/is_not_Logged.js"
 import viewController from '../../controllers/viewController.js'
+import is_valid_resetToken from "../../middlewares/is_valid_resetToken.js"
 
 const {
     renderIndex, renderProductList,
     renderProductDetail, renderChat,
     renderCreateProduct, renderCart,
     renderRegister, renderLogin,
-    renderForgotPassword
+    renderForgotPassword, renderResetPassword,
+    renderError
 } = viewController
 
 const router = Router()
@@ -25,6 +27,8 @@ router.get('/cart', readToken ,renderCart)
 router.get('/register', is_not_Logged, renderRegister)
 router.get('/login', is_not_Logged, renderLogin)
 router.get('/forgot-password', renderForgotPassword)
+router.get('/reset-password/:token', is_valid_resetToken, renderResetPassword)
+router.get('/error', renderError)
 
 
 export default router

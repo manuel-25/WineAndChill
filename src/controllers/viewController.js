@@ -137,12 +137,38 @@ class ViewController {
       res.render('auth/forgotPassword', {
         title: 'Forgot Password',
         style: 'forgotPassword.css',
-        script: ''
+        script: 'forgotPassword.js'
+      })
+    } catch (err) {
+      next (err)
+    }
+  }
+
+  renderResetPassword(req, res, next) {
+    try {
+      res.render('auth/resetPassword', {
+        title: 'Reset Password',
+        style: 'resetPassword.css',
+        script: 'resetPassword.js'
+      })
+    } catch (err) {
+      next (err)
+    }
+  }
+
+  renderError(req, res, next) {
+    try {
+      res.render('error', {
+        title: 'Error',
+        style: 'error.css',
+        script: '',
+        error
       })
     } catch (err) {
       next (err)
     }
   }
 }
+
 
 export default new ViewController()
