@@ -4,14 +4,18 @@ import axios from "axios"
 class ViewController {
   async renderCart(req, res, next) {
     try {
-      const token = req.cookies.token
-      const response = await fetch(`http://localhost:8080/api/carts/bills`, {
+      let data = null
+      const token = req.cookies.token ?? null
+      if(token) {
+        console.log('view token: ', token)
+        const response = await fetch(`http://localhost:8080/api/carts/bills`, {
         headers: {
           'authorization': `Bearer ${token}`
         }
-      })
-      const data = await response.json()
-      //console.log(data.payload.products)
+        })
+        data = await response.json()
+        console.log('data:',data)
+      }
       return res.render("cart/cart", {
         title: "Cart",
         style: "cart.css",

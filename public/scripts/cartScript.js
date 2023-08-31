@@ -28,11 +28,11 @@ const updateQuantity = async (productId) => {
       })
     } catch (error) {
       console.error(error)
-        Swal.fire({
-            icon: 'error',
-            title: 'Update Error',
-            text: error,
-        })
+      Swal.fire({
+          icon: 'error',
+          title: 'Update Error',
+          text: error,
+      })
     }
 }
 
@@ -64,11 +64,11 @@ async function deleteProduct(productId) {
       })
     } catch (error) {
       console.error(error)
-        Swal.fire({
-            icon: 'error',
-            title: 'Delete Error',
-            text: error,
-        })
+      Swal.fire({
+          icon: 'error',
+          title: 'Delete Error',
+          text: error,
+      })
     }
 }
   
@@ -88,6 +88,7 @@ async function checkout() {
           window.location.reload()
         })
       } else {
+        console.error(error)
         Swal.fire({
           icon: 'error',
           title: 'Error al realizar la compra',

@@ -88,14 +88,14 @@ class CartController {
       if(!userEmail) {
         return res.status(404).send({
           status: 404,
-          response: `Post Error: User not found`
+          response: `You must login first`
         })
       }
   
       if (cartId === null) {
         emptyCart = await cartService.createEmpty()
         cartId = emptyCart._id
-        const updatedCart = await userService.setCartId(userEmail, cartId)
+        await userService.setCartId(userEmail, cartId)
       }
   
       const cart = await cartService.getById(cartId)
@@ -103,6 +103,14 @@ class CartController {
         return res.status(404).send({
           status: 404,
           response: `Post Error: Cart ${cartId} not found`
+        })
+      }
+
+      const product = await productService.getById(productId)
+      if(product.stock < quantity) {
+        return res.status(400).send({
+          status: 400,
+          response: `Quantity ${quantity} exceeds stock ${product.stock}`
         })
       }
   

@@ -19,10 +19,11 @@ submitButton.addEventListener('click', (event) => {
                     timer: 1500,
                 })
             } else {
-                if(data.status === 401) {
+                if(data.status) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'You must login first.',
+                        title: 'Error',
+                        text: data.response
                     })
                 } else {
                     Swal.fire({

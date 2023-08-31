@@ -3,7 +3,7 @@
   <%- include("../partials/navbar") %>
   <div class="container">
     <h1 class="page-title">Carrito de Compras</h1>
-    <% if (response.status === 200) { %>
+    <% if (response !== null) { %>
       <div class="cart-list">
         <% response.payload.products.forEach((product) => { %>
           <div class="product-card">
@@ -31,7 +31,10 @@
         <button class="checkout-button" onclick="checkout()">Finalizar Compra</button>
       </div>
     <% } else { %>
-      <p>No products in the cart.</p>
+      <p class="empty-cart-message">No products in the cart.</p>
+      <div class="back-button-container">
+        <a class="back-button" href="javascript:history.back()">Volver atrás</a>
+      </div>
     <% } %>
   </div>
   <%- include("../partials/footer") %>

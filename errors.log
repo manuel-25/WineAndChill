@@ -32,3 +32,87 @@ product.json is not a function
 [2023-08-31T19:12:59.108Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
 [2023-08-31T19:16:02.926Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
 [2023-08-31T19:16:02.990Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:45:30.299Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:45:30.362Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:46:13.694Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:46:13.752Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:47:13.435Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:47:13.518Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:49:41.514Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:49:41.573Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:56:04.184Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:56:04.265Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:58:05.675Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:58:05.742Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:59:49.548Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:59:49.614Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:00:39.826Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:00:39.887Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:01:08.647Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:01:08.715Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:01:25.744Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:01:25.810Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:01:51.540Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:01:51.615Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:03:04.752Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:03:04.819Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:03:28.971Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:03:29.039Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:03:57.698Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:03:57.773Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:04:17.395Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:04:17.461Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:04:40.662Z] [ERROR] - status: 500 method: GET path: /cart message: jwt must be provided
+[2023-08-31T22:08:25.724Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:08:25.793Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:10:59.127Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:10:59.196Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:11:06.974Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:11:07.043Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:11:24.457Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:11:24.525Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:12:00.808Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:12:00.877Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:12:16.095Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:12:16.163Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:13:40.246Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:13:40.315Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:24:58.189Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:6
+    4|   <div class="container">
+    5|     <h1 class="page-title">Carrito de Compras</h1>
+ >> 6|     <% if (response.status === 200) { %>
+    7|       <div class="cart-list">
+    8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+
+Cannot read properties of undefined (reading 'status')
+[2023-08-31T22:31:32.377Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d693d39540d2316b9bbd/1 message: Cannot read properties of null (reading 'cartId')
+[2023-08-31T22:31:39.491Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d693d39540d2316b9bbd/1 message: Cannot read properties of null (reading 'cartId')
+[2023-08-31T22:38:16.472Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:6
+    4|   <div class="container">
+    5|     <h1 class="page-title">Carrito de Compras</h1>
+ >> 6|     <% if (response.status === 200) { %>
+    7|       <div class="cart-list">
+    8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+
+Cannot read properties of undefined (reading 'status')
+[2023-08-31T22:39:32.217Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token '<' in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-08-31T22:39:43.763Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token '<' in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-08-31T22:40:32.914Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:8
+    6|     <% if (response !== null) { %>
+    7|       <div class="cart-list">
+ >> 8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+    10|             <% console.log(`Product ${product.productId}`) %>
+    11|             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+
+Cannot read properties of undefined (reading 'payload')

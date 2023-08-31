@@ -1,12 +1,10 @@
+/* Estilos previos */
+
 .page-title {
   text-align: center;
   color: #555;
   margin: 30px 0;
   font-size: 28px;
-}
-
-.product-list {
-  margin-bottom: 20px;
 }
 
 .product-card {
@@ -22,9 +20,9 @@
 }
 
 .product-image {
-  width: 150px; /* Establece el ancho igual a la altura */
+  width: 150px;
   height: 150px;
-  object-fit: contain; /* Muestra la imagen completa sin zoom */
+  object-fit: contain;
   border-radius: 10px;
   margin-right: 20px;
 }
@@ -65,15 +63,15 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-  max-width: 100%; /* Añade un ancho máximo */
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
   .product-actions button.updateBtn,
   .product-actions button.deleteBtn,
   .checkout-button {
-    padding: 8px 15px; /* Ajusta el padding para botones en pantallas pequeñas */
-    font-size: 14px; /* Ajusta el tamaño de fuente para botones en pantallas pequeñas */
+    padding: 8px 15px;
+    font-size: 14px;
   }
 }
 
@@ -138,4 +136,33 @@
 
 .checkout-button:hover {
   background-color: #45a049;
+}
+
+/* Estilos adicionales */
+
+.empty-cart-message {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+}
+
+.back-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-button {
+  padding: 8px 15px;
+  font-size: 16px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #333;
 }
