@@ -4,3 +4,31 @@
 [2023-08-30T13:17:15.978Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: Este es un error de prueba
 [2023-08-30T13:25:44.368Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: email is not defined
 [2023-08-30T13:35:52.530Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: bcrypt is not defined
+[2023-08-31T16:17:51.552Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:17:58.691Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:18:22.809Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:18:34.758Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:20:41.973Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: cartService.getId is not a function
+[2023-08-31T16:21:25.502Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: cartService.getId is not a function
+[2023-08-31T16:40:18.884Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:10
+    8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+ >> 10|             <% console.log(`Product ${product.json()}`) %>
+    11|             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+    12|             <div class="product-details">
+    13|               <h2 class="product-title"><%= product.productId.title %></h2>
+
+product.json is not a function
+[2023-08-31T18:53:54.257Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T18:53:54.323Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T18:54:06.490Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T18:54:06.584Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T18:56:43.078Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T18:56:43.136Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T19:06:12.210Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:06:40.349Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:10:50.907Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:11:33.190Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:12:59.108Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:16:02.926Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T19:16:02.990Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0

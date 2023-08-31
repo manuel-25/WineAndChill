@@ -19,8 +19,8 @@ router.get('/bills', readToken, getCartBills)
 router.post('/cart/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)',passport_call('jwt') , readToken, addToCart)
 router.post('/purchase', readToken, purchase)
 
-router.put('/:cartId([a-z0-9]+)/product/:productId([a-z0-9]+)/:units([0-9]+)',passport_call('jwt'), updateCartProduct)
-router.delete('/:cartId([a-z0-9]+)/product/:productId([a-z0-9]+)/',passport_call('jwt'), deleteCartProduct)
+router.put('/update/:productId([a-z0-9]+)/:units([0-9]+)',passport_call('jwt'), readToken, updateCartProduct)
+router.delete('/delete/:productId([a-z0-9]+)',passport_call('jwt'), readToken, deleteCartProduct)
 router.delete('/:cartId([a-z0-9]+)',passport_call('jwt'), deleteCart)
   
 export default router

@@ -11,6 +11,7 @@ class ViewController {
         }
       })
       const data = await response.json()
+      //console.log(data.payload.products)
       return res.render("cart/cart", {
         title: "Cart",
         style: "cart.css",

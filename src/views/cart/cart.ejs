@@ -7,6 +7,7 @@
       <div class="cart-list">
         <% response.payload.products.forEach((product) => { %>
           <div class="product-card">
+            <% console.log(`Product ${product.productId}`) %>
             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
             <div class="product-details">
               <h2 class="product-title"><%= product.productId.title %></h2>
@@ -14,10 +15,10 @@
             </div>
             <div class="product-actions">
               <div class="quantity-input">
-                <input type="number" value="<%= product.quantity %>" min="1" step="1" data-product-id="<%= product._id %>">
+                <input type="number" value="<%= product.quantity %>" min="1" step="1" data-product-id="<%= product.productId._id %>">
               </div>
-              <button class="updateBtn" data-product-id="<%= product._id %>" onclick="updateQuantity('<%= product._id %>')">Update</button>
-              <button class="deleteBtn" data-product-id="<%= product._id %>" onclick="deleteProduct('<%= product._id %>')"><span>X</span></button>
+              <button class="updateBtn" data-product-id="<%= product._id %>" onclick="updateQuantity('<%= product.productId._id %>')">Update</button>
+              <button class="deleteBtn" data-product-id="<%= product._id %>" onclick="deleteProduct('<%= product.productId._id %>')"><span>X</span></button>
             </div>
           </div>
         <% }); %>

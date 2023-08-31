@@ -126,7 +126,7 @@ class CartController {
 
   async updateCartProduct(req, res, next) {
     try {
-      const cartId = req.params.cartId ?? null
+      const cartId = req.token?.cartId ?? null
       const productId = req.params.productId ?? null
       const quantity = req.params.units ?? null
     
@@ -137,7 +137,7 @@ class CartController {
         })
       }
 
-      const cartToUpdate = await cartService.getId(cartId)
+      const cartToUpdate = await cartService.getById(cartId)
       if (!cartToUpdate) {
         return res.status(404).send({
           status: 404,
@@ -180,11 +180,10 @@ class CartController {
 
   async deleteCartProduct(req, res, next) {
     try {
-      const cartId = req.params.cartId
-      const productId = req.params.productId
+      const cartId = req.token?.cartId ?? null
+      const productId = req.params.productId ?? null
 
       const cart = await cartService.getById(cartId)
-  
       if (!cart) {
         return res.status(404).send({
           status: 404,
@@ -193,7 +192,6 @@ class CartController {
       }
 
       const deletedProduct = await cartService.deleteProduct(cartId,productId)
-  
       if(deletedProduct.modifiedCount === 0) {
         return res.status(404).send({
           status: 404,

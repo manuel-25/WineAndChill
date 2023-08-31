@@ -1,38 +1,37 @@
 const updateQuantity = async (productId) => {
-    const cartId = '1000'
-    const input = document.querySelector(`input[data-product-id="${productId}"]`);
-    const quantity = Number(input.value);
+    const input = document.querySelector(`input[data-product-id="${productId}"]`)
+    const quantity = Number(input.value)
 
     try {
-      const response = await fetch(`/api/carts/${cartId}/product/${productId}/${quantity}`, {
+      await fetch(`/api/carts/update/${productId}/${quantity}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
       })
-  
-      //arreglar response.ok no siempre esta bien y actualiza mal
-      if (response.ok) {
-        Swal.fire({
+      .then(res => res.json())
+      .then(data => {
+        if(data.status === 200) {
+          Swal.fire({
             icon: 'success',
             title: 'Product Updated',
-            text: response.statusText,
-        }).then((res)=>{
-            window.location.reload()
-        })
-      } else {
-        console.error('Update error')
-        Swal.fire({
+          }).then((res)=>{
+              window.location.reload()
+          })
+        } else {
+          Swal.fire({
             icon: 'error',
             title: 'Update Error',
-            text: response.statusText,
+            text: data.response,
         })
-      }
+        }
+      })
     } catch (error) {
+      console.error(error)
         Swal.fire({
             icon: 'error',
             title: 'Update Error',
-            text: response.statusText,
+            text: error,
         })
     }
 }
@@ -40,41 +39,41 @@ const updateQuantity = async (productId) => {
 // Función para eliminar un producto del carrito
 async function deleteProduct(productId) {
     try {
-      const response = await fetch(`/api/carts/1000/product/${productId}`, {
+      await fetch(`/api/carts/delete/${productId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-    
-      if (response.ok) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Product Deleted',
-          text: 'The product has been successfully deleted from the cart.',
-        }).then(() => {
-          window.location.reload()
-        });
-      } else {
-        console.error('Delete error')
-        Swal.fire({
-          icon: 'error',
-          title: 'Delete Error',
-          text: response.statusText,
-        })
-      }
-    } catch (error) {
-      console.error('Error al eliminar el producto del carrito:', error)
-      Swal.fire({
-        icon: 'error',
-        title: 'Delete Error',
-        text: 'An error occurred while deleting the product from the cart.',
+      .then(res => res.json())
+      .then(data => {
+        if(data.status === 200) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Product Deleted',
+          }).then(() => {
+            window.location.reload()
+          })
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Delete Error',
+            text: data.response,
+          })
+        }
       })
+    } catch (error) {
+      console.error(error)
+        Swal.fire({
+            icon: 'error',
+            title: 'Delete Error',
+            text: error,
+        })
     }
 }
   
 async function checkout() {
-  const response = await fetch('/api/carts/purchase', {
+  await fetch('/api/carts/purchase', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'}
   })

@@ -35,7 +35,7 @@ class ProductController {
         if (!product) {
           return res.status(404).send({
             status: 404,
-            response: 'Failed to get product ', productId
+            response: `Failed to get product ${productId}`
           })
         }
         return res.status(200).send({
