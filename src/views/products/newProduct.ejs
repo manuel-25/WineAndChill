@@ -4,35 +4,47 @@
   <div class="container">
     <h3>Crear Producto</h3>
     <form id="productForm" action="/api/products" method="POST" class="product-form">
-        <div class="form-group">
-            <label for="title">Título:</label>
-            <input type="text" id="title" name="title" required>
-        </div>
-        <div class="form-group">
-            <label for="description">Descripción:</label>
-            <textarea id="description" name="description" rows="4" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="price">Precio:</label>
-            <input type="number" id="price" name="price" required>
-        </div>
-        <div class="form-group">
-            <label for="code">Código:</label>
-            <input type="text" id="code" name="code" required>
-        </div>
-        <div class="form-group">
-            <label for="stock">Stock:</label>
-            <input type="number" id="stock" name="stock">
-        </div>
-        <div class="form-group">
-            <label for="category">Tipo:</label>
-            <input type="text" id="type" name="type" required>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Crear Producto">
-        </div>
+      <div class="form-group">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" required value="prueba">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" rows="4" required>aaaaaaa</textarea>
+      </div>
+      <div class="form-group">
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price" required value="0">
+      </div>
+      <div class="form-group">
+        <label for="status">Estado:</label>
+        <select id="status" name="status" value="No disponible">
+          <option value="true">Disponible</option>
+          <option value="false">No Disponible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" value="0">
+      </div>
+      <div class="form-group">
+        <label for="type">Tipo:</label>
+        <select id="type" name="type" required>
+          <option value="Tinto">Tinto</option>
+          <option value="Blanco">Blanco</option>
+          <option value="Rosa">Rosa</option>
+          <option value="Espumante">Espumante</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cellar">Bodega:</label>
+        <input type="text" id="cellar" name="category" required value="ninguna">
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Crear Producto">
+      </div>
     </form>
-</div>
-<%- include("../partials/footer") %>
+  </div>
+  <%- include("../partials/footer") %>
 </body>
 </html>

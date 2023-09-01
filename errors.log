@@ -116,3 +116,55 @@ Or, if you meant to create an async function, pass `async: true` as an option.
     11|             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
 
 Cannot read properties of undefined (reading 'payload')
+[2023-08-31T23:50:49.045Z] [ERROR] - status: 500 method: POST path: /api/products message: productService.create is not a function
+[2023-09-01T00:30:54.197Z] [ERROR] - status: 500 method: GET path: /update_product message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:6
+    4|   <div class="container">
+    5|     <h3>Actualizar Producto</h3>
+ >> 6|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    7|       <div class="form-group">
+    8|         <label for="title">Título:</label>
+    9|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+product is not defined
+[2023-09-01T00:33:47.995Z] [ERROR] - status: 500 method: GET path: /api/products/productService message: Cast to ObjectId failed for value "productService" (type string) at path "_id" for model "products"
+[2023-09-01T00:34:15.517Z] [ERROR] - status: 500 method: GET path: /update_product/6484d63cd39540d2316b9bba message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:6
+    4|   <div class="container">
+    5|     <h3>Actualizar Producto</h3>
+ >> 6|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    7|       <div class="form-group">
+    8|         <label for="title">Título:</label>
+    9|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+Cannot read properties of null (reading '_id')
+[2023-09-01T00:34:46.676Z] [ERROR] - status: 500 method: GET path: /update_product/6484d63cd39540d2316b9bba message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:7
+    5|     <h3>Actualizar Producto</h3>
+    6|     <% console.log(product) %>
+ >> 7|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    8|       <div class="form-group">
+    9|         <label for="title">Título:</label>
+    10|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+Cannot read properties of null (reading '_id')
+[2023-09-01T00:50:52.866Z] [ERROR] - status: 400 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Unexpected token o in JSON at position 1
+[2023-09-01T01:07:01.553Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: userService.getById is not a function
+[2023-09-01T01:08:27.883Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cast to ObjectId failed for value "manuel-25" (type string) at path "_id" for model "users"
+[2023-09-01T01:08:57.285Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:09:54.861Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:10:42.437Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'owner')
+[2023-09-01T01:11:20.920Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:11:48.570Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:12:48.440Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:13:23.906Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: userId is not defined
+[2023-09-01T01:13:45.282Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: stream is not readable
+[2023-09-01T01:14:05.761Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=dc5af461affc265e354f message: userService.findByEmail is not a function
+[2023-09-01T01:34:14.502Z] [ERROR] - status: 500 method: DELETE path: /api/products/64f13da122cc532f0f74ee27 message: console.loog is not a function
+[2023-09-01T01:34:40.901Z] [ERROR] - status: 500 method: DELETE path: /api/products/64f13da122cc532f0f74ee27 message: productService.delete is not a function
+[2023-09-01T01:35:04.468Z] [ERROR] - status: 500 method: GET path: /update_product/64f13da122cc532f0f74ee27 message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:6
+    4|   <div class="container">
+    5|     <h3>Actualizar Producto</h3>
+ >> 6|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    7|       <div class="form-group">
+    8|         <label for="title">Título:</label>
+    9|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+Cannot read properties of null (reading '_id')

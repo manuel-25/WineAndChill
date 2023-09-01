@@ -6,17 +6,19 @@ productForm.addEventListener('submit', (event) => {
     const title = document.getElementById('title').value
     const description = document.getElementById('description').value
     const price = document.getElementById('price').value
-    const code = document.getElementById('code').value
+    const status = document.getElementById('status').value
     const stock = document.getElementById('stock').value
     const type = document.getElementById('type').value
+    const cellar = document.getElementById('cellar').value
 
     const formData = {
         title: title,
         description: description,
         price: price,
-        code: code,
+        status: status,
         stock: stock,
-        type: type
+        type: type,
+        cellar: cellar
     }
 
     fetch('/api/products', {
@@ -32,9 +34,8 @@ productForm.addEventListener('submit', (event) => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: `Product ${data.response.id} created!`,
+                text: data.response,
                 confirmButtonText: 'OK',
-                timer: 5000,
                 timerProgressBar: true,
                 onClose: () => {
                     console.log('Alerta cerrada')

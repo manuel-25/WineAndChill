@@ -1,0 +1,56 @@
+<%- include("../partials/head") %>
+<body>
+  <%- include("../partials/navbar") %>
+  <div class="container">
+    <% if (product) { %>
+        <h3>Actualizar Producto</h3>
+        <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+          <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required value="<%= product.title %>">
+          </div>
+          <div class="form-group">
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" rows="4" required><%= product.description %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price" required value="<%= product.price %>">
+          </div>
+          <div class="form-group">
+            <label for="status">Estado:</label>
+            <select id="status" name="status">
+              <option value="true" <%= product.status === true ? 'selected' : '' %>>Disponible</option>
+              <option value="false" <%= product.status === false ? 'selected' : '' %>>No Disponible</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" value="<%= product.stock %>">
+          </div>
+          <div class="form-group">
+            <label for="type">Tipo:</label>
+            <select id="type" name="type" required>
+              <option value="Tinto" <%= product.type === 'Tinto' ? 'selected' : '' %>>Tinto</option>
+              <option value="Blanco" <%= product.type === 'Blanco' ? 'selected' : '' %>>Blanco</option>
+              <option value="Rosa" <%= product.type === 'Rosa' ? 'selected' : '' %>>Rosa</option>
+              <option value="Espumante" <%= product.type === 'Espumante' ? 'selected' : '' %>>Espumante</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cellar">Bodega:</label>
+            <input type="text" id="cellar" name="cellar" required value="<%= product.cellar %>">
+          </div>
+          <div class="form-group">
+            <input type="submit" id="submit" onclick="updateProduct(event, '<%= product._id %>')" value="Actualizar Producto">
+            <button class="deleteBtn" onclick="deleteProduct(event, '<%= product._id %>')"><span>X</span></button>
+          </div>
+        </form>
+    <% } else { %>
+        <h3>Actualizar producto</h3>
+        <h4>No encontrado</h4>
+    <% } %>
+  </div>
+  <%- include("../partials/footer") %>
+</body>
+</html>

@@ -1,5 +1,5 @@
 function productValidator(req, res, next) {
-    const requiredFields = ['title', 'stock', 'price', 'cellar', ]
+    const requiredFields = ['title', 'stock', 'description', 'price', 'cellar', ]
     const defaultValues = {
       status: true,
       thumbnail: '/public/img/botella_vino.webp'

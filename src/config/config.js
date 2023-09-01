@@ -23,6 +23,8 @@ const config = {
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWILIO_PHONE: process.env.TWILIO_PHONE,
     PRIVATE_PHONE: process.env.PRIVATE_PHONE,
+    ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
     connectDB: async () => MongoSingleton.getInstance()
 }
 

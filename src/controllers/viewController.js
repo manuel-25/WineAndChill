@@ -1,5 +1,6 @@
 import fetch from "node-fetch"
 import axios from "axios"
+import { productService } from "../Service/index.js"
 
 class ViewController {
   async renderCart(req, res, next) {
@@ -119,6 +120,21 @@ class ViewController {
         title: 'Create new product',
         style: 'newProduct.css',
         script: 'newProduct.js'
+      })
+    } catch(error) {
+      next(error)
+    }
+  }
+
+  async renderUpdateProduct(req, res, next) {
+    try {
+      const productId = req.params.productId
+      const product = await productService.getById(productId)
+      return res.render('products/updateProduct', {
+        title: 'Update product',
+        style: 'updateProduct.css',
+        script: 'updateProduct.js',
+        product
       })
     } catch(error) {
       next(error)

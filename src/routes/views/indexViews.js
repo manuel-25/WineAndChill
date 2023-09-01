@@ -12,7 +12,7 @@ const {
     renderCreateProduct, renderCart,
     renderRegister, renderLogin,
     renderForgotPassword, renderResetPassword,
-    renderError
+    renderError, renderUpdateProduct
 } = viewController
 
 const router = Router()
@@ -23,6 +23,7 @@ router.get('/products', renderProductList)
 router.get('/products/:pid', renderProductDetail)
 router.get('/chat', authorization('PUBLIC'), readToken, renderChat)
 router.get('/new_product', authorization('PREMIUM'), renderCreateProduct)
+router.get('/update_product/:productId', authorization('PREMIUM'), renderUpdateProduct)
 router.get('/cart', readToken, renderCart)
 router.get('/register', is_not_Logged, renderRegister)
 router.get('/login', is_not_Logged, renderLogin)

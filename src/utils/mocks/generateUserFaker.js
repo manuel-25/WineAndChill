@@ -17,7 +17,7 @@ const generateProducts = () => {
         thumbnail: faker.image.url(),
         price: parseFloat(faker.commerce.price()),
         cellar: faker.helpers.arrayElement(['Catena Zapata', 'Bodegas Salentein', 'El Enemigo Wines', 'Finca Victoria', 'Bodega Colomé', 'Bodega Diamandes']),
-        type: faker.helpers.arrayElement(['Cabernet Sauvignon', 'Merlot', 'Malbec', 'Chardonnay', 'Sauvignon Blanc', 'Syrah']),
+        type: faker.helpers.arrayElement(['Tinto', 'Blanco', 'Rosa', 'Espumante'] ),
     }
 }
 

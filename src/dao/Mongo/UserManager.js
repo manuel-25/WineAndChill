@@ -9,11 +9,11 @@ class UserManagerDao {
       return await UserModel.find({})
     }
 
-    async findById(userId) {
+    async getById(userId) {
       return await UserModel.findById(userId)
     }
 
-    async findByEmail(email) {
+    async getByEmail(email) {
       return await UserModel.findOne({ email: email })
     }
 

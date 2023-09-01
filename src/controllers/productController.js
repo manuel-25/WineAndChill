@@ -1,4 +1,4 @@
-import { productService } from "../Service/index.js"
+import { productService, userService } from "../Service/index.js"
 
 class ProductController {
     async getProducts(req, res, next) {
@@ -49,17 +49,20 @@ class ProductController {
   
     async createProduct(req, res, next) {
       try {
-        const response = await productService.create(req.body)
+        const token = req.token ?? null
+        req.body.owner = token.email
+
+        const response = await productService.createProduct(req.body)
         if (!response) {
             return res.status(404).json({
-                status: 404,
-                response: 'Failed to create product!'
-              })
+              status: 404,
+              response: 'Failed to create product!'
+            })
         }
         return res.status(201).json({
-            status: 201,
-            response: `Product ${response._id} created!`
-          })
+          status: 201,
+          response: `Product ${response._id} created!`
+        })
       } catch (error) {
         next(error)
       }
@@ -69,26 +72,38 @@ class ProductController {
       try {
         const { pid } = req.params
         const data = req.body
+        const userEmail = req.token.email
   
         if (!pid || !data) {
           return res.status(500).json({
             status: 500,
-            response: 'Update Error: Please provide a valid product ID and data.',
+            response: 'Update Error: Please provide a valid product ID or data.',
           })
         }
-  
-        const product = await productService.updateProduct(pid, data, { new: true })
-        if (!product) {
-          return res.status(404).json({
-            status: 404,
-            response: 'Update Error: Product not updated!'
+
+        const userData = await userService.getByEmail(userEmail)
+        const productData = await productService.getById(pid)
+
+        if(productData.owner === userData.email || userData.role === 'OWNER') {
+          const product = await productService.updateProduct(pid, data, { new: true })
+          if (!product) {
+            return res.status(404).json({
+              status: 404,
+              response: `Update Error: Product ${pid} not updated!`
+            })
+          }
+
+          return res.status(201).json({
+            status: 201,
+            response: `Product ${pid} updated!`,
+            productId: pid
+          })
+        } else {
+          return res.status(401).json({
+            status: 401,
+            response: `Update Error: Not authorized! Owner: ${productData.owner}`
           })
         }
-        return res.status(201).json({
-          status: 201,
-          response: `Product ${pid} updated!`
-        })
-  
       } catch (error) {
         next(error)
       }
@@ -97,17 +112,30 @@ class ProductController {
     async deleteProduct(req, res, next) {
       try {
         const pid = req.params.pid
-        const product = await productService.delete(pid)
-        if (!product) {
-          return res.status(404).json({
-            status: 404,
-            response: 'Delete Error: Product not deleted!'
+        const userEmail = req.token.email
+        console.log(userEmail)
+
+        const userData = await userService.getByEmail(userEmail)
+        const productData = await productService.getById(pid)
+
+        if(productData.owner === userData.email || userData.role === 'OWNER') {
+          const product = await productService.deleteProduct(pid)
+          if (!product) {
+            return res.status(404).json({
+              status: 404,
+              response: `Delete Error: Product ${pid} not deleted!`
+            })
+          }
+          return res.status(200).json({
+            status: 200,
+            response: `Product ${pid} deleted!`
+          })
+        } else {
+          return res.status(401).json({
+            status: 401,
+            response: `Delete Error: Not authorized! Owner: ${productData.owner}`
           })
         }
-        return res.status(200).json({
-          status: 200,
-          response: `Product ${pid} deleted!`
-        })
       } catch (error) {
         next(error)
       }

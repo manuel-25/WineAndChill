@@ -45,7 +45,7 @@ class authController {
     async forgotPassword(req, res, next) {
         try {
             const email = req.body.email
-            const emailExists = await userService.findByEmail(email)
+            const emailExists = await userService.getByEmail(email)
             if(!emailExists) {
                 return res.status(400).send({
                     success: false,
@@ -69,7 +69,7 @@ class authController {
         const { userEmail } = req.body
         const newPassword = req.body.password
         try {
-            const user = await userService.findByEmail(userEmail)
+            const user = await userService.getByEmail(userEmail)
             const originalHashPassword = user.password
             const newHashPassword = hashSync(newPassword, genSaltSync(10))
             if (compareSync(newPassword, originalHashPassword)) {
