@@ -168,3 +168,4 @@ Cannot read properties of null (reading '_id')
     9|         <input type="text" id="title" name="title" required value="<%= product.title %>">
 
 Cannot read properties of null (reading '_id')
+[2023-09-01T02:18:23.561Z] [ERROR] - status: 500 method: POST path: /api/users/premium/64c96aeaec01e68866ebd463 message: Cast to ObjectId failed for value "PREMIUM" (type string) at path "_id" for model "users"

@@ -6,26 +6,26 @@
     <form id="productForm" action="/api/products" method="POST" class="product-form">
       <div class="form-group">
         <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required value="prueba">
+        <input type="text" id="title" name="title" required>
       </div>
       <div class="form-group">
         <label for="description">Descripción:</label>
-        <textarea id="description" name="description" rows="4" required>aaaaaaa</textarea>
+        <textarea id="description" name="description" rows="4" required></textarea>
       </div>
       <div class="form-group">
         <label for="price">Precio:</label>
-        <input type="number" id="price" name="price" required value="0">
+        <input type="number" id="price" name="price" required>
       </div>
       <div class="form-group">
         <label for="status">Estado:</label>
-        <select id="status" name="status" value="No disponible">
+        <select id="status" name="status">
           <option value="true">Disponible</option>
           <option value="false">No Disponible</option>
         </select>
       </div>
       <div class="form-group">
         <label for="stock">Stock:</label>
-        <input type="number" id="stock" name="stock" value="0">
+        <input type="number" id="stock" name="stock">
       </div>
       <div class="form-group">
         <label for="type">Tipo:</label>
@@ -38,7 +38,7 @@
       </div>
       <div class="form-group">
         <label for="cellar">Bodega:</label>
-        <input type="text" id="cellar" name="category" required value="ninguna">
+        <input type="text" id="cellar" name="category" required>
       </div>
       <div class="form-group">
         <input type="submit" value="Crear Producto">

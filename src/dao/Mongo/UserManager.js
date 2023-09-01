@@ -56,6 +56,14 @@ class UserManagerDao {
         { new: true }
       )
     }
+
+    async setRole(id, role) {
+      return await UserModel.findByIdAndUpdate(
+        id,
+        { role: role },
+        { new: true }
+      )
+    }
 }
 
 export default UserManagerDao
