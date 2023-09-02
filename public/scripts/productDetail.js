@@ -18,6 +18,7 @@ submitButton.addEventListener('click', (event) => {
                     text: 'Product added to your cart!',
                     timer: 1500,
                 })
+                .then(window.location.reload())
             } else {
                 if(data.status) {
                     Swal.fire({

@@ -14,7 +14,7 @@ const updateQuantity = async (productId) => {
         if(data.status === 200) {
           Swal.fire({
             icon: 'success',
-            title: 'Product Updated',
+            title: 'Cart Updated',
           }).then((res)=>{
               window.location.reload()
           })
