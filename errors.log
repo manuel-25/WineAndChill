@@ -169,3 +169,12 @@ Cannot read properties of null (reading '_id')
 
 Cannot read properties of null (reading '_id')
 [2023-09-01T02:18:23.561Z] [ERROR] - status: 500 method: POST path: /api/users/premium/64c96aeaec01e68866ebd463 message: Cast to ObjectId failed for value "PREMIUM" (type string) at path "_id" for model "users"
+[2023-09-04T20:59:22.072Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=f419586af29feb25455f message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:02:42.016Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=7b7ae4bb288e54909343 message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:21.210Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:22.324Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:23.646Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:23.827Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:30.215Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:43.099Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:06:14.457Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=e517155c9749ca264f7e message: Login sessions require session support. Did you forget to use `express-session` middleware?

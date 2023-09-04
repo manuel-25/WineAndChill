@@ -58,7 +58,7 @@ export default function() {
     passport.use(
         'github',
         new GHStrategy(
-            { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL }, //objeto de configuracion
+            { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL, session: false }, //objeto de configuracion
             async (accessToken,refreshToken,profile,done) => {
                 try {
                     const one = await userService.getByEmail(profile._json.login)

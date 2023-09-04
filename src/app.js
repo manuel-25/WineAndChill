@@ -26,7 +26,7 @@ server.use(addLogger)
 
 //Middlewares
 server.use(cookieParser(config.SECRET_COOKIE))
-server.use(expressSession({
+server.use(expressSession({             //sacar
     secret: config.SECRET_SESSION,
     resave: true,
     saveUninitialized: true,
@@ -53,7 +53,7 @@ server.use(logger('dev'))
 server.use(methodOverride('_method'))
 initializePassport()
 server.use(passport.initialize())
-server.use(passport.session())
+server.use(passport.session())          //sacar
 
 config.connectDB()
 

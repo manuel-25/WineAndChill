@@ -47,6 +47,7 @@ router.get('/complexCounter', (req, res) => {
 })
 //artillery quick --count 40 --num 50 'http://localhost:8080/api/test/complexCounter' -o complex.json
 
+// User login tests
 //artillery run config.yaml --output testPerformance.json
 //artillery report testPerformance.json -o testResults.html
 
