@@ -178,3 +178,15 @@ Cannot read properties of null (reading '_id')
 [2023-09-04T21:04:30.215Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
 [2023-09-04T21:04:43.099Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
 [2023-09-04T21:06:14.457Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=e517155c9749ca264f7e message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-11T22:56:18.991Z] [ERROR] - error: GET /docs
+[2023-09-11T22:57:26.869Z] [ERROR] - Route not found: GET /docs
+[2023-09-11T23:09:25.229Z] [ERROR] - Route not found: GET /docs
+[2023-09-11T23:10:54.306Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:14:31.914Z] [ERROR] - Route not found: GET /api-docs/
+[2023-09-11T23:14:43.036Z] [ERROR] - Route not found: GET /api-docs/
+[2023-09-11T23:14:46.980Z] [ERROR] - Route not found: GET /api-docs/
+[2023-09-11T23:14:49.788Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:22:00.730Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:27:27.043Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:29:25.003Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:30:36.343Z] [ERROR] - Route not found: GET /api-docs

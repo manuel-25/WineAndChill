@@ -1,0 +1,10 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtiene todos los productos paginados
+      tags: 
+        - Products
+    post: 
+      summary: Crea un producto
+      tags: Products
+      

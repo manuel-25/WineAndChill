@@ -40,6 +40,8 @@
     "passport-local": "^1.0.0",
     "socket.io": "^4.6.1",
     "socket.io-cookie-parser": "^1.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
     "sweetalert2": "^11.7.5",
     "twilio": "^4.14.1",
     "uuid": "^9.0.0",

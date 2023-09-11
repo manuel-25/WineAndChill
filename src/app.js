@@ -16,6 +16,9 @@ import config from "./config/config.js"
 import remember_me from "./middlewares/remember_me.js"
 import { addLogger } from "./config/logger.js"
 
+import swaggerJSDoc from "swagger-jsdoc"
+import swaggerUiExpress from 'swagger-ui-express'
+
 const server = express()
 
 //Template engine
@@ -56,6 +59,23 @@ server.use(passport.initialize())
 server.use(passport.session())          //sacar
 
 config.connectDB()
+
+
+
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.1',
+        info: {
+            title: 'Documentación de Wine and Chill',
+            description: 'Ecommerce de venta de vinos',
+        },
+    },
+    apis: [`${__dirname}/docs/**/*.yaml`]
+}
+
+const specs = swaggerJSDoc(swaggerOptions)
+console.log(`${__dirname}/docs/**/*.yaml`)
+server.use('/api-docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 
 export default server
 
