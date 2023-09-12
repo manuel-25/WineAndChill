@@ -4,7 +4,153 @@ paths:
       summary: Obtiene todos los productos paginados
       tags: 
         - Products
-    post: 
+      responses: 
+        "200":
+          description: Respuesta exitosa. Devuelve una lista de productos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        "500": 
+          description: "Error interno del servidor"
+    post:
       summary: Crea un producto
-      tags: Products
-      
+      tags: 
+        - Products
+      requestBody:
+        description: Datos del producto a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/Product' # Especifica el formato del cuerpo de la solicitud
+      responses: 
+        "201": 
+          description: "Producto creado con éxito"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        "500": 
+          description: "Error interno del servidor"
+
+  /api/products/{pid}:
+    get:
+      summary: Obtiene el producto a partir de su ID
+      tags: 
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: ID del producto
+          required: true
+          schema: 
+            type: string
+      responses: 
+        "200":
+          description: "Producto obtenido con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Product'
+        "404": 
+          description: "Producto no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+    put:
+      summary: Actualiza un producto
+      tags: 
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: ID del producto
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        description: Datos del producto a actualizar
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/schemas/Product'
+      responses: 
+        "200":
+          description: "Producto actualizado con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Product'
+        "404": 
+          description: "Producto no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+    delete:
+      summary: Elimina un producto
+      tags: 
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: ID del producto
+          required: true
+          schema: 
+            type: string
+      responses: 
+        "200":
+          description: "Producto eliminado con éxito"
+        "404": 
+          description: "Producto no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+
+components: 
+  schemas:
+    Product:
+      type: object
+      properties: 
+        _id: 
+          type: string
+          description: ID de MongoDB
+        title: 
+          type: string
+          description: Título del producto
+        description: 
+          type: string
+          description: Descripción del producto
+        stock: 
+          type: string
+          description: Stock del producto
+        thumbnail: 
+          type: string
+          description: Foto del producto
+        price: 
+          type: string
+          description: Precio del producto
+        cellar: 
+          type: string
+          description: Bodega del producto
+        type: 
+          type: string
+          description: Tipo de producto
+        status: 
+          type: boolean
+          description: Disponibilidad del producto
+        owner: 
+          type: string
+          description: Creador del producto
+      example:
+        _id: "6484d51fd39540d2316b9bb1"
+        title: "Portillo Cabernet Sauvignon"
+        description: "Colores rojo rubí brillante."
+        stock: 20
+        thumbnail: "/public/img/products/Portillo_cabernet_sauvignon2.png"
+        price: 2000
+        cellar: "Salentein"
+        type: "Tinto"
+        status: true

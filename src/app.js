@@ -25,8 +25,6 @@ const server = express()
 server.set('view engine', 'ejs')
 server.set('views', __dirname + '/views')
 
-server.use(addLogger)
-
 //Middlewares
 server.use(cookieParser(config.SECRET_COOKIE))
 server.use(expressSession({             //sacar
@@ -50,18 +48,7 @@ server.use(remember_me)
 server.use(session_data)
 server.use('/', router)
 
-server.use(errorHandler)
-server.use(notFoundHandler)
-server.use(logger('dev'))
-server.use(methodOverride('_method'))
-initializePassport()
-server.use(passport.initialize())
-server.use(passport.session())          //sacar
-
-config.connectDB()
-
-
-
+// Swagger Api Doc
 const swaggerOptions = {
     definition: {
         openapi: '3.0.1',
@@ -72,10 +59,23 @@ const swaggerOptions = {
     },
     apis: [`${__dirname}/docs/**/*.yaml`]
 }
-
 const specs = swaggerJSDoc(swaggerOptions)
-console.log(`${__dirname}/docs/**/*.yaml`)
-server.use('/api-docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
+server.use('/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
+
+//Error handlers & logger
+server.use(errorHandler)
+server.use(notFoundHandler)
+server.use(logger('dev'))
+server.use(methodOverride('_method'))
+server.use(addLogger)
+
+//Passport
+initializePassport()
+server.use(passport.initialize())
+server.use(passport.session())          //sacar
+
+//Database
+config.connectDB()
 
 export default server
 

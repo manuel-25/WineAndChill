@@ -1,0 +1,206 @@
+paths:
+  /api/carts:
+    get:
+      summary: Obtiene todos los carritos
+      tags: 
+        - Carts
+      responses: 
+        "200":
+          description: Respuesta exitosa. Devuelve una lista de carritos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Cart'
+        "500": 
+          description: "Error interno del servidor"
+  
+  /api/carts/cartId/{cartId}:
+    get:
+      summary: Obtiene un carrito por su ID
+      tags: 
+        - Carts
+      parameters:
+        - name: cartId
+          in: path
+          description: ID del carrito
+          required: true
+          schema: 
+            type: string
+      responses: 
+        "200":
+          description: "Carrito obtenido con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Cart'
+        "404": 
+          description: "Carrito no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+  
+  /api/carts/bills:
+    get:
+      summary: Obtiene las facturas del carrito actual
+      tags: 
+        - Carts
+      responses: 
+        "200":
+          description: "Facturas obtenidas con éxito"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Bill'
+        "404": 
+          description: "Carrito no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+  
+  /api/carts/cart/product/{productId}/{quantity}:
+    post:
+      summary: Agrega un producto al carrito
+      tags: 
+        - Carts
+      parameters:
+        - name: productId
+          in: path
+          description: ID del producto
+          required: true
+          schema: 
+            type: string
+        - name: quantity
+          in: path
+          description: Cantidad del producto a agregar
+          required: true
+          schema: 
+            type: integer
+      responses: 
+        "200":
+          description: "Producto agregado al carrito con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Cart'
+        "400":
+          description: "Cantidad excede el stock"
+        "404": 
+          description: "Producto o carrito no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+  
+  /api/carts/purchase:
+    post:
+      summary: Realiza la compra del carrito
+      tags: 
+        - Carts
+      responses: 
+        "200":
+          description: "Compra realizada con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/PurchaseResponse'
+        "404": 
+          description: "Carrito no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+  
+  /api/carts/update/{productId}/{units}:
+    put:
+      summary: Actualiza la cantidad de un producto en el carrito
+      tags: 
+        - Carts
+      parameters:
+        - name: productId
+          in: path
+          description: ID del producto
+          required: true
+          schema: 
+            type: string
+        - name: units
+          in: path
+          description: Nueva cantidad del producto
+          required: true
+          schema: 
+            type: integer
+      responses: 
+        "200":
+          description: "Producto en el carrito actualizado con éxito"
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/Cart'
+        "404": 
+          description: "Producto o carrito no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+  
+  /api/carts/delete/{productId}:
+    delete:
+      summary: Elimina un producto del carrito
+      tags: 
+        - Carts
+      parameters:
+        - name: productId
+          in: path
+          description: ID del producto a eliminar
+          required: true
+          schema: 
+            type: string
+      responses: 
+        "200":
+          description: "Producto eliminado del carrito con éxito"
+        "404": 
+          description: "Producto o carrito no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+  
+  /api/carts/{cartId}:
+    delete:
+      summary: Elimina un carrito por su ID
+      tags: 
+        - Carts
+      parameters:
+        - name: cartId
+          in: path
+          description: ID del carrito a eliminar
+          required: true
+          schema: 
+            type: string
+      responses: 
+        "200":
+          description: "Carrito eliminado con éxito"
+        "404": 
+          description: "Carrito no encontrado"
+        "500": 
+          description: "Error interno del servidor"
+
+components: 
+  schemas:
+    Cart:
+      type: object
+      properties: 
+        _id: 
+          type: string
+          description: ID del carrito
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:
+                type: string
+                description: ID del producto
+              quantity:
+                type: integer
+                description: Cantidad del producto en el carrito
+      example:
+        _id: "6484d51fd39540d2316b9bb1"
+        products:
+          - productId: "12abq14ga13434$5"
+            quantity: 2
+          - productId: "678a713wdag159asv0"
+            quantity: 3

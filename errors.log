@@ -190,3 +190,18 @@ Cannot read properties of null (reading '_id')
 [2023-09-11T23:27:27.043Z] [ERROR] - Route not found: GET /api-docs
 [2023-09-11T23:29:25.003Z] [ERROR] - Route not found: GET /api-docs
 [2023-09-11T23:30:36.343Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:33:01.675Z] [ERROR] - Route not found: GET /docs
+[2023-09-11T23:33:02.857Z] [ERROR] - Route not found: GET /docs
+[2023-09-12T19:03:24.347Z] [ERROR] - status: 500 method: GET path: /api/products?limit=5&page=1&title= message: success is not defined
+[2023-09-12T19:03:24.408Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:03:24.585Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:05:14.510Z] [ERROR] - status: 500 method: GET path: /api/products?limit=5&page=1&title= message: success is not defined
+[2023-09-12T19:05:14.577Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:05:14.934Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:06:06.821Z] [ERROR] - status: 500 method: GET path: /api/products?limit=10&page=1&title= message: success is not defined
+[2023-09-12T19:06:06.897Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:06:07.183Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:06:08.798Z] [ERROR] - status: 500 method: GET path: /api/products?limit=10&page=1&title= message: success is not defined
+[2023-09-12T19:06:08.869Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:06:09.319Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:51:02.797Z] [ERROR] - status: 500 method: DELETE path: /api/products/646e71514d329f0011c9e399 message: Cannot read properties of undefined (reading 'email')

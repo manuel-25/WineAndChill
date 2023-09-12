@@ -15,7 +15,7 @@ class ProductController {
         if (!all || all.error) {
             return res.status(404).send({
                 status: 404,
-                response: all.error || 'Products paginate error!'
+                response: all.error || 'Products pagination error!'
               }) 
         }
         return res.status(200).send({
