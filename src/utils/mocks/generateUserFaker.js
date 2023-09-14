@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker'
 
+
 const generateProductArray = (numOfProducts) => {
     let products = []
     numOfProducts ?? parseInt(faker.string.numeric(1, {bannedDigits: ['0']}))
@@ -33,6 +34,7 @@ const generateUsers = () => {
 
 
 export {
+    generateProducts,
     generateProductArray,
     generateUsers
 }

@@ -8,7 +8,8 @@ class authController {
     register(req, res) {
         return res.status(200).send({
             success: true,
-            message: 'User created!'
+            message: 'User created!',
+            payload: req.user
         })
     }
     failRegister(req, res) {
@@ -18,7 +19,11 @@ class authController {
         })
     }
     async signIn(req, res, next) {
-        return res.status(200).send({ success: true })
+        console.log(req.user)
+        res.status(200).send({
+            success: true,
+            payload: req.user
+        })
     }
     failSignIn(req, res) {
         res.status(400).json({

@@ -6,8 +6,14 @@ import MongoSingleton from './MongoSingleton.js'
 
 const { mode } = commander.opts()
 
+if (mode === 'test') {
+    process.env.NODE_ENV = 'test';
+} else {
+    process.env.NODE_ENV = mode === 'development' ? 'development' : 'production';
+}
+
 dotenv.config({
-    path: mode === 'development' ? './.env.development' : './.env.production'
+    path: `./.env.${process.env.NODE_ENV}`
 })
 
 const config = {

@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node ./src/server.js --mode production",
-    "dev": "nodemon ./src/server.js --mode development"
+    "dev": "nodemon ./src/server.js --mode development",
+    "test": "mocha test/supertest.test.js --mode test",
+    "testing": "nodemon ./src/server.js --mode test"
   },
   "repository": {
     "type": "git",
@@ -49,6 +51,9 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
-    "nodemon": "^3.0.1"
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
   }
 }

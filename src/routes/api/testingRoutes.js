@@ -1,8 +1,9 @@
 import Router from 'express'
 import { generateProductArray } from '../../utils/mocks/generateUserFaker.js'
-import { generateUsers } from '../../utils/mocks/generateUserFaker.js'
+import { generateUsers, generateProducts } from '../../utils/mocks/generateUserFaker.js'
 import { hashSync, genSaltSync } from "bcrypt"
-import { userService } from '../../Service/index.js'
+import { userService, productService } from '../../Service/index.js'
+import { logger } from '../../config/logger.js'
 
 const router = Router()
 
@@ -18,15 +19,46 @@ router.get('/logger', (req, res) => {
 })
 
 //creates fake user and stores in mongo
-router.get('/testuser', (req, res) => {
-    let persona = generateUsers()
-    persona.confirmPassowrd = persona.password
-    //persona.password = hashSync(persona.password, genSaltSync(10)) 
-    //userService.create(persona)
-    res.send({
-        status: 'success',
-        payload: persona
-    })
+router.get('/testuser', async (req, res) => {
+    try {
+        for(let i = 0; i < 50; i++) {
+            let persona = generateUsers()
+            persona.confirmPassowrd = persona.password
+            persona.password = hashSync(persona.password, genSaltSync(10)) 
+            userService.create(persona)
+            logger.info('Usuario de prueba creado')
+        }
+        res.status(200).send({
+            status: 'success',
+            payload: 'Usuarios creados con exito'
+        })
+    } catch (err) {
+        res.status(500).send({
+            status: 'error',
+            payload: err
+        })
+    }
+})
+
+router.get('/testproduct', async (req, res) => {
+    try {
+        for(let i = 0; i < 50; i++) {
+            let productMock = generateProducts(20)
+            console.log(productMock)
+            let result = await productService.create(productMock)
+            console.log(result)
+            logger.info('Producto de prueba creado')
+        }
+        res.status(200).send({
+            status: 'success',
+            payload: 'Productos creados con exito'
+        })
+    } catch (err) {
+        res.status(500).send({
+            status: 'error',
+            payload: err
+        })
+    }
 })
 
 router.get('/simpleCounter', (req, res) => {
