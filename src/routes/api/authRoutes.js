@@ -16,7 +16,7 @@ const {
     signIn, failSignIn,
     githubCallback, failGithub,
     signOut, forgotPassword,
-    resetPassword
+    resetPassword, current
 } = authController
 
 const router = Router()
@@ -49,5 +49,6 @@ router.get('fail-register-github', failGithub)
 router.post('/forgot-password', is_valid_email, forgotPassword)
 router.post('/reset-password', is_same_pass, pass_is_8, resetPassword)
 
+router.get('/current', current)
 
 export default router

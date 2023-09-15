@@ -343,3 +343,16 @@ Cannot read properties of undefined (reading 'products')
 [2023-09-14T21:26:44.426Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
 [2023-09-14T21:26:46.523Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
 [2023-09-14T21:26:48.566Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-15T20:53:15.356Z] [ERROR] - status: 500 method: GET path: /api/auth/signout message: Cannot set headers after they are sent to the client
+[2023-09-15T21:04:23.779Z] [ERROR] - Route not found: GET /api/auth/forgot-password
+[2023-09-15T21:04:27.097Z] [ERROR] - Route not found: GET /api/auth/forgot-password
+[2023-09-15T21:42:40.361Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:43:25.141Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:45:05.120Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:46:32.542Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:47:51.657Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:48:36.654Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:49:43.987Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-15T21:50:36.125Z] [ERROR] - Route not found: GET /api/auth/cookies
+[2023-09-15T21:51:19.278Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:51:19.453Z] [ERROR] - Route not found: GET /public/scripts/

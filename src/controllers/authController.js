@@ -19,10 +19,8 @@ class authController {
         })
     }
     async signIn(req, res, next) {
-        console.log(req.user)
         res.status(200).send({
-            success: true,
-            payload: req.user
+            success: true
         })
     }
     failSignIn(req, res) {
@@ -60,7 +58,7 @@ class authController {
             const resetToken = jwt.sign({email: email}, config.SECRET_JWT, { expiresIn: '1h' })
             const resetLink = `${req.protocol}://${req.get('host')}/reset-password/${resetToken}`
 
-            await resetPassword(email, resetLink)
+            await resetPassword(email, resetLink) //Send email
             return res.status(200).send({
                 success: true,
                 message: 'Email sent succesfully!'
@@ -72,7 +70,7 @@ class authController {
 
     async resetPassword(req, res, next) {
         const { userEmail } = req.body
-        const newPassword = req.body.password
+        let newPassword = req.body.password
         try {
             const user = await userService.getByEmail(userEmail)
             const originalHashPassword = user.password
@@ -84,6 +82,8 @@ class authController {
                 })
             }
             const updatedUser = await userService.setPassword(userEmail, newHashPassword)
+            delete req.body.password
+            newPassword = undefined
             if(updatedUser) { 
                 return res.status(200).send({
                     success: true,
@@ -99,7 +99,21 @@ class authController {
         } catch (err) {
             next(err)
         }
+    }
 
+    current(req, res, next) {
+        try {
+            const cookie = req.cookies['token']
+            console.log('cookie',req)
+            const user = jwt.verify(cookie, config.SECRET_JWT)
+            if(user) {
+                return res.send({ success: true, payload: user })
+            } else {
+                return res.send({ success: false })
+            }
+        } catch(err) {
+            return res.send({ success: false, message: err })
+        }
     }
 }
 
