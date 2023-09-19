@@ -61,7 +61,8 @@ class ProductController {
         }
         return res.status(201).json({
           status: 201,
-          response: `Product ${response._id} created!`
+          response: `Product ${response._id} created!`,
+          payload: response
         })
       } catch (error) {
         next(error)
@@ -96,7 +97,8 @@ class ProductController {
           return res.status(201).json({
             status: 201,
             response: `Product ${pid} updated!`,
-            productId: pid
+            productId: pid,
+            payload: product
           })
         } else {
           return res.status(401).json({
@@ -113,7 +115,7 @@ class ProductController {
       try {
         const pid = req.params.pid
         const userEmail = req.token.email
-        console.log(userEmail)
+        //console.log(userEmail)
 
         const userData = await userService.getByEmail(userEmail)
         const productData = await productService.getById(pid)
@@ -128,7 +130,8 @@ class ProductController {
           }
           return res.status(200).json({
             status: 200,
-            response: `Product ${pid} deleted!`
+            response: `Product ${pid} deleted!`,
+            payload: product
           })
         } else {
           return res.status(401).json({

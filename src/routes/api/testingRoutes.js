@@ -44,9 +44,9 @@ router.get('/testproduct', async (req, res) => {
     try {
         for(let i = 0; i < 50; i++) {
             let productMock = generateProducts(20)
-            console.log(productMock)
+            //console.log(productMock)
             let result = await productService.create(productMock)
-            console.log(result)
+            //console.log(result)
             logger.info('Producto de prueba creado')
         }
         res.status(200).send({

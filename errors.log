@@ -356,3 +356,65 @@ Cannot read properties of undefined (reading 'products')
 [2023-09-15T21:50:36.125Z] [ERROR] - Route not found: GET /api/auth/cookies
 [2023-09-15T21:51:19.278Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
 [2023-09-15T21:51:19.453Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-18T23:05:24.536Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-18T23:19:29.652Z] [ERROR] - status: 500 method: GET path: /products/6508d7b3fbc1f9fb373deb07 message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:19:29.900Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-18T23:28:47.295Z] [ERROR] - status: 500 method: PUT path: /api/products/6508dd2fa5fd11cf7e36e71b message: Cannot read properties of undefined (reading 'email')
+[2023-09-18T23:52:10.626Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:52:10.707Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:52:11.757Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:52:11.820Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:52:15.635Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:52:15.735Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:54:35.225Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:54:35.334Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:54:53.710Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:54:53.790Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')

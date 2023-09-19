@@ -1,6 +1,5 @@
 function pass_is_8(req, res, next) {
     const { password } = req.body
-    console.log(password)
     if (password.length >= 8) {
       return next()
     }

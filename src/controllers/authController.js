@@ -104,7 +104,6 @@ class authController {
     current(req, res, next) {
         try {
             const cookie = req.cookies['token']
-            console.log('cookie',req)
             const user = jwt.verify(cookie, config.SECRET_JWT)
             if(user) {
                 return res.send({ success: true, payload: user })

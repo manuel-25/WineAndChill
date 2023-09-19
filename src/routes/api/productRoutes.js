@@ -17,8 +17,8 @@ const router = Router()
 router.get('/', getProducts)
 router.get('/:pid([a-z0-9]+)', getProduct)
 router.post('/', authorization('PREMIUM'), productValidator, readToken, createProduct)
-router.put('/:pid([a-z0-9]+)', readToken, updateProduct)
-router.delete('/:pid([a-z0-9]+)', readToken, deleteProduct)
+router.put('/:pid([a-z0-9]+)', authorization('PREMIUM'), readToken, updateProduct)
+router.delete('/:pid([a-z0-9]+)', authorization('PREMIUM'), readToken, deleteProduct)
       
 export default router
 

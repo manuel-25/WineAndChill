@@ -14,11 +14,9 @@ if (cluster.isPrimary) {
     logger.info('Proceso primario, generando workers')
 
     const numCPUs = cpus().length
-
     for (let i = 0; i < numCPUs; i++) {
         cluster.fork()
     }
-
     cluster.on('exit', (worker, code, signal) => {
         logger.info(`Worker ${worker.process.pid} died`)
     })

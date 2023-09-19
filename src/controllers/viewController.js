@@ -8,14 +8,14 @@ class ViewController {
       let data = null
       const token = req.cookies.token ?? null
       if(token) {
-        console.log('view token: ', token)
+        //console.log('view token: ', token)
         const response = await fetch(`http://localhost:8080/api/carts/bills`, {
         headers: {
           'authorization': `Bearer ${token}`
         }
         })
         data = await response.json()
-        console.log('data:',data)
+        //console.log('data:',data)
       }
       return res.render("cart/cart", {
         title: "Cart",
