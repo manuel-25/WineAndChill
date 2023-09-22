@@ -12,7 +12,8 @@ const {
   deleteCart, purchase
 } = cartController
 
-router.get('/', getCarts)
+//UPDATE AUTHORIZATION
+router.get('/' ,getCarts)
 router.get('/cartId/:cartId([a-z0-9]+)', getCartById)
 router.get('/bills', readToken, getCartBills)
 

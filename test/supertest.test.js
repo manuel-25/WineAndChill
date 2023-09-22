@@ -170,6 +170,18 @@ describe('Supertest WineAndChill', () => {
     })
 
     describe('Carts Test', () => {
-        //to do
+        it('Endpoint GET /api/carts/ should return all carts', async () => {
+            const { ok, status, _body } = await requester.get('/api/carts/')
+            expect(ok).to.be.ok
+            expect(status).to.eql(200)
+            expect(_body).to.have.property('response').that.is.an('array')
+        })
+
+        it('Endpoint GET /api/carts/cartId/:cartId should return ids cart', async () => {
+            const { ok, status, _body } = await requester.get(`/api/carts/cartId/:cartId`)
+            expect(ok).to.be.ok
+            expect(status).to.eql(200)
+            console.log(ok, status, _body)
+        })
     })
 })

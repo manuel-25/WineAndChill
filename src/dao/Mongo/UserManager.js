@@ -64,6 +64,14 @@ class UserManagerDao {
         { new: true }
       )
     }
+
+    async setLasConnection(id, date) {
+      return await UserModel.findByIdAndUpdate(
+        id,
+        { last_connection: date},
+        { new :true }
+      )
+    }
 }
 
 export default UserManagerDao

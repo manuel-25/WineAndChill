@@ -10,7 +10,9 @@ const userSchema = new Schema({
   role: { type: String, default: 'PUBLIC' },
   password: { type: String, required: true },
   cartId: { type: Types.ObjectId, ref: 'carts', default: null },
-  chatColor: { type: String, default: null }
+  chatColor: { type: String, default: null },
+  documents: { type: [Schema.Types.Mixed], default: [] },
+  last_connection: { type: String, default: null }
 })
 
 const UserModel = model(collection, userSchema)

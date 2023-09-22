@@ -10,6 +10,7 @@ import createToken from '../../middlewares/createToken.js'
 import authController from '../../controllers/authController.js'
 import is_valid_email from '../../middlewares/is_valid_email.js'
 import is_valid_resetToken from '../../middlewares/is_valid_resetToken.js'
+import setLastConnection from '../../middlewares/setLastConnection.js'
 
 const {
     register, failRegister,
@@ -31,7 +32,7 @@ router.post('/signin',
     signinValidator, 
     pass_is_8,
     passport.authenticate('signin', {failureRedirect:'/api/auth/fail-signin'}),
-    is_valid_password, createToken, signIn
+    is_valid_password, createToken, setLastConnection, signIn
 )
 router.get('/fail-signin', failSignIn)
 
@@ -41,8 +42,7 @@ router.get('/github', passport.authenticate('github', { scope: ['user: email'] }
 router.get(
     '/github/callback',
     passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
-    createToken,
-    githubCallback
+    createToken, setLastConnection,githubCallback
 )
 router.get('fail-register-github', failGithub)
 
