@@ -57,15 +57,17 @@ class CartController {
         })
       }
   
+      //Los productos eliminados van a quedar en el cart (eliminarlos)
+      const validProducts = cart.products.filter(product => product.productId !== null)
       let totalPrice = 0
-      cart.products.forEach((product) => {
+      validProducts.forEach((product) => {
         totalPrice += product.productId.price * product.quantity
       })
   
       const data = {
         cartId: cart._id,
         total: totalPrice,
-        products: cart.products
+        products: validProducts
       }
       return res.status(200).send({
         status: 200,

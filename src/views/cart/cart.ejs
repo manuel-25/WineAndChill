@@ -3,15 +3,18 @@
   <%- include("../partials/navbar") %>
   <div class="container">
     <h1 class="page-title">Carrito de Compras</h1>
-    <% if (response !== null) { %>
+    <% if (response && response.payload && response.payload.total > 0) { %>
       <div class="cart-list">
         <% response.payload.products.forEach((product) => { %>
           <div class="product-card">
-            <% console.log(`Product ${product.productId}`) %>
-            <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+            <% if (product.productId?.thumbnail === undefined) { %>
+              <img src="<%= product.productId.thumbnail %>" class="product-image" alt="<%= product.productId.title %>">
+            <% } else { %>
+              <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.productId.title %>">
+            <% } %>
             <div class="product-details">
-              <h2 class="product-title"><%= product.productId.title %></h2>
-              <p class="product-price">$<%= product.productId.price %></p>
+              <h2 class="product-title"><%= product.productId?.title %></h2>
+              <p class="product-price">$<%= product.productId?.price %></p>
             </div>
             <div class="product-actions">
               <div class="quantity-input">
