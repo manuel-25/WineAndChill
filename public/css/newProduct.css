@@ -1,3 +1,4 @@
+/* Estilos generales del contenedor */
 .container {
   max-width: 50%;
   width: 100%;
@@ -15,6 +16,7 @@
   margin-bottom: 20px;
 }
 
+/* Estilos para los grupos de formulario */
 .form-group {
   margin-bottom: 15px;
 }
@@ -52,8 +54,9 @@
   resize: vertical;
 }
 
+/* Estilos para el botón de enviar */
 .form-group input[type="submit"] {
-  background-color: #8a56ac;
+  background-color: #4CAF50;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -62,9 +65,26 @@
 }
 
 .form-group input[type="submit"]:hover {
-  background-color: #7d4e9f;
+  background-color: #49944c;
 }
 
+/* Estilos para el campo de carga de archivos */
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer; /* Cambia el cursor al puntero al pasar el mouse */
+}
+
+.form-group input[type="file"]:focus {
+  outline: none; /* Quita el borde resaltado al enfocar */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Agrega una sombra cuando se enfoca */
+}
+
+/* Estilos responsivos */
 @media only screen and (max-width: 768px) {
   .container {
     max-width: 90%;

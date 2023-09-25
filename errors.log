@@ -472,3 +472,169 @@ Cannot read properties of undefined (reading 'products')
 [2023-09-22T20:05:55.679Z] [ERROR] - Route not found: GET /favicon.ico
 [2023-09-22T20:14:09.443Z] [ERROR] - status: 500 method: GET path: /api/auth/signout message: Cannot read properties of undefined (reading '_id')
 [2023-09-22T20:14:09.683Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-23T21:42:47.576Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-24T15:37:20.480Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{}" (type Object) at path "thumbnail"
+[2023-09-24T15:58:55.592Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{}" (type Object) at path "thumbnail"
+[2023-09-24T15:59:56.505Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{}" (type Object) at path "thumbnail"
+[2023-09-24T21:08:48.923Z] [ERROR] - status: 500 method: POST path: /api/products message: Unexpected field
+[2023-09-24T21:08:50.366Z] [ERROR] - status: 500 method: POST path: /api/products message: Unexpected field
+[2023-09-24T21:09:08.499Z] [ERROR] - status: 500 method: POST path: /api/products message: Unexpected field
+[2023-09-24T21:31:18.640Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:19.012Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:31:25.148Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:25.207Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:31:54.042Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:54.109Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:31:56.373Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:56.436Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:37:47.808Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:37:47.871Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:43:51.745Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:43:51.812Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:44:14.464Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:44:14.527Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:47:29.931Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:47:30.282Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:48:11.875Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:48:11.945Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:48:45.318Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:48:45.687Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:49:48.062Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:49:48.122Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:50:51.596Z] [ERROR] - Route not found: GET /undefined
+[2023-09-25T02:41:40.399Z] [ERROR] - status: 500 method: POST path: /api/products message: El archivo no es una imagen válido.
+[2023-09-25T03:12:12.619Z] [ERROR] - status: 500 method: POST path: /api/products message: El archivo no es una imagen válido.
+[2023-09-25T03:13:07.711Z] [ERROR] - status: 500 method: POST path: /api/products message: multer is not defined
+[2023-09-25T03:29:01.916Z] [ERROR] - status: 500 method: POST path: /api/products message: defaultValues is not defined
+[2023-09-25T03:29:34.477Z] [ERROR] - status: 500 method: POST path: /api/products message: Cannot read properties of undefined (reading 'originalname')
+[2023-09-25T03:33:55.324Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{
+  fieldname: 'thumbnail',
+  originalname: 'malbec-reserva_dorso.jpeg',
+  encoding: '7bit',
+  mimetype: 'image/jpeg',
+  destination: 'C:\\Users\\Admin\\Desktop\\Tareas\\Proyectos\\CoderHouse-Backend\\desafios\\sprint_01\\src/../public/img/products',
+  filename: 'manuel-25-malbec-reserva_dorso.jpeg',
+  path: 'C:\\Users\\Admin\\Desktop\\Tareas\\Proyectos\\CoderHouse-Backend\\desafios\\sprint_01\\public\\img\\products\\manuel-25-malbec-reserva_dorso.jpeg',
+  size: 36404
+}" (type Object) at path "thumbnail"
+[2023-09-25T03:36:14.448Z] [ERROR] - status: 500 method: POST path: /api/products message: Cannot read properties of undefined (reading 'originalname')
+[2023-09-25T03:41:23.392Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:41:23.464Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:41:23.634Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:43:05.199Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:43:05.290Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:43:05.535Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:46:50.973Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:46:51.041Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:46:51.367Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:47:28.305Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:47:28.377Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:47:28.629Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:49:10.175Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:11
+    9|           <div class="product-card">
+    10|             <% if (product.productId?.thumbnail === undefined) { %>
+ >> 11|               <img src="<%= product.productId.thumbnail %>" class="product-image" alt="<%= product.productId.title %>">
+    12|             <% } else { %>
+    13|               <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.productId.title %>">
+    14|             <% } %>
+
+Cannot read properties of null (reading 'thumbnail')
+[2023-09-25T03:49:10.431Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:52:45.669Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:52:45.739Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:52:45.974Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:53:53.344Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:53:53.419Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:53:53.768Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:59:38.248Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:59:38.321Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:59:38.607Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T04:07:38.932Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')

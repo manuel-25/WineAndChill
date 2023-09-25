@@ -3,7 +3,6 @@
     <%- include("../partials/navbar") %>
     <div class="container">
       <h1>Productos Destacados</h1>
-
       <div class="search-container">
         <form action="/products" method="GET">
           <input type="text" name="title" id="search-input" placeholder="Buscar por título">
@@ -13,17 +12,23 @@
 
       <div class="row card-row">
         <% products.forEach((product) => { %>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card">
-              <a href="/products/<%= product._id %>">
-                <img src="<%= product.thumbnail %>" class="card-img-top product-image" alt="<%= product.title %>">
-                <div class="card-body">
-                  <h5 class="card-title"><%= product.title %></h5>
-                  <p class="card-text card-price">$<%= product.price %></p>
-                </div>
-              </a>
+          <% if (product.status === true) { %>
+            <div class="col-md-6 col-lg-3 mb-4">
+              <div class="card">
+                <a href="/products/<%= product.id %>">
+                  <% if (product?.thumbnail === undefined) { %>
+                    <img src="<%= product.thumbnail %>" class="card-img-top product-image" alt="<%= product.title %>">
+                  <% } else { %>
+                    <img src="/public/img/botella_vino.webp" class="card-img-top product-image" alt="<%= product.title %>">
+                  <% } %>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= product.title %></h5>
+                    <p class="card-text card-price">$<%= product.price %></p>
+                  </div>
+                </a>
+              </div>
             </div>
-          </div>
+          <% } %>
         <% }); %>
       </div>
 

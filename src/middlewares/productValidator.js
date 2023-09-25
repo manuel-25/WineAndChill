@@ -1,12 +1,10 @@
 function productValidator(req, res, next) {
     const requiredFields = ['title', 'stock', 'description', 'price', 'cellar', ]
-    const defaultValues = {
-      status: true,
-      thumbnail: '/public/img/botella_vino.webp'
-    }
-  
+
+    const thumbnail = req.file?.originalname
+    req.body.thumbnail = thumbnail ? `/public/img/${req.file.originalname}` : '/public/img/botella_vino.webp'
+
     const data = req.body
-  
     // Verifica si faltan campos obligatorios
     const missingFields = requiredFields.filter(field => !data[field])
     if (missingFields.length > 0) {
@@ -16,14 +14,6 @@ function productValidator(req, res, next) {
         missingFields
       })
     }
-  
-    // Asigna los valores por defecto si no están presentes
-    Object.entries(defaultValues).forEach(([field, value]) => {
-      if (!data[field]) {
-        data[field] = value
-      }
-    })
-  
     req.body = data
     next()
   }

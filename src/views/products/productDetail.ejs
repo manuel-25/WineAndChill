@@ -4,7 +4,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+        <% if (product?.thumbnail === undefined) { %>
+          <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+        <% } else { %>
+          <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.title %>">
+        <% } %>
       </div>
       <div class="col-md-6">
         <h2><%= product.title %></h2>
