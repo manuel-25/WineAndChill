@@ -638,3 +638,12 @@ Cannot read properties of null (reading 'thumbnail')
 [2023-09-25T03:59:38.321Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
 [2023-09-25T03:59:38.607Z] [ERROR] - Route not found: GET /public/scripts/
 [2023-09-25T04:07:38.932Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:11.465Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:33.858Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.023Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.140Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.327Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.475Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.636Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.803Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T15:24:03.554Z] [ERROR] - Route not found: GET /favicon.ico

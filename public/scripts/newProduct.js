@@ -27,10 +27,7 @@ productForm.addEventListener('submit', (event) => {
 
     fetch('/api/products', {
         method: 'POST',
-        body: formData,
-        /*headers: {
-            'Content-Type': 'multipart/form-data'
-        }*/
+        body: formData
     })
     .then(response => response.json())
     .then(data => {

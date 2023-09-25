@@ -8,31 +8,29 @@ const colors = ['#E6B0AA', '#D7BDE2', '#85C1E9', '#73C6B6', '#FAD7A0', '#F5CBA7'
 
 
 export function initializeSockets(http_server) {
-    let socket_server = new Server(http_server)
+    const socket_server = new Server(http_server, {
+        transports: ['websocket'],
+    })
 
     socket_server.on('connection', async socket => {
+        //console.log('socket:', socket)
 
+        let token = verifyToken(socket)
+        //console.log(token)
         //Cart counter
-        try {
-            const token = verifyToken(socket)
-            if(!token) {
-                socket.emit('cartCounter', 0)
-            }
-            if(token) {
-                const userCart = await cartService.getById(token.cartId)
-                const totalQuantity = userCart.products.reduce((total, product) => total + product.quantity, 0)
-                socket.emit('cartCounter', totalQuantity)
-            }
-        } catch (err) {
-            logger.error('Socket error: ', err)
+        if(!token) socket.emit('cartCounter', 0) 
+        if(token) {
+            const userCart = await cartService.getById(token.cartId)
+            const totalQuantity = userCart.products.reduce((total, product) => total + product.quantity, 0)
+            socket.emit('cartCounter', totalQuantity)
         }
     
         //Chat seccion
-        let color;
-        let userData;
+        let color
+        let userData
         socket.on('chatAuth', async () => {
             userData = verifyToken(socket)
-            console.log(userData)
+            console.log('userData', userData)
 
             if (userData) {
                 const username = userData.name;
@@ -68,6 +66,7 @@ export function initializeSockets(http_server) {
         socket.on('load_messages', async () => {
             try {
                 const chatFromDB = await chatService.getAll()
+                //console.log('chatFromDB:', chatFromDB)
                 socket.emit('allMessages', { chatFromDB })
             } catch(error) {
                 console.log('Socket Error: ', error)
@@ -79,14 +78,22 @@ export function initializeSockets(http_server) {
 
 function verifyToken(socket) {
     let token
-    let decodedToken
     const { cookie } = socket.handshake.headers
     const cookiePairs = cookie.trim().split(';')
-    for(const cookiePair of cookiePairs) {
+    for (const cookiePair of cookiePairs) {
         const [name, value] = cookiePair.trim().split('=')
-        if(name === 'token') {
+        if (name === 'token') {
             token = value
-            return decodedToken = jwt.verify(token, config.SECRET_JWT)
+            break
         }
     }
+    if (token) {
+        try {
+            const decodedToken = jwt.verify(token, config.SECRET_JWT)
+            return decodedToken
+        } catch (err) {
+            logger.error('Error al verificar el token:', err)
+        }
+    }
+    return null
 }

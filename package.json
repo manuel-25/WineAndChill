@@ -17,6 +17,8 @@
   "author": "Manuel-25",
   "license": "ISC",
   "dependencies": {
+    "@socket.io/cluster-adapter": "^0.2.2",
+    "@socket.io/sticky": "^1.0.4",
     "artillery-plugin-metrics-by-endpoint": "^1.2.0",
     "axios": "^1.4.0",
     "bcrypt": "^5.1.0",

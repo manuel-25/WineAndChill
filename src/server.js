@@ -11,21 +11,27 @@ const PORT = config.PORT
 let http_server
 
 if (cluster.isPrimary) {
-    logger.info('Proceso primario, generando workers')
-
     const numCPUs = cpus().length
+    let workerCount = 0
+
     for (let i = 0; i < numCPUs; i++) {
-        cluster.fork()
+        const worker = cluster.fork()
+        worker.on('online', () => {
+            workerCount++
+            if (workerCount === numCPUs) {
+                logger.info(`Se han creado todos los workers (${numCPUs}) listening on port ${PORT}`)
+            }
+        })
     }
+
     cluster.on('exit', (worker, code, signal) => {
         logger.info(`Worker ${worker.process.pid} died`)
     })
 } else {
-    const ready = () => logger.info(`Worker ${process.pid} listening on port ${PORT}`)
-    
-    // Crea la instancia de http.Server y pasa 'server' como manejador de solicitudes
+    const ready = () => logger.debug(`Worker ${process.pid} listening on port ${PORT}`)
+    // Crea la instancia de http.Server
     http_server = http.createServer(server)
-
     http_server.listen(PORT, ready)
+    // Inicializo los sockets aca
     initializeSockets(http_server)
 }
