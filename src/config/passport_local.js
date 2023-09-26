@@ -45,6 +45,7 @@ export default function() {
             async (username,password,done) => {
                 try {
                     const one = await userService.getByEmail(username)
+                    console.log('signin user', one)
                     if (!one) {
                         return done(null,false)
                     }
@@ -61,19 +62,19 @@ export default function() {
             { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL, session: false }, //objeto de configuracion
             async (accessToken,refreshToken,profile,done) => {
                 try {
-                    const one = await userService.getByEmail(profile._json.login)
-                    //console.log(profile)
+                    const one = await userService.getByEmail(profile._json.email)
                     if (!one) {
                         const user = await userService.createData({
                             name:profile._json.name,
-                            email:profile._json.login,
-                            age: 0,
+                            email:profile._json.email,
+                            age: null,
                             photo:profile._json.avatar_url,
-                            password:profile._json.id
+                            password:profile._json.id,
+                            photo: profile._json.avatar_url
                         })
-                        return done(null,user)	//si no lo encuentra lo crea y envía
+                        return done(null,user)
                     }
-                    return done(null,one)		//si encuentra el usuario lo envía
+                    return done(null,one)
                 } catch (error) {
                     return done(error)
                 }

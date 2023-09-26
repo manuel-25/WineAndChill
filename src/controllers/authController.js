@@ -8,7 +8,7 @@ class authController {
     register(req, res) {
         return res.status(200).send({
             success: true,
-            message: 'User created!',
+            message: 'Registration succesful!',
             payload: req.user
         })
     }
@@ -26,7 +26,7 @@ class authController {
     failSignIn(req, res) {
         res.status(400).json({
             success:false,
-            message: 'Signin failed'
+            message: 'Invalid credentials'
         })
     }
     githubCallback(req, res) {

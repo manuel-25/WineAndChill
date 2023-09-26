@@ -22,7 +22,7 @@ class UserManagerDao {
     }
 
     async createData(name, email, age, photo, password) {
-      return await UserModel.create({name, email, age, photo, password})
+      return await UserModel.create({name, email, age, photo, password, photo})
     }
 
     async deleteUser(email) {
