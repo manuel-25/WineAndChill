@@ -6,6 +6,7 @@
     <div class="navbar-right">
       <% if (locals.user) { %>
         <a class="nav-link" href="/api/auth/signout">Sign Out</a>
+        <a class="nav-link" href="/profile"><i class="fas fa-user"></i></a>
       <% } else { %>
         <a class="nav-link" href="/login">Sign In</a>
       <% } %>
@@ -21,7 +22,6 @@
   </div>
   <ul class="navbar-links">
     <li class="nav-item">
-      <!-- <label for="btn1" class="show">Products+</label> -->
       <a class="nav-link" href="/products">Products+</a>
       <input type="checkbox" id="btn1">
       <ul>
