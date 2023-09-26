@@ -7,7 +7,7 @@
       <div class="cart-list">
         <% response.payload.products.forEach((product) => { %>
           <div class="product-card">
-            <% if (product.productId?.thumbnail === undefined) { %>
+            <% if (product.productId?.thumbnail !== undefined) { %>
               <img src="<%= product.productId.thumbnail %>" class="product-image" alt="<%= product.productId.title %>">
             <% } else { %>
               <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.productId.title %>">
