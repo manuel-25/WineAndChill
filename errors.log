@@ -647,3 +647,4 @@ Cannot read properties of null (reading 'thumbnail')
 [2023-09-25T04:14:34.636Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
 [2023-09-25T04:14:34.803Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
 [2023-09-25T15:24:03.554Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-25T23:16:27.076Z] [ERROR] - Route not found: GET /contact
