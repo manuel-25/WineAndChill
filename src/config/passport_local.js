@@ -45,7 +45,6 @@ export default function() {
             async (username,password,done) => {
                 try {
                     const one = await userService.getByEmail(username)
-                    console.log('signin user', one)
                     if (!one) {
                         return done(null,false)
                     }

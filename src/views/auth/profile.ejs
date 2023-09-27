@@ -14,7 +14,9 @@
       <div class="profile-options">
         <ul>
           <li class="selected"><a href="#">Detalles de la cuenta</a></li>
-          <li><a href="#">Panel de Administrador</a></li>
+          <% if (user.role === 'OWNER') { %>
+            <li><a href="#">Panel de Administrador</a></li>
+          <% } %>
           <li><a href="#">Subir Documentos</a></li>
           <li><a href="#">Cambiar Contraseña</a></li>
           <li><a href="#">Cerrar Sesión</a></li>
