@@ -1,6 +1,7 @@
 import fetch from "node-fetch"
 import axios from "axios"
 import { productService, userService } from "../Service/index.js"
+import { logger } from "../config/logger.js"
 
 class ViewController {
   async renderCart(req, res, next) {
@@ -71,21 +72,26 @@ class ViewController {
     try {
       const appUrl = `${req.protocol}://${req.headers.host}`
     
-      const response = await axios.get(`${appUrl}/api/products/${req.params.pid}`)
-      if (response.status === 200) {
-        const product = response.data.response
-        
-        return res.render('products/productDetail', {
-          title: 'Product Detail',
-          product,
-          style: 'productDetail.css',
-          script: 'productDetail.js'
-        })
-      } else {
-        console.error('Error al obtener los detalles del producto:', response.data)
-        // Renderizar una pagina de error o redireccionar a otra pagina
-        return res.redirect('/error')
+      const response = await fetch(`${appUrl}/api/products/${req.params.pid}`)
+      //console.log(response)
+      if(!response.ok) {
+        logger.error(`Error al obtener el producto: ${req.params.pid} url: ${response.url}`)
+        return res.redirect(`/error?errorInfo=Error al obtener el producto ${product._id}&status=400`)
       }
+      const product = await response.json()
+      console.log('product:',product)
+      console.log('response.status !== 200: ', response.status !== 200)
+      console.log('product.response._id', product.response._id)
+      if(product.response.status === false) {
+        logger.error(`Error al obtener producto: ${product.response._id} - status:${product.response.status} - url: ${response.url}`)
+        return res.redirect(`/error?errorInfo=Error al obtener los detalles del producto ${product.response._id}&status=404`)
+      }
+      return res.render('products/productDetail', {
+        title: 'Product Detail',
+        product: product.response,
+        style: 'productDetail.css',
+        script: 'productDetail.js'
+      })
     } catch (error) {
       next(error)
     }
@@ -194,11 +200,18 @@ class ViewController {
 
   renderError(req, res, next) {
     try {
+      const errorInfo = req.query.errorInfo || 'Información adicional no disponible'
+      const status = req.query.status || 500;
+      console.log('errorInfo: ', errorInfo)
+
       res.render('error', {
         title: 'Error',
         style: 'error.css',
         script: '',
-        error
+        error: {
+          status: status || 500,
+          message: errorInfo || 'Unexpected error'
+        }
       })
     } catch (err) {
       next (err)

@@ -730,3 +730,28 @@ Cannot read properties of null (reading 'thumbnail')
 [2023-09-27T15:39:17.714Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: userService.updateProfile is not a function
 [2023-09-27T15:39:46.176Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: Parameter "filter" to findOneAndUpdate() must be an object, got "manuelotamendi97@gmail.com" (type string)
 [2023-09-27T15:41:43.683Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: email is not defined
+[2023-09-27T19:24:09.981Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T19:33:22.812Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T19:34:03.197Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T19:34:45.419Z] [ERROR] - Error al obtener producto: undefined - status:200 - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T19:34:45.525Z] [ERROR] - status: 500 method: GET path: /error?errorInfo=Error%20al%20obtener%20los%20detalles%20del%20producto%20id:undefined message: error is not defined
+[2023-09-27T19:35:10.463Z] [ERROR] - status: 500 method: GET path: /error?errorInfo=Error%20al%20obtener%20los%20detalles%20del%20producto%20id:undefined message: error is not defined
+[2023-09-27T22:23:56.644Z] [ERROR] - Error al obtener producto: undefined - status:200 - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:26:10.134Z] [ERROR] - Error al obtener producto: undefined - status:200 - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:27:16.425Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'response')
+[2023-09-27T22:27:37.825Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T22:28:01.665Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:10
+    8|           <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    9|         <% } else { %>
+ >> 10|           <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.title %>">
+    11|         <% } %>
+    12|       </div>
+    13|       <div class="col-md-6">
+
+Cannot read properties of undefined (reading 'title')
+[2023-09-27T22:31:34.486Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:32:18.655Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:32:53.505Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:33:26.201Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:38:39.453Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:45:02.580Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0

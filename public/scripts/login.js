@@ -26,10 +26,10 @@ loginButton.addEventListener('click', (event) => {
         } else {
             const returnUrl = getQueryParam(currentUrl, 'returnTo')
             if (returnUrl) {
-                console.log('Valor de returnTo:', returnUrl);
+                console.log('Valor de returnTo:', returnUrl)
                 window.location.href = returnUrl
               } else {
-                console.log('No se proporcionó returnTo en la URL');
+                console.log('No se proporcionó returnTo en la URL')
                 window.location.href = URL_PRODUCTS
               }
         }
