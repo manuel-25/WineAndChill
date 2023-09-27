@@ -24,7 +24,14 @@ loginButton.addEventListener('click', (event) => {
                 text: data.error || data.message || 'Invalid credentials',
             })
         } else {
-            window.location.href = URL_PRODUCTS
+            const returnUrl = getQueryParam(currentUrl, 'returnTo')
+            if (returnUrl) {
+                console.log('Valor de returnTo:', returnUrl);
+                window.location.href = returnUrl
+              } else {
+                console.log('No se proporcionó returnTo en la URL');
+                window.location.href = URL_PRODUCTS
+              }
         }
     })
 })
@@ -33,3 +40,10 @@ githubButton.addEventListener('click', (event) => {
     event.preventDefault()
     window.location.href = URL_GITHUB
 })
+
+const currentUrl = window.location.href
+// Función para obtener el valor de un parámetro de consulta de la URL
+function getQueryParam(url, paramName) {
+    const params = new URLSearchParams(url.split('?')[1])
+    return params.get(paramName)
+}

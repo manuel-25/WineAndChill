@@ -11,7 +11,7 @@ const router = Router()
 router.use('/products', products_router)
 router.use('/carts', cart_router)
 router.use('/auth', auth_router)
-router.use('/users', /*authorization('OWNER'),*/ user_router)
+router.use('/users', authorization('OWNER'), user_router)
 router.use('/test', authorization('OWNER'), testing_router)
 
 
