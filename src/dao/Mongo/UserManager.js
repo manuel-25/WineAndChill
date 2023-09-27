@@ -72,6 +72,14 @@ class UserManagerDao {
         { new :true }
       )
     }
+
+    async updateUser(email, newData) {
+      return await UserModel.findOneAndUpdate(
+        { email },
+        { $set: newData },
+        { new: true }
+      )
+    }
 }
 
 export default UserManagerDao

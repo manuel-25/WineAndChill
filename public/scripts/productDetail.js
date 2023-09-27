@@ -16,9 +16,11 @@ submitButton.addEventListener('click', (event) => {
                     icon: 'success',
                     title: 'Success',
                     text: 'Product added to your cart!',
-                    timer: 1500,
+                    confirmButtonText: 'OK'
                 })
-                .then(window.location.reload())
+                .then((result) => {
+                    if(result.isConfirmed) window.location.reload()
+                })
             } else {
                 if(data.status) {
                     Swal.fire({

@@ -9,6 +9,8 @@ const userSchema = new Schema({
   age: { type: Number },
   role: { type: String, default: 'PUBLIC' },
   password: { type: String, required: true },
+  phone: { type: String },
+  address: { type: String },
   cartId: { type: Types.ObjectId, ref: 'carts', default: null },
   chatColor: { type: String, default: null },
   documents: { type: [Schema.Types.Mixed], default: [] },

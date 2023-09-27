@@ -30,12 +30,12 @@
           <label for="name">Nombre</label>
           <input id="name" type="text" value="<%= user?.name %>">
           <label for="age">Edad</label>
-          <input id="age" type="text" value=<%= user?.age %>>
+          <input id="age" type="number" min="1" max="100" value=<%= user?.age %>>
           <label for="address">Direccion completa</label>
-          <input id="address" type="text" value="">
+          <input id="address" type="text" value="<%= user?.address %>" placeholder="Calle 123, Ciudad, Provincia">
           <label for="phone">Telefono</label>
-          <input id="phone" type="text" value="">
-          <!-- Opción de edición de detalles del usuario -->
+          <input id="phone" type="text" <%= user?.phone %> placeholder="011-12345678">
+          
           <a id="editButton"><i class="fas fa-edit"></i> Editar</a>
         </div>
     </div>

@@ -727,3 +727,6 @@ Cannot read properties of null (reading 'thumbnail')
 [2023-09-26T20:02:41.699Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "profile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
 [2023-09-26T21:50:58.073Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "auth/sprofile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
 [2023-09-26T21:51:05.361Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "auth/sprofile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
+[2023-09-27T15:39:17.714Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: userService.updateProfile is not a function
+[2023-09-27T15:39:46.176Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: Parameter "filter" to findOneAndUpdate() must be an object, got "manuelotamendi97@gmail.com" (type string)
+[2023-09-27T15:41:43.683Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: email is not defined

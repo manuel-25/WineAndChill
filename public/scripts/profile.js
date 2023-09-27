@@ -1,29 +1,39 @@
 const editButton = document.getElementById('editButton')
-const emailInput= document.getElementById('email').value
-const nameInput = document.getElementById('name').value
-const ageInput = document.getElementById('age').value
-const addressInput = document.getElementById('address').value
-const phoneInput = document.getElementById('phone').value
+const URL_PROFILE = '/profile'
 
-console.log(emailInput, editButton, nameInput, ageInput, addressInput, phoneInput)
+editButton.addEventListener('click', (event) => {
+    const email= document.getElementById('email').value
+    const name = document.getElementById('name').value
+    const age = document.getElementById('age').value
+    const address = document.getElementById('address').value
+    const phone = document.getElementById('phone').value
 
-
-/*
-fetch('/api/auth/signin',{
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({email, password, rememberMe})
+    fetch('/api/users/update/profile',{
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email, name, age, address, phone})
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        if (!data.success) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Try Again',
+                text: data.message || 'Error updating',
+                confirmButtonText: 'OK'
+            })
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Updated',
+                text: data.message,
+            })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = URL_PROFILE
+                }
+            })
+        }
+    })
 })
-.then(res => res.json())
-.then(data => {
-    console.log(data)
-    if (!data.success) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Try Again',
-            text: data.error || data.message || 'Invalid credentials',
-        })
-    } else {
-        window.location.href = URL_PRODUCTS
-    }
-})*/

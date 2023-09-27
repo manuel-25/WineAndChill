@@ -1,6 +1,6 @@
 import fetch from "node-fetch"
 import axios from "axios"
-import { productService } from "../Service/index.js"
+import { productService, userService } from "../Service/index.js"
 
 class ViewController {
   async renderCart(req, res, next) {
@@ -153,13 +153,14 @@ class ViewController {
     }
   }
 
-  renderProfile(req, res, next) {
+  async renderProfile(req, res, next) {
     try {
+      const user = await userService.getByEmail(req.token.email)
       res.render('auth/profile', {
         title: 'Profile',
         style: 'profile.css',
         script: 'profile.js',
-        user: req.token
+        user: user || req.token
       })
     } catch (err) {
       next(err)

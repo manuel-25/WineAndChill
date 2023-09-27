@@ -111,10 +111,26 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #cccccc;
   }
+
+  .user-details input[type="number"] {
+    width: auto;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    background-color: transparent;
+    color: #555555;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
+}
   
   .user-details input[type="text"]:read-only {
     background-color: transparent;
   }
+
+  .user-details input:focus {
+    border-color: #8a56ac;
+    outline: none;
+}
   
   .user-details a {
     background-color: #42b983;
