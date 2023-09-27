@@ -73,15 +73,11 @@ class ViewController {
       const appUrl = `${req.protocol}://${req.headers.host}`
     
       const response = await fetch(`${appUrl}/api/products/${req.params.pid}`)
-      //console.log(response)
       if(!response.ok) {
         logger.error(`Error al obtener el producto: ${req.params.pid} url: ${response.url}`)
         return res.redirect(`/error?errorInfo=Error al obtener el producto ${product._id}&status=400`)
       }
       const product = await response.json()
-      console.log('product:',product)
-      console.log('response.status !== 200: ', response.status !== 200)
-      console.log('product.response._id', product.response._id)
       if(product.response.status === false) {
         logger.error(`Error al obtener producto: ${product.response._id} - status:${product.response.status} - url: ${response.url}`)
         return res.redirect(`/error?errorInfo=Error al obtener los detalles del producto ${product.response._id}&status=404`)
@@ -202,7 +198,6 @@ class ViewController {
     try {
       const errorInfo = req.query.errorInfo || 'Información adicional no disponible'
       const status = req.query.status || 500;
-      console.log('errorInfo: ', errorInfo)
 
       res.render('error', {
         title: 'Error',
