@@ -1,0 +1,180 @@
+* {
+    font-family: 'Popins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+.profile-page {
+    display: flex;
+    flex: 1;
+}
+
+/* Profile Sidebar */
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    padding: 15px 0px 15px 0px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.185);
+}
+
+.profile-picture {
+    padding: 0px 15px 0 15px;
+    text-align: center;
+    position: relative;
+}
+
+.profile-picture img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+
+.profile-picture a {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    color: #8a56ac;
+    text-decoration: none;
+}
+
+.profile-name h2 {
+    font-size: 24px;
+    color: #1b1b1b;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.profile-options {
+    flex: 1;
+}
+
+.profile-options ul {
+    height: auto;
+    list-style: none;
+}
+
+
+.profile-options ul li {
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 2px;
+    padding: 10px;
+    text-align: left;
+}
+
+.selected {
+    border-bottom: 3px solid #8a56ac;
+    background-color: #8a56ac2d !important;
+}
+
+.profile-options ul li a {
+    color: #1b1b1b;
+    font-size: 16px;
+    margin-left: 50px;
+    text-decoration: none;
+}
+
+/* Estilos para Profile Details */
+.profile-details {
+    flex-grow: 1;
+    background-color: transparent;
+    padding: 60px;
+    box-shadow: none;
+  }
+  
+  .user-details h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  .user-details label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555555;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .user-details input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: #555555;
+    font-size: 14px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
+  }
+  
+  .user-details input[type="text"]:read-only {
+    background-color: transparent;
+  }
+  
+  .user-details a {
+    background-color: #42b983;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+  
+  .user-details a:hover {
+    background-color: #389e74;
+  }
+  
+  .user-details i {
+    margin-right: 8px;
+  }
+  
+  .profile-picture img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+  
+/* Estilos para pantallas pequeñas (hasta 468px de ancho) */
+@media (max-width: 468px) {
+    .profile-page {
+        flex-direction: column; /* Cambia la dirección de flex para pantallas pequeñas */
+    }
+  
+    .profile-sidebar {
+        width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
+  
+    .profile-details {
+        flex-grow: 1;
+        background-color: transparent;
+        padding: 30px; /* Ajusta el padding en pantallas pequeñas */
+        box-shadow: none;
+    }
+  
+    .user-details input[type="text"] {
+        padding: 8px; /* Ajusta el padding en campos de texto en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 950px) {
+    .profile-options ul li {
+        text-align: center;
+    }
+
+    .profile-options ul li a{
+        margin-left: 0px;
+    }
+}
+  

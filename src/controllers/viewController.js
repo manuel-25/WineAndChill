@@ -153,6 +153,19 @@ class ViewController {
     }
   }
 
+  renderProfile(req, res, next) {
+    try {
+      res.render('auth/profile', {
+        title: 'Profile',
+        style: 'profile.css',
+        script: 'profile.js',
+        user: req.token
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+
   renderForgotPassword(req, res, next) {
     try {
       res.render('auth/forgotPassword', {

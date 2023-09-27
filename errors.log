@@ -648,3 +648,82 @@ Cannot read properties of null (reading 'thumbnail')
 [2023-09-25T04:14:34.803Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
 [2023-09-25T15:24:03.554Z] [ERROR] - Route not found: GET /favicon.ico
 [2023-09-25T23:16:27.076Z] [ERROR] - Route not found: GET /contact
+[2023-09-26T16:02:35.568Z] [ERROR] - Route not found: GET /api/carts/cartId/:cartId
+[2023-09-26T16:02:57.229Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-26T18:20:44.788Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=daf13e804f60b05f64ef message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:20:44.961Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:20:52.094Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=f24af1f024a685654384 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:20:52.318Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:21:50.054Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=f24af1f024a685654384 message: Failed to obtain access token
+[2023-09-26T18:21:50.338Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:22:05.574Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=34f519426a693ba31cc4 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:22:05.783Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:22:41.907Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=34f519426a693ba31cc4 message: Failed to obtain access token
+[2023-09-26T18:22:42.120Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:22:45.564Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=34f519426a693ba31cc4 message: Failed to obtain access token
+[2023-09-26T18:22:45.805Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:24:34.176Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=6f1ccb0a038f04559818 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:24:34.412Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:29:46.655Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=82f8fb785acc411d1ae6 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: null,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:29:46.824Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:47:00.927Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9f9bbd399cd9bb79d6a5 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:47:01.145Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:49:31.548Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=ea91001a6a9ed52df5ae message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:49:31.820Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:51:24.323Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=25e2fbc1eda863df1767 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:51:24.528Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T19:31:36.902Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T19:31:40.298Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T19:35:10.975Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T19:43:35.383Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T20:02:41.699Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "profile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
+[2023-09-26T21:50:58.073Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "auth/sprofile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
+[2023-09-26T21:51:05.361Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "auth/sprofile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"

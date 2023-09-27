@@ -1,4 +1,6 @@
-let socket = io()
+let socket = io('http://localhost:8080', {
+    transports: ['websocket'],
+})
 let chatInput = document.getElementById('chatInput')
 let chatBox = document.getElementById('messages')
 let username

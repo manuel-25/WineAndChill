@@ -16,14 +16,16 @@ loginButton.addEventListener('click', (event) => {
     })
     .then(res => res.json())
     .then(data => {
+        console.log(data)
         if (!data.success) {
             Swal.fire({
                 icon: 'error',
                 title: 'Try Again',
-                text: 'Invalid credentials',
+                text: data.error || data.message || 'Invalid credentials',
             })
+        } else {
+            window.location.href = URL_PRODUCTS
         }
-        window.location.href = URL_PRODUCTS
     })
 })
 

@@ -30,6 +30,20 @@ class UserController {
             next(err)
         }
     }
+
+    async getByEmail(req, res, next) {
+        try {
+            const userEmail = req.params.email 
+            const user = await userService.getByEmail(userEmail)
+            console.log(user)
+            return res.status(200).send({
+                success: true,
+                payload: user
+            })
+        } catch (err) {
+            next(err)
+        }
+    }
 }
 
 export default new UserController()

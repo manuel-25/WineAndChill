@@ -1,0 +1,48 @@
+<%- include("../partials/head") %>
+<body>
+  <%- include("../partials/navbar") %>
+  <div class="profile-page">
+    <div class="profile-sidebar">
+      <div class="profile-picture">
+        <img src=<%= user?.photo ? user.photo : "/public/img/profile/default.webp"%> alt="Foto de perfil">
+        <a href="#"><i class="fas fa-edit"></i></a>
+      </div>
+      <div class="profile-name">
+        <h2><%= user?.name %></h2>
+      </div>
+      <!-- Opciones de navegación -->
+      <div class="profile-options">
+        <ul>
+          <li class="selected"><a href="#">Detalles de la cuenta</a></li>
+          <li><a href="#">Panel de Administrador</a></li>
+          <li><a href="#">Subir Documentos</a></li>
+          <li><a href="#">Cambiar Contraseña</a></li>
+          <li><a href="#">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="profile-details">
+      <!-- Detalles del usuario con opción de edición -->
+      <div class="user-details">
+          <h3>Detalles de la cuenta</h3>
+          <label for="email">Email</label>
+          <input id="email" type="text" value="<%= user?.email %>" readonly>
+          <label for="name">Nombre</label>
+          <input id="name" type="text" value="<%= user?.name %>">
+          <label for="age">Edad</label>
+          <input id="age" type="text" value=<%= user?.age %>>
+          <label for="address">Direccion completa</label>
+          <input id="address" type="text" value="">
+          <label for="phone">Telefono</label>
+          <input id="phone" type="text" value="">
+          <!-- Opción de edición de detalles del usuario -->
+          <a id="editButton"><i class="fas fa-edit"></i> Editar</a>
+        </div>
+    </div>
+  </div>
+  <%- include("../partials/footer") %>
+</body>
+</html>
+
+
+

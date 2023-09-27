@@ -4,7 +4,7 @@ const collection = 'users'
 
 const userSchema = new Schema({
   name: { type: String, required: true },
-  photo: { type: String, default: 'default.jpg' },
+  photo: { type: String, default: '/public/img/profile/default.webp' },
   email: { type: String, unique: true, index: true },
   age: { type: Number },
   role: { type: String, default: 'PUBLIC' },

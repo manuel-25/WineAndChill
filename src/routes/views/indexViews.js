@@ -12,7 +12,8 @@ const {
     renderCreateProduct, renderCart,
     renderRegister, renderLogin,
     renderForgotPassword, renderResetPassword,
-    renderError, renderUpdateProduct
+    renderError, renderUpdateProduct,
+    renderProfile
 } = viewController
 
 const router = Router()
@@ -27,6 +28,7 @@ router.get('/update_product/:productId', authorization('PREMIUM'), renderUpdateP
 router.get('/cart', readToken, renderCart)
 router.get('/register', is_not_Logged, renderRegister)
 router.get('/login', is_not_Logged, renderLogin)
+router.get('/profile', authorization('PUBLIC'), readToken, renderProfile)
 router.get('/forgot-password', renderForgotPassword)
 router.get('/reset-password/:token', is_valid_resetToken, renderResetPassword)
 router.get('/error', renderError)
