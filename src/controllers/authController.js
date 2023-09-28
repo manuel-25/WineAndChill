@@ -30,7 +30,9 @@ class authController {
         })
     }
     githubCallback(req, res) {
-        res.status(200).redirect('/products')
+        const returnUrl = req.cookies.returnTo || '/products'
+        res.clearCookie('returnTo')
+        res.status(200).redirect(returnUrl)
     }
     failGithub(req, res) {
         res.status(403).json({

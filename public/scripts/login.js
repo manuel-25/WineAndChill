@@ -26,10 +26,8 @@ loginButton.addEventListener('click', (event) => {
         } else {
             const returnUrl = getQueryParam(currentUrl, 'returnTo')
             if (returnUrl) {
-                console.log('Valor de returnTo:', returnUrl)
                 window.location.href = returnUrl
               } else {
-                console.log('No se proporcionó returnTo en la URL')
                 window.location.href = URL_PRODUCTS
               }
         }
@@ -37,12 +35,15 @@ loginButton.addEventListener('click', (event) => {
 })
 
 githubButton.addEventListener('click', (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    const returnUrl = getQueryParam(window.location.href, 'returnTo')
+    document.cookie = `returnTo=${returnUrl}; max-age=120;`
+
     window.location.href = URL_GITHUB
 })
-
 const currentUrl = window.location.href
-// Función para obtener el valor de un parámetro de consulta de la URL
+
+// Función para obtener el valor de un parametro de consulta de la URL
 function getQueryParam(url, paramName) {
     const params = new URLSearchParams(url.split('?')[1])
     return params.get(paramName)
