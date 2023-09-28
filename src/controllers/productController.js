@@ -1,31 +1,46 @@
 import { productService, userService } from "../Service/index.js"
 
 class ProductController {
-    async getProducts(req, res, next) {
-      try {
-        const limit = !isNaN(parseInt(req.query.limit)) ? parseInt(req.query.limit) : 6
-        const page = !isNaN(parseInt(req.query.page)) ? parseInt(req.query.page) : 1
-        const title = req.query.title ? new RegExp(req.query.title, 'i') : null
-        let query = {}
+  async getProducts(req, res, next) {
+    try {
+      const limit = !isNaN(parseInt(req.query.limit)) ? parseInt(req.query.limit) : 6;
+      const page = !isNaN(parseInt(req.query.page)) ? parseInt(req.query.page) : 1;
+      const searchTerm = req.query.title || '';
   
-        if (title) query.title = title
-
-        const all = await productService.paginate(query, { limit, page, lean: true })
-
-        if (!all || all.error) {
-            return res.status(404).send({
-                status: 404,
-                response: all.error || 'Products pagination error!'
-              }) 
-        }
-        return res.status(200).send({
-            status: 200,
-            response: all
-        })
-      } catch (error) {
-        next(error)
+      // Modificar para dividir en palabras clave correctamente
+      const keywords = searchTerm.trim().split(/\s+/);
+  
+      let query = {};
+  
+      if (keywords.length > 0) {
+        // Construir consulta con filtros de título y categoría si hay palabras clave
+        query.$or = keywords.map(keyword => ({
+          $or: [
+            { title: new RegExp(keyword, 'i') },
+            { type: new RegExp(keyword, 'i') },
+            { cellar: new RegExp(keyword, 'i') }
+          ]
+        }));
       }
+  
+      const all = await productService.paginate(query, { limit, page, lean: true });
+  
+      if (!all || all.error) {
+        return res.status(404).send({
+          status: 404,
+          response: all.error || 'Products pagination error!'
+        });
+      }
+  
+      return res.status(200).send({
+        status: 200,
+        response: all
+      });
+    } catch (error) {
+      next(error);
     }
+  }
+  
   
     async getProduct(req, res, next) {
       try {

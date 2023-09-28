@@ -44,7 +44,7 @@ class ViewController {
   async renderProductList(req, res, next) {
     try {
       const appUrl = `${req.protocol}://${req.headers.host}`
-      const limit = parseInt(req.query.limit) || 15
+      const limit = parseInt(req.query.limit) || 16
       const page = parseInt(req.query.page) || 1
       const title = req.query.title || ''
   
