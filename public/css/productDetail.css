@@ -14,6 +14,23 @@ body {
   margin-top: 50px;
   text-align: center;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: -20px;
+  left: 80px;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  border-bottom: 1px solid #555;
+  transition: border-bottom 0.6s ease-in-out;
 }
 
 .row {
@@ -105,5 +122,10 @@ h2 {
   .col-md-6 {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .back-button {
+    top: 0px;
+    left: 40%;
   }
 }
