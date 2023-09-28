@@ -35,10 +35,9 @@ loginButton.addEventListener('click', (event) => {
 })
 
 githubButton.addEventListener('click', (event) => {
-    event.preventDefault();
+    event.preventDefault()
     const returnUrl = getQueryParam(window.location.href, 'returnTo')
-    document.cookie = `returnTo=${returnUrl}; max-age=120;`
-
+    if(returnUrl) document.cookie = `returnTo=${returnUrl}; max-age=120;`
     window.location.href = URL_GITHUB
 })
 const currentUrl = window.location.href

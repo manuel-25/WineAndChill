@@ -755,3 +755,8 @@ Cannot read properties of undefined (reading 'title')
 [2023-09-27T22:33:26.201Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
 [2023-09-27T22:38:39.453Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
 [2023-09-27T22:45:02.580Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-28T16:09:02.020Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:05.334Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:42.870Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:42.871Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:44.732Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
