@@ -17,6 +17,7 @@
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0px 30px 0px 30px
 }
 
 .product-image {
@@ -25,6 +26,11 @@
   object-fit: contain;
   border-radius: 10px;
   margin-right: 20px;
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(.9);
 }
 
 .product-details {
@@ -66,6 +72,14 @@
   max-width: 100%;
 }
 
+.product-actions button.updateBtn:hover {
+  background-color: #ffd000;
+}
+
+.product-actions button.deleteBtn:hover {
+  background-color: #f0172d;
+}
+
 @media (max-width: 768px) {
   .product-actions button.updateBtn,
   .product-actions button.deleteBtn,
@@ -95,6 +109,10 @@
   text-align: center;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.product-actions input[type="number"]:focus {
+  border-color: 1px solid #8a56ac;
 }
 
 .total-container {

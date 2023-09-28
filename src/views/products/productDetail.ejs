@@ -3,7 +3,7 @@
   <%- include("../partials/navbar") %>
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 image-container">
         <% if (product?.thumbnail !== undefined) { %>
           <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
         <% } else { %>

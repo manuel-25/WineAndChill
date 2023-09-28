@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 80px;
   margin-top: 50px;
   text-align: center;
   margin-bottom: 20px;
@@ -26,6 +27,10 @@ body {
   max-width: 50%;
 }
 
+.image-container{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.075);
+}
+
 .product-image {
   width: 100%;
   max-width: 400px;
@@ -33,10 +38,15 @@ body {
   margin-bottom: 20px;
   object-fit: contain;
   max-height: 300px;
+  transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+  transform: scale(.9)
 }
 
 h2 {
-  color: #8a56ac;
+  color: #555;
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -50,6 +60,8 @@ h2 {
 
 .product-description {
   font-size: 16px;
+  padding: 0px 30px 0 30px;
+  text-align: left;
   margin-bottom: 20px;
   color: #555;
 }
@@ -82,7 +94,7 @@ h2 {
   margin-top: 10px;
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #8a56ac;
+  background-color: #4CAF50;
   color: #fff;
   border: none;
   border-radius: 5px;
