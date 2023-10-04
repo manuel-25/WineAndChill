@@ -1,4 +1,5 @@
 import { userService } from "../Service/index.js"
+import { sendAccountDeletedEmail } from "../utils/sendEmail.js"
 
 class UserController {
 
@@ -133,18 +134,24 @@ class UserController {
               }
               return false
             })
-            .map((user) => user._id)
+            .map((user) => {
+                return {
+                  _id: user._id,
+                  name: user.name,
+                  email: user.email
+                }
+              })
 
             if (!deletedUsers || deletedUsers.length === 0) {
                 return res.status(400).json({
                   success: false,
                   message: `No users to delete.`,
-                });
+                })
               }
 
             for(const user of deletedUsers) {
-                const deleted = await userService.delete(user._id)
-                console.log(deleted)
+                await userService.delete(user._id)
+                await sendAccountDeletedEmail(user.email, user.name)
             }
       
             res.status(200).json({
