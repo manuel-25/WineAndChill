@@ -1,6 +1,35 @@
 import { userService } from "../Service/index.js"
 
 class UserController {
+
+    async getUsers(req, res, next) {
+        try {
+            const allUsers = await userService.getAll()
+            if(!allUsers) {
+                return res.status(400).send({
+                    success: false,
+                    message: `Unable to get users. Please try again later.`
+                })
+            }
+            const filterArray = allUsers.map((user) => {
+                return {
+                    _id: user._id,
+                    name: user.name,
+                    photo: user.photo,
+                    email: user.email,
+                    age: user.age,
+                    role: user.role
+                }
+            })
+            return res.status(200).send({
+                success: true,
+                payload: filterArray
+            })
+        } catch (err) {
+            next(err)
+        }
+    }
+
     async setUserRole(req, res, next) {
         try {
             const userId = req.params.userId
@@ -72,6 +101,59 @@ class UserController {
 
         } catch (err) {
             next(err)
+        }
+    }
+
+    async deleteUsers(req, res, next) {
+        try {
+            const allUsers = await userService.getAll();
+      
+            if (!Array.isArray(allUsers)) {
+              return res.status(400).json({
+                success: false,
+                message: `Unable to get users. Please try again later.`,
+              })
+            }
+
+            const actualDate = new Date()
+
+            const allUsersFilter = allUsers.filter((user) => {
+                return user.role !== "OWNER" && user.role !== "PREMIUM"
+            })
+      
+            const deletedUsers = allUsersFilter
+            .filter((user) => {
+              const lastConnection = user.last_connection
+              const lastConnectionDate = new Date(lastConnection)
+              if (lastConnection && !isNaN(lastConnectionDate.getTime())) {
+                // Diferencia en milisegundos (cuántos ms desde la última conexión)
+                const differenceMilliseconds = actualDate - lastConnectionDate
+                const millisecondsToHours = differenceMilliseconds / (1000 * 60 * 60) // Ms a horas
+                return millisecondsToHours > 48
+              }
+              return false
+            })
+            .map((user) => user._id)
+
+            if (!deletedUsers || deletedUsers.length === 0) {
+                return res.status(400).json({
+                  success: false,
+                  message: `No users to delete.`,
+                });
+              }
+
+            for(const user of deletedUsers) {
+                const deleted = await userService.delete(user._id)
+                console.log(deleted)
+            }
+      
+            res.status(200).json({
+                success: true,
+                message: `${deletedUsers.length} users deleted.`,
+                deletedUsers,
+            })
+        } catch (err) {
+          next(err)
         }
     }
 }

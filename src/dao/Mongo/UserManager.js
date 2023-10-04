@@ -5,7 +5,7 @@ class UserManagerDao {
       this.UserModel = UserModel
     }
 
-    async getUsers() {
+    async getAll() {
       return await UserModel.find({})
     }
 
@@ -78,6 +78,12 @@ class UserManagerDao {
         { email },
         { $set: newData },
         { new: true }
+      )
+    }
+
+    async delete(id) {
+      return await UserModel.findByIdAndDelete(
+        id
       )
     }
 }

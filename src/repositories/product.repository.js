@@ -24,7 +24,7 @@ class ProductRepository {
         return result
     }
     deleteProduct = async (pid) => {
-        let result = await this.dao.delete(pid)
+        let result = await this.dao.delete(pid) 
         return result
     }
 }
