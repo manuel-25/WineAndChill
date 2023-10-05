@@ -130,7 +130,6 @@ class ProductController {
       try {
         const pid = req.params.pid
         const userEmail = req.token.email
-        //console.log(userEmail)
 
         const userData = await userService.getByEmail(userEmail)
         const productData = await productService.getById(pid)

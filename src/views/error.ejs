@@ -3,7 +3,6 @@
   <%- include("./partials/navbar") %>
   <div class="container error-container">
     <img class="error-image" src="/public/img/wine-error_img.webp" alt="Error">
-    <% console.log(error) %>
     <% if (error) { %>
       <h3 class="error-heading">Error <%= error.status %>!</h3>
       <p class="error-message"><%= error.message %></p>

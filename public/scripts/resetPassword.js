@@ -18,7 +18,6 @@ submitButton.addEventListener('click', (event) => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         if(!data.success) {
             Swal.fire({
                 icon: 'error',

@@ -13,16 +13,15 @@ export function initializeSockets(http_server) {
     })
 
     socket_server.on('connection', async socket => {
-        //console.log('socket:', socket)
         //TOKEN
         const token = verifyToken(socket)
-        //console.log('token',token)
 
         //Cart counter
         const getCartCounter = async () => {
             try {
                 if (!token) return 0
                 const userCart = await cartService.getById(token.cartId)
+                if (!userCart) return 0
                 return userCart.products.reduce((total, product) => total + product.quantity, 0)
             } catch(err) {
                 logger.error('Error al verificar el token:', err)

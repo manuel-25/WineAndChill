@@ -181,7 +181,6 @@ describe('Supertest WineAndChill', () => {
             const { ok, status, _body } = await requester.get(`/api/carts/cartId/:cartId`)
             expect(ok).to.be.ok
             expect(status).to.eql(200)
-            console.log(ok, status, _body)
         })
     })
 })

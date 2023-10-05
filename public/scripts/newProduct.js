@@ -38,14 +38,10 @@ productForm.addEventListener('submit', (event) => {
                 text: data.response,
                 confirmButtonText: 'OK',
                 timerProgressBar: true,
-                onClose: () => {
-                    console.log('Alerta cerrada')
-                }
             }).then(() => {
                 window.location.href = '/new_product'
             })
         } else {
-            console.log('data:', data)
             const displayError = data.message ?? data.error
             Swal.fire({
                 icon: 'error',

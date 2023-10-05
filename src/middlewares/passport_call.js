@@ -2,7 +2,6 @@ import passport from "passport"
 
 export default (strategy)=> {
     return async(req,res,next)=> {
-        //console.log(req.originalUrl)      implementar
         passport.authenticate(
             strategy,
             (err,user,info)=> {
