@@ -82,8 +82,6 @@ class UserController {
 
     async updateProfile(req, res, next) {
         try {
-            console.log(req.body)
-            console.log(req.email)
             const data = req.body
             const email =  req.email 
             
@@ -91,7 +89,7 @@ class UserController {
             
             if(!updated) return res.status(400).send({
                 success: false,
-                message: 'Error updating, please try again',
+                message: 'Error updating profile, please try again',
             })
 
             return res.status(200).send({
@@ -99,16 +97,50 @@ class UserController {
                 message: 'Information updated!',
                 payload: updated
             })
-
         } catch (err) {
             next(err)
         }
     }
 
+    async updateRole(req, res, next) {
+        try {
+            console.log(req.body)
+            const role = req.body.role
+            const uid = req.params.uid
+            const newRole = await userService.setRole(uid, role)
+            if(!newRole) return res.status(400).send({
+                success: false,
+                message: 'Error updating role, please try again',
+            })
+
+            return res.status(200).send({
+                success: true,
+                message: 'Information updated!',
+                payload: newRole
+            })
+        } catch(err) {
+            next(err)
+        }
+    }
+
+    async deleteSingleUser(req, res, next) {
+        const uid = req.params.uid
+        const deleted = await userService.delete(uid)
+        if(!deleted) return res.status(400).json({
+            success: false,
+            message: `Delete error. Please try again later.`,
+          })
+
+        res.status(200).json({
+            success: true,
+            message: `User ${uid} deleted.`,
+            deleted,
+        })
+    }
+
     async deleteUsers(req, res, next) {
         try {
-            const allUsers = await userService.getAll();
-      
+            const allUsers = await userService.getAll()
             if (!Array.isArray(allUsers)) {
               return res.status(400).json({
                 success: false,

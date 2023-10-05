@@ -156,11 +156,19 @@ class ViewController {
   async renderProfile(req, res, next) {
     try {
       const user = await userService.getByEmail(req.token.email)
+      let userList = null
+      if(user.role === 'OWNER') {
+        userList = await userService.getAll()
+      }
+      const panel = req.query.panel ?? 'account-details'
+
       res.render('auth/profile', {
         title: 'Profile',
         style: 'profile.css',
         script: 'profile.js',
-        user: user || req.token
+        user: user || req.token,
+        userList,
+        panel
       })
     } catch (err) {
       next(err)

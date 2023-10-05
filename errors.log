@@ -784,3 +784,46 @@ Cannot read properties of undefined (reading 'title')
 [2023-10-04T23:33:15.334Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
 [2023-10-04T23:33:17.432Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
 [2023-10-05T14:23:51.879Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-05T15:45:03.854Z] [ERROR] - status: 500 method: GET path: /profile message: missing ) after argument list in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-10-05T15:45:51.107Z] [ERROR] - status: 500 method: GET path: /profile message: missing ) after argument list in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-10-05T15:45:58.238Z] [ERROR] - status: 500 method: GET path: /profile message: missing ) after argument list in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-10-05T15:56:36.064Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:45
+    43|       <div class="admin-panel hide">
+    44|         <h1>Panel de Administrador</h3>
+ >> 45|           <% users.forEach(function(user) { %>
+    46|             <div class="user-card">
+    47|               <p>ID: <%= user.id %></p>
+    48|               <p>Name: <%= user.name %></p>
+
+users is not defined
+[2023-10-05T15:56:38.411Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:45
+    43|       <div class="admin-panel hide">
+    44|         <h1>Panel de Administrador</h3>
+ >> 45|           <% users.forEach(function(user) { %>
+    46|             <div class="user-card">
+    47|               <p>ID: <%= user.id %></p>
+    48|               <p>Name: <%= user.name %></p>
+
+users is not defined
+[2023-10-05T16:06:16.793Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:47
+    45|           <div class="user-list">
+    46|             <h3>Usuarios</h3>
+ >> 47|             <% users.forEach(function(userList) { %>
+    48|               <div class="user-card">
+    49|                 <p>ID: <%= userList._id %></p>
+    50|                 <p>Name: <%= userList.name %></p>
+
+users is not defined
+[2023-10-05T20:00:37.854Z] [ERROR] - status: 400 method: PUT path: /api/users/update/64a7002dd36b8a8f54b32b07 message: Unexpected token " in JSON at position 0

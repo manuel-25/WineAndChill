@@ -12,34 +12,58 @@
       </div>
       <!-- Opciones de navegación -->
       <div class="profile-options">
-        <ul>
-          <li class="selected"><a href="#">Detalles de la cuenta</a></li>
+        <ul class="profile-list">
+          <li class="<%= panel === 'account-details' ? 'selected' : '' %>" data-profile="account-details"><a href="#">Detalles de la cuenta</a></li>
           <% if (user.role === 'OWNER') { %>
-            <li><a href="#">Panel de Administrador</a></li>
+            <li class="<%= panel === 'admin-panel' ? 'selected' : '' %>" data-profile="admin-panel"><a href="#">Panel de Administrador</a></li>
           <% } %>
-          <li><a href="#">Subir Documentos</a></li>
-          <li><a href="#">Cambiar Contraseña</a></li>
-          <li><a href="#">Cerrar Sesión</a></li>
+          <li class="<%= panel === 'upload-documents' ? 'selected' : '' %>" data-profile="upload-documents"><a href="#">Subir Documentos</a></li>
+          <li class="<%= panel === 'change-password' ? 'selected' : '' %>" data-profile="change-password"><a href="#">Cambiar Contraseña</a></li>
+          <li class="<%= panel === 'logout' ? 'selected' : '' %>" data-profile="logout"><a href="/api/auth/signout">Cerrar Sesión</a></li>
         </ul>
       </div>
     </div>
+    <!-- Detalles del usuario -->
     <div class="profile-details">
-      <!-- Detalles del usuario con opción de edición -->
-      <div class="user-details">
-          <h3>Detalles de la cuenta</h3>
-          <label for="email">Email</label>
-          <input id="email" type="text" value="<%= user?.email %>" readonly>
-          <label for="name">Nombre</label>
-          <input id="name" type="text" value="<%= user?.name %>">
-          <label for="age">Edad</label>
-          <input id="age" type="number" min="1" max="100" value=<%= user?.age %>>
-          <label for="address">Direccion completa</label>
-          <input id="address" type="text" value="<%= user?.address %>" placeholder="Calle 123, Ciudad, Provincia">
-          <label for="phone">Telefono</label>
-          <input id="phone" type="text" <%= user?.phone %> placeholder="011-12345678">
-          
-          <a id="editButton"><i class="fas fa-edit"></i> Editar</a>
-        </div>
+      <div class="account-details <%= panel === 'account-details' ? '' : 'hide' %>">
+        <h1 class="profile-title">Detalles de la cuenta</h3>
+        <label for="email">Email</label>
+        <input id="email" type="text" value="<%= user?.email %>" readonly>
+        <label for="name">Nombre</label>
+        <input id="name" type="text" value="<%= user?.name %>">
+        <label for="age">Edad</label>
+        <input id="age" type="number" min="1" max="100" value=<%= user?.age %>>
+        <label for="address">Direccion completa</label>
+        <input id="address" type="text" value="<%= user?.address %>" placeholder="Calle 123, Ciudad, Provincia">
+        <label for="phone">Telefono</label>
+        <input id="phone" type="text" value="<%= user?.phone %>" placeholder="011-12345678">
+
+        <a id="editButton"><i class="fas fa-edit"></i> Editar</a>
+      </div>
+      <!-- Panel de admin -->
+      <div class="admin-panel <%= panel === 'admin-panel' ? '' : 'hide' %>">
+        <h1 class="profile-title">Panel de Administrador</h3>
+          <div class="user-list">
+            <div class="user-list-title">
+              <h3>Lista de Usuarios</h3>
+              <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
+            </div>
+            <% userList.forEach(function(user) { %>
+              <div class="user-card" data-uid="<%= user._id %>">
+                <p>ID: <%= user._id %></p>
+                <p>Email: <%= user.email %></p>
+                <select>
+                  <option value="PUBLIC" <%= user.role === 'PUBLIC' ? 'selected' : '' %>>Public</option>
+                  <option value="PREMIUM" <%= user.role === 'PREMIUM' ? 'selected' : '' %>>Premium</option>
+                  <option value="OWNER" <%= user.role === 'OWNER' ? 'selected' : '' %>>Owner</option>
+                </select>
+                <p>Cart ID: <%= user.cartId ? user.cartId : 'null' %></p>
+                <i class="fas fa-edit edit-icon"></i>
+                <i class="fas fa-trash-alt delete-icon" data-user-id="<%= user._id %>"></i>
+              </div>
+            <% }) %>
+          </div>
+      </div>
     </div>
   </div>
   <%- include("../partials/footer") %>
