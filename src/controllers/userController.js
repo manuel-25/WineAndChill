@@ -102,9 +102,29 @@ class UserController {
         }
     }
 
+    async updatePhoto(req, res, next) {
+        const uploadedFile = `/public/img/profile/${req.file.filename}`
+        const email = req.token.email
+        if(!uploadedFile || !email) {
+            return res.status(400).send({
+                success: false,
+                message:'Invalid file or expired token'
+            })
+        }
+
+        const upload = await userService.updatePhoto(email, uploadedFile)
+        if(!upload) return res.status(400).send({
+            success: false,
+            message: 'Error uploading file'
+        })
+        return res.status(200).send({
+            success: true,
+            message: 'Profile photo updated!'
+        })
+    }
+
     async updateRole(req, res, next) {
         try {
-            console.log(req.body)
             const role = req.body.role
             const uid = req.params.uid
             const newRole = await userService.setRole(uid, role)

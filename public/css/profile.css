@@ -43,16 +43,19 @@
 .profile-picture img {
     width: 180px;
     height: 180px;
+    min-width: 160px;
+    min-height: 160px;
     border-radius: 50%;
     margin-bottom: 25px;
 }
 
-.profile-picture a {
+.edit-icon-label {
     position: absolute;
-    bottom: 20px;
-    right: 40px;
+    bottom: 15%;
+    right: 32%;
     color: #8a56ac;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .profile-name h2 {
@@ -230,6 +233,11 @@
   outline: none;
 }
 
+.admin-btns {
+  display: flex;
+  margin-right: auto;
+}
+
 .edit-icon, .delete-icon {
   font-size: 18px;
   cursor: pointer;
@@ -261,6 +269,11 @@
     .profile-sidebar {
         width: 100%;
     }
+
+    .edit-icon-label {
+      bottom: 15%;
+      right: 25%;
+    }
   
     .profile-details {
         flex-grow: 1;
@@ -276,6 +289,18 @@
 
 /* Estilos para pantallas pequeñas (hasta 768px de ancho) */
 @media (max-width: 768px) {
+  .profile-picture img {
+    width: 140px;
+    height: 140px;
+    min-width: 100px;
+    min-height: 100px;
+  }
+
+  .edit-icon-label {
+    bottom: 15%;
+    right: 15%;
+  }
+
   .user-card {
     flex-direction: column;
     text-align: left;

@@ -4,9 +4,13 @@
   <div class="profile-page">
     <div class="profile-sidebar">
       <div class="profile-picture">
-        <img src=<%= user?.photo ? user.photo : "/public/img/profile/default.webp"%> alt="Foto de perfil">
-        <a href="#"><i class="fas fa-edit"></i></a>
+        <img src="<%= user?.photo ? user.photo : '/public/img/profile/default.webp' %>" alt="Foto de perfil">
+        <label for="photo" class="edit-icon-label">
+          <i class="fas fa-edit"></i>
+        </label>
+        <input type="file" id="photo" accept="image/*" style="display: none;">
       </div>
+      
       <div class="profile-name">
         <h2><%= user?.name %></h2>
       </div>
@@ -58,8 +62,10 @@
                   <option value="OWNER" <%= user.role === 'OWNER' ? 'selected' : '' %>>Owner</option>
                 </select>
                 <p>Cart ID: <%= user.cartId ? user.cartId : 'null' %></p>
-                <i class="fas fa-edit edit-icon"></i>
-                <i class="fas fa-trash-alt delete-icon" data-user-id="<%= user._id %>"></i>
+                <div class="admin-btns">
+                  <i class="fas fa-edit edit-icon"></i>
+                  <i class="fas fa-trash-alt delete-icon" data-user-id="<%= user._id %>"></i>
+                </div>
               </div>
             <% }) %>
           </div>

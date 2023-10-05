@@ -27,6 +27,46 @@ listItems.forEach((item) => {
     })
 })
 
+//Upload profile photo
+const photoUploadInput = document.getElementById('photo')
+
+photoUploadInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    console.log('selectedFile:', selectedFile)
+    if (selectedFile) {
+        const formData = new FormData();
+        formData.append('photo', selectedFile)
+
+        fetch('/api/users/update/photo', {
+            method: 'PUT',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if (data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.response,
+                    confirmButtonText: 'OK',
+                    timerProgressBar: true,
+                }).then(() => {
+                    window.location.reload()
+                })
+            } else {
+                const displayError = data.message ?? data.error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: displayError,
+                    confirmButtonText: 'OK'
+                })
+            }
+        })
+    }
+})
+
 //Toggle admin user-list
 const arrowIcon = document.querySelector('.arrow-icon')
 const userCard = document.querySelectorAll('.user-card')

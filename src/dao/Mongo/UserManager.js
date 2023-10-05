@@ -81,6 +81,15 @@ class UserManagerDao {
       )
     }
 
+    async updatePhoto(email, newPhoto) {
+      return await UserModel.findOneAndUpdate(
+        { email },
+        { photo: newPhoto },
+        { new: true }
+      )
+    }
+    
+
     async delete(id) {
       return await UserModel.findByIdAndDelete(
         id

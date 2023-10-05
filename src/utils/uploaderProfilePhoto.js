@@ -3,7 +3,7 @@ import { __dirname } from '../utils.js'
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, `${__dirname}/../public/img/products`)
+        cb(null, `${__dirname}/../public/img/profile`)
     },
     filename: function(req, file, cb) {
         const userId = req.token._id ?? req.token.email
@@ -23,7 +23,7 @@ const limits = {
     fileSize: 10 * 1024 * 1024, // Limite de tamaño 10 MB
 }
 
-const  uploaderProfilePhoto = multer({
+const uploaderProfilePhoto = multer({
     storage: storage,
     fileFilter: fileFilter,
     limits: limits,
