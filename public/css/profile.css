@@ -301,6 +301,17 @@
     right: 15%;
   }
 
+}
+
+@media (max-width: 950px) {
+  .profile-options ul li {
+    text-align: center;
+  }
+
+  .profile-options ul li a{
+    margin-left: 0px;
+  }
+
   .user-card {
     flex-direction: column;
     text-align: left;
@@ -319,14 +330,23 @@
     margin-right: auto;
   }
 }
-
-@media (max-width: 950px) {
-    .profile-options ul li {
-        text-align: center;
-    }
-
-    .profile-options ul li a{
-        margin-left: 0px;
-    }
-}
   
+@media (max-width: 1120px) {
+  .user-card {
+    flex-direction: column;
+    text-align: left;
+    padding: 20px;
+  }
+
+  .user-card p,
+  .user-card select,
+  .user-card a {
+    flex: none;
+    width: 100%;
+  }
+
+  .user-card select {
+    width: 50%;
+    margin-right: auto;
+  }
+}

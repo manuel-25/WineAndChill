@@ -62,6 +62,7 @@
                   <option value="OWNER" <%= user.role === 'OWNER' ? 'selected' : '' %>>Owner</option>
                 </select>
                 <p>Cart ID: <%= user.cartId ? user.cartId : 'null' %></p>
+                <p>Last connection: <%= user.last_connection ? user.last_connection : 'null' %></p>
                 <div class="admin-btns">
                   <i class="fas fa-edit edit-icon"></i>
                   <i class="fas fa-trash-alt delete-icon" data-user-id="<%= user._id %>"></i>
