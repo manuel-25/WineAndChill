@@ -13,7 +13,6 @@ import session_data from "./middlewares/session_data.js"
 import config from "./config/config.js"
 import remember_me from "./middlewares/remember_me.js"
 import { addLogger } from "./config/logger.js"
-
 import swaggerJSDoc from "swagger-jsdoc"
 import swaggerUiExpress from 'swagger-ui-express'
 
@@ -56,7 +55,6 @@ server.use(addLogger)
 //Passport
 initializePassport()
 server.use(passport.initialize())
-//erver.use(passport.session())          //sacar
 
 //Database
 config.connectDB()

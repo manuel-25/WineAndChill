@@ -46,6 +46,7 @@ body {
 
 .image-container{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.075);
+  max-width: 550px;
 }
 
 .product-image {
@@ -78,6 +79,8 @@ h2 {
 .product-description {
   font-size: 16px;
   padding: 0px 30px 0 30px;
+  margin-left: 40px;
+  margin-right: 40px;
   text-align: left;
   margin-bottom: 20px;
   color: #555;
@@ -102,6 +105,11 @@ h2 {
   color: #333;
 }
 
+.product-actions input[type="number"]:focus {
+  outline: none;
+  border-color: #8a56ac;
+}
+
 .product-stock {
   margin-bottom: 20px;
 }
@@ -116,6 +124,13 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media (max-width: 968px) {
+  .product-description {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 @media (max-width: 768px) {
