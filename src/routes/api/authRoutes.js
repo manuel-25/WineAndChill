@@ -31,7 +31,7 @@ router.post('/fail-register', failRegister)
 router.post('/signin',
     signinValidator, 
     pass_is_8,
-    passport.authenticate('signin', {failureRedirect:'/api/auth/fail-signin'}),
+    passport.authenticate('signin', {session: false, failureRedirect:'/api/auth/fail-signin'}),
     is_valid_password, createToken, setLastConnection, signIn
 )
 router.get('/fail-signin', failSignIn)
