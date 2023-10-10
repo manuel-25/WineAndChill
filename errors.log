@@ -831,3 +831,11 @@ users is not defined
 [2023-10-06T14:06:20.072Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9dcb2b3a4f258e288e96 message: Failed to obtain access token
 [2023-10-06T18:10:03.651Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=eb6f98624afbbcfb7d1d message: Login sessions require session support. Did you forget to use `express-session` middleware?
 [2023-10-06T20:12:18.624Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9377ab68ae1bc43fdcc1 message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:26.002Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:28.716Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:31.323Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:31.540Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:31.774Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:32.021Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:32.200Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:16:49.052Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?

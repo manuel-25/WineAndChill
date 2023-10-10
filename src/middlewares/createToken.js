@@ -5,7 +5,7 @@ export default (req, res, next) => {
     const expiresIn = rembemberMe ? 1000*60*60*24 : 1000*60*60
 
     const token = jwt.sign({
-        id: req.user._id,
+        _id: req.user._id,
         name: req.user.name,
         photo: req.user.photo,
         email: req.user.email,

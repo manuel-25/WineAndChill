@@ -11,6 +11,7 @@ export default function(req, res, next) {
       try {
         const decodedToken = jwt.verify(token, config.SECRET_JWT)
         const user = {
+            _id: decodedToken._id,
             name: decodedToken.name,
             photo: decodedToken.photo,
             email: decodedToken.email,

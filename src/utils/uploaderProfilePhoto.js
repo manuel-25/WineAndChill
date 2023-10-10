@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
         cb(null, `${__dirname}/../public/img/profile`)
     },
     filename: function(req, file, cb) {
-        const userId = req.token._id ?? req.token.email
+        const userId = req.token._id
         cb(null, `${userId}-${file.originalname}`)
     }
 })
