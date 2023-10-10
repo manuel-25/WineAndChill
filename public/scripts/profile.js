@@ -8,12 +8,12 @@ listItems.forEach((item) => {
 
         const profileToShow = this.getAttribute('data-profile')
 
-        const allProfileDetails = document.querySelectorAll('.account-details, .profile-details .admin-panel');
+        const allProfileDetails = document.querySelectorAll('.account-details, .admin-panel, .upload-documents');
         allProfileDetails.forEach(function(element) {
             if (element.classList.contains(profileToShow)) {
-                element.classList.remove('hide');
+                element.classList.remove('hide')
             } else {
-                element.classList.add('hide');
+                element.classList.add('hide')
             }
         })
         
@@ -21,7 +21,7 @@ listItems.forEach((item) => {
         allProfileLists.forEach(function (element) {
             element.classList.remove('selected')
             if(element.getAttribute('data-profile') === profileToShow) {
-                element.classList.add('selected');
+                element.classList.add('selected')
             }
         })
     })
@@ -67,7 +67,7 @@ photoUploadInput.addEventListener('change', (event) => {
     }
 })
 
-//Toggle admin user-list
+//Toggle detail lists
 const arrowIcon = document.querySelector('.arrow-icon')
 const userCard = document.querySelectorAll('.user-card')
 arrowIcon.addEventListener('click', () => {
@@ -192,4 +192,54 @@ editButton.addEventListener('click', (event) => {
             })
         }
     })
+})
+
+//Upload documents
+const uploadForm = document.getElementById('uploadForm')
+
+uploadForm.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    const identificationFile = document.getElementById('identification').files[0]
+    const addressProofFile = document.getElementById('addressProof').files[0]
+    const accountProofFile = document.getElementById('accountProof').files[0]
+    const userId = uploadForm.getAttribute('data-user-id')
+
+    const formData = new FormData()
+    formData.append('identification', identificationFile)
+    formData.append('addressProof', addressProofFile)
+    formData.append('accountProof', accountProofFile)
+
+    try {
+        fetch(`/api/users/${userId}/documents`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('data', data)
+            if (!data.success) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Try Again',
+                    text: data.message || 'Error uploading',
+                    confirmButtonText: 'OK'
+                })
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Updated',
+                    text: data.message,
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = URL_PROFILE + '?panel=upload-documents'
+                    }
+                })
+            }
+        })
+
+    } catch (error) {
+        console.error('Error de red', error)
+    }
 })

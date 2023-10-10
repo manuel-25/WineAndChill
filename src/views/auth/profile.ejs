@@ -42,16 +42,17 @@
         <label for="phone">Telefono</label>
         <input id="phone" type="text" value="<%= user?.phone %>" placeholder="011-12345678">
 
-        <a id="editButton"><i class="fas fa-edit"></i> Editar</a>
+        <a id="editButton"><i class="fas fa-edit"></i>Editar</a>
       </div>
       <!-- Panel de admin -->
-      <div class="admin-panel <%= panel === 'admin-panel' ? '' : 'hide' %>">
-        <h1 class="profile-title">Panel de Administrador</h3>
-          <div class="user-list">
-            <div class="user-list-title">
-              <h3>Lista de Usuarios</h3>
-              <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
-            </div>
+      <div class="admin-panel <%= panel === 'admin-panel' && user.role === 'OWNER' ? '' : 'hide' %>">
+        <h1 class="profile-title">Panel de Administrador</h1>
+        <div class="user-list">
+          <div class="user-list-title">
+            <h3>Lista de Usuarios</h3>
+            <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
+          </div>
+          <% if (userList && user.role === 'OWNER') { %>
             <% userList.forEach(function(user) { %>
               <div class="user-card" data-uid="<%= user._id %>">
                 <p>ID: <%= user._id %></p>
@@ -69,8 +70,37 @@
                 </div>
               </div>
             <% }) %>
-          </div>
+          <% } else { %>
+            <p>No tienes permisos para ver esta sección.</p>
+          <% } %>
+        </div>
       </div>
+
+      <!-- Subir documentos -->
+      <div class="upload-documents <%= panel === 'upload-documents' ? '' : 'hide' %>">
+        <h1 class="profile-title">Subir documentos</h1>
+        <div class="user-list">
+            <div class="user-list-title">
+                <h3>Documentos</h3>
+                <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
+            </div>
+            <div>
+                <form id="uploadForm" data-user-id="<%= user._id %>" enctype="multipart/form-data">
+                    <label for="identification">Identificación:</label>
+                    <input type="file" id="identification" name="identification" accept=".pdf, .jpg, .jpeg, .png">
+
+                    <label for="addressProof">Comprobante de domicilio:</label>
+                    <input type="file" id="addressProof" name="addressProof" accept=".pdf, .jpg, .jpeg, .png">
+
+                    <label for="accountProof">Comprobante de estado de cuenta:</label>
+                    <input type="file" id="accountProof" name="accountProof" accept=".pdf, .jpg, .jpeg, .png">
+
+                    <button type="submit">Subir documentos</button>
+                </form>
+            </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <%- include("../partials/footer") %>

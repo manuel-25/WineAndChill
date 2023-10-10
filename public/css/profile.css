@@ -259,6 +259,67 @@
 .delete-icon:hover {
   color: #f0172d;
 }
+
+/* Estilos para la sección de subir documentos */
+.upload-documents {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.upload-documents h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #1b1b1b;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los campos de carga de documentos */
+.upload-documents label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555555;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.upload-documents input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: #555555;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #cccccc;
+}
+
+/* Estilos para el botón de subir documentos */
+.upload-documents button {
+  background-color: #42b983;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.upload-documents button:hover {
+  background-color: #389e74;
+}
+
+/* Estilos para los campos de carga de archivos en estado de enfoque */
+.upload-documents input:focus {
+  border-color: #8a56ac;
+  outline: none;
+}
+
   
 /* Estilos para pantallas pequeñas (hasta 468px de ancho) */
 @media (max-width: 468px) {

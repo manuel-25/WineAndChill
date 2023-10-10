@@ -839,3 +839,12 @@ users is not defined
 [2023-10-10T19:15:32.021Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
 [2023-10-10T19:15:32.200Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
 [2023-10-10T19:16:49.052Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T20:11:22.174Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:55
+    53|               <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
+    54|             </div>
+ >> 55|             <% userList.forEach(function(user) { %>
+    56|               <div class="user-card" data-uid="<%= user._id %>">
+    57|                 <p>ID: <%= user._id %></p>
+    58|                 <p>Email: <%= user.email %></p>
+
+Cannot read properties of null (reading 'forEach')

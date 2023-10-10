@@ -80,6 +80,31 @@ class UserController {
         }
     }
 
+    async uploadDocuments(req, res, next) {
+        try {
+            const files = req.files;
+            const uploadedFiles = Object.keys(files);
+    
+            if (uploadedFiles.length > 0) {
+                // Al menos un archivo se subió correctamente
+                for (const fileKey of uploadedFiles) {
+                    const file = files[fileKey][0];
+                    // Aquí puedes realizar operaciones con cada archivo
+                    console.log(`${fileKey}:`, file);
+                }
+    
+                return res.status(200).json({ message: 'Archivos subidos con éxito' });
+            } else {
+                // Ningún archivo se subió correctamente
+                console.error('Ningún archivo se subió correctamente');
+                return res.status(400).json({ message: 'Ningún archivo se subió correctamente' });
+            }
+        } catch (error) {
+            console.error('Error al procesar los archivos:', error);
+            return res.status(500).json({ message: 'Error interno al procesar los archivos' });
+        }
+    }
+
     async updateProfile(req, res, next) {
         try {
             const data = req.body
