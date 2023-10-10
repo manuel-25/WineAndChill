@@ -39,9 +39,10 @@ router.get('/fail-signin', failSignIn)
 router.get('/signout', signOut)
 
 router.get('/github', passport.authenticate('github', { scope: ['user: email'] }), (req, res) => {})
+
 router.get(
     '/github/callback',
-    passport.authenticate('github', { failureRedirect:'/api/auth/fail-register-github' }),
+    passport.authenticate('github', { session: false, failureRedirect:'/api/auth/fail-register-github' }),
     createToken, setLastConnection,githubCallback
 )
 router.get('fail-register-github', failGithub)

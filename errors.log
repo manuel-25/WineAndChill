@@ -827,3 +827,7 @@ users is not defined
 
 users is not defined
 [2023-10-05T20:00:37.854Z] [ERROR] - status: 400 method: PUT path: /api/users/update/64a7002dd36b8a8f54b32b07 message: Unexpected token " in JSON at position 0
+[2023-10-06T14:03:30.074Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9dcb2b3a4f258e288e96 message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-06T14:06:20.072Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9dcb2b3a4f258e288e96 message: Failed to obtain access token
+[2023-10-06T18:10:03.651Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=eb6f98624afbbcfb7d1d message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-06T20:12:18.624Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9377ab68ae1bc43fdcc1 message: Login sessions require session support. Did you forget to use `express-session` middleware?
