@@ -82,36 +82,43 @@ class UserController {
 
     async uploadDocuments(req, res, next) {
         try {
-            const files = req.files;
-            const uploadedFiles = Object.keys(files);
-    
-            if (uploadedFiles.length > 0) {
-                // Al menos un archivo se subió correctamente
-                for (const fileKey of uploadedFiles) {
-                    const file = files[fileKey][0];
-                    // Aquí puedes realizar operaciones con cada archivo
-                    console.log(`${fileKey}:`, file);
-                }
-    
-                return res.status(200).json({ message: 'Archivos subidos con éxito' });
-            } else {
-                // Ningún archivo se subió correctamente
-                console.error('Ningún archivo se subió correctamente');
-                return res.status(400).json({ message: 'Ningún archivo se subió correctamente' });
-            }
-        } catch (error) {
-            console.error('Error al procesar los archivos:', error);
-            return res.status(500).json({ message: 'Error interno al procesar los archivos' });
+            const file = req.file?.filename
+            if(!file) return res.status(400).send({
+                success: false,
+                message: 'Invalid file'
+            })
+            const email = req.token?.email
+            if(!email) return res.status(400).send({
+                success: false,
+                message:'Invalid file or expired token'
+            })
+            const document = `/public/documents/${file}`
+            const upload = await userService.addDocument(email, document)
+            if(!upload) return res.status(400).send({
+                success: false,
+                message: 'Error uploading document'
+            })
+            return res.status(200).send({
+                success: true,
+                message: 'Document uploaded successfully!',
+                payload: upload
+            })
+            
+        } catch (err) {
+            next(err)
         }
     }
 
     async updateProfile(req, res, next) {
         try {
             const data = req.body
-            const email =  req.email 
+            const email =  req.email
+            if(!data || !email) return res.status(400).send({
+                success: false,
+                message:'Invalid data'
+            })
             
             const updated = await userService.updateUser(email, data)
-            
             if(!updated) return res.status(400).send({
                 success: false,
                 message: 'Error updating profile, please try again',
@@ -128,30 +135,43 @@ class UserController {
     }
 
     async updatePhoto(req, res, next) {
-        const uploadedFile = `/public/img/profile/${req.file.filename}`
-        const email = req.token.email
-        if(!uploadedFile || !email) {
-            return res.status(400).send({
+        try {
+            const file = req.file?.filename
+            if(!file) return res.status(400).send({
                 success: false,
-                message:'Invalid file or expired token'
+                message: 'Invalid file'
             })
+            const uploadedFile = `/public/img/profile/${file}`
+            const email = req.token?.email
+            if(!email) {
+                return res.status(400).send({
+                    success: false,
+                    message:'Expired or invalid token'
+                })
+            }
+    
+            const upload = await userService.updatePhoto(email, uploadedFile)
+            if(!upload) return res.status(400).send({
+                success: false,
+                message: 'Error uploading image'
+            })
+            return res.status(200).send({
+                success: true,
+                message: 'Profile photo updated!'
+            })
+        } catch (err) {
+            next(err)
         }
-
-        const upload = await userService.updatePhoto(email, uploadedFile)
-        if(!upload) return res.status(400).send({
-            success: false,
-            message: 'Error uploading file'
-        })
-        return res.status(200).send({
-            success: true,
-            message: 'Profile photo updated!'
-        })
     }
 
     async updateRole(req, res, next) {
         try {
             const role = req.body.role
             const uid = req.params.uid
+            if(!role || !uid) return res.status(400).send({
+                success: false,
+                message: 'Invalid data, please try again'
+            })
             const newRole = await userService.setRole(uid, role)
             if(!newRole) return res.status(400).send({
                 success: false,
@@ -169,18 +189,26 @@ class UserController {
     }
 
     async deleteSingleUser(req, res, next) {
-        const uid = req.params.uid
-        const deleted = await userService.delete(uid)
-        if(!deleted) return res.status(400).json({
-            success: false,
-            message: `Delete error. Please try again later.`,
-          })
-
-        res.status(200).json({
-            success: true,
-            message: `User ${uid} deleted.`,
-            deleted,
-        })
+        try {
+            const uid = req.params?.uid
+            if(!uid) return res.status(400).send({
+                success: false,
+                message: 'Invalid user id'
+            })
+            const deleted = await userService.delete(uid)
+            if(!deleted) return res.status(400).json({
+                success: false,
+                message: `Delete error. Please try again later.`,
+              })
+    
+            res.status(200).json({
+                success: true,
+                message: `User ${uid} deleted.`,
+                deleted,
+            })
+        } catch (err) {
+            next(err)
+        }
     }
 
     async deleteUsers(req, res, next) {

@@ -88,6 +88,19 @@ class UserManagerDao {
         { new: true }
       )
     }
+
+    async addDocument(email, document) {
+      return await UserModel.findOneAndUpdate(
+        { email },
+        { $push: { documents: document } },
+        { new: true }
+      )
+    }
+
+    async getDocuments(email) {
+      const user = await UserModel.findOne({ email }).select('documents');
+      return user?.documents || [];
+    }
     
 
     async delete(id) {

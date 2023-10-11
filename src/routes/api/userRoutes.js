@@ -21,11 +21,7 @@ router.get('/:email', getByEmail)
 
 router.post('/premium/:uid', setUserRole)
 
-router.post('/:uid/documents', readToken, uploaderDocuments.fields([
-    { name: 'identification', maxCount: 1 },
-    { name: 'addressProof', maxCount: 1 },
-    { name: 'accountProof', maxCount: 1 },
-  ]), uploadDocuments)
+router.post('/:uid/documents', readToken, uploaderDocuments.single('documents'), uploadDocuments)
 
 router.put('/update/photo', readToken,  uploaderProfilePhoto.single("photo"), updatePhoto)
 

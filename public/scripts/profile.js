@@ -200,15 +200,11 @@ const uploadForm = document.getElementById('uploadForm')
 uploadForm.addEventListener('submit', async (event) => {
     event.preventDefault()
 
-    const identificationFile = document.getElementById('identification').files[0]
-    const addressProofFile = document.getElementById('addressProof').files[0]
-    const accountProofFile = document.getElementById('accountProof').files[0]
+    const documentsFile = document.getElementById('documents').files[0]
     const userId = uploadForm.getAttribute('data-user-id')
 
     const formData = new FormData()
-    formData.append('identification', identificationFile)
-    formData.append('addressProof', addressProofFile)
-    formData.append('accountProof', accountProofFile)
+    formData.append('documents', documentsFile)
 
     try {
         fetch(`/api/users/${userId}/documents`, {
@@ -217,7 +213,6 @@ uploadForm.addEventListener('submit', async (event) => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log('data', data)
             if (!data.success) {
                 Swal.fire({
                     icon: 'error',
@@ -239,7 +234,12 @@ uploadForm.addEventListener('submit', async (event) => {
             }
         })
 
-    } catch (error) {
-        console.error('Error de red', error)
+    } catch (err) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Try Again',
+            text: err || 'Error uploading',
+            confirmButtonText: 'OK'
+        })
     }
 })

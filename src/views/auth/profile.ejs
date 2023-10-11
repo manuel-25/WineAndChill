@@ -86,15 +86,8 @@
             </div>
             <div>
                 <form id="uploadForm" data-user-id="<%= user._id %>" enctype="multipart/form-data">
-                    <label for="identification">Identificación:</label>
-                    <input type="file" id="identification" name="identification" accept=".pdf, .jpg, .jpeg, .png">
-
-                    <label for="addressProof">Comprobante de domicilio:</label>
-                    <input type="file" id="addressProof" name="addressProof" accept=".pdf, .jpg, .jpeg, .png">
-
-                    <label for="accountProof">Comprobante de estado de cuenta:</label>
-                    <input type="file" id="accountProof" name="accountProof" accept=".pdf, .jpg, .jpeg, .png">
-
+                    <label for="documents">Identificación, Comprobante de domicilio, Comprobante de estado de cuenta:</label>
+                    <input type="file" id="documents" name="documents" accept=".pdf, .jpg, .jpeg, .png, .jfif, .webp">
                     <button type="submit">Subir documentos</button>
                 </form>
             </div>

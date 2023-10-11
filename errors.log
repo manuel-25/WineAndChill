@@ -848,3 +848,7 @@ users is not defined
     58|                 <p>Email: <%= user.email %></p>
 
 Cannot read properties of null (reading 'forEach')
+[2023-10-10T23:08:50.804Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: El archivo no es válido. Solo se permiten PDF, JPEG y PNG.
+[2023-10-10T23:50:05.141Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: console.oog is not a function
+[2023-10-10T23:50:45.250Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: Cannot read properties of undefined (reading 'filename')
+[2023-10-10T23:59:43.032Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: Cannot read properties of undefined (reading 'filename')
