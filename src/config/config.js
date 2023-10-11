@@ -6,8 +6,14 @@ import MongoSingleton from './MongoSingleton.js'
 
 const { mode } = commander.opts()
 
+if (mode === 'test') {
+    process.env.NODE_ENV = 'test';
+} else {
+    process.env.NODE_ENV = mode === 'development' ? 'development' : 'production';
+}
+
 dotenv.config({
-    path: mode === 'development' ? './.env.development' : './.env.production'
+    path: `./.env.${process.env.NODE_ENV}`
 })
 
 const config = {
@@ -23,6 +29,8 @@ const config = {
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWILIO_PHONE: process.env.TWILIO_PHONE,
     PRIVATE_PHONE: process.env.PRIVATE_PHONE,
+    ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
     connectDB: async () => MongoSingleton.getInstance()
 }
 

@@ -17,8 +17,6 @@ registerButton.addEventListener('click', (event) => {
       })
         .then(response => {
           if (response.ok) {
-            // Redirigir a la página de login
-            console.log(response)
             window.location.href = '/login'
           } else {
             return response.json()

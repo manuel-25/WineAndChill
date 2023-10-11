@@ -1,11 +1,19 @@
+import { logger } from "../config/logger.js";
+
 const notFoundHandler = (req, res, next) => {
-    console.log(`not found ${req.method} ${req.url}`)
-    return res.status(404).json({
-        status: 404,
-        method: req.method,
-        path: req.url,
-        response: 'not found'
+    const errorMessage = `Route not found: ${req.method} ${req.url}`
+    logger.debug(errorMessage)
+    return res.render('error', {
+        title: 'Error',
+        style: 'error.css',
+        script: '',
+        error: {
+            status: 404,
+            message: errorMessage
+        }
     })
 }
 
 export default notFoundHandler
+
+

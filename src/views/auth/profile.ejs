@@ -1,0 +1,104 @@
+<%- include("../partials/head") %>
+<body>
+  <%- include("../partials/navbar") %>
+  <div class="profile-page">
+    <div class="profile-sidebar">
+      <div class="profile-picture">
+        <img src="<%= user?.photo ? user.photo : '/public/img/profile/default.webp' %>" alt="Foto de perfil">
+        <label for="photo" class="edit-icon-label">
+          <i class="fas fa-edit"></i>
+        </label>
+        <input type="file" id="photo" accept="image/*" style="display: none;">
+      </div>
+      
+      <div class="profile-name">
+        <h2><%= user?.name %></h2>
+      </div>
+      <!-- Opciones de navegación -->
+      <div class="profile-options">
+        <ul class="profile-list">
+          <li class="<%= panel === 'account-details' ? 'selected' : '' %>" data-profile="account-details"><a href="#">Detalles de la cuenta</a></li>
+          <% if (user.role === 'OWNER') { %>
+            <li class="<%= panel === 'admin-panel' ? 'selected' : '' %>" data-profile="admin-panel"><a href="#">Panel de Administrador</a></li>
+          <% } %>
+          <li class="<%= panel === 'upload-documents' ? 'selected' : '' %>" data-profile="upload-documents"><a href="#">Subir Documentos</a></li>
+          <li class="<%= panel === 'change-password' ? 'selected' : '' %>" data-profile="change-password"><a href="#">Cambiar Contraseña</a></li>
+          <li class="<%= panel === 'logout' ? 'selected' : '' %>" data-profile="logout"><a href="/api/auth/signout">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Detalles del usuario -->
+    <div class="profile-details">
+      <div class="account-details <%= panel === 'account-details' ? '' : 'hide' %>">
+        <h1 class="profile-title">Detalles de la cuenta</h3>
+        <label for="email">Email</label>
+        <input id="email" type="text" value="<%= user?.email %>" readonly>
+        <label for="name">Nombre</label>
+        <input id="name" type="text" value="<%= user?.name %>">
+        <label for="age">Edad</label>
+        <input id="age" type="number" min="1" max="100" value=<%= user?.age %>>
+        <label for="address">Direccion completa</label>
+        <input id="address" type="text" value="<%= user?.address %>" placeholder="Calle 123, Ciudad, Provincia">
+        <label for="phone">Telefono</label>
+        <input id="phone" type="text" value="<%= user?.phone %>" placeholder="011-12345678">
+
+        <a id="editButton"><i class="fas fa-edit"></i>Editar</a>
+      </div>
+      <!-- Panel de admin -->
+      <div class="admin-panel <%= panel === 'admin-panel' && user.role === 'OWNER' ? '' : 'hide' %>">
+        <h1 class="profile-title">Panel de Administrador</h1>
+        <div class="user-list">
+          <div class="user-list-title">
+            <h3>Lista de Usuarios</h3>
+            <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
+          </div>
+          <% if (userList && user.role === 'OWNER') { %>
+            <% userList.forEach(function(user) { %>
+              <div class="user-card" data-uid="<%= user._id %>">
+                <p>ID: <%= user._id %></p>
+                <p>Email: <%= user.email %></p>
+                <select>
+                  <option value="PUBLIC" <%= user.role === 'PUBLIC' ? 'selected' : '' %>>Public</option>
+                  <option value="PREMIUM" <%= user.role === 'PREMIUM' ? 'selected' : '' %>>Premium</option>
+                  <option value="OWNER" <%= user.role === 'OWNER' ? 'selected' : '' %>>Owner</option>
+                </select>
+                <p>Cart ID: <%= user.cartId ? user.cartId : 'null' %></p>
+                <p>Last connection: <%= user.last_connection ? user.last_connection : 'null' %></p>
+                <div class="admin-btns">
+                  <i class="fas fa-edit edit-icon"></i>
+                  <i class="fas fa-trash-alt delete-icon" data-user-id="<%= user._id %>"></i>
+                </div>
+              </div>
+            <% }) %>
+          <% } else { %>
+            <p>No tienes permisos para ver esta sección.</p>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Subir documentos -->
+      <div class="upload-documents <%= panel === 'upload-documents' ? '' : 'hide' %>">
+        <h1 class="profile-title">Subir documentos</h1>
+        <div class="user-list">
+            <div class="user-list-title">
+                <h3>Documentos</h3>
+                <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
+            </div>
+            <div>
+                <form id="uploadForm" data-user-id="<%= user._id %>" enctype="multipart/form-data">
+                    <label for="documents">Identificación, Comprobante de domicilio, Comprobante de estado de cuenta:</label>
+                    <input type="file" id="documents" name="documents" accept=".pdf, .jpg, .jpeg, .png, .jfif, .webp">
+                    <button type="submit">Subir documentos</button>
+                </form>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <%- include("../partials/footer") %>
+</body>
+</html>
+
+
+

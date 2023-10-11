@@ -1,5 +1,5 @@
 .footer {
-    background-color: #8a56ac;
+    background-color: #1b1b1b;
     color: #fff;
     padding: 20px;
     bottom: 0;
@@ -16,6 +16,11 @@
   }
 
   .footer-link:hover {
+    color: #b57ddb;
+    text-decoration: none !important;
+  }
+
+  .footer-link:hover {
     text-decoration: underline;
   }
 
@@ -23,6 +28,10 @@
     color: #fff;
     font-size: 24px;
     margin-right: 5px;
+  }
+
+  .footer-icon:hover {
+    color: #b57ddb;
   }
 
   .footer-text {

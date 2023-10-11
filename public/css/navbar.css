@@ -1,181 +1,220 @@
+* {
+  font-family: 'Popins', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .navbar {
-    background-color: #8a56ac;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+  display: block;
+  padding: 10px 6px 0 6px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+nav {
+  background-color: #1b1b1b;
+  color: white;
+}
+
+nav:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 50px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 400;
+  padding-left: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-right {
+  display: flex; /* Utiliza Flexbox para navbar-right */
+  align-items: center;
+  justify-content: right;
+  flex-grow: 1;
+  gap: 10px;
+  margin-right: 40px;
+}
+
+.navbar-right a:hover {
+  color: #b57ddb;
+}
+
+nav ul {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center; */
+  float: right;
+  list-style: none;
+  margin-right: 40px;
+  position: relative;
+}
+
+nav ul li {
+  /*float: left;*/
+  display: inline-block;
+  background: #1b1b1b;
+  margin: 0 5px;
+  z-index: 99;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  line-height: 70px;
+  font-size: 18px;
+  padding: 8px 15px;
+}
+
+nav ul li a:hover {
+  color: #b57ddb;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #8a56ac,
+              0 0 5px #8a56ac;
+}
+
+nav ul ul li a:hover {
+  color: #b57ddb;
+  box-shadow: none
+}
+
+nav ul ul {
+  position: absolute;
+  top: 90px;
+  opacity: 0;
+  border-top: 3px solid #8a56ac;
+  visibility: hidden;
+  transition: top .3s;
+}
+
+nav ul li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  top: 70px;
+}
+
+nav ul ul li {
+  position: relative;
+  margin: 0px;
+  margin-bottom: -1px;
+  width: 150px;
+  float: none;
+  display: list-item;
+  border-bottom: 1px solid rgba(0, 0, 0);
+  text-align: left;
+  padding-left: 4px;
+}
+
+nav ul ul li a {
+  line-height: 50px;
+}
+
+.navbar-right {
+  float: right;
+}
+
+.show, #btn1, .icon, #btn {
+  display: none;
+}
+
+@media all and (max-width: 468px) {
+  nav ul {
+    float: left;
+    margin-right: 0;
   }
-  
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+  .logo {
+    font-size: 25px;
+    padding-left: 15px;
+  }
+
+  .navbar-right {
+    gap: 8px;
+    margin-right: 20px;
+    font-size: 14px;
+  }
+
+  nav ul li a {
+    line-height: 70px;
+    font-size: 18px;
+    padding: 6px 10px;
+  }
+
+  nav ul li a:hover {
+    box-shadow: none;
+  }
+
+  nav ul li, nav ul ul li {
+    display: block;
     width: 100%;
   }
-  
-  .navbar-left {
-    display: flex;
-    align-items: center;
+
+  nav ul ul {
+    top: 70px;
+    position: static;
+    border-top: none;
+    float: none;
+    display: block;
+    opacity: 1;
+    visibility: visible;
   }
-  
-  .navbar-logo {
-    color: #fff;
-    font-size: 24px;
-    text-decoration: none;
-    margin-right: 20px;
+
+  nav ul ul li {
+    padding-left: 20px;
+    margin-bottom: 0px;
   }
-  
-  .navbar-center {
-    display: flex;
-    align-items: center;
+
+  nav ul ul li:hover {
+    border-bottom: 3px solid #8a56ac;
   }
-  
-  .navbar-nav {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .nav-item {
-    margin-right: 20px;
-  }
-  
-  .nav-link {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    color: #fbb6e3;
-  }
-  
-  .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .cart-link {
-    position: relative;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
-  .cart-badge {
-    width: 18px;
-    height: 18px;
-    background-color: #fbb6e3e0;
-    color: #fff;
-    border-radius: 50%;
-    padding: 0px 5px;
-    font-size: 14px;
-    position: absolute;
-    top: -10px;
-    right: -14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .navbar-toggle {
-    display: none;
-    background: none;
-    border: none;
+
+  .show {
+    display: block;
+    color: white;
+    font-size: 18px;
+    padding: 0 20px;
+    line-height: 70px;
     cursor: pointer;
   }
-  
-  .navbar-toggle-icon {
+
+  .show:hover {
+    color: #8a56ac;
+  }
+
+  .icon {
     display: block;
-    width: 20px;
-    height: 2px;
-    background-color: #fff;
-    position: relative;
-    transition: background-color 0.3s ease;
+    color: white;
+    /*position: absolute;
+    right: 40px;*/
+    line-height: 70px;
+    font-size: 27px;
+    cursor: pointer;
   }
-  
-  .navbar-toggle-icon:before,
-  .navbar-toggle-icon:after {
-    content: "";
-    width: 20px;
-    height: 2px;
-    background-color: #fff;
-    position: absolute;
-    transition: transform 0.3s ease;
+
+  .show, .nav-item {
+    display: none;
   }
-  
-  .navbar-toggle-icon:before {
-    top: -6px;
+
+  [id^=btn]:checked + .show, .nav-item {
+    display: block;
   }
-  
-  .navbar-toggle-icon:after {
-    top: 6px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .navbar {
-      flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 10px;
-    }
-  
-    .navbar-container {
-      width: 100%;
-    }
-  
-    .navbar-logo {
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  
-    .navbar-center {
-      display: none;
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  
-    .navbar-nav {
-      flex-direction: column;
-    }
-  
-    .nav-item {
-      margin-right: 0;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-  
-    .navbar-right {
-      width: 100%;
-      justify-content: flex-start;
-    }
-  
-    .cart-link {
-      margin-left: 10px;
-      margin-right: 0;
-    }
-  
-    .navbar-toggle {
-      display: block;
-    }
-  
-    .navbar-toggle.active .navbar-toggle-icon {
-      background-color: transparent;
-    }
-  
-    .navbar-toggle.active .navbar-toggle-icon:before {
-      transform: rotate(45deg);
-      top: 0;
-    }
-  
-    .navbar-toggle.active .navbar-toggle-icon:after {
-      transform: rotate(-45deg);
-      top: 0;
-    }
-  
-    .navbar-toggle.active ~ .navbar-center {
-      display: block;
-    }
-  }
-  
+}

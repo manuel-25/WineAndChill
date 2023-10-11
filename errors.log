@@ -1,6 +1,871 @@
-warning: Warning - 25/8/2023, 18:05:01
-error: 404 - 25/8/2023, 18:05:01
-warning: Warning - 25/8/2023, 18:05:03
-error: 404 - 25/8/2023, 18:05:03
-warning: Warning - 25/8/2023, 18:07:49
-error: 404 - 25/8/2023, 18:07:49
+[2023-08-30T13:12:35.001Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: abcd is not defined
+[2023-08-30T13:13:43.529Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: abcd is not defined
+[2023-08-30T13:13:50.984Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: abcd is not defined
+[2023-08-30T13:17:15.978Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: Este es un error de prueba
+[2023-08-30T13:25:44.368Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: email is not defined
+[2023-08-30T13:35:52.530Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: bcrypt is not defined
+[2023-08-31T16:17:51.552Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:17:58.691Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:18:22.809Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:18:34.758Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T16:20:41.973Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: cartService.getId is not a function
+[2023-08-31T16:21:25.502Z] [ERROR] - status: 500 method: PUT path: /api/carts/product/64ea3ea8e973e9f3f0b79ecd/25 message: cartService.getId is not a function
+[2023-08-31T16:40:18.884Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:10
+    8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+ >> 10|             <% console.log(`Product ${product.json()}`) %>
+    11|             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+    12|             <div class="product-details">
+    13|               <h2 class="product-title"><%= product.productId.title %></h2>
+
+product.json is not a function
+[2023-08-31T18:53:54.257Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T18:53:54.323Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T18:54:06.490Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T18:54:06.584Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T18:56:43.078Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T18:56:43.136Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T19:06:12.210Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:06:40.349Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:10:50.907Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:11:33.190Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:12:59.108Z] [ERROR] - status: 500 method: DELETE path: /api/carts/delete/6484d968d39540d2316b9bc9 message: Cannot read properties of undefined (reading 'cartId')
+[2023-08-31T19:16:02.926Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T19:16:02.990Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:45:30.299Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:45:30.362Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:46:13.694Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:46:13.752Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:47:13.435Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:47:13.518Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:49:41.514Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:49:41.573Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:56:04.184Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:56:04.265Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:58:05.675Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:58:05.742Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T21:59:49.548Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T21:59:49.614Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:00:39.826Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:00:39.887Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:01:08.647Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:01:08.715Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:01:25.744Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:01:25.810Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:01:51.540Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:01:51.615Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:03:04.752Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:03:04.819Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:03:28.971Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:03:29.039Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:03:57.698Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:03:57.773Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:04:17.395Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:04:17.461Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:04:40.662Z] [ERROR] - status: 500 method: GET path: /cart message: jwt must be provided
+[2023-08-31T22:08:25.724Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:08:25.793Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:10:59.127Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:10:59.196Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:11:06.974Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:11:07.043Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:11:24.457Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:11:24.525Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:12:00.808Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:12:00.877Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:12:16.095Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:12:16.163Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:13:40.246Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: jwt malformed
+[2023-08-31T22:13:40.315Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-08-31T22:24:58.189Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:6
+    4|   <div class="container">
+    5|     <h1 class="page-title">Carrito de Compras</h1>
+ >> 6|     <% if (response.status === 200) { %>
+    7|       <div class="cart-list">
+    8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+
+Cannot read properties of undefined (reading 'status')
+[2023-08-31T22:31:32.377Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d693d39540d2316b9bbd/1 message: Cannot read properties of null (reading 'cartId')
+[2023-08-31T22:31:39.491Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d693d39540d2316b9bbd/1 message: Cannot read properties of null (reading 'cartId')
+[2023-08-31T22:38:16.472Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:6
+    4|   <div class="container">
+    5|     <h1 class="page-title">Carrito de Compras</h1>
+ >> 6|     <% if (response.status === 200) { %>
+    7|       <div class="cart-list">
+    8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+
+Cannot read properties of undefined (reading 'status')
+[2023-08-31T22:39:32.217Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token '<' in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-08-31T22:39:43.763Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token '<' in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-08-31T22:40:32.914Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:8
+    6|     <% if (response !== null) { %>
+    7|       <div class="cart-list">
+ >> 8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+    10|             <% console.log(`Product ${product.productId}`) %>
+    11|             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+
+Cannot read properties of undefined (reading 'payload')
+[2023-08-31T23:50:49.045Z] [ERROR] - status: 500 method: POST path: /api/products message: productService.create is not a function
+[2023-09-01T00:30:54.197Z] [ERROR] - status: 500 method: GET path: /update_product message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:6
+    4|   <div class="container">
+    5|     <h3>Actualizar Producto</h3>
+ >> 6|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    7|       <div class="form-group">
+    8|         <label for="title">Título:</label>
+    9|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+product is not defined
+[2023-09-01T00:33:47.995Z] [ERROR] - status: 500 method: GET path: /api/products/productService message: Cast to ObjectId failed for value "productService" (type string) at path "_id" for model "products"
+[2023-09-01T00:34:15.517Z] [ERROR] - status: 500 method: GET path: /update_product/6484d63cd39540d2316b9bba message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:6
+    4|   <div class="container">
+    5|     <h3>Actualizar Producto</h3>
+ >> 6|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    7|       <div class="form-group">
+    8|         <label for="title">Título:</label>
+    9|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+Cannot read properties of null (reading '_id')
+[2023-09-01T00:34:46.676Z] [ERROR] - status: 500 method: GET path: /update_product/6484d63cd39540d2316b9bba message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:7
+    5|     <h3>Actualizar Producto</h3>
+    6|     <% console.log(product) %>
+ >> 7|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    8|       <div class="form-group">
+    9|         <label for="title">Título:</label>
+    10|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+Cannot read properties of null (reading '_id')
+[2023-09-01T00:50:52.866Z] [ERROR] - status: 400 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Unexpected token o in JSON at position 1
+[2023-09-01T01:07:01.553Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: userService.getById is not a function
+[2023-09-01T01:08:27.883Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cast to ObjectId failed for value "manuel-25" (type string) at path "_id" for model "users"
+[2023-09-01T01:08:57.285Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:09:54.861Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:10:42.437Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'owner')
+[2023-09-01T01:11:20.920Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:11:48.570Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:12:48.440Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: Cannot read properties of null (reading 'email')
+[2023-09-01T01:13:23.906Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: userId is not defined
+[2023-09-01T01:13:45.282Z] [ERROR] - status: 500 method: PUT path: /api/products/6484d63cd39540d2316b9bba message: stream is not readable
+[2023-09-01T01:14:05.761Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=dc5af461affc265e354f message: userService.findByEmail is not a function
+[2023-09-01T01:34:14.502Z] [ERROR] - status: 500 method: DELETE path: /api/products/64f13da122cc532f0f74ee27 message: console.loog is not a function
+[2023-09-01T01:34:40.901Z] [ERROR] - status: 500 method: DELETE path: /api/products/64f13da122cc532f0f74ee27 message: productService.delete is not a function
+[2023-09-01T01:35:04.468Z] [ERROR] - status: 500 method: GET path: /update_product/64f13da122cc532f0f74ee27 message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\updateProduct.ejs:6
+    4|   <div class="container">
+    5|     <h3>Actualizar Producto</h3>
+ >> 6|     <form id="productForm" action="/api/products/<%= product._id %>" method="PUT" class="product-form">
+    7|       <div class="form-group">
+    8|         <label for="title">Título:</label>
+    9|         <input type="text" id="title" name="title" required value="<%= product.title %>">
+
+Cannot read properties of null (reading '_id')
+[2023-09-01T02:18:23.561Z] [ERROR] - status: 500 method: POST path: /api/users/premium/64c96aeaec01e68866ebd463 message: Cast to ObjectId failed for value "PREMIUM" (type string) at path "_id" for model "users"
+[2023-09-04T20:59:22.072Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=f419586af29feb25455f message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:02:42.016Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=7b7ae4bb288e54909343 message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:21.210Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:22.324Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:23.646Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:23.827Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:30.215Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:04:43.099Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-04T21:06:14.457Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=e517155c9749ca264f7e message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-09-11T22:56:18.991Z] [ERROR] - error: GET /docs
+[2023-09-11T22:57:26.869Z] [ERROR] - Route not found: GET /docs
+[2023-09-11T23:09:25.229Z] [ERROR] - Route not found: GET /docs
+[2023-09-11T23:10:54.306Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:14:31.914Z] [ERROR] - Route not found: GET /api-docs/
+[2023-09-11T23:14:43.036Z] [ERROR] - Route not found: GET /api-docs/
+[2023-09-11T23:14:46.980Z] [ERROR] - Route not found: GET /api-docs/
+[2023-09-11T23:14:49.788Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:22:00.730Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:27:27.043Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:29:25.003Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:30:36.343Z] [ERROR] - Route not found: GET /api-docs
+[2023-09-11T23:33:01.675Z] [ERROR] - Route not found: GET /docs
+[2023-09-11T23:33:02.857Z] [ERROR] - Route not found: GET /docs
+[2023-09-12T19:03:24.347Z] [ERROR] - status: 500 method: GET path: /api/products?limit=5&page=1&title= message: success is not defined
+[2023-09-12T19:03:24.408Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:03:24.585Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:05:14.510Z] [ERROR] - status: 500 method: GET path: /api/products?limit=5&page=1&title= message: success is not defined
+[2023-09-12T19:05:14.577Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:05:14.934Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:06:06.821Z] [ERROR] - status: 500 method: GET path: /api/products?limit=10&page=1&title= message: success is not defined
+[2023-09-12T19:06:06.897Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:06:07.183Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:06:08.798Z] [ERROR] - status: 500 method: GET path: /api/products?limit=10&page=1&title= message: success is not defined
+[2023-09-12T19:06:08.869Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'docs')
+[2023-09-12T19:06:09.319Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-12T19:51:02.797Z] [ERROR] - status: 500 method: DELETE path: /api/products/646e71514d329f0011c9e399 message: Cannot read properties of undefined (reading 'email')
+[2023-09-13T21:33:02.455Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-13T21:53:01.761Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:02.405Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:02.407Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:02.548Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:24.439Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:26.438Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:27.435Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:28.423Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:29.434Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:31.436Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:33.429Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:34.432Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:36.431Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:37.432Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:38.436Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:40.425Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:42.428Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:44.437Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:46.440Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:48.424Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:49.433Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:50.437Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:52.425Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:53.439Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:54.457Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:56.455Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:57.435Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:58.423Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:53:59.438Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:00.440Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:43.502Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:43.503Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:43.633Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:43.634Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:45.452Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:47.434Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:49.432Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:51.443Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:54:52.428Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:05.425Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:06.447Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:08.440Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:10.432Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:12.434Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:14.431Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:15.452Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:17.454Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:18.451Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:20.460Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:22.430Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:23.433Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:25.424Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:27.442Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:28.435Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:29.442Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:31.433Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:32.426Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:33.436Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:35.427Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:36.474Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:38.433Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:39.445Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:40.425Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:42.426Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:43.432Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:45.495Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:45.496Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:46.432Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:47.439Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:48.455Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:50.435Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:52.425Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:54.394Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:55.622Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-13T21:55:57.005Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T19:46:32.404Z] [ERROR] - Route not found: POST //api/auth/register
+[2023-09-14T19:47:59.468Z] [ERROR] - Route not found: POST //api/auth/register
+[2023-09-14T20:36:56.997Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-14T21:16:40.777Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=d45ba2d9eeb3fb70a36a message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-14T21:16:41.038Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-14T21:17:23.019Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=c0b674a64ee94204e871 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-14T21:17:23.353Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-14T21:18:04.902Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:05.692Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:07.236Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:08.451Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:09.262Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:10.835Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:11.586Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:12.886Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:14.331Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:15.547Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:16.489Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:8
+    6|     <% if (response !== null) { %>
+    7|       <div class="cart-list">
+ >> 8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+    10|             <% console.log(`Product ${product.productId}`) %>
+    11|             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+
+Cannot read properties of undefined (reading 'products')
+[2023-09-14T21:18:16.836Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-14T21:18:16.916Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:18:27.685Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:23.574Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:44.550Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:45.425Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:46.506Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:48.404Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:49.522Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:50.447Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:19:52.500Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:20:43.475Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:20:44.401Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:24:28.060Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:24:51.816Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:25:13.449Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:25:23.602Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:25:23.842Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:25:25.418Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:25:52.447Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:25:53.677Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:26:44.426Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:26:46.523Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-14T21:26:48.566Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-15T20:53:15.356Z] [ERROR] - status: 500 method: GET path: /api/auth/signout message: Cannot set headers after they are sent to the client
+[2023-09-15T21:04:23.779Z] [ERROR] - Route not found: GET /api/auth/forgot-password
+[2023-09-15T21:04:27.097Z] [ERROR] - Route not found: GET /api/auth/forgot-password
+[2023-09-15T21:42:40.361Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:43:25.141Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:45:05.120Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:46:32.542Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:47:51.657Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:48:36.654Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:49:43.987Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-15T21:50:36.125Z] [ERROR] - Route not found: GET /api/auth/cookies
+[2023-09-15T21:51:19.278Z] [ERROR] - status: 500 method: GET path: /api/auth/current message: jwt must be provided
+[2023-09-15T21:51:19.453Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-18T23:05:24.536Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-18T23:19:29.652Z] [ERROR] - status: 500 method: GET path: /products/6508d7b3fbc1f9fb373deb07 message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:19:29.900Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-18T23:28:47.295Z] [ERROR] - status: 500 method: PUT path: /api/products/6508dd2fa5fd11cf7e36e71b message: Cannot read properties of undefined (reading 'email')
+[2023-09-18T23:52:10.626Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:52:10.707Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:52:11.757Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:52:11.820Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:52:15.635Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:52:15.735Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:54:35.225Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:54:35.334Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-18T23:54:53.710Z] [ERROR] - status: 500 method: GET path: /api/products/default message: Cast to ObjectId failed for value "default" (type string) at path "_id" for model "products"
+[2023-09-18T23:54:53.790Z] [ERROR] - status: 500 method: GET path: /products/default message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-19T18:56:37.297Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-19T18:56:42.486Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=cc23ffba727df7210b47 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-19T18:56:43.187Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-19T18:57:05.841Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:06.647Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:08.038Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:08.500Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:09.068Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:10.990Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:11.930Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:13.326Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:14.560Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:18.423Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:19.396Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:20.391Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:21.023Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:21.934Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:22.745Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:23.466Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:23.996Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:25.607Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:26.286Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:27.259Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:8
+    6|     <% if (response !== null) { %>
+    7|       <div class="cart-list">
+ >> 8|         <% response.payload.products.forEach((product) => { %>
+    9|           <div class="product-card">
+    10|             <% console.log(`Product ${product.productId}`) %>
+    11|             <img class="product-image" src="<%= product.productId.thumbnail %>" alt="<%= product.productId.title %>">
+
+Cannot read properties of undefined (reading 'products')
+[2023-09-19T18:57:27.524Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-19T18:57:27.593Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:57:33.845Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:12.317Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:12.513Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:12.514Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:13.455Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:15.433Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:33.222Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:33.238Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T18:59:34.199Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T19:00:05.175Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T19:00:05.181Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-19T19:00:06.423Z] [ERROR] - Socket error:  Cannot read properties of null (reading 'products')
+[2023-09-22T20:05:55.679Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-22T20:14:09.443Z] [ERROR] - status: 500 method: GET path: /api/auth/signout message: Cannot read properties of undefined (reading '_id')
+[2023-09-22T20:14:09.683Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-23T21:42:47.576Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-24T15:37:20.480Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{}" (type Object) at path "thumbnail"
+[2023-09-24T15:58:55.592Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{}" (type Object) at path "thumbnail"
+[2023-09-24T15:59:56.505Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{}" (type Object) at path "thumbnail"
+[2023-09-24T21:08:48.923Z] [ERROR] - status: 500 method: POST path: /api/products message: Unexpected field
+[2023-09-24T21:08:50.366Z] [ERROR] - status: 500 method: POST path: /api/products message: Unexpected field
+[2023-09-24T21:09:08.499Z] [ERROR] - status: 500 method: POST path: /api/products message: Unexpected field
+[2023-09-24T21:31:18.640Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:19.012Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:31:25.148Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:25.207Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:31:54.042Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:54.109Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:31:56.373Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:31:56.436Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:37:47.808Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:37:47.871Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:43:51.745Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:43:51.812Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:44:14.464Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:44:14.527Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:47:29.931Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:47:30.282Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:48:11.875Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:48:11.945Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:48:45.318Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:48:45.687Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:49:48.062Z] [ERROR] - status: 500 method: GET path: /api/products/undefined message: Cast to ObjectId failed for value "undefined" (type string) at path "_id" for model "products"
+[2023-09-24T21:49:48.122Z] [ERROR] - status: 500 method: GET path: /products/undefined message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:7
+    5|     <div class="row">
+    6|       <div class="col-md-6">
+ >> 7|         <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    8|       </div>
+    9|       <div class="col-md-6">
+    10|         <h2><%= product.title %></h2>
+
+Cannot read properties of undefined (reading 'thumbnail')
+[2023-09-24T21:50:51.596Z] [ERROR] - Route not found: GET /undefined
+[2023-09-25T02:41:40.399Z] [ERROR] - status: 500 method: POST path: /api/products message: El archivo no es una imagen válido.
+[2023-09-25T03:12:12.619Z] [ERROR] - status: 500 method: POST path: /api/products message: El archivo no es una imagen válido.
+[2023-09-25T03:13:07.711Z] [ERROR] - status: 500 method: POST path: /api/products message: multer is not defined
+[2023-09-25T03:29:01.916Z] [ERROR] - status: 500 method: POST path: /api/products message: defaultValues is not defined
+[2023-09-25T03:29:34.477Z] [ERROR] - status: 500 method: POST path: /api/products message: Cannot read properties of undefined (reading 'originalname')
+[2023-09-25T03:33:55.324Z] [ERROR] - status: 500 method: POST path: /api/products message: products validation failed: thumbnail: Cast to string failed for value "{
+  fieldname: 'thumbnail',
+  originalname: 'malbec-reserva_dorso.jpeg',
+  encoding: '7bit',
+  mimetype: 'image/jpeg',
+  destination: 'C:\\Users\\Admin\\Desktop\\Tareas\\Proyectos\\CoderHouse-Backend\\desafios\\sprint_01\\src/../public/img/products',
+  filename: 'manuel-25-malbec-reserva_dorso.jpeg',
+  path: 'C:\\Users\\Admin\\Desktop\\Tareas\\Proyectos\\CoderHouse-Backend\\desafios\\sprint_01\\public\\img\\products\\manuel-25-malbec-reserva_dorso.jpeg',
+  size: 36404
+}" (type Object) at path "thumbnail"
+[2023-09-25T03:36:14.448Z] [ERROR] - status: 500 method: POST path: /api/products message: Cannot read properties of undefined (reading 'originalname')
+[2023-09-25T03:41:23.392Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:41:23.464Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:41:23.634Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:43:05.199Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:43:05.290Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:43:05.535Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:46:50.973Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:46:51.041Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:46:51.367Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:47:28.305Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:47:28.377Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:47:28.629Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:49:10.175Z] [ERROR] - status: 500 method: GET path: /cart message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\cart\cart.ejs:11
+    9|           <div class="product-card">
+    10|             <% if (product.productId?.thumbnail === undefined) { %>
+ >> 11|               <img src="<%= product.productId.thumbnail %>" class="product-image" alt="<%= product.productId.title %>">
+    12|             <% } else { %>
+    13|               <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.productId.title %>">
+    14|             <% } %>
+
+Cannot read properties of null (reading 'thumbnail')
+[2023-09-25T03:49:10.431Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:52:45.669Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:52:45.739Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:52:45.974Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:53:53.344Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:53:53.419Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:53:53.768Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T03:59:38.248Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Cannot read properties of null (reading 'price')
+[2023-09-25T03:59:38.321Z] [ERROR] - status: 500 method: GET path: /cart message: Unexpected token < in JSON at position 0
+[2023-09-25T03:59:38.607Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-25T04:07:38.932Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:11.465Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:33.858Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.023Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.140Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.327Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.475Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.636Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T04:14:34.803Z] [ERROR] - status: 500 method: POST path: /api/carts/purchase message: Cannot read properties of null (reading 'stock')
+[2023-09-25T15:24:03.554Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-25T23:16:27.076Z] [ERROR] - Route not found: GET /contact
+[2023-09-26T16:02:35.568Z] [ERROR] - Route not found: GET /api/carts/cartId/:cartId
+[2023-09-26T16:02:57.229Z] [ERROR] - Route not found: GET /favicon.ico
+[2023-09-26T18:20:44.788Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=daf13e804f60b05f64ef message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:20:44.961Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:20:52.094Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=f24af1f024a685654384 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:20:52.318Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:21:50.054Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=f24af1f024a685654384 message: Failed to obtain access token
+[2023-09-26T18:21:50.338Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:22:05.574Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=34f519426a693ba31cc4 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:22:05.783Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:22:41.907Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=34f519426a693ba31cc4 message: Failed to obtain access token
+[2023-09-26T18:22:42.120Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:22:45.564Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=34f519426a693ba31cc4 message: Failed to obtain access token
+[2023-09-26T18:22:45.805Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:24:34.176Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=6f1ccb0a038f04559818 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:24:34.412Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:29:46.655Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=82f8fb785acc411d1ae6 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: null,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:29:46.824Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:47:00.927Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9f9bbd399cd9bb79d6a5 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:47:01.145Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:49:31.548Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=ea91001a6a9ed52df5ae message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:49:31.820Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T18:51:24.323Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=25e2fbc1eda863df1767 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuel-25',
+  age: 0,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-09-26T18:51:24.528Z] [ERROR] - Route not found: GET /public/scripts/
+[2023-09-26T19:31:36.902Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T19:31:40.298Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T19:35:10.975Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T19:43:35.383Z] [ERROR] - Route not found: GET /profile
+[2023-09-26T20:02:41.699Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "profile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
+[2023-09-26T21:50:58.073Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "auth/sprofile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
+[2023-09-26T21:51:05.361Z] [ERROR] - status: 500 method: GET path: /profile message: Failed to lookup view "auth/sprofile" in views directory "C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src/views"
+[2023-09-27T15:39:17.714Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: userService.updateProfile is not a function
+[2023-09-27T15:39:46.176Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: Parameter "filter" to findOneAndUpdate() must be an object, got "manuelotamendi97@gmail.com" (type string)
+[2023-09-27T15:41:43.683Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: email is not defined
+[2023-09-27T19:24:09.981Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T19:33:22.812Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T19:34:03.197Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T19:34:45.419Z] [ERROR] - Error al obtener producto: undefined - status:200 - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T19:34:45.525Z] [ERROR] - status: 500 method: GET path: /error?errorInfo=Error%20al%20obtener%20los%20detalles%20del%20producto%20id:undefined message: error is not defined
+[2023-09-27T19:35:10.463Z] [ERROR] - status: 500 method: GET path: /error?errorInfo=Error%20al%20obtener%20los%20detalles%20del%20producto%20id:undefined message: error is not defined
+[2023-09-27T22:23:56.644Z] [ERROR] - Error al obtener producto: undefined - status:200 - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:26:10.134Z] [ERROR] - Error al obtener producto: undefined - status:200 - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:27:16.425Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'response')
+[2023-09-27T22:27:37.825Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: Cannot read properties of undefined (reading 'status')
+[2023-09-27T22:28:01.665Z] [ERROR] - status: 500 method: GET path: /products/651479f0bca86463e916f8f0 message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\products\productDetail.ejs:10
+    8|           <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+    9|         <% } else { %>
+ >> 10|           <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.title %>">
+    11|         <% } %>
+    12|       </div>
+    13|       <div class="col-md-6">
+
+Cannot read properties of undefined (reading 'title')
+[2023-09-27T22:31:34.486Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:32:18.655Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:32:53.505Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:33:26.201Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:38:39.453Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-27T22:45:02.580Z] [ERROR] - Error al obtener producto: 651479f0bca86463e916f8f0 - status:false - url: http://localhost:8080/api/products/651479f0bca86463e916f8f0
+[2023-09-28T16:09:02.020Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:05.334Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:42.870Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:42.871Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-28T16:09:44.732Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-09-29T17:25:26.099Z] [ERROR] - status: 500 method: DELETE path: /api/users/ message: milisecondsToHours is not defined
+[2023-09-29T17:25:27.824Z] [ERROR] - status: 500 method: DELETE path: /api/users/ message: milisecondsToHours is not defined
+[2023-10-04T23:25:25.868Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:25:39.001Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:25:40.287Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:25:40.293Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:26:15.564Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:26:15.564Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:26:53.013Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:26:53.931Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:27:18.434Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:27:18.439Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:27:54.380Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:27:54.443Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:28:48.963Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:28:50.107Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:28:51.851Z] [ERROR] - Error al enviar el correo electrónico a undefined sobre la eliminación de la cuenta: No recipients defined
+[2023-10-04T23:30:30.031Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:30:31.860Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:32:17.531Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:32:18.562Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:33:15.334Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-04T23:33:17.432Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-05T14:23:51.879Z] [ERROR] - Error al verificar el token: Cannot read properties of null (reading 'products')
+[2023-10-05T15:45:03.854Z] [ERROR] - status: 500 method: GET path: /profile message: missing ) after argument list in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-10-05T15:45:51.107Z] [ERROR] - status: 500 method: GET path: /profile message: missing ) after argument list in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-10-05T15:45:58.238Z] [ERROR] - status: 500 method: GET path: /profile message: missing ) after argument list in C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2023-10-05T15:56:36.064Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:45
+    43|       <div class="admin-panel hide">
+    44|         <h1>Panel de Administrador</h3>
+ >> 45|           <% users.forEach(function(user) { %>
+    46|             <div class="user-card">
+    47|               <p>ID: <%= user.id %></p>
+    48|               <p>Name: <%= user.name %></p>
+
+users is not defined
+[2023-10-05T15:56:38.411Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:45
+    43|       <div class="admin-panel hide">
+    44|         <h1>Panel de Administrador</h3>
+ >> 45|           <% users.forEach(function(user) { %>
+    46|             <div class="user-card">
+    47|               <p>ID: <%= user.id %></p>
+    48|               <p>Name: <%= user.name %></p>
+
+users is not defined
+[2023-10-05T16:06:16.793Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:47
+    45|           <div class="user-list">
+    46|             <h3>Usuarios</h3>
+ >> 47|             <% users.forEach(function(userList) { %>
+    48|               <div class="user-card">
+    49|                 <p>ID: <%= userList._id %></p>
+    50|                 <p>Name: <%= userList.name %></p>
+
+users is not defined
+[2023-10-05T20:00:37.854Z] [ERROR] - status: 400 method: PUT path: /api/users/update/64a7002dd36b8a8f54b32b07 message: Unexpected token " in JSON at position 0
+[2023-10-06T14:03:30.074Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9dcb2b3a4f258e288e96 message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-06T14:06:20.072Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9dcb2b3a4f258e288e96 message: Failed to obtain access token
+[2023-10-06T18:10:03.651Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=eb6f98624afbbcfb7d1d message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-06T20:12:18.624Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=9377ab68ae1bc43fdcc1 message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:26.002Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:28.716Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:31.323Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:31.540Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:31.774Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:32.021Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:15:32.200Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T19:16:49.052Z] [ERROR] - status: 500 method: POST path: /api/auth/signin message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-10T20:11:22.174Z] [ERROR] - status: 500 method: GET path: /profile message: C:\Users\Admin\Desktop\Tareas\Proyectos\CoderHouse-Backend\desafios\sprint_01\src\views\auth\profile.ejs:55
+    53|               <span class="arrow-icon rotate"><i class="fas fa-chevron-up"></i></span>
+    54|             </div>
+ >> 55|             <% userList.forEach(function(user) { %>
+    56|               <div class="user-card" data-uid="<%= user._id %>">
+    57|                 <p>ID: <%= user._id %></p>
+    58|                 <p>Email: <%= user.email %></p>
+
+Cannot read properties of null (reading 'forEach')
+[2023-10-10T23:08:50.804Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: El archivo no es válido. Solo se permiten PDF, JPEG y PNG.
+[2023-10-10T23:50:05.141Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: console.oog is not a function
+[2023-10-10T23:50:45.250Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: Cannot read properties of undefined (reading 'filename')
+[2023-10-10T23:59:43.032Z] [ERROR] - status: 500 method: POST path: /api/users/64ee78f33cc5f8b60e2be70b/documents message: Cannot read properties of undefined (reading 'filename')
+[2023-10-11T18:07:44.578Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=0ebbf81042050fd58474 message: users validation failed: name: Cast to string failed for value "{
+  name: 'Manuel Otamendi',
+  email: 'manuelotamendi97@gmail.com',
+  age: null,
+  photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
+  password: 73025455
+}" (type Object) at path "name", password: Path `password` is required.
+[2023-10-11T21:20:10.453Z] [ERROR] - Error al obtener el producto: 6527114a16a3f4ae60ab70df url: http://localhost:8080/api/products/6527114a16a3f4ae60ab70df
+[2023-10-11T21:20:10.455Z] [ERROR] - status: 500 method: GET path: /products/6527114a16a3f4ae60ab70df message: Cannot access 'product' before initialization
+[2023-10-11T21:26:08.186Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:26:08.189Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
+[2023-10-11T21:27:27.797Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:27:27.800Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
+[2023-10-11T21:27:29.615Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:27:29.618Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
+[2023-10-11T21:27:46.474Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:27:46.475Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization

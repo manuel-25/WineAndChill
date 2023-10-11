@@ -13,7 +13,7 @@ export default function() {
     )
     passport.deserializeUser(
         async(id,done) => {
-            const user = await userService.findById(id)
+            const user = await userService.getById(id)
             return done(null, user)
         }
     )
@@ -23,7 +23,7 @@ export default function() {
             { passReqToCallback: true, usernameField: 'email'}, //objeto de requerimientos
             async (req, username, password, done) => {
                 try {
-                    const one = await userService.findByEmail(username) // o req.body.email
+                    const one = await userService.getByEmail(username) // o req.body.email
                     if (!one) {
                         const user = await userService.create(req.body)
                         delete req.body.password                            //elimino contraseñas despues de crear el user
@@ -44,7 +44,7 @@ export default function() {
             { usernameField:'email' },
             async (username,password,done) => {
                 try {
-                    const one = await userService.findByEmail(username)
+                    const one = await userService.getByEmail(username)
                     if (!one) {
                         return done(null,false)
                     }
@@ -58,22 +58,22 @@ export default function() {
     passport.use(
         'github',
         new GHStrategy(
-            { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL }, //objeto de configuracion
+            { clientID:GH_CLIENT_ID,clientSecret:GH_CLIENT_SECRET,callbackURL: callbackURL, session: false }, //objeto de configuracion
             async (accessToken,refreshToken,profile,done) => {
                 try {
-                    const one = await userService.findByEmail(profile._json.login)
-                    //console.log(profile)
+                    const one = await userService.getByEmail(profile._json.email)
                     if (!one) {
                         const user = await userService.createData({
                             name:profile._json.name,
-                            email:profile._json.login,
-                            age: 0,
+                            email:profile._json.email,
+                            age: null,
                             photo:profile._json.avatar_url,
-                            password:profile._json.id
+                            password:profile._json.id,
+                            photo: profile._json.avatar_url
                         })
-                        return done(null,user)	//si no lo encuentra lo crea y envía
+                        return done(null,user)
                     }
-                    return done(null,one)		//si encuentra el usuario lo envía
+                    return done(null,one)
                 } catch (error) {
                     return done(error)
                 }
@@ -88,7 +88,7 @@ export default function() {
         },
         async (jwt_payload,done) => {
             try {              
-                const user = await userService.findByEmail(jwt_payload.email)
+                const user = await userService.getByEmail(jwt_payload.email)
                 delete user.password
                 if (user) {    
                     return done(null, user)

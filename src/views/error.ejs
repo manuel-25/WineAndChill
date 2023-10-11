@@ -1,0 +1,19 @@
+<%- include("./partials/head") %>
+<body>
+  <%- include("./partials/navbar") %>
+  <div class="container error-container">
+    <img class="error-image" src="/public/img/wine-error_img.webp" alt="Error">
+    <% if (error) { %>
+      <h3 class="error-heading">Error <%= error.status %>!</h3>
+      <p class="error-message"><%= error.message %></p>
+    <% } else { %>
+      <h3 class="error-heading">Error</h3>
+      <p class="error-message">Ha ocurrido un error.</p>
+    <% } %>
+    <div class="back-button-container">
+      <a class="back-button" href="javascript:history.back()">Volver atrás</a>
+    </div>
+  </div>
+  <%- include("./partials/footer") %>
+</body>
+</html>

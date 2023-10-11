@@ -12,4 +12,4 @@ commander
 
 export default commander
 
-logger.info(JSON.stringify(commander.opts(), null, 0))
+logger.debug(JSON.stringify(commander.opts(), null, 0))

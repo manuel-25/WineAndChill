@@ -1,0 +1,69 @@
+body {
+  font-family: 'Popins', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #8a56ac;
+}
+
+.container.error-container {
+  text-align: center;
+  color: #333;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  background-color: #ffffff;
+}
+
+.error-image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.error-heading {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #ff7f7f;
+}
+
+.error-message {
+  margin-top: 22px;
+  margin-bottom: 44px;
+  font-size: 16px;
+  color: #333;
+}
+
+.back-to-login {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-to-login a {
+  color: #0056b3;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.back-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+  
+.back-button {
+  padding: 8px 15px;
+  font-size: 16px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+}
+  
+.back-button:hover {
+  background-color: #333;
+}

@@ -30,7 +30,12 @@ const logger = winston.createLogger({
         new winston.transports.File({
             filename: './errors.log', 
             level: 'warning',
-            format: winston.format.simple()
+            format: winston.format.combine(
+                winston.format.timestamp(),
+                winston.format.printf(info => {
+                    return `[${info.timestamp}] [${info.level.toUpperCase()}] - ${info.message}`;
+                })
+            )
         })
     ]
 })

@@ -1,17 +1,21 @@
 import fetch from "node-fetch"
 import axios from "axios"
+import { productService, userService } from "../Service/index.js"
+import { logger } from "../config/logger.js"
 
 class ViewController {
   async renderCart(req, res, next) {
     try {
-      const token = req.cookies.token
-      const response = await fetch(`http://localhost:8080/api/carts/bills`, {
+      let data = null
+      const token = req.cookies.token ?? null
+      if(token) {
+        const response = await fetch(`http://localhost:8080/api/carts/bills`, {
         headers: {
           'authorization': `Bearer ${token}`
         }
-      })
-      const data = await response.json()
-
+        })
+        data = await response.json()
+      }
       return res.render("cart/cart", {
         title: "Cart",
         style: "cart.css",
@@ -38,16 +42,16 @@ class ViewController {
   async renderProductList(req, res, next) {
     try {
       const appUrl = `${req.protocol}://${req.headers.host}`
-      const limit = parseInt(req.query.limit) ?? 5
-      const page = parseInt(req.query.page) ?? 1
-      const title = req.query.title
-
-      const response = await axios.get(`${appUrl}/api/products`, {
-        params: { limit, page, title }
-      })
+      const limit = parseInt(req.query.limit) || 16
+      const page = parseInt(req.query.page) || 1
+      const title = req.query.title || ''
+  
+      const apiUrl = `${appUrl}/api/products?limit=${limit}&page=${page}&title=${title}`
+  
+      const response = await axios.get(apiUrl)
       const products = response.data.response.docs
       const pagination = response.data.response
-
+  
       if (response.status === 200) {
         return res.render('products/productList', {
           title: 'Products',
@@ -56,9 +60,6 @@ class ViewController {
           style: 'productList.css',
           script: 'productList.js'
         })
-      } else {
-        // Renderizar /products sin productos
-        console.error('Error al obtener los productos:', response.data)
       }
     } catch (error) {
       next(error)
@@ -69,21 +70,22 @@ class ViewController {
     try {
       const appUrl = `${req.protocol}://${req.headers.host}`
     
-      const response = await axios.get(`${appUrl}/api/products/${req.params.pid}`)
-      if (response.status === 200) {
-        const product = response.data.response
-        
-        return res.render('products/productDetail', {
-          title: 'Product Detail',
-          product,
-          style: 'productDetail.css',
-          script: ''
-        })
-      } else {
-        console.error('Error al obtener los detalles del producto:', response.data)
-        // Renderizar una pagina de error o redireccionar a otra pagina
-        return res.redirect('/error')
+      const response = await fetch(`${appUrl}/api/products/${req.params.pid}`)
+      if(!response.ok) {
+        logger.error(`Error al obtener el producto: ${req.params.pid} url: ${response.url}`)
+        return res.redirect(`/error?errorInfo=Error al obtener el producto ${product._id}&status=400`)
       }
+      const product = await response.json()
+      if(product.response.status === false) {
+        logger.error(`Error al obtener producto: ${product.response._id} - status:${product.response.status} - url: ${response.url}`)
+        return res.redirect(`/error?errorInfo=Error al obtener los detalles del producto ${product.response._id}&status=404`)
+      }
+      return res.render('products/productDetail', {
+        title: 'Product Detail',
+        product: product?.response,
+        style: 'productDetail.css',
+        script: 'productDetail.js'
+      })
     } catch (error) {
       next(error)
     }
@@ -124,6 +126,21 @@ class ViewController {
     }
   }
 
+  async renderUpdateProduct(req, res, next) {
+    try {
+      const productId = req.params.productId
+      const product = await productService.getById(productId)
+      return res.render('products/updateProduct', {
+        title: 'Update product',
+        style: 'updateProduct.css',
+        script: 'updateProduct.js',
+        product
+      })
+    } catch(error) {
+      next(error)
+    }
+  }
+
   renderChat(req, res, next) {
     try {
       res.render('chat/chat', {
@@ -135,6 +152,73 @@ class ViewController {
       next(error)
     }
   }
+
+  async renderProfile(req, res, next) {
+    try {
+      const user = await userService.getByEmail(req.token.email)
+      let userList = null
+      if(user.role === 'OWNER') {
+        userList = await userService.getAll()
+      }
+      const panel = req.query.panel ?? 'account-details'
+
+      res.render('auth/profile', {
+        title: 'Profile',
+        style: 'profile.css',
+        script: 'profile.js',
+        user: user || req.token,
+        userList,
+        panel
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  renderForgotPassword(req, res, next) {
+    try {
+      res.render('auth/forgotPassword', {
+        title: 'Forgot Password',
+        style: 'forgotPassword.css',
+        script: 'forgotPassword.js'
+      })
+    } catch (err) {
+      next (err)
+    }
+  }
+
+  renderResetPassword(req, res, next) {
+    try {
+      res.render('auth/resetPassword', {
+        title: 'Reset Password',
+        style: 'resetPassword.css',
+        script: 'resetPassword.js',
+        email: req.resetToken
+      })
+    } catch (err) {
+      next (err)
+    }
+  }
+
+  renderError(req, res, next) {
+    try {
+      const errorInfo = req.query.errorInfo || 'Información adicional no disponible'
+      const status = req.query.status || 500;
+
+      res.render('error', {
+        title: 'Error',
+        style: 'error.css',
+        script: '',
+        error: {
+          status: status || 500,
+          message: errorInfo || 'Unexpected error'
+        }
+      })
+    } catch (err) {
+      next (err)
+    }
+  }
 }
+
 
 export default new ViewController()

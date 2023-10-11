@@ -1,7 +1,7 @@
-const navbarToggle = document.getElementById('navbarToggle');
-const navbarLinks = document.getElementById('navbarLinks');
+const menuToggle = document.getElementById('menu-toggle');
+  const bars = document.querySelector('.icon');
+  const navbarLinks = document.querySelector('.navbar-links');
 
-navbarToggle.addEventListener('click', function() {
-  navbarToggle.classList.toggle('active');
-  navbarLinks.classList.toggle('active');
-});
+  bars.addEventListener('click', function() {
+    navbarLinks.classList.toggle('show');
+  })

@@ -1,6 +1,5 @@
 const loginButton = document.getElementById('login')
 const githubButton = document.querySelector('.form-button.github')
-console.log(githubButton)
 const URL_PRODUCTS = '/products'
 const URL_GITHUB = '/api/auth/github/callback'
 
@@ -17,19 +16,33 @@ loginButton.addEventListener('click', (event) => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         if (!data.success) {
             Swal.fire({
                 icon: 'error',
                 title: 'Try Again',
-                text: 'Invalid credentials',
+                text: data.error || data.message || 'Invalid credentials',
             })
+        } else {
+            const returnUrl = getQueryParam(currentUrl, 'returnTo')
+            if (returnUrl) {
+                window.location.href = returnUrl
+              } else {
+                window.location.href = URL_PRODUCTS
+              }
         }
-        window.location.href = URL_PRODUCTS
     })
 })
 
 githubButton.addEventListener('click', (event) => {
     event.preventDefault()
+    const returnUrl = getQueryParam(window.location.href, 'returnTo')
+    if(returnUrl) document.cookie = `returnTo=${returnUrl}; max-age=120;`
     window.location.href = URL_GITHUB
 })
+const currentUrl = window.location.href
+
+// Función para obtener el valor de un parametro de consulta de la URL
+function getQueryParam(url, paramName) {
+    const params = new URLSearchParams(url.split('?')[1])
+    return params.get(paramName)
+}

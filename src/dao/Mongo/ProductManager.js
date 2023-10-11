@@ -3,7 +3,7 @@ import ProductModel from '../Mongo/models/product.model.js'
 class ProductManagerDao {
     constructor() {
         this.ProductModel = ProductModel
-      }
+    }
 
     async getAll() {
         return await ProductModel.find({})
@@ -16,6 +16,7 @@ class ProductManagerDao {
     async getById(productId) {
         return await ProductModel.findById(productId)
     }
+
     async create(data) {
         return await ProductModel.create(data)
     }

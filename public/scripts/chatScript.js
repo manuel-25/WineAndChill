@@ -1,13 +1,19 @@
-let socket = io()
+let socket = io('http://localhost:8080', {
+    transports: ['websocket'],
+})
+
 let chatInput = document.getElementById('chatInput')
 let chatBox = document.getElementById('messages')
 let username
+let color
 
 //Primera conexion con socket recibo la data
-socket.emit('chatAuth', {})
 socket.on('chatAuth', (data) => {
-    console.log('data',data)
     username = data.username
+})
+
+socket.on('error', (error) => {
+    console.error('Error en el servidor de socket:', error);
 })
 
 //Mando al server los mensajes
@@ -25,19 +31,25 @@ chatInput.addEventListener('keydown', (event) => {
 
 //Renderizo
 socket.on('allMessages', (data) => {
-    renderMessages(data)
+    if (data) {
+        renderMessages(data)
+    } else {
+        console.error('Could not retrieve the messages')
+    }
 })
 
 //Renderizo onload
 window.addEventListener('load', () => {
-    socket.emit('load_messages', 'hola')
     socket.on('allMessages', (data) => {
-        renderMessages(data)
+        if(data) {
+            renderMessages(data)
+        } else {
+            console.error('Could not retrieve the messages')
+        }
     })
 })
 
 async function renderMessages(data) {
-    console.log('data recieved: ', data)
     const chatArray = data.chatFromDB
     chatBox.innerHTML = ''
     chatArray.forEach((chat) => {

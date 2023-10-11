@@ -6,25 +6,28 @@ productForm.addEventListener('submit', (event) => {
     const title = document.getElementById('title').value
     const description = document.getElementById('description').value
     const price = document.getElementById('price').value
-    const code = document.getElementById('code').value
+    const status = document.getElementById('status').value
     const stock = document.getElementById('stock').value
     const type = document.getElementById('type').value
+    const cellar = document.getElementById('cellar').value
 
-    const formData = {
-        title: title,
-        description: description,
-        price: price,
-        code: code,
-        stock: stock,
-        type: type
-    }
+    const imageInput = document.getElementById('thumbnail')
+    const imageFile = imageInput.files[0]
+
+    const formData = new FormData()
+    formData.append('title', title)
+    formData.append('description', description)
+    formData.append('price', price)
+    formData.append('status', status)
+    formData.append('stock', stock)
+    formData.append('type', type)
+    formData.append('cellar', cellar)
+    formData.append('thumbnail', imageFile)
+
 
     fetch('/api/products', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        body: formData
     })
     .then(response => response.json())
     .then(data => {
@@ -32,21 +35,18 @@ productForm.addEventListener('submit', (event) => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: `Product ${data.response.id} created!`,
+                text: data.response,
                 confirmButtonText: 'OK',
-                timer: 5000,
                 timerProgressBar: true,
-                onClose: () => {
-                    console.log('Alerta cerrada')
-                }
             }).then(() => {
                 window.location.href = '/new_product'
             })
         } else {
+            const displayError = data.message ?? data.error
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: data.response,
+                text: displayError,
                 confirmButtonText: 'OK'
             })
         }

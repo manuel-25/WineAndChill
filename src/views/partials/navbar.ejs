@@ -1,37 +1,41 @@
 <nav class="navbar">
-  <div class="navbar-container">
-    <div class="navbar-left">
-      <a class="navbar-logo" href="/">Wine and Chill</a>
-    </div>
-    <div class="navbar-center active" id="navbarLinks">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/products">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/chat">Chat</a>
-        </li>
-      </ul>
+  <div class="top-bar">
+    <div class="logo-container">
+      <a class="logo" href="/">Wine and Chill</a>
     </div>
     <div class="navbar-right">
       <% if (locals.user) { %>
-        <a class="nav-link" href="/api/auth/signout">Signout</a>
+        <a class="nav-link" href="/api/auth/signout">Logout</a>
+        <a class="nav-link" href="/profile"><i class="fas fa-user"></i></a>
       <% } else { %>
-      <a class="nav-link" href="/login">Iniciar Sesion</a>
+        <a class="nav-link" href="/login">Sign In</a>
       <% } %>
       <a class="nav-link cart-link" href="/cart">
         <i class="fas fa-shopping-cart"></i>
-        <span class="cart-badge" id="cartBadge"></span>
+        <span class="cart-badge" id="cartBadge">0</span>
       </a>
+      <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+      </label>
+      <input type="checkbox" id="btn">
     </div>
-    <button class="navbar-toggle" id="navbarToggle">
-      <span class="navbar-toggle-icon"></span>
-    </button>
   </div>
+  <ul class="navbar-links">
+    <li class="nav-item">
+      <a class="nav-link" href="/products">Products+</a>
+      <input type="checkbox" id="btn1">
+      <ul>
+        <li class="nav-item"><a class="nav-link" href="/products?title=tinto">Vino Tinto</a></li>
+        <li class="nav-item"><a class="nav-link" href="/products?title=blanco">Vino Blanco</a></li>
+        <li class="nav-item"><a class="nav-link" href="/products?title=rosa">Vino Rosa</a></li>
+      </ul>
+    </li>
+    <li class="nav-item"><a class="nav-link" href="/products">Sale</a></li>
+    <li class="nav-item"><a class="nav-link" href="/chat">Chat</a></li>
+    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+  </ul>
 </nav>
+
 
 <script type="module" src="/public/scripts/cartCounter.js" defer></script>
 <script type="module" src="/public/scripts/navbar.js" defer></script>
