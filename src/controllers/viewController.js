@@ -82,7 +82,7 @@ class ViewController {
       }
       return res.render('products/productDetail', {
         title: 'Product Detail',
-        product: product.response,
+        product: product?.response,
         style: 'productDetail.css',
         script: 'productDetail.js'
       })

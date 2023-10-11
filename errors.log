@@ -859,3 +859,13 @@ Cannot read properties of null (reading 'forEach')
   photo: 'https://avatars.githubusercontent.com/u/73025455?v=4',
   password: 73025455
 }" (type Object) at path "name", password: Path `password` is required.
+[2023-10-11T21:20:10.453Z] [ERROR] - Error al obtener el producto: 6527114a16a3f4ae60ab70df url: http://localhost:8080/api/products/6527114a16a3f4ae60ab70df
+[2023-10-11T21:20:10.455Z] [ERROR] - status: 500 method: GET path: /products/6527114a16a3f4ae60ab70df message: Cannot access 'product' before initialization
+[2023-10-11T21:26:08.186Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:26:08.189Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
+[2023-10-11T21:27:27.797Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:27:27.800Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
+[2023-10-11T21:27:29.615Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:27:29.618Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
+[2023-10-11T21:27:46.474Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
+[2023-10-11T21:27:46.475Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization

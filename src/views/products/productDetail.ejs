@@ -6,26 +6,30 @@
       <a class="back-button" href="javascript:history.back()">Volver atrás</a>
     </div>
     <div class="row">
-      <div class="col-md-6 image-container">
-        <% if (product?.thumbnail !== undefined) { %>
-          <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
-        <% } else { %>
-          <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.title %>">
-        <% } %>
-      </div>
-      <div class="col-md-6">
-        <h2><%= product.title %></h2>
-        <p class="product-price">$<%= product.price %></p>
-        <p class="product-description"><%= product.description %></p>
-        <div class="product-actions">
-          <form action="/" method="POST" id="addToCartForm">
-              <input type="number" name="quantity" id="quantityInput" value="1">
-              <p class="product-stock">Stock disponible: <%= product.stock %></p>
-              <input type="submit" value="Agregar al Carrito" id="submitButton">
-          </form>
-          <span id="productId" style="display: none;"><%= product._id %></span>
+      <% if (!product) { %>
+        <p class="empty-product-message">No hay productos disponibles.</p>
+      <% } else { %>
+        <div class="col-md-6 image-container">
+          <% if (product?.thumbnail !== undefined) { %>
+            <img src="<%= product.thumbnail %>" class="product-image" alt="<%= product.title %>">
+          <% } else { %>
+            <img src="/public/img/botella_vino.webp" class="product-image" alt="<%= product.title %>">
+          <% } %>
         </div>
-      </div>
+        <div class="col-md-6">
+          <h2><%= product.title %></h2>
+          <p class="product-price">$<%= product.price %></p>
+          <p class="product-description"><%= product.description %></p>
+          <div class="product-actions">
+            <form action="/" method="POST" id="addToCartForm">
+                <input type="number" name="quantity" id="quantityInput" value="1">
+                <p class="product-stock">Stock disponible: <%= product.stock %></p>
+                <input type="submit" value="Agregar al Carrito" id="submitButton">
+            </form>
+            <span id="productId" style="display: none;"><%= product._id %></span>
+          </div>
+        </div>
+      <% } %>
     </div>
   </div>
   <%- include("../partials/footer") %>
