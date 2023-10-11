@@ -1,6 +1,7 @@
 import { userService, productService, cartService, ticketService } from "../Service/index.js"
 import { generateAlphanumericCode } from "../utils.js"
 import mongoose from "mongoose"
+import { sendTicketEmail } from "../utils/sendEmail.js"
 
 class CartController {
   async getCarts(req, res, next) {
@@ -240,7 +241,8 @@ class CartController {
 
   async purchase(req, res, next) {
     try {
-      const cartId = req.token.cartId ?? null
+      const userData = req.token
+      const cartId = userData.cartId ?? null
       if (!cartId) {
         return res.status(404).json({
           status: 404,
@@ -283,7 +285,7 @@ class CartController {
           code: generateAlphanumericCode(8),
           purchase_datetime: new Date().toLocaleString(),
           amount: amount,
-          purchaser: req.token.email,
+          purchaser: userData.email,
         }
   
         const purchaseOrder = await ticketService.create(ticket);
@@ -298,12 +300,18 @@ class CartController {
         }
   
         // Commit de la transacción y finaliza la sesión
-        await session.commitTransaction();
-        session.endSession();
+        await session.commitTransaction()
+        session.endSession()
+
+        sendTicketEmail(userData, ticket)
   
         return res.status(200).json({
           success: true,
-          purchaseOrderId: purchaseOrder._id,
+          payload: {
+            ticketId: purchaseOrder._id,
+            amount: purchaseOrder.amount,
+            date: purchaseOrder.purchase_datetime
+          }
         })
       } catch (error) {
         // En caso de error, realiza un rollback de la transacción

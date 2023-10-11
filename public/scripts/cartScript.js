@@ -80,10 +80,11 @@ async function checkout() {
     .then(res => res.json())
     .then(data => {
       if(data.success) {
+        console.log('data', data)
         Swal.fire({
           icon: 'success',
           title: 'Compra exitosa!',
-          text: `Ticket id: ${data.purchaseOrderId}`,
+          text: `Ticket id: ${data.payload.ticketId}`,
         }).then(() => {
           window.location.reload()
         })

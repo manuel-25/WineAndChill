@@ -49,8 +49,70 @@ export const sendAccountDeletedEmail = async (email, name) => {
     } catch (err) {
         logger.error(`Error al enviar el correo electrónico a ${email} sobre la eliminación de la cuenta:`, err)
     }
-  }
+}
   
+export const sendTicketEmail = async (userData, ticket) => {
+    try {
+        const { email, name } = userData
+        const { code, purchase_datetime, amount, purchaser } = ticket
+
+        await transport.sendMail({
+            from: `<${config.GMAIL_USER}>`,
+            to: `<${email}>`,
+            subject: "Resumen de Compra",
+            html: `
+                <html>
+                <head>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                        }
+                        .container {
+                            max-width: 600px;
+                            margin: 0 auto;
+                            padding: 20px;
+                        }
+                        .header {
+                            background-color: #f2f2f2;
+                            padding: 10px;
+                            text-align: center;
+                        }
+                        .content {
+                            padding: 20px;
+                        }
+                        .footer {
+                            background-color: #f2f2f2;
+                            padding: 10px;
+                            text-align: center;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="header">
+                            <h1>Hola ${name},</h1>
+                            <p>¡Gracias por elegir Wine and Chill!</p>
+                        </div>
+                        <div class="content">
+                            <p>Aquí está el resumen de tu compra:</p>
+                            <p>Código del ticket: ${code}</p>
+                            <p>Fecha de compra: ${purchase_datetime}</p>
+                            <p>Monto: $${amount}</p>
+                            <p>Comprador: ${purchaser}</p>
+                        </div>
+                        <div class="footer">
+                            <p>¡Gracias por tu compra!</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `
+        });
+    } catch (err) {
+        logger.error(`Error al enviar el correo electrónico a ${userData.email} sobre resumen de compra`, err)
+    }
+}
+
   
   
   
