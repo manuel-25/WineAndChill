@@ -33,8 +33,7 @@ class UserController {
 
     async setUserRole(req, res, next) {
         try {
-            const userId = req.params.userId
-
+            const userId = req.params.uid
             const userData = await userService.getById(userId)
             if(!userData) {
                 return res.status(404).send({
@@ -42,7 +41,13 @@ class UserController {
                     message: `User id: ${userId} not found`
                 })
             }
-    
+
+            const userDocuments = await userService.getDocuments(userData.email)
+            if(userDocuments.length < 3) return res.status(400).send({
+                success: false,
+                message: `Only ${userDocuments.length}/3 documents uploaded!`
+            })
+            
             if(userData.role === 'PUBLIC') {
                 const data = await userService.setRole(userId, 'PREMIUM')
                 return res.status(200).send({
