@@ -80,7 +80,6 @@ async function checkout() {
     .then(res => res.json())
     .then(data => {
       if(data.success) {
-        console.log('data', data)
         Swal.fire({
           icon: 'success',
           title: 'Compra exitosa!',

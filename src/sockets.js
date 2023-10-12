@@ -44,7 +44,6 @@ export function initializeSockets(http_server) {
         const username = token?.name
             const userId = token?._id
         if (token) {
-            //console.log('token:', token)
             try {
                 if (token.chatColor === null) {
                     color = colors[Math.floor(Math.random() * colors.length)]
