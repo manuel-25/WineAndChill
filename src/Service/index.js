@@ -7,9 +7,10 @@ import TicketManagerDao from "../dao/Mongo/TicketManager.js"
 //Completar repositories
 import ProductRepository from "../repositories/product.repository.js"
 import UserRepository from "../repositories/user.repository.js"
+import CartRepository from "../repositories/cart.repository.js"
 
 const productService = new ProductRepository( new ProductManagerDao())
-const cartService = new CartManagerDao()
+const cartService = new CartRepository( new CartManagerDao())
 const userService = new UserRepository( new UserManagerDao())
 const chatService = new ChatManagerDao()
 const ticketService = new TicketManagerDao()
