@@ -41,14 +41,19 @@ export function initializeSockets(http_server) {
         }
 
         //Send user data
+        const username = token?.name
+            const userId = token?._id
         if (token) {
-            const username = token.name;
+            //console.log('token:', token)
             try {
                 if (token.chatColor === null) {
                     color = colors[Math.floor(Math.random() * colors.length)]
-                    await userService.setColor(token.id, color)
+                    const updateData = { chatColor: color }
+                    const criteria = { _id: userId }
+                    await userService.update(criteria, updateData)
                 } else {
-                    color = await userService.getColorById(token.id)
+                    const userDb = await userService.getById(userId)
+                    color = userDb.chatColor
                 }
             } catch (err) {
                 logger.error('Socket Error: chatAuth ', err)

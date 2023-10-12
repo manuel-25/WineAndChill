@@ -83,20 +83,19 @@ class authController {
                     message: 'Passwords must be different!'
                 })
             }
-            const updatedUser = await userService.setPassword(userEmail, newHashPassword)
+            const criteria = { email: userEmail }
+            const update = { password: newHashPassword }
+            const updatedUser = await userService.update(criteria, update)
             delete req.body.password
             newPassword = undefined
-            if(updatedUser) { 
-                return res.status(200).send({
-                    success: true,
-                    message: 'Password changed!'
-                }) 
-            } else {
-                return res.status(500).send({
-                    success: false,
-                    message: 'Unexpected error: Please try again.'
-                }) 
-            }
+            if(!updatedUser) return res.status(500).send({
+                success: false,
+                message: 'Unexpected error: Please try again.'
+            }) 
+            return res.status(200).send({
+                success: true,
+                message: 'Password changed!'
+            }) 
 
         } catch (err) {
             next(err)

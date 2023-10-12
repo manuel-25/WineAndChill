@@ -42,20 +42,20 @@ class UserController {
                 })
             }
 
-            const userDocuments = await userService.getDocuments(userData.email)
+            const userDocuments = userData.documents
             if(userDocuments.length < 3) return res.status(400).send({
                 success: false,
                 message: `Only ${userDocuments.length}/3 documents uploaded!`
             })
             
             if(userData.role === 'PUBLIC') {
-                const data = await userService.setRole(userId, 'PREMIUM')
+                const data = await userService.update({ _id: userId }, { role: 'PREMIUM' })
                 return res.status(200).send({
                     success: true,
                     message: `User id: ${userId} role: ${data.role}`
                 })
             } else {
-                const data = await userService.setRole(userId, 'PUBLIC')
+                const data = await userService.update({ _id: userId }, { role: 'PUBLIC' })
                 return res.status(200).send({
                     success: true,
                     message: `User id: ${userId} role: ${data.role}`
@@ -98,7 +98,7 @@ class UserController {
                 message:'Invalid file or expired token'
             })
             const document = `/public/documents/${file}`
-            const upload = await userService.addDocument(email, document)
+            const upload = await userService.update({ email }, { $push: { documents: document } })
             if(!upload) return res.status(400).send({
                 success: false,
                 message: 'Error uploading document'
@@ -123,7 +123,7 @@ class UserController {
                 message:'Invalid data'
             })
             
-            const updated = await userService.updateUser(email, data)
+            const updated = await userService.update({ email }, { ...data })
             if(!updated) return res.status(400).send({
                 success: false,
                 message: 'Error updating profile, please try again',
@@ -155,7 +155,7 @@ class UserController {
                 })
             }
     
-            const upload = await userService.updatePhoto(email, uploadedFile)
+            const upload = await userService.update({email: email}, {photo: uploadedFile})
             if(!upload) return res.status(400).send({
                 success: false,
                 message: 'Error uploading image'
@@ -177,8 +177,9 @@ class UserController {
                 success: false,
                 message: 'Invalid data, please try again'
             })
-            const newRole = await userService.setRole(uid, role)
-            if(!newRole) return res.status(400).send({
+
+            const updatedUser = await userService.update({ _id: uid }, { role: role })
+            if(!updatedUser) return res.status(400).send({
                 success: false,
                 message: 'Error updating role, please try again',
             })
@@ -186,7 +187,7 @@ class UserController {
             return res.status(200).send({
                 success: true,
                 message: 'Information updated!',
-                payload: newRole
+                payload: updatedUser
             })
         } catch(err) {
             next(err)
