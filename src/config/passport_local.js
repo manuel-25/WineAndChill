@@ -8,15 +8,6 @@ const { GH_CLIENT_ID, GH_CLIENT_SECRET } = process.env
 const callbackURL = 'http://localhost:8080/api/auth/github/callback'
 
 export default function() {
-    passport.serializeUser(
-        (user,done) => done(null, user._id)
-    )
-    passport.deserializeUser(
-        async(id,done) => {
-            const user = await userService.getById(id)
-            return done(null, user)
-        }
-    )
     passport.use(
         'register',
         new Strategy(

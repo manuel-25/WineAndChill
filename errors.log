@@ -869,3 +869,28 @@ Cannot read properties of null (reading 'forEach')
 [2023-10-11T21:27:29.618Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
 [2023-10-11T21:27:46.474Z] [ERROR] - Error al obtener el producto: 652712deb524ba7854cefc57 url: http://localhost:8080/api/products/652712deb524ba7854cefc57
 [2023-10-11T21:27:46.475Z] [ERROR] - status: 500 method: GET path: /products/652712deb524ba7854cefc57 message: Cannot access 'product' before initialization
+[2023-10-12T15:14:08.368Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:17:03.734Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:17:50.556Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:18:49.657Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:21:18.458Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:22:22.852Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:22:32.256Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:22:50.675Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:36:53.046Z] [ERROR] - Socket Error: new_message chats validation failed: color: Path `color` is required.
+[2023-10-12T15:40:11.403Z] [ERROR] - Socket Error: chatAuth  Cannot read properties of undefined (reading 'chatColor')
+[2023-10-12T15:40:13.503Z] [ERROR] - Socket Error: chatAuth  Cannot read properties of undefined (reading 'chatColor')
+[2023-10-12T15:40:43.412Z] [ERROR] - Socket Error: chatAuth  Cannot read properties of undefined (reading 'chatColor')
+[2023-10-12T15:40:43.468Z] [ERROR] - Socket Error: chatAuth  Cannot read properties of undefined (reading 'chatColor')
+[2023-10-12T15:40:44.373Z] [ERROR] - Socket Error: chatAuth  Cannot read properties of undefined (reading 'chatColor')
+[2023-10-12T15:40:44.396Z] [ERROR] - Socket Error: chatAuth  Cannot read properties of undefined (reading 'chatColor')
+[2023-10-12T15:52:40.056Z] [ERROR] - status: 500 method: POST path: /api/auth/register message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-12T16:04:23.837Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: updateUser is not defined
+[2023-10-12T16:04:56.112Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: Cast to string failed for value "{ email: 'manuotamendi@hotmail.com' }" (type Object) at path "email" for model "users"
+[2023-10-12T16:07:09.858Z] [ERROR] - status: 500 method: POST path: /api/auth/reset-password message: Cast to string failed for value "{ email: 'manuotamendi@hotmail.com' }" (type Object) at path "email" for model "users"
+[2023-10-12T16:24:26.991Z] [ERROR] - status: 500 method: PUT path: /api/users/update/profile message: Parameter "filter" to findOneAndUpdate() must be an object, got "manuelotamendi97@gmail.com" (type string)
+[2023-10-12T16:42:10.068Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=efcd9e7e242aa07b8054 message: userService.getByEmail is not a function
+[2023-10-12T16:42:10.414Z] [ERROR] - Socket Error: chatAuth  userService.update is not a function
+[2023-10-12T17:28:43.768Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=7bd67277e95f1c8824a1 message: userService.getByEmail is not a function
+[2023-10-12T17:29:42.485Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=4540e435f37c51a8776b message: this.dao.getUserByEmail is not a function
+[2023-10-12T17:32:03.360Z] [ERROR] - status: 500 method: GET path: /api/auth/github/callback?code=4540e435f37c51a8776b message: Failed to obtain access token

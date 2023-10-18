@@ -2,6 +2,7 @@ import { userService, productService, cartService, ticketService } from "../Serv
 import { generateAlphanumericCode } from "../utils.js"
 import mongoose from "mongoose"
 import { sendTicketEmail } from "../utils/sendEmail.js"
+import { logger } from "../config/logger.js"
 
 class CartController {
   async getCarts(req, res, next) {
@@ -97,19 +98,27 @@ class CartController {
   
       if (cartId === null) {
         emptyCart = await cartService.createEmpty()
-        cartId = emptyCart._id
-        await userService.setCartId(userEmail, cartId)
-      }
+        if(!emptyCart) logger.error('Error creating empty cart: ', emptyCart)
+        cartId = emptyCart?._id
+      
+        const criteria = { email: userEmail }
+        const update = { cartId: cartId }
+        const updatedUser = await userService.update(criteria, update)
+        if(!updatedUser) logger.error('Error updating user with empty cart: ', updatedUser)
+      }    
   
       const cart = await cartService.getById(cartId)
-      if (!cart) {
-        return res.status(404).send({
-          status: 404,
-          response: `Post Error: Cart ${cartId} not found`
-        })
-      }
+      if (!cart) return res.status(404).send({
+        status: 404,
+        response: `Cart ${cartId} not found`
+      })
 
       const product = await productService.getById(productId)
+      if(!product) return res.status(404).send({
+        status: 404,
+        response: `Product ${productId} not found`
+      })
+
       if(product.stock < quantity) {
         return res.status(400).send({
           status: 400,
@@ -121,8 +130,7 @@ class CartController {
       const productExists = cart.products.some(product => product.productId == productId)
       if(!productExists) {
         result = await cartService.create(cartId,productId,quantity)
-      }
-      if(productExists) {
+      } else {
         result = await cartService.add(cartId,productId,quantity)
       }
   
