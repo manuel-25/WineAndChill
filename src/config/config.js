@@ -1,8 +1,6 @@
-import mongoose from 'mongoose'
 import commander from '../utils/commander.js'
 import dotenv from 'dotenv'
 import MongoSingleton from './MongoSingleton.js'
-
 
 const { mode } = commander.opts()
 
@@ -31,6 +29,7 @@ const config = {
     PRIVATE_PHONE: process.env.PRIVATE_PHONE,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+    APP_URL: process.env.APP_URL ?? `http://localhost:8080`,
     connectDB: async () => MongoSingleton.getInstance()
 }
 

@@ -32,7 +32,6 @@ const photoUploadInput = document.getElementById('photo')
 
 photoUploadInput.addEventListener('change', (event) => {
     const selectedFile = event.target.files[0];
-    console.log('selectedFile:', selectedFile)
     if (selectedFile) {
         const formData = new FormData();
         formData.append('photo', selectedFile)
@@ -43,7 +42,6 @@ photoUploadInput.addEventListener('change', (event) => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             if (data.success) {
                 Swal.fire({
                     icon: 'success',

@@ -162,7 +162,6 @@ class ProductController {
           })
         }
         if(product.owner !== config.ADMIN_EMAIL) {
-          console.log('product.owner:', product.owner)
           const ownerData = await userService.getByEmail(product.owner)
           sendProductDeletedEmail(ownerData, product)
         }

@@ -1,4 +1,6 @@
-let socket = io('http://localhost:8080', {
+const APP_URL = window.location.origin
+
+let socket = io(APP_URL, {
     transports: ['websocket'],
 })
 let cartBadge = document.getElementById('cartBadge')
