@@ -85,12 +85,14 @@ export function initializeSockets(http_server) {
 function verifyToken(socket) {
     let token
     const { cookie } = socket.handshake.headers
-    const cookiePairs = cookie.trim().split(';')
-    for (const cookiePair of cookiePairs) {
-        const [name, value] = cookiePair.trim().split('=')
-        if (name === 'token') {
-            token = value
-            break
+    if(cookie) {
+        const cookiePairs = cookie.trim().split(';')
+        for (const cookiePair of cookiePairs) {
+            const [name, value] = cookiePair.trim().split('=')
+            if (name === 'token') {
+                token = value
+                break
+            }
         }
     }
     if (token) {

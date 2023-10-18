@@ -2,6 +2,8 @@ import fetch from "node-fetch"
 import axios from "axios"
 import { productService, userService } from "../Service/index.js"
 import { logger } from "../config/logger.js"
+import config from "../config/config.js"
+const APP_URL = config.APP_URL
 
 class ViewController {
   async renderCart(req, res, next) {
@@ -9,7 +11,7 @@ class ViewController {
       let data = null
       const token = req.cookies.token ?? null
       if(token) {
-        const response = await fetch(`http://localhost:8080/api/carts/bills`, {
+        const response = await fetch(`${APP_URL}/api/carts/bills`, {
         headers: {
           'authorization': `Bearer ${token}`
         }
@@ -41,12 +43,11 @@ class ViewController {
 
   async renderProductList(req, res, next) {
     try {
-      const appUrl = `${req.protocol}://${req.headers.host}`
       const limit = parseInt(req.query.limit) || 16
       const page = parseInt(req.query.page) || 1
       const title = req.query.title || ''
   
-      const apiUrl = `${appUrl}/api/products?limit=${limit}&page=${page}&title=${title}`
+      const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
   
       const response = await axios.get(apiUrl)
       const products = response.data.response.docs
@@ -67,10 +68,8 @@ class ViewController {
   }
 
   async renderProductDetail(req, res, next) {
-    try {
-      const appUrl = `${req.protocol}://${req.headers.host}`
-    
-      const response = await fetch(`${appUrl}/api/products/${req.params.pid}`)
+    try {    
+      const response = await fetch(`${APP_URL}/api/products/${req.params.pid}`)
       if(!response.ok) {
         logger.error(`Error al obtener el producto: ${req.params.pid} url: ${response.url}`)
         return res.redirect(`/error?errorInfo=Error al obtener el producto ${product._id}&status=400`)
@@ -157,7 +156,7 @@ class ViewController {
     try {
       const user = await userService.getByEmail(req.token.email)
       let userList = null
-      if(user.role === 'OWNER') {
+      if(user?.role === 'OWNER') {
         userList = await userService.getAll()
       }
       const panel = req.query.panel ?? 'account-details'

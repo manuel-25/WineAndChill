@@ -5,5 +5,5 @@
 <script src="/socket.io/socket.io.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 <% if (typeof script !== 'undefined') { %>
-    <script src="/public/scripts/<%- script %>" defer></script>
+    <script type="module" src="/public/scripts/<%- script %>" defer></script>
 <% } %>
