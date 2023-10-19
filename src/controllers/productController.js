@@ -34,10 +34,17 @@ class ProductController {
         })
       }
   
-      return res.status(200).send({
-        status: 200,
-        response: all
-      })
+      if (all.docs) {
+        return res.status(200).send({
+          status: 200,
+          response: all
+        })
+      } else {
+        return res.status(404).send({
+          status: 404,
+          response: 'Products not found!'
+        })
+      }
     } catch (error) {
       next(error)
     }
