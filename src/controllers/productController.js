@@ -26,7 +26,7 @@ class ProductController {
       }
   
       const all = await productService.paginate(query, { limit, page, lean: true })
-  
+      console.log('all:', all)
       if (!all || all.error) {
         return res.status(404).send({
           status: 404,

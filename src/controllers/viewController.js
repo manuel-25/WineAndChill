@@ -8,26 +8,34 @@ const APP_URL = config.APP_URL
 class ViewController {
   async renderCart(req, res, next) {
     try {
-      let data = null
-      const token = req.cookies.token ?? null
-      if(token) {
+      let data = null;
+      const token = req.cookies.token ?? null;
+  
+      if (token) {
         const response = await fetch(`${APP_URL}/api/carts/bills`, {
-        headers: {
-          'authorization': `Bearer ${token}`
-        }
+          headers: {
+            'authorization': `Bearer ${token}`
+          }
         })
+  
+        if (!response.ok) {
+          throw new Error(`Error al obtener datos: ${response.status} - ${response.statusText}`)
+        }
+  
         data = await response.json()
       }
+  
       return res.render("cart/cart", {
         title: "Cart",
         style: "cart.css",
         script: "cartScript.js",
         response: data
-      })
+      });
     } catch (error) {
       next(error)
     }
   }
+  
 
   renderRegister(req, res, next) {
     try {
