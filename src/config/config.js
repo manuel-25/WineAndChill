@@ -29,7 +29,7 @@ const config = {
     PRIVATE_PHONE: process.env.PRIVATE_PHONE,
     ADMIN_EMAIL: process.env.ADMIN_EMAIL,
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
-    APP_URL: process.env.APP_URL ?? `http://localhost:8080`,
+    APP_URL: process.env.APP_URL,
     connectDB: async () => MongoSingleton.getInstance()
 }
 
