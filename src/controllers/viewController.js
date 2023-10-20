@@ -58,7 +58,10 @@ class ViewController {
         const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
 
         await fetch(apiUrl)
-          .then(res => res.json())
+          .then(res => { 
+            logger.error('res:', res)
+            res.json()
+          })
           .then(data => {
             console.log('data',data)
             if(data.status === 200) {
