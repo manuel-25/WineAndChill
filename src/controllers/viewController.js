@@ -51,37 +51,28 @@ class ViewController {
 
   async renderProductList(req, res, next) {
     try {
-        const limit = parseInt(req.query.limit) || 16;
-        const page = parseInt(req.query.page) || 1;
-        const title = req.query.title || '';
+        const limit = parseInt(req.query.limit) || 16
+        const page = parseInt(req.query.page) || 1
+        const title = req.query.title || ''
 
-        const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`;
+        const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
 
-        const response = await fetch(apiUrl);
-
-        if (response.status === 200) {
-            const contentType = response.headers.get("content-type");
-            if (contentType && contentType.includes("application/json")) {
-                const responseData = await response.json();
-
-                if (responseData && responseData.response && responseData.response.docs) {
-                    const products = responseData.response.docs;
-                    const pagination = responseData.response;
-
-                    return res.render('products/productList', {
-                        title: 'Products',
-                        products,
-                        pag: pagination,
-                        style: 'productList.css',
-                        script: 'productList.js',
-                    });
-                }
+        await fetch(apiUrl)
+          .then(res => res.json())
+          .then(data => {
+            console.log('data',data)
+            if(data.status === 200) {
+              return res.render('products/productList', {
+                title: 'Products',
+                products: data.response?.docs,
+                pag: data.response,
+                style: 'productList.css',
+                script: 'productList.js',
+            })
             }
-        }
-
-        throw new Error('No se encontraron documentos en la respuesta JSON');
+          })
     } catch (error) {
-        next(error);
+        next(error)
     }
   }
 
