@@ -203,7 +203,6 @@ class CartController {
         })
       }
 
-      logger.info('quantity',quantity)
       if (quantity < 1) {
         return res.status(400).send({
           status: 400,

@@ -62,12 +62,10 @@ class ViewController {
       const title = req.query.title || ''
   
       const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
-  
       const response = await axios.get(apiUrl)
   
       if (response.status === 200) {
         const data = response.data
-        logger.info('data: ', data)
   
         return res.render('products/productList', {
           title: 'Products',
