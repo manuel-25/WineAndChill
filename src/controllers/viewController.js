@@ -8,22 +8,26 @@ const APP_URL = config.APP_URL
 class ViewController {
   async renderCart(req, res, next) {
     try {
-      let data = null;
-      const token = req.cookies.token ?? null;
+      let data = null
+      const token = req.cookies.token ?? null
   
       if (token) {
         logger.info(`cart url: ${APP_URL}/api/carts/bills`)
-        const response = await fetch(`${APP_URL}/api/carts/bills`, {
+        const axiosConfig = {
           headers: {
-            'authorization': `Bearer ${token}`
+            Authorization: `Bearer ${token}`
           }
-        })
-  
-        if (!response.ok) {
-          throw new Error(`Error al obtener datos: ${response.status} - ${response.statusText}`)
         }
   
-        data = await response.json()
+        const response = await axios.get(`${APP_URL}/api/carts/bills`, axiosConfig)
+        logger.info('response:', response)
+  
+        if (response.status !== 200) {
+          logger.info('entre al error')
+          throw new Error(`Error al obtener datos del carrito: ${response.statusText}`)
+        }
+  
+        data = response.data
         logger.info('data: ', data)
       }
   
@@ -32,11 +36,12 @@ class ViewController {
         style: "cart.css",
         script: "cartScript.js",
         response: data
-      });
+      })
     } catch (error) {
       next(error)
     }
   }
+  
   
 
   renderRegister(req, res, next) {
