@@ -6,6 +6,7 @@
     <% if (response && response.payload && response.payload.total > 0) { %>
       <div class="cart-list">
         <% response.payload.products.forEach((product) => { %>
+          <% console.log('product: ', product) %>
           <div class="product-card">
             <% if (product.productId?.thumbnail !== undefined) { %>
               <img src="<%= product.productId.thumbnail %>" class="product-image" alt="<%= product.productId.title %>">
@@ -20,8 +21,8 @@
               <div class="quantity-input">
                 <input type="number" value="<%= product.quantity %>" min="1" step="1" data-product-id="<%= product.productId._id %>">
               </div>
-              <button class="updateBtn" data-product-id="<%= product._id %>" onclick="updateQuantity('<%= product.productId._id %>')">Update</button>
-              <button class="deleteBtn" data-product-id="<%= product._id %>" onclick="deleteProduct('<%= product.productId._id %>')"><span>X</span></button>
+              <button class="updateBtn" data-product-id="<%= product.productId._id %>" onclick="updateQuantity('<%= product.productId._id %>')">Update</button>
+              <button class="deleteBtn" data-product-id="<%= product.productId._id %>" onclick="deleteProduct('<%= product.productId._id %>')"><span>X</span></button>
             </div>
           </div>
         <% }); %>

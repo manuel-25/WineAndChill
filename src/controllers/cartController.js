@@ -49,14 +49,13 @@ class CartController {
 
   async getCartBills(req, res, next) {
     try {
-      logger.info('entre a getCartBills')
       const cartId = req.token?.cartId ?? null
       const cart = await cartService.getOne(cartId)
       logger.info('cart', cart)
       if (!cartId || !cart) {
-        return res.status(404).send({
-          status: 404,
-          response: 'Get Error: Failed to get Cart: ' + cartId
+        return res.status(400).send({
+          status: 400,
+          response: 'Failed to get Cart: ' + cartId
         })
       }
   

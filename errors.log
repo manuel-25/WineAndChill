@@ -1139,3 +1139,46 @@ products is not defined
 [2023-10-20T16:33:33.942Z] [ERROR] - res:
 [2023-10-20T16:33:35.008Z] [ERROR] - res:
 [2023-10-20T16:33:35.131Z] [ERROR] - res:
+[2023-10-20T17:58:01.609Z] [ERROR] - status: 500 method: GET path: /cart message: Request failed with status code 404
+[2023-10-20T17:58:01.612Z] [ERROR] - Error stack trace: AxiosError: Request failed with status code 404
+    at settle (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/adapters/http.js:570:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[2023-10-20T17:58:05.319Z] [ERROR] - status: 500 method: GET path: /cart message: Request failed with status code 404
+[2023-10-20T17:58:05.320Z] [ERROR] - Error stack trace: AxiosError: Request failed with status code 404
+    at settle (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/adapters/http.js:570:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[2023-10-20T17:58:34.324Z] [ERROR] - status: 500 method: GET path: /cart message: Request failed with status code 404
+[2023-10-20T17:58:34.327Z] [ERROR] - Error stack trace: AxiosError: Request failed with status code 404
+    at settle (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/adapters/http.js:570:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[2023-10-20T18:01:05.087Z] [ERROR] - status: 500 method: GET path: /cart message: Request failed with status code 400
+[2023-10-20T18:01:05.092Z] [ERROR] - Error stack trace: AxiosError: Request failed with status code 400
+    at settle (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/adapters/http.js:570:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[2023-10-20T18:09:21.412Z] [ERROR] - status: 500 method: POST path: /api/auth/register message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-20T18:09:21.415Z] [ERROR] - Error stack trace: Error: Login sessions require session support. Did you forget to use `express-session` middleware?
+    at SessionManager.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\sessionmanager.js:21:33)
+    at req.login.req.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\http\request.js:39:26)
+    at strategy.success (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\middleware\authenticate.js:256:13)
+    at verified (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport-local\lib\strategy.js:83:10)
+    at Strategy._verify (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/config/passport_local.js:23:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T18:09:52.457Z] [ERROR] - status: 500 method: GET path: /cart message: Request failed with status code 400
+[2023-10-20T18:09:52.459Z] [ERROR] - Error stack trace: AxiosError: Request failed with status code 400
+    at settle (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/adapters/http.js:570:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)

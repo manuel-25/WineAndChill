@@ -12,23 +12,22 @@ class ViewController {
       const token = req.cookies.token ?? null
   
       if (token) {
-        logger.info(`cart url: ${APP_URL}/api/carts/bills`)
         const axiosConfig = {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }
-  
         const response = await axios.get(`${APP_URL}/api/carts/bills`, axiosConfig)
-        logger.info('response:', response)
+        data = response.data
   
         if (response.status !== 200) {
-          logger.info('entre al error')
-          throw new Error(`Error al obtener datos del carrito: ${response.statusText}`)
+          return res.render("cart/cart", {
+            title: "Cart",
+            style: "cart.css",
+            script: "cartScript.js",
+            response: null
+          })
         }
-  
-        data = response.data
-        logger.info('data: ', data)
       }
   
       return res.render("cart/cart", {
