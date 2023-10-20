@@ -51,33 +51,41 @@ class ViewController {
 
   async renderProductList(req, res, next) {
     try {
-        const limit = parseInt(req.query.limit) || 16
-        const page = parseInt(req.query.page) || 1
-        const title = req.query.title || ''
-
-        const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
-
-        await fetch(apiUrl)
-          .then(res => { 
-            logger.error('res:', res)
-            res.json()
-          })
-          .then(data => {
-            console.log('data',data)
-            if(data.status === 200) {
-              return res.render('products/productList', {
-                title: 'Products',
-                products: data.response?.docs,
-                pag: data.response,
-                style: 'productList.css',
-                script: 'productList.js',
-            })
-            }
-          })
+      const limit = parseInt(req.query.limit) || 16
+      const page = parseInt(req.query.page) || 1
+      const title = req.query.title || ''
+  
+      // Construye la URL con los parámetros
+      const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
+      console.log(apiUrl)
+  
+      const response = await fetch(apiUrl)
+      logger.info('response: ', response)
+      logger.info('response.status: ', response.status)
+      if (response.status === 200) {
+        const data = await response.json()
+        logger.info('data: ', data)
+        return res.render('products/productList', {
+          title: 'Products',
+          products: data.response?.docs,
+          pag: data.response,
+          style: 'productList.css',
+          script: 'productList.js',
+        })
+      } else {
+        return res.render('products/productList', {
+          title: 'Products',
+          products: null,
+          pag: null,
+          style: 'productList.css',
+          script: 'productList.js',
+        })
+      }
     } catch (error) {
-        next(error)
+      next(error)
     }
   }
+  
 
 
 

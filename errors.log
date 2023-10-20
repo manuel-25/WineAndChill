@@ -909,3 +909,233 @@ Cannot read properties of null (reading 'forEach')
 [2023-10-20T00:49:46.580Z] [ERROR] - status: 500 method: GET path: /products message: connect ECONNREFUSED ::1:80
 [2023-10-20T00:49:49.562Z] [ERROR] - status: 500 method: GET path: /products message: connect ECONNREFUSED ::1:80
 [2023-10-20T00:59:53.602Z] [ERROR] - allError
+[2023-10-20T01:42:15.994Z] [ERROR] - res:
+[2023-10-20T01:42:16.005Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'status')
+[2023-10-20T01:42:16.007Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'status')
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:67:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async renderProductList (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:60:9)
+[2023-10-20T01:43:02.873Z] [ERROR] - res:
+[2023-10-20T01:43:44.334Z] [ERROR] - res:
+[2023-10-20T01:45:17.778Z] [ERROR] - res:
+[2023-10-20T02:58:50.233Z] [ERROR] - res:
+[2023-10-20T16:16:33.171Z] [ERROR] - res:
+[2023-10-20T16:17:05.341Z] [ERROR] - res:
+[2023-10-20T16:21:02.266Z] [ERROR] - res:
+[2023-10-20T16:21:02.275Z] [ERROR] - status: 500 method: GET path: /products message: Cannot read properties of undefined (reading 'status')
+[2023-10-20T16:21:02.276Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'status')
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:68:21
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async renderProductList (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:61:9)
+[2023-10-20T16:24:22.059Z] [ERROR] - res:
+[2023-10-20T16:24:22.122Z] [ERROR] - status: 500 method: GET path: /products message: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|       <div class="row card-row">
+ >> 14|         <% products.forEach((product) => { %>
+    15|           <% if (product.status === true) { %>
+    16|             <div class="col-md-6 col-lg-3 mb-4">
+    17|               <div class="card">
+
+products is not defined
+[2023-10-20T16:24:22.128Z] [ERROR] - Error stack trace: ReferenceError: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|       <div class="row card-row">
+ >> 14|         <% products.forEach((product) => { %>
+    15|           <% if (product.status === true) { %>
+    16|             <div class="col-md-6 col-lg-3 mb-4">
+    17|               <div class="card">
+
+products is not defined
+    at eval ("C:\\Users\\manuo\\Desktop\\Tareas\\Proyectos\\WineAndChill\\src\\views\\products\\productList.ejs":17:8)
+    at productList (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\response.js:1039:7)
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:69:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T16:25:43.680Z] [ERROR] - res:
+[2023-10-20T16:25:43.708Z] [ERROR] - status: 500 method: GET path: /products message: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+[2023-10-20T16:25:43.711Z] [ERROR] - Error stack trace: ReferenceError: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+    at eval ("C:\\Users\\manuo\\Desktop\\Tareas\\Proyectos\\WineAndChill\\src\\views\\products\\productList.ejs":16:8)
+    at productList (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\response.js:1039:7)
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:69:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T16:25:45.931Z] [ERROR] - res:
+[2023-10-20T16:25:45.955Z] [ERROR] - status: 500 method: GET path: /products message: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+[2023-10-20T16:25:45.958Z] [ERROR] - Error stack trace: ReferenceError: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+    at eval ("C:\\Users\\manuo\\Desktop\\Tareas\\Proyectos\\WineAndChill\\src\\views\\products\\productList.ejs":16:8)
+    at productList (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\response.js:1039:7)
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:69:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T16:26:03.541Z] [ERROR] - res:
+[2023-10-20T16:26:03.602Z] [ERROR] - status: 500 method: GET path: /products message: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+[2023-10-20T16:26:03.609Z] [ERROR] - Error stack trace: ReferenceError: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+    at eval ("C:\\Users\\manuo\\Desktop\\Tareas\\Proyectos\\WineAndChill\\src\\views\\products\\productList.ejs":16:8)
+    at productList (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\response.js:1039:7)
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:69:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T16:26:10.646Z] [ERROR] - res:
+[2023-10-20T16:26:10.660Z] [ERROR] - status: 500 method: GET path: /products message: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+[2023-10-20T16:26:10.663Z] [ERROR] - Error stack trace: ReferenceError: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+    at eval ("C:\\Users\\manuo\\Desktop\\Tareas\\Proyectos\\WineAndChill\\src\\views\\products\\productList.ejs":16:8)
+    at productList (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\response.js:1039:7)
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:69:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T16:27:39.241Z] [ERROR] - res:
+[2023-10-20T16:27:39.288Z] [ERROR] - status: 500 method: GET path: /products message: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && Array.isArray(products) && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product && product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+[2023-10-20T16:27:39.292Z] [ERROR] - Error stack trace: ReferenceError: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (products && Array.isArray(products) && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (product && product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+    at eval ("C:\\Users\\manuo\\Desktop\\Tareas\\Proyectos\\WineAndChill\\src\\views\\products\\productList.ejs":16:8)
+    at productList (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\response.js:1039:7)
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:69:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T16:29:19.082Z] [ERROR] - res:
+[2023-10-20T16:29:19.117Z] [ERROR] - status: 500 method: GET path: /products message: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (Array.isArray(products) && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (typeof product === 'object' && product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+[2023-10-20T16:29:19.120Z] [ERROR] - Error stack trace: ReferenceError: C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\src\views\products\productList.ejs:14
+    12| 
+    13|     <div class="row card-row">
+ >> 14|       <% if (Array.isArray(products) && products.length > 0) { %>
+    15|         <% products.forEach((product) => { %>
+    16|           <% if (typeof product === 'object' && product.status === true) { %>
+    17|             <div class="col-md-6 col-lg-3 mb-4">
+
+products is not defined
+    at eval ("C:\\Users\\manuo\\Desktop\\Tareas\\Proyectos\\WineAndChill\\src\\views\\products\\productList.ejs":16:26)
+    at productList (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:703:17)
+    at tryHandleCache (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:274:36)
+    at exports.renderFile [as engine] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\ejs\lib\ejs.js:491:10)
+    at View.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\view.js:135:8)
+    at tryRender (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:657:10)
+    at Function.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\application.js:609:3)
+    at ServerResponse.render (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\response.js:1039:7)
+    at file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/viewController.js:69:34
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T16:30:03.672Z] [ERROR] - res:
+[2023-10-20T16:33:30.152Z] [ERROR] - res:
+[2023-10-20T16:33:30.299Z] [ERROR] - res:
+[2023-10-20T16:33:31.554Z] [ERROR] - res:
+[2023-10-20T16:33:31.768Z] [ERROR] - res:
+[2023-10-20T16:33:33.734Z] [ERROR] - res:
+[2023-10-20T16:33:33.942Z] [ERROR] - res:
+[2023-10-20T16:33:35.008Z] [ERROR] - res:
+[2023-10-20T16:33:35.131Z] [ERROR] - res:
