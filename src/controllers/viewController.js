@@ -12,6 +12,7 @@ class ViewController {
       const token = req.cookies.token ?? null;
   
       if (token) {
+        logger.info(`cart url: ${APP_URL}/api/carts/bills`)
         const response = await fetch(`${APP_URL}/api/carts/bills`, {
           headers: {
             'authorization': `Bearer ${token}`
@@ -23,6 +24,7 @@ class ViewController {
         }
   
         data = await response.json()
+        logger.info('data: ', data)
       }
   
       return res.render("cart/cart", {
