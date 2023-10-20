@@ -51,21 +51,17 @@ class ViewController {
 
   async renderProductList(req, res, next) {
     try {
-      const limit = parseInt(req.query.limit) || 16;
-      const page = parseInt(req.query.page) || 1;
-      const title = req.query.title || '';
+      const limit = parseInt(req.query.limit) || 16
+      const page = parseInt(req.query.page) || 1
+      const title = req.query.title || ''
   
-      // Construye la URL con los parámetros
-      const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`;
-      console.log(apiUrl);
+      const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
   
-      const response = await axios.get(apiUrl); // Realiza la solicitud GET con Axios
-      logger.info('response: ', response);
-      logger.info('response.status: ', response.status);
+      const response = await axios.get(apiUrl)
   
       if (response.status === 200) {
-        const data = response.data; // Axios maneja automáticamente el JSON
-        logger.info('data: ', data);
+        const data = response.data
+        logger.info('data: ', data)
   
         return res.render('products/productList', {
           title: 'Products',
@@ -73,7 +69,7 @@ class ViewController {
           pag: data.response,
           style: 'productList.css',
           script: 'productList.js',
-        });
+        })
       } else {
         return res.render('products/productList', {
           title: 'Products',
@@ -81,7 +77,7 @@ class ViewController {
           pag: null,
           style: 'productList.css',
           script: 'productList.js',
-        });
+        })
       }
     } catch (error) {
       next(error);
