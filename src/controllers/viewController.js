@@ -54,26 +54,34 @@ class ViewController {
       const limit = parseInt(req.query.limit) || 16
       const page = parseInt(req.query.page) || 1
       const title = req.query.title || ''
-  
+
       const apiUrl = `${APP_URL}/api/products?limit=${limit}&page=${page}&title=${title}`
-  
-      const response = await axios.get(apiUrl)
-      const products = response.data.response.docs
-      const pagination = response.data.response
-  
+
+      const response = await fetch(apiUrl)
+      
       if (response.status === 200) {
-        return res.render('products/productList', {
-          title: 'Products',
-          products,
-          pag: pagination,
-          style: 'productList.css',
-          script: 'productList.js'
-        })
+        const responseData = await response.json()
+
+        if (responseData && responseData.response && responseData.response.docs) {
+          const products = responseData.response.docs
+          const pagination = responseData.response
+
+          return res.render('products/productList', {
+            title: 'Products',
+            products,
+            pag: pagination,
+            style: 'productList.css',
+            script: 'productList.js',
+          })
+        }
       }
+
+      throw new Error('No se encontraron documentos en la respuesta: renderProductList')
     } catch (error) {
-      next(error)
+      next(error);
     }
-  }
+}
+
 
   async renderProductDetail(req, res, next) {
     try {    
