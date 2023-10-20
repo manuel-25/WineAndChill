@@ -1,5 +1,6 @@
 import { productService, userService } from "../Service/index.js"
 import config from "../config/config.js"
+import { logger } from "../config/logger.js"
 import { sendProductDeletedEmail } from "../utils/sendEmail.js"
 
 class ProductController {
@@ -26,7 +27,8 @@ class ProductController {
       }
   
       const all = await productService.paginate(query, { limit, page, lean: true })
-      console.log('all:', all)
+      logger.error('allError', all)
+      logger.info('allInfo', all)
       if (!all || all.error) {
         return res.status(404).send({
           status: 404,
@@ -34,7 +36,7 @@ class ProductController {
         })
       }
   
-      if (all.docs) {
+      if (all?.docs) {
         return res.status(200).send({
           status: 200,
           response: all
