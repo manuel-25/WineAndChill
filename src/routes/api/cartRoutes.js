@@ -17,7 +17,7 @@ router.get('/' ,getCarts)
 router.get('/cartId/:cartId([a-z0-9]+)', getCartById)
 router.get('/bills', readToken, getCartBills)
 
-router.post('/cart/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)',passport_call('jwt') , readToken, addToCart)
+router.post('/cart/product/:productId([a-z0-9]+)/:quantity([a-z0-9]+)', readToken, addToCart)
 router.post('/purchase', readToken, purchase)
 
 router.put('/update/:productId([a-z0-9]+)/:units([0-9]+)',passport_call('jwt'), readToken, updateCartProduct)

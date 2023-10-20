@@ -3,6 +3,8 @@ import { generateAlphanumericCode } from "../utils.js"
 import mongoose from "mongoose"
 import { sendTicketEmail } from "../utils/sendEmail.js"
 import { logger } from "../config/logger.js"
+import jwt from "jsonwebtoken"
+import config from "../config/config.js"
 
 class CartController {
   async getCarts(req, res, next) {
@@ -49,9 +51,18 @@ class CartController {
 
   async getCartBills(req, res, next) {
     try {
-      const cartId = req.token?.cartId ?? null
+      let cartId = req.token?.cartId ?? null
+      if(cartId === null) {
+        const user = await userService.getByEmail(req.token?.email)
+        if(!user) {
+          return res.status(200).send({
+            status: 400,
+            payload: null
+          })
+        }
+        cartId = user.cartId
+      }
       const cart = await cartService.getOne(cartId)
-      logger.info('cart', cart)
       if (!cartId || !cart) {
         return res.status(400).send({
           status: 400,
@@ -86,26 +97,35 @@ class CartController {
       let result
       const productId = req.params.productId
       const quantity = req.params.quantity ?? 0
-      let cartId = req.token.cartId ?? null
-      const userEmail = req.token.email
+      let cartId = req?.token?.cartId ?? null
+      const userEmail = req?.token?.email ?? null
       
       if(!userEmail) {
-        return res.status(404).send({
-          status: 404,
+        return res.status(400).send({
+          status: 400,
           response: `You must login first`
         })
       }
   
       if (cartId === null) {
         emptyCart = await cartService.createEmpty()
-        if(!emptyCart) logger.error('Error creating empty cart: ', emptyCart)
+        if (!emptyCart) logger.error('Error creating empty cart: ', emptyCart)
         cartId = emptyCart?._id
-      
-        const criteria = { email: userEmail }
-        const update = { cartId: cartId }
-        const updatedUser = await userService.update(criteria, update)
-        if(!updatedUser) logger.error('Error updating user with empty cart: ', updatedUser)
-      }    
+
+        const updatedUser = await userService.update({ email: userEmail }, { cartId: cartId })
+        if (!updatedUser) {
+          logger.error('Error updating user with empty cart: ', updatedUser)
+        } else {
+          const expiresIn = 1000 * 60 * 60;
+          const tokenPayload = {
+            ...req.token,
+            cartId: cartId,
+            chatColor: req.token.chatColor
+          }
+          const token = jwt.sign(tokenPayload, config.SECRET_JWT, { expiresIn })
+          res.cookie('token', token, { maxAge: expiresIn, httpOnly: true })
+        }
+      }   
   
       const cart = await cartService.getById(cartId)
       if (!cart) return res.status(404).send({
@@ -145,9 +165,20 @@ class CartController {
 
   async updateCartProduct(req, res, next) {
     try {
-      const cartId = req.token?.cartId ?? null
+      let cartId = req.token?.cartId ?? null
       const productId = req.params.productId ?? null
       const quantity = req.params.units ?? null
+
+      if(cartId === null) {
+        const user = await userService.getByEmail(req.token?.email)
+        if(!user) {
+          return res.status(200).send({
+            status: 400,
+            payload: 'Update Error: Invalid cart'
+          })
+        }
+        cartId = user.cartId
+      }
     
       if (!cartId || !productId || !quantity) {
         return res.status(500).send({
@@ -172,12 +203,21 @@ class CartController {
         })
       }
 
-      if(quantity > productToUpdate.stock) {
+      logger.info('quantity',quantity)
+      if (quantity < 1) {
+        return res.status(400).send({
+          status: 400,
+          response: "Update Error: Requested quantity must be at least 1."
+        })
+      }
+      
+      if (quantity > productToUpdate.stock) {
         return res.status(404).send({
           status: 404,
           response: `Update Error: Quantity(${quantity}) exceeds stock(${productToUpdate.stock})`
         })
       }
+      
     
       const updatedProduct = await cartService.update(cartId, productId, quantity)
 
@@ -199,8 +239,19 @@ class CartController {
 
   async deleteCartProduct(req, res, next) {
     try {
-      const cartId = req.token?.cartId ?? null
+      let cartId = req.token?.cartId ?? null
       const productId = req.params.productId ?? null
+
+      if(cartId === null) {
+        const user = await userService.getByEmail(req.token?.email)
+        if(!user) {
+          return res.status(200).send({
+            status: 400,
+            payload: 'Delete Error: Invalid cart'
+          })
+        }
+        cartId = user.cartId
+      }
 
       const cart = await cartService.getById(cartId)
       if (!cart) {

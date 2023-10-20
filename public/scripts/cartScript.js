@@ -1,20 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const updateButtons = document.querySelectorAll('.updateBtn');
+  const updateButtons = document.querySelectorAll('.updateBtn')
   updateButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const productId = button.getAttribute('data-product-id');
-      updateQuantity(productId);
-    });
-  });
+      const productId = button.getAttribute('data-product-id')
+      updateQuantity(productId)
+    })
+  })
 
-  const deleteButtons = document.querySelectorAll('.deleteBtn');
+  const deleteButtons = document.querySelectorAll('.deleteBtn')
   deleteButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const productId = button.getAttribute('data-product-id');
-      deleteProduct(productId);
-    });
-  });
-});
+      const productId = button.getAttribute('data-product-id')
+      deleteProduct(productId)
+    })
+  })
+
+  const checkoutButton = document.querySelector('.checkout-button')
+  checkoutButton.addEventListener('click', checkout)
+})
 
 async function updateQuantity(productId) {
   const input = document.querySelector(`input[data-product-id="${productId}"]`);
@@ -107,7 +110,6 @@ async function checkout() {
           window.location.reload()
         })
       } else {
-        console.error(error)
         Swal.fire({
           icon: 'error',
           title: 'Error al realizar la compra',

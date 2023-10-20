@@ -1182,3 +1182,110 @@ products is not defined
     at IncomingMessage.emit (node:events:526:35)
     at endReadableNT (node:internal/streams/readable:1359:12)
     at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[2023-10-20T19:18:57.716Z] [ERROR] - status: 500 method: POST path: /api/auth/register message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-20T19:18:57.718Z] [ERROR] - Error stack trace: Error: Login sessions require session support. Did you forget to use `express-session` middleware?
+    at SessionManager.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\sessionmanager.js:21:33)
+    at req.login.req.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\http\request.js:39:26)
+    at strategy.success (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\middleware\authenticate.js:256:13)
+    at verified (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport-local\lib\strategy.js:83:10)
+    at Strategy._verify (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/config/passport_local.js:23:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:19:05.481Z] [ERROR] - status: 500 method: GET path: /cart message: Request failed with status code 400
+[2023-10-20T19:19:05.483Z] [ERROR] - Error stack trace: AxiosError: Request failed with status code 400
+    at settle (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/node_modules/axios/lib/adapters/http.js:570:11)
+    at IncomingMessage.emit (node:events:526:35)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[2023-10-20T19:23:31.909Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Assignment to constant variable.
+[2023-10-20T19:23:31.911Z] [ERROR] - Error stack trace: TypeError: Assignment to constant variable.
+    at getCartBills (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:63:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:23:47.523Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Assignment to constant variable.
+[2023-10-20T19:23:47.525Z] [ERROR] - Error stack trace: TypeError: Assignment to constant variable.
+    at getCartBills (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:63:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:23:49.996Z] [ERROR] - status: 500 method: GET path: /api/carts/bills message: Assignment to constant variable.
+[2023-10-20T19:23:49.997Z] [ERROR] - Error stack trace: TypeError: Assignment to constant variable.
+    at getCartBills (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:63:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:25:54.906Z] [ERROR] - status: 500 method: PUT path: /api/carts/update/6484d63cd39540d2316b9bba/2 message: Assignment to constant variable.
+[2023-10-20T19:25:54.909Z] [ERROR] - Error stack trace: TypeError: Assignment to constant variable.
+    at updateCartProduct (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:170:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:26:01.514Z] [ERROR] - status: 500 method: PUT path: /api/carts/update/6484d63cd39540d2316b9bba/2 message: Assignment to constant variable.
+[2023-10-20T19:26:01.515Z] [ERROR] - Error stack trace: TypeError: Assignment to constant variable.
+    at updateCartProduct (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:170:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:31:10.129Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d63cd39540d2316b9bba/1 message: Cannot read properties of undefined (reading 'cartId')
+[2023-10-20T19:31:10.133Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'cartId')
+    at addToCart (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:99:30)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at default (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/middlewares/readToken.js:27:5)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:365:14)
+[2023-10-20T19:31:11.058Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d63cd39540d2316b9bba/1 message: Cannot read properties of undefined (reading 'cartId')
+[2023-10-20T19:31:11.060Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'cartId')
+    at addToCart (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:99:30)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at default (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/middlewares/readToken.js:27:5)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:365:14)
+[2023-10-20T19:31:52.760Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d63cd39540d2316b9bba/1 message: Cannot read properties of undefined (reading 'email')
+[2023-10-20T19:31:52.763Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'email')
+    at addToCart (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:100:35)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at default (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/middlewares/readToken.js:27:5)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:365:14)
+[2023-10-20T19:31:53.619Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484d63cd39540d2316b9bba/1 message: Cannot read properties of undefined (reading 'email')
+[2023-10-20T19:31:53.621Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'email')
+    at addToCart (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:100:35)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at default (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/middlewares/readToken.js:27:5)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\express\lib\router\index.js:365:14)
+[2023-10-20T19:35:09.688Z] [ERROR] - status: 500 method: POST path: /api/auth/register message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-20T19:35:09.690Z] [ERROR] - Error stack trace: Error: Login sessions require session support. Did you forget to use `express-session` middleware?
+    at SessionManager.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\sessionmanager.js:21:33)
+    at req.login.req.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\http\request.js:39:26)
+    at strategy.success (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\middleware\authenticate.js:256:13)
+    at verified (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport-local\lib\strategy.js:83:10)
+    at Strategy._verify (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/config/passport_local.js:23:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:48:19.618Z] [ERROR] - status: 500 method: POST path: /api/auth/register message: Login sessions require session support. Did you forget to use `express-session` middleware?
+[2023-10-20T19:48:19.621Z] [ERROR] - Error stack trace: Error: Login sessions require session support. Did you forget to use `express-session` middleware?
+    at SessionManager.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\sessionmanager.js:21:33)
+    at req.login.req.logIn (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\http\request.js:39:26)
+    at strategy.success (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport\lib\middleware\authenticate.js:256:13)
+    at verified (C:\Users\manuo\Desktop\Tareas\Proyectos\WineAndChill\node_modules\passport-local\lib\strategy.js:83:10)
+    at Strategy._verify (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/config/passport_local.js:23:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:48:32.268Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484da49d39540d2316b9bd1/1 message: Cannot read properties of undefined (reading 'chatColor')
+[2023-10-20T19:48:32.270Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'chatColor')
+    at addToCart (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:124:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-10-20T19:48:33.710Z] [ERROR] - status: 500 method: POST path: /api/carts/cart/product/6484da49d39540d2316b9bd1/1 message: Cannot read properties of undefined (reading 'chatColor')
+[2023-10-20T19:48:33.712Z] [ERROR] - Error stack trace: TypeError: Cannot read properties of undefined (reading 'chatColor')
+    at addToCart (file:///C:/Users/manuo/Desktop/Tareas/Proyectos/WineAndChill/src/controllers/cartController.js:124:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

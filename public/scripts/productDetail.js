@@ -25,8 +25,7 @@ submitButton.addEventListener('click', (event) => {
                 if(data.status) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Error',
-                        text: data.response
+                        title: data.response || 'Error'
                     })
                 } else {
                     Swal.fire({

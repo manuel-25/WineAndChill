@@ -6,7 +6,6 @@
     <% if (response && response.payload && response.payload.total > 0) { %>
       <div class="cart-list">
         <% response.payload.products.forEach((product) => { %>
-          <% console.log('product: ', product) %>
           <div class="product-card">
             <% if (product.productId?.thumbnail !== undefined) { %>
               <img src="<%= product.productId.thumbnail %>" class="product-image" alt="<%= product.productId.title %>">

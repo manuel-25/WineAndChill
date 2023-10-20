@@ -22,7 +22,7 @@
           <p class="product-description"><%= product.description %></p>
           <div class="product-actions">
             <form action="/" method="POST" id="addToCartForm">
-                <input type="number" name="quantity" id="quantityInput" value="1">
+                <input type="number" name="quantity" id="quantityInput" value="1" min="1">
                 <p class="product-stock">Stock disponible: <%= product.stock %></p>
                 <input type="submit" value="Agregar al Carrito" id="submitButton">
             </form>

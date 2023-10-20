@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken"
+import config from "../config/config.js"
 
 export default (req, res, next) => {
     let rembemberMe = req.body.rememberMe === true
@@ -14,7 +15,7 @@ export default (req, res, next) => {
         cartId: req.user.cartId,
         chatColor: req.user.chatColor
         },
-        process.env.SECRET_JWT,
+        config.SECRET_JWT,
         { expiresIn }
     )
     res.cookie('token', token, { maxAge: expiresIn, httpOnly: true })
