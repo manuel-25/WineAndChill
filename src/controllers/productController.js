@@ -6,6 +6,7 @@ import { sendProductDeletedEmail } from "../utils/sendEmail.js"
 class ProductController {
   async getProducts(req, res, next) {
     try {
+      logger.info('Entre al controller')
       const limit = !isNaN(parseInt(req.query.limit)) ? parseInt(req.query.limit) : 6
       const page = !isNaN(parseInt(req.query.page)) ? parseInt(req.query.page) : 1
       const searchTerm = req.query.title || ''
@@ -27,7 +28,8 @@ class ProductController {
       }
   
       const all = await productService.paginate(query, { limit, page, lean: true })
-      if (!all || all.error) {
+      logger.info('all products: ', all)
+      if (!all || all?.error) {
         return res.status(404).send({
           status: 404,
           response: all.error || 'Products pagination error!'
